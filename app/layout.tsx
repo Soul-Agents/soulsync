@@ -3,6 +3,8 @@ import localFont from "next/font/local"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import "./globals.css"
+import { Nav } from "@/components/ui/nav"  // Add this import at the top
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,22 +33,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-gradient-to-b from-[#0f0f1a] via-[#1a1a2e] to-[#2a2a4a] text-white antialiased">
         <div className="relative">
           {/* Navigation */}
-          <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
-            <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-              <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-mono">
-                Soulsync
-              </Link>
-              <div className="hidden md:flex items-center space-x-8">
-                <Link href="#features" className="nav-link">Features</Link>
-                <Link href="#benefits" className="nav-link">Benefits</Link>
-                <Link href="#about" className="nav-link">About</Link>
-                <Link href="#contact" className="nav-link">Contact</Link>
-                <Button className="button-gradient">
-                  Get Started
-                </Button>
-              </div>
-            </nav>
-          </header>
+          <Nav />
 
           {/* Main Content */}
           <main>
@@ -59,7 +46,7 @@ export default function RootLayout({
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                   <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-                    Soulsync
+                    SoulAgents
                   </h3>
                   <p className="text-gray-400">
                     Empowering the future of AI-driven crypto trading
