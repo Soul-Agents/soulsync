@@ -1,3 +1,8 @@
+"use client"
+
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
@@ -82,7 +87,7 @@ export default function Home() {
               }
             ].map((testimonial, index) => (
               <div key={index} className="glass-card p-8 animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <p className="text-lg mb-4 text-gray-200">"{testimonial.quote}"</p>
+                <p className="text-lg mb-4 text-gray-200">{testimonial.quote}</p>
                 <p className="text-pink-400 font-semibold">{testimonial.author}</p>
                 <p className="text-sm text-gray-400">{testimonial.role}</p>
               </div>
@@ -100,7 +105,7 @@ export default function Home() {
               Soulsync is at the forefront of AI-powered crypto trading technology. Our mission is to make sophisticated trading strategies accessible to everyone through advanced artificial intelligence.
             </p>
             <p className="text-lg text-gray-300">
-              Founded by a team of AI researchers and crypto experts, we're committed to revolutionizing the way people trade digital assets.
+              Founded by a team of AI researchers and crypto experts, we are committed to revolutionizing the way people trade digital assets.
             </p>
           </div>
         </div>
@@ -113,18 +118,18 @@ export default function Home() {
           <div className="glass-card max-w-xl mx-auto p-8 animate-fade-in-up">
             <form className="space-y-6">
               <div>
-                <input
+                <Input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full p-4 rounded-lg bg-white/5 border border-white/10 focus:border-pink-500 outline-none text-white"
+                  className="w-full p-4"
                 />
               </div>
               <div>
-                <textarea
+                <Textarea
                   placeholder="Your Message"
                   rows={4}
-                  className="w-full p-4 rounded-lg bg-white/5 border border-white/10 focus:border-pink-500 outline-none text-white"
-                ></textarea>
+                  className="w-full p-4"
+                />
               </div>
               <button className="w-full button-gradient text-white font-bold py-4 rounded-lg">
                 Send Message

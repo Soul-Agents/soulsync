@@ -37,11 +37,11 @@ export default function RootLayout({
                 Soulsync
               </Link>
               <div className="hidden md:flex items-center space-x-8">
-                <Link href="#features" className="text-sm text-gray-300 hover:text-white transition-colors">Features</Link>
-                <Link href="#benefits" className="text-sm text-gray-300 hover:text-white transition-colors">Benefits</Link>
-                <Link href="#about" className="text-sm text-gray-300 hover:text-white transition-colors">About</Link>
-                <Link href="#contact" className="text-sm text-gray-300 hover:text-white transition-colors">Contact</Link>
-                <Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+                <Link href="#features" className="nav-link">Features</Link>
+                <Link href="#benefits" className="nav-link">Benefits</Link>
+                <Link href="#about" className="nav-link">About</Link>
+                <Link href="#contact" className="nav-link">Contact</Link>
+                <Button className="button-gradient">
                   Get Started
                 </Button>
               </div>
@@ -49,31 +49,89 @@ export default function RootLayout({
           </header>
 
           {/* Main Content */}
-          <main className="pt-16">
+          <main>
             {children}
           </main>
 
           {/* Footer */}
-          <footer className="bg-black/50 backdrop-blur-md border-t border-white/10 mt-20">
+          <footer className="bg-black/50 backdrop-blur-md border-t border-white/10">
             <div className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Soulsync</h3>
-                  <p className="text-gray-400">Empowering the future of AI-driven crypto trading</p>
+                  <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                    Soulsync
+                  </h3>
+                  <p className="text-gray-400">
+                    Empowering the future of AI-driven crypto trading
+                  </p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-4">Quick Links</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/soulpaper" className="text-gray-400 hover:text-white transition-colors">Soulpaper</Link></li>
-                    <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-                    <li><Link href="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link></li>
+                    <li>
+                      <Link href="/soulpaper" className="text-gray-400 hover:text-white transition-colors">
+                        Soulpaper
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                        Privacy Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                        Terms of Service
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-4">Resources</h4>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/docs" className="text-gray-400 hover:text-white transition-colors">
+                        Documentation
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
+                        Blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+                        FAQ
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-4">Connect</h4>
-                  <div className="flex space-x-4">
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">Telegram</a>
+                  <div className="space-y-2">
+                    <a 
+                      href="https://twitter.com/soulsync" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="block text-gray-400 hover:text-white transition-colors"
+                    >
+                      Twitter
+                    </a>
+                    <a 
+                      href="https://t.me/soulsync" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="block text-gray-400 hover:text-white transition-colors"
+                    >
+                      Telegram
+                    </a>
+                    <a 
+                      href="https://discord.gg/soulsync" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="block text-gray-400 hover:text-white transition-colors"
+                    >
+                      Discord
+                    </a>
                   </div>
                 </div>
               </div>
