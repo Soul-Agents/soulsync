@@ -17,9 +17,16 @@ export default function HeroSection() {
             Intelligent AI agents for Web3 community management.
             Live on X and Telegram.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-delay-2">
-            <Button href="/contact" size="lg">Get Started</Button>
-            <Button href="/whitepaper" variant="outline" size="lg">Learn More</Button>
+          <div className="animate-fade-in-delay-2">
+            <Button 
+              href="https://forms.gle/zxe1hgrbL8rbTELL7"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              className="px-8 py-6 text-lg bg-gradient-to-r from-neon-pink to-electric-purple hover:from-electric-purple hover:to-neon-pink transition-all duration-500 hover:scale-105 shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </div>

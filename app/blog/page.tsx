@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Blog - Soul AI Agents',
@@ -35,7 +36,7 @@ export default function Blog() {
       
       <div className="max-w-4xl mx-auto">
         {blogPosts.map((post) => (
-          <a
+          <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
             className="block mb-12 glass-card hover:scale-[1.02] transition-transform"
@@ -53,7 +54,7 @@ export default function Blog() {
                 <span>By {post.author}</span>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
