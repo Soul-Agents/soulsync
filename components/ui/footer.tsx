@@ -8,7 +8,8 @@ export function Footer() {
     main: [
       { label: 'Blog', href: '/blog' },
       { label: 'Whitepaper', href: '/whitepaper' },
-      { label: 'About', href: '/about' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Tokenomics', href: '/tokenomics' },
     ],
     legal: [
       { label: 'Terms of Service', href: '/terms' },
@@ -75,7 +76,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 text-center md:text-left">
           <div className="text-white/60 text-sm">
-            © {currentYear} Soul AI. All rights reserved.
+            © {currentYear} Soul AI Agents. All rights reserved.
           </div>
         </div>
       </div>
