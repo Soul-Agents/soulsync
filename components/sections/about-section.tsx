@@ -11,9 +11,9 @@ const teamMembers = [
   // Add other team members as needed
 ]
 
-export function AboutSection() {
+export default function AboutSection() {
   return (
-    <section className="py-20 relative">
+    <section id="about" className="py-20 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6 gradient-text">

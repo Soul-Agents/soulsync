@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-export function ContactSection() {
+export default function ContactSection() {
   return (
     <section id="contact" className="py-20 bg-dark-navy/30">
       <div className="container mx-auto px-4">
