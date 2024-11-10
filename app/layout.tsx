@@ -1,21 +1,15 @@
 import type { Metadata } from "next"
-import localFont from "next/font/local"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import "./globals.css"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
+import { Inter } from 'next/font/google'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-})
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const inter = Inter({ 
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'], // Including all weights we might need
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
@@ -40,24 +34,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-gradient-to-b from-[#0f0f1a] via-[#1a1a2e] to-[#2a2a4a] text-white antialiased">
-        <div className="relative flex flex-col min-h-screen">
-          {/* Navigation */}
-          <Navbar />
-
-          {/* Main Content */}
-          <main className="flex-grow">
-            {children}
-          </main>
-
-          {/* Footer */}
-          <Footer />
-        </div>
+    <html lang="en" className={`${inter.variable} font-sans`}>
+      <body className={`${inter.className} bg-dark-navy min-h-screen antialiased`}>
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

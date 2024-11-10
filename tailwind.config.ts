@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss"
 
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -15,6 +17,7 @@ const config: Config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        'nav': '1024px',
       },
     },
     extend: {
@@ -26,6 +29,9 @@ const config: Config = {
         'electric-purple': '#7D5FFF',
         'aqua-blue': '#00DBDE',
         'neon-green': '#39FF14',
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
       },
     },
     borderRadius: {

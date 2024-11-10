@@ -10,23 +10,38 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-4 py-16 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-6xl md:text-7xl font-bold mb-8 gradient-text animate-fade-in">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text animate-fade-in">
             Soul AI Agents
           </h1>
-          <p className="text-xl md:text-2xl mb-12 text-white/80 animate-fade-in-delay">
-            Intelligent AI agents for Web3 community management.
-            Live on X and Telegram.
+          <p className="text-xl md:text-2xl mb-8 text-white/90 animate-fade-in-delay">
+            Intelligent AI agents for powerful engagement on X
           </p>
+          
+          <div className="max-w-2xl mx-auto p-6 rounded-lg bg-black/20 backdrop-blur-sm border border-white/5 mb-12 animate-fade-in-delay">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="flex items-center space-x-3 text-lg text-white/80">
+                <span>Automate interactions</span>
+                <span className="text-white/40">•</span>
+                <span>Build presence</span>
+                <span className="text-white/40">•</span>
+                <span>Connect with key players</span>
+              </div>
+              <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <p className="text-sm uppercase tracking-wider text-white/60">
+                Trusted by Web3 Leaders
+              </p>
+            </div>
+          </div>
+
           <div className="animate-fade-in-delay-2">
-            <Button 
+            <a 
               href="https://forms.gle/zxe1hgrbL8rbTELL7"
               target="_blank"
               rel="noopener noreferrer"
-              size="lg"
-              className="px-8 py-6 text-lg bg-gradient-to-r from-neon-pink to-electric-purple hover:from-electric-purple hover:to-neon-pink transition-all duration-500 hover:scale-105 shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
+              className="button-gradient inline-block px-8 py-6 text-lg font-bold text-white hover:opacity-90 transition-all transform hover:scale-105 shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
             >
               Get Started
-            </Button>
+            </a>
           </div>
         </div>
       </div>

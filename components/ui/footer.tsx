@@ -25,12 +25,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Main Links */}
           <div>
-            <h3 className="mb-4">
-              <Link href="/" className="inline-flex items-baseline gap-2">
-                <span className="text-3xl font-bold gradient-text">Soul</span>
-                <span className="text-lg font-semibold gradient-text">AI Agents</span>
-              </Link>
-            </h3>
+            <h3 className="gradient-text font-semibold mb-4">Soul AI Agents</h3>
             <ul className="space-y-2">
               {sections.main.map((link) => (
                 <li key={link.href}>

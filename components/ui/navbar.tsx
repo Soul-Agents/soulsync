@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Button } from './button'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,7 +14,6 @@ export function Navbar() {
     { href: '/#about', label: 'About' },
     { href: '/#features', label: 'Features' },
     { href: '/#technology', label: 'Technology' },
-    { href: '/#benefits', label: 'Benefits' },
     { href: '/#pricing', label: 'Pricing' },
     { href: '/#testimonials', label: 'Testimonials' },
     { href: '/#whitepaper', label: 'Whitepaper' },
@@ -34,17 +32,17 @@ export function Navbar() {
     <nav className="fixed w-full z-50 top-0">
       <div className="backdrop-blur-lg bg-black/20 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center space-x-4">
-              <Link href="/" className="flex flex-col h-16 justify-center">
+              <Link href="/" className="flex flex-col h-20 justify-center">
                 <div className="flex flex-col -space-y-1">
-                  <span className="text-[1.75rem] font-bold gradient-text leading-none">Soul</span>
-                  <span className="text-[0.9rem] font-semibold gradient-text tracking-wide">AI Agents</span>
+                  <span className="text-[2.2rem] font-bold gradient-text leading-none">Soul</span>
+                  <span className="text-[1rem] font-semibold gradient-text tracking-wide">AI Agents</span>
                 </div>
               </Link>
               <Link 
-                href="https://twitter.com/soul_agents" 
+                href="https://x.com/soul_agents" 
                 target="_blank"
                 className="hidden sm:block"
               >
@@ -59,7 +57,7 @@ export function Navbar() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -69,19 +67,18 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Button 
+              <a 
                 href="https://forms.gle/zxe1hgrbL8rbTELL7"
                 target="_blank"
                 rel="noopener noreferrer"
-                size="sm" 
-                className="bg-gradient-to-r from-neon-pink to-electric-purple hover:from-electric-purple hover:to-neon-pink transition-all duration-500"
+                className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all"
               >
                 Get Started
-              </Button>
+              </a>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-white p-2"
@@ -107,7 +104,7 @@ export function Navbar() {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link) => (
                 <Link
@@ -120,15 +117,15 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button 
+                <a 
                   href="https://forms.gle/zxe1hgrbL8rbTELL7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-neon-pink to-electric-purple hover:from-electric-purple hover:to-neon-pink transition-all duration-500"
+                  className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all"
                   onClick={() => setIsOpen(false)}
                 >
                   Get Started
-                </Button>
+                </a>
               </div>
             </div>
           </div>
