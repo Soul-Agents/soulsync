@@ -24,27 +24,6 @@ const blogPosts: BlogPost[] = [
     date: 'Nov 10, 2024',
     author: 'Adam'
   },
-  {
-    slug: 'the-rise-of-soulful-ai-trading',
-    title: 'The Rise of Soulful AI Trading',
-    description: 'Exploring how AI agents combine technical analysis with emotional intelligence to make better trading decisions in the crypto market.',
-    date: 'Nov 15, 2024',
-    author: 'Aleksandra'
-  },
-  {
-    slug: 'building-scalable-ai-infrastructure',
-    title: 'Building Scalable AI Infrastructure: The Soul Tech Stack',
-    description: 'A deep dive into the technical architecture powering Soul AI Agents, from LangChain integration to real-time processing.',
-    date: 'Nov 18, 2024',
-    author: 'Sebastian'
-  },
-  {
-    slug: 'beyond-automation-human-ai-synergy',
-    title: 'Beyond Automation: Human-AI Synergy',
-    description: 'Why the future of social media management lies in the perfect balance between human creativity and AI capabilities.',
-    date: 'Nov 20, 2024',
-    author: 'Adam'
-  }
 ]
 
 export default function Blog() {

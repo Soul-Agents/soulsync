@@ -3,19 +3,21 @@ import Link from 'next/link'
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-dark-navy via-deep-space to-cosmic-purple">
-      <div className="container mx-auto px-4 text-center">
-        <div className="text-container">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-fade-in-up">
-            Soulful AI Agents
+    <section className="pt-32 pb-16 relative">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-5xl font-bold mb-6 gradient-text">
+            Soul AI Agents
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
-            Building genuine connections and communities on X through AI-powered engagement
+          <p className="text-xl mb-8 text-white/80">
+            Intelligent AI agents for Web3 community management.
+            Live on X and Telegram.
           </p>
+          <div className="flex justify-center gap-4">
+            <Button href="/contact">Get Started</Button>
+            <Button href="/whitepaper" variant="outline">Learn More</Button>
+          </div>
         </div>
-        <button className="button-gradient text-white font-bold px-8 py-4 rounded-lg text-lg animate-fade-in-up animation-delay-600">
-          Get Started
-        </button>
       </div>
     </section>
   )

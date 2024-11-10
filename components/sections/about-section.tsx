@@ -11,18 +11,31 @@ const teamMembers = [
   // Add other team members as needed
 ]
 
-export default function AboutSection() {
+export function AboutSection() {
   return (
-    <section id="about" className="py-20">
+    <section className="py-20 relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 gradient-text">About Us</h2>
-        <div className="glass-card max-w-3xl mx-auto p-8 text-center animate-fade-in-up">
-          <p className="text-lg mb-6 text-white/80">
-            At Soul, we believe in infusing AI with a sense of soulfulness, creating agents that not only assist but also resonate with us on a human level.
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 gradient-text">
+            About Soul AI Agents
+          </h2>
+          <p className="text-xl mb-8 text-white/80">
+            Launched in November 2024, Soul AI Agents brings emotional intelligence to Web3 community management. Our journey began in January 2022 with a vision to revolutionize how projects engage with their communities.
           </p>
-          <p className="text-lg text-white/70">
-            Our mission is to craft AI agents that engage in genuine, heartfelt exchanges, bringing positivity and a human touch to the digital realm.
-          </p>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold mb-3">Smart Engagement</h3>
+              <p>AI-powered responses that maintain authentic community connections</p>
+            </div>
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold mb-3">Quality Focus</h3>
+              <p>Intelligent filtering to engage with relevant community members</p>
+            </div>
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold mb-3">Real-Time Analysis</h3>
+              <p>Continuous monitoring and adaptation to community sentiment</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
