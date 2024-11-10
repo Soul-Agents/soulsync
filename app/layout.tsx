@@ -3,7 +3,7 @@ import localFont from "next/font/local"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import "./globals.css"
-import { Nav } from "@/components/ui/nav"
+import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
 
 const geistSans = localFont({
@@ -19,12 +19,12 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Soul - AI Agents for building of your community on X",
-  description: "Revolutionizing business growth with AI-powered marketing and development solutions",
+  title: "Soul AI Agents - Next Generation AI Agents",
+  description: "Empowering communities with intelligent AI agents",
   keywords: "AI, marketing, business development, X marketing, Telegram marketing",
   authors: [{ name: "Soul Team" }],
   openGraph: {
-    title: "Soul - AI-Powered Business Development",
+    title: "Soul AI Agents - AI-Powered Business Development",
     description: "Revolutionizing business growth with AI-powered marketing",
     type: "website",
     locale: "en_US",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soul - AI Agents for building of your community on X",
+    title: "Soul AI Agents - AI Agents for building of your community on X",
     description: "Revolutionizing business growth with AI-powered marketing",
     creator: "@soul_agents",
   },
@@ -48,7 +48,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-gradient-to-b from-[#0f0f1a] via-[#1a1a2e] to-[#2a2a4a] text-white antialiased">
         <div className="relative flex flex-col min-h-screen">
           {/* Navigation */}
-          <Nav />
+          <Navbar />
 
           {/* Main Content */}
           <main className="flex-grow">

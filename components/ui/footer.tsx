@@ -1,90 +1,82 @@
-import Link from "next/link"
+import Link from 'next/link'
+import { Button } from './button'
 
-export function Footer() {  // Make sure to export the component
+export function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  const sections = {
+    main: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Whitepaper', href: '/whitepaper' },
+      { label: 'About', href: '/about' },
+    ],
+    legal: [
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy' },
+    ],
+    social: [
+      { label: 'X (Twitter)', href: 'https://x.com/soul_agents' },
+    ],
+  }
+
   return (
-    <footer className="bg-black/50 backdrop-blur-md border-t border-white/10">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="border-t border-white/10 bg-black/20 backdrop-blur-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {/* Main Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-              Soul
-            </h3>
-            <p className="text-gray-400">
-              Empowering AI-driven business development and marketing
-            </p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h3 className="gradient-text font-semibold mb-4">Soul AI Agents</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/whitepaper" className="text-gray-400 hover:text-white transition-colors">
-                  Whitepaper
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
+              {sections.main.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="nav-link">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Legal Links */}
           <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
+            <h3 className="gradient-text font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/docs" className="text-gray-400 hover:text-white transition-colors">
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
+              {sections.legal.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="nav-link">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Social Links */}
           <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <div className="space-y-2">
-              <a 
-                href="https://x.com/soul_agents" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block text-gray-400 hover:text-white transition-colors"
-              >
-                X (Twitter)
-              </a>
-              <a 
-                href="https://t.me/soul_agents" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block text-gray-400 hover:text-white transition-colors"
-              >
-                Telegram
-              </a>
-              <a 
-                href="https://discord.gg/soul_agents" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block text-gray-400 hover:text-white transition-colors"
-              >
-                Discord
-              </a>
-            </div>
+            <h3 className="gradient-text font-semibold mb-4">Connect</h3>
+            <ul className="space-y-2">
+              {sections.social.map((link) => (
+                <li key={link.href}>
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="nav-link"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-400">
-          © {new Date().getFullYear()} Soul. All rights reserved.
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8 text-center md:text-left">
+          <div className="text-white/60 text-sm">
+            © {currentYear} Soul AI. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>
