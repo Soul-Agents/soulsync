@@ -44,7 +44,7 @@ export function Navbar() {
               <Link 
                 href="https://x.com/soul_agents" 
                 target="_blank"
-                className="hidden sm:block"
+                className="flex"
               >
                 <Image
                   src="/placeholder-avatar.png"
