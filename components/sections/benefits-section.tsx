@@ -7,7 +7,7 @@ const benefits = [
   "Community Rewards System"
 ]
 
-export default function BenefitsSection() {
+export function BenefitsSection() {
   return (
     <section id="benefits" className="py-20">
       <div className="container mx-auto px-4">

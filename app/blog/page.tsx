@@ -23,7 +23,7 @@ const blogPosts: BlogPost[] = [
     description: 'How Soul AI Agents is revolutionizing social media engagement through minimalist AI technology that connects with high-quality audiences authentically.',
     date: 'Nov 10, 2024',
     author: 'Adam'
-  },
+  }
 ]
 
 export default function Blog() {

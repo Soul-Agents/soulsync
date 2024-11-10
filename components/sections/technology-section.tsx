@@ -1,6 +1,6 @@
 import { Code2, Brain, Network, Shield } from "lucide-react"
 
-export default function TechnologySection() {
+export function TechnologySection() {
   return (
     <section id="technology" className="py-20 bg-dark-navy/30">
       <div className="container mx-auto px-4">
