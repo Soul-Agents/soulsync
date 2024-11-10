@@ -1,26 +1,27 @@
 import { CheckCircleIcon } from "lucide-react"
 
 const benefits = [
-  "24/7 automated trading",
-  "Reduced emotional decision-making",
-  "Advanced risk management",
-  "Real-time market insights",
-  "Customizable trading strategies",
-  "Seamless integration with existing systems",
+  "Genuine Community Engagement",
+  "Autonomous Trading Capabilities",
+  "Custom Strategy Creation",
+  "Community Rewards System"
 ]
 
 export default function BenefitsSection() {
   return (
-    <section id="benefits" className="py-20 bg-gradient-to-b from-purple-900 to-indigo-900">
+    <section id="benefits" className="py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-          Benefits of Soulsync
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="flex items-center space-x-4">
-              <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
-              <p className="text-lg">{benefit}</p>
+        <h2 className="text-4xl font-bold text-center mb-12 gradient-text">Why Choose Soul</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[
+            "Genuine Community Engagement",
+            "Autonomous Trading Capabilities",
+            "Custom Strategy Creation",
+            "Community Rewards System"
+          ].map((benefit, index) => (
+            <div key={index} className="glass-card flex items-center p-6 animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
+              <span className="text-neon-pink text-2xl mr-4">✓</span>
+              <span className="text-lg text-white/80">{benefit}</span>
             </div>
           ))}
         </div>

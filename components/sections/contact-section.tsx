@@ -1,31 +1,42 @@
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-20 bg-black/30">
+    <section id="contact" className="py-20 bg-dark-navy/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-          Get in Touch
-        </h2>
-        <div className="max-w-md mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12 gradient-text">Get in Touch</h2>
+        <div className="glass-card max-w-xl mx-auto p-8 animate-fade-in-up">
+          <div className="mb-8 text-center">
+            <p className="text-lg text-white/80 mb-4">Connect with us directly:</p>
+            <div className="space-y-2">
+              <a href="https://x.com/adag1oeth" className="block text-white/80 hover:text-neon-pink transition-colors">
+                X: @adag1oeth
+              </a>
+              <a href="https://t.me/adag1oeth" className="block text-white/80 hover:text-neon-pink transition-colors">
+                Telegram: @adag1oeth
+              </a>
+            </div>
+          </div>
+          
           <form className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
-              <Input id="name" placeholder="Your Name" className="bg-black/50 border-purple-500/50" />
+              <Input
+                type="email"
+                placeholder="Your Email"
+                className="w-full p-4"
+              />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
-              <Input id="email" type="email" placeholder="you@example.com" className="bg-black/50 border-purple-500/50" />
+              <Textarea
+                placeholder="Your Message"
+                rows={4}
+                className="w-full p-4"
+              />
             </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
-              <Textarea id="message" placeholder="Your message here..." className="bg-black/50 border-purple-500/50" />
-            </div>
-            <Button type="submit" className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+            <button className="w-full button-gradient text-white font-bold py-4 rounded-lg">
               Send Message
-            </Button>
+            </button>
           </form>
         </div>
       </div>
