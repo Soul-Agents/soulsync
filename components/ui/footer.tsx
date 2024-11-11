@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Button } from './button'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
