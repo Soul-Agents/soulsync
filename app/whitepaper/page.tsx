@@ -520,13 +520,14 @@ export default function WhitepaperPage() {
                   href: "https://t.me/soul_agents",
                   icon: "📱",
                 },
-                {
+/*                {
                   label: "Email",
                   value: "adam@usesoul.ai",
                   href: "mailto:adam@usesoul.ai",
                   icon: "✉️",
                 },
-              ].map((item, index) => (
+*/ 
+                ].map((item, index) => (
                 <motion.a
                   key={index}
                   href={item.href}
