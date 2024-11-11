@@ -20,7 +20,7 @@ const features = [
       "Continuous community monitoring and real-time response capabilities",
     benefits: [
       "Round-the-clock engagement",
-      "Instant response system",
+      "High value accounts response system",
       "Community growth automation",
       "Engagement tracking",
     ],
@@ -31,24 +31,24 @@ const features = [
     benefits: [
       "Industry leader targeting",
       "Smart relationship building",
-      "Partnership opportunities",
-      "Influence tracking",
+      "Partnership and sales opportunities",
+      "Grow your token or brand",
     ],
   },
   {
     title: "Advanced Analytics",
     description:
-      "Comprehensive insights into community engagement and sentiment",
+      "Insights-based community engagement and real value creation",
     benefits: [
-      "Performance metrics",
-      "Growth analytics",
-      "Sentiment tracking",
-      "ROI measurement",
+      "Valuable replies to targeted accounts on X",
+      "Replies to posts to boost algo ratings",
+      "Sentiment tracking and memetics",
+      "Increased visibility of your brand",
     ],
   },
   {
     title: "Trading Integration",
-    description: "Autonomous trading capabilities powered by AI",
+    description: "Autonomous trading capabilities powered by AI (coming in November 2024)",
     benefits: [
       "Market analysis",
       "Smart trade execution",

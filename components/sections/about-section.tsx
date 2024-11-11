@@ -7,28 +7,24 @@ export default function AboutSection() {
             About Soul AI Agents
           </h2>
           <p className="text-xl mb-8 text-white/80">
-            Launched in November 2024, Soul AI Agents brings emotional
-            intelligence to Web3 community management. Our journey began in
-            January 2022 with a vision to revolutionize how projects engage with
-            their communities.
+            Launched in November 2024, Soul AI Agents brings emotional intelligence to Web3 community management.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-3">Smart Engagement</h3>
+              <h3 className="text-xl font-bold mb-3">What we build?</h3>
               <p>
-                AI-powered responses that maintain authentic community
-                connections
+                We build the ultimate X accounts, which are so smart that you can also talk with them on TG, this is the future of Web3 and beyond.
               </p>
             </div>
             <div className="glass-card p-6">
               <h3 className="text-xl font-bold mb-3">Quality Focus</h3>
               <p>
-                Intelligent filtering to engage with relevant community members
+                Our Agents know exactly who to talk to on X, you got it! Get the attention of the most influential and most relevant people.
               </p>
             </div>
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-3">Real-Time Analysis</h3>
-              <p>Continuous monitoring and adaptation to community sentiment</p>
+              <h3 className="text-xl font-bold mb-3">Trading Capability</h3>
+              <p>Ask the bot to trade on your behalf with X analytics and access to trading tools, a leaderboard and copy-trading functionality.</p>
             </div>
           </div>
         </div>

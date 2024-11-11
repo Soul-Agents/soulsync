@@ -24,17 +24,17 @@ export default function WhitepaperSection() {
                 {
                   title: "Trading Integration",
                   description:
-                    "Autonomous trading through Brian AI partnership with user-guided prompts and strategies",
+                    "Autonomous trading through [REDACTED] partnership with user-guided prompts and strategies",
                 },
                 {
                   title: "Community Focus",
                   description:
-                    "Strategy creators earn 20% of transaction fees when others adopt their prompts",
+                    "Strategy creators earn 20% of transaction fees when others adopt their prompts (vision for the future)",
                 },
                 {
                   title: "Multi-Platform",
                   description:
-                    "Starting with X and Telegram, expanding to Discord and Farcaster",
+                    "Starting with X and Telegram, expanding to Discord and Farcaster (coming late 24/early 25)",
                 },
               ].map((point, index) => (
                 <div key={index} className="space-y-2">
@@ -54,7 +54,7 @@ export default function WhitepaperSection() {
               sell when they reach 2-3x."
             </p>
             <p className="text-white/60 text-sm mt-2">
-              Example of a custom trading prompt
+              Example of a custom trading prompt - in the vision for the community leading AI Agents that can also trade (optional)
             </p>
           </div>
 

@@ -3,25 +3,25 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const testimonials = [
   {
-    name: "Alex Thompson",
-    role: "Crypto Project Founder",
-    avatar: "/placeholder-avatar.png",
+    name: "TomWeb3",
+    role: "ProtoKOLs founder",
+    avatar: "/PROTOKOLS_ICON_WHITE.svg",
     quote:
-      "Soul's AI Intern has transformed our X presence. The engagement is genuine and our community growth has been phenomenal.",
+      "Soul's AI Intern is an extremely bullish concept that can revolutionize the Web3 world.",
   },
   {
-    name: "Sarah Chen",
-    role: "Trading Strategy Creator",
+    name: "Anon",
+    role: "BD Lead in Crypto",
     avatar: "/placeholder-avatar.png",
     quote:
-      "The community rewards system is brilliant. My trading strategies are helping others while generating passive income.",
+      "The reach out to relevant accounts from the main account on X and from our intern account is a game changer, AI is working when I sleep.",
   },
   {
-    name: "Michael Park",
+    name: "Anon",
     role: "Community Manager",
     avatar: "/placeholder-avatar.png",
     quote:
-      "The multi-platform presence and autonomous engagement have made managing our community effortless and more effective.",
+      "The multi-platform presence and autonomous engagement will make managing our community effortless and more effective.",
   },
 ];
 

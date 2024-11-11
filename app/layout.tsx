@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Soul Team" }],
   openGraph: {
     title: "Soul Agents - AI-Powered Business Development",
-    description: "Revolutionizing business growth with AI-powered marketing",
+    description: "Revolutionizing business and project growth with AI-powered marketing",
     type: "website",
     locale: "en_US",
     url: "https://soulagents.io",
