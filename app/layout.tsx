@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: "Revolutionizing business growth with AI-powered marketing",
     creator: "@soul_agents",
   },
+  icons: {
+    icon: '/placeholder-avatar2.png', // This adds the tab icon
+  },
 }
 
 export default function RootLayout({
