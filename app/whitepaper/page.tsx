@@ -504,8 +504,8 @@ export default function WhitepaperPage() {
               {[
                 {
                   label: "Website",
-                  value: "usesoul.ai",
-                  href: "https://usesoul.ai",
+                  value: "soulagents.io",
+                  href: "https://soulagents.io",
                   icon: "🌐",
                 },
                 {
