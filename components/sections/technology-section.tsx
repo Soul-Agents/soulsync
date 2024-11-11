@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Brain, Network, Shield } from 'lucide-react'
+import { Brain, Network, Shield, Code2 } from 'lucide-react'
 
 export default function TechnologySection() {
   return (
