@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Metadata } from 'next'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import "./globals.css"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
