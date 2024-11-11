@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Revolutionizing business growth with AI-powered marketing",
     type: "website",
     locale: "en_US",
-    url: "https://usesoul.ai",
+    url: "https://soulagents.io",
   },
   twitter: {
     card: "summary_large_image",
