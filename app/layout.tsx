@@ -13,12 +13,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Soul AI Agents - Next Generation AI Agents",
+  title: "Soul Agents - Next Generation AI Agents",
   description: "Empowering communities with intelligent AI agents",
   keywords: "AI, marketing, business development, X marketing, Telegram marketing",
   authors: [{ name: "Soul Team" }],
   openGraph: {
-    title: "Soul AI Agents - AI-Powered Business Development",
+    title: "Soul Agents - AI-Powered Business Development",
     description: "Revolutionizing business growth with AI-powered marketing",
     type: "website",
     locale: "en_US",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soul AI Agents - AI Agents for building of your community on X",
+    title: "Soul Agents - AI Agents for building of your community on X",
     description: "Revolutionizing business growth with AI-powered marketing",
     creator: "@soul_agents",
   },

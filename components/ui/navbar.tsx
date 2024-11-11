@@ -35,11 +35,8 @@ export function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center space-x-4">
-              <Link href="/" className="flex flex-col h-20 justify-center">
-                <div className="flex flex-col -space-y-1">
-                  <span className="text-[2.2rem] font-bold gradient-text leading-none">Soul</span>
-                  <span className="text-[1rem] font-semibold gradient-text tracking-wide">AI Agents</span>
-                </div>
+              <Link href="/" className="flex items-center">
+                <span className="text-xl font-bold gradient-text">Soul Agents</span>
               </Link>
               <Link 
                 href="https://x.com/soul_agents" 
