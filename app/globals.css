@@ -36,11 +36,17 @@
     @apply leading-[1.8] mb-1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply leading-[1.6] mb-2;
   }
 
-  input, textarea {
+  input,
+  textarea {
     @apply bg-white/5 border border-white/10 rounded-lg px-4 py-3 
            focus:outline-none focus:ring-2 focus:ring-neon-pink/50 focus:border-neon-pink/50
            placeholder:text-gray-400 text-white transition-all duration-200
@@ -98,7 +104,11 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: 9999px;
-    background: linear-gradient(to bottom, var(--neon-pink), var(--electric-purple));
+    background: linear-gradient(
+      to bottom,
+      var(--neon-pink),
+      var(--electric-purple)
+    );
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -106,8 +116,14 @@
   }
 
   @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .animate-fade-in {
@@ -125,19 +141,33 @@
   }
 
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 30px 30px;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   @keyframes pulse-glow {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 
   .animate-float {
@@ -164,20 +194,29 @@
   .gradient-border {
     @apply relative;
     &::before {
-      content: '';
+      content: "";
       @apply absolute inset-0 rounded-lg -z-10;
-      background: linear-gradient(45deg, var(--neon-pink), var(--electric-purple));
+      background: linear-gradient(
+        45deg,
+        var(--neon-pink),
+        var(--electric-purple)
+      );
       animation: border-rotate 4s linear infinite;
     }
   }
 
   @keyframes border-rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes gradient-x {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {

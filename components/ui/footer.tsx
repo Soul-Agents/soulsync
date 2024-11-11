@@ -1,21 +1,19 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const sections = {
     main: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Whitepaper', href: '/whitepaper' },      
+      { label: "Blog", href: "/blog" },
+      { label: "Whitepaper", href: "/whitepaper" },
     ],
     legal: [
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Privacy Policy', href: '/privacy' },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
     ],
-    social: [
-      { label: 'X (Twitter)', href: 'https://x.com/soul_agents' },
-    ],
-  }
+    social: [{ label: "X (Twitter)", href: "https://x.com/soul_agents" }],
+  };
 
   return (
     <footer className="border-t border-white/10 bg-black/20 backdrop-blur-lg">
@@ -56,10 +54,10 @@ export function Footer() {
             <ul className="space-y-2">
               {sections.social.map((link) => (
                 <li key={link.href}>
-                  <a 
-                    href={link.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="nav-link"
                   >
                     {link.label}
@@ -78,5 +76,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

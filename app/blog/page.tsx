@@ -1,37 +1,39 @@
-import { Metadata } from 'next'
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Blog - Soul Agents',
-  description: 'Latest updates and insights from Soul Agents',
-}
+  title: "Blog - Soul Agents",
+  description: "Latest updates and insights from Soul Agents",
+};
 
 interface BlogPost {
-  title: string
-  description: string
-  date: string
-  author: string
-  readTime?: string
-  category?: string
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  readTime?: string;
+  category?: string;
 }
 
 const blogPosts: BlogPost[] = [
   {
-    title: 'Unified Memory: The Future of Cross-Platform AI Interactions',
-    description: 'Exploring how Soul Agents creates seamless engagement across X and Telegram through shared memory and contextual understanding of conversations.',
-    date: 'Nov 11, 2024',
-    author: 'Adam',
-    readTime: '6 min read',
-    category: 'AI Innovation'
+    title: "Unified Memory: The Future of Cross-Platform AI Interactions",
+    description:
+      "Exploring how Soul Agents creates seamless engagement across X and Telegram through shared memory and contextual understanding of conversations.",
+    date: "Nov 11, 2024",
+    author: "Adam",
+    readTime: "6 min read",
+    category: "AI Innovation",
   },
   {
-    title: 'Building AI Agents for X: A Minimalist Approach',
-    description: 'How Soul Agents is revolutionizing social media engagement through minimalist AI technology that connects with high-quality audiences authentically.',
-    date: 'Nov 10, 2024',
-    author: 'Adam',
-    readTime: '5 min read',
-    category: 'AI Technology'
-  }
-]
+    title: "Building AI Agents for X: A Minimalist Approach",
+    description:
+      "How Soul Agents is revolutionizing social media engagement through minimalist AI technology that connects with high-quality audiences authentically.",
+    date: "Nov 10, 2024",
+    author: "Adam",
+    readTime: "5 min read",
+    category: "AI Technology",
+  },
+];
 
 export default function Blog() {
   return (
@@ -46,7 +48,7 @@ export default function Blog() {
             Exploring the future of AI-driven social engagement
           </p>
         </div>
-        
+
         {/* Blog Posts Grid */}
         <div className="max-w-4xl mx-auto">
           {blogPosts.map((post, index) => (
@@ -62,17 +64,19 @@ export default function Blog() {
                     {post.category}
                   </span>
                   <span className="text-white/40">•</span>
-                  <span className="text-white/60 text-sm font-medium">{post.readTime}</span>
+                  <span className="text-white/60 text-sm font-medium">
+                    {post.readTime}
+                  </span>
                 </div>
-                
+
                 <h2 className="text-3xl font-bold mb-4 text-white">
                   {post.title}
                 </h2>
-                
+
                 <p className="text-lg text-white/70 mb-6 leading-relaxed">
                   {post.description}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 text-sm text-white/60 font-medium">
                     <span>{post.date}</span>
@@ -86,5 +90,5 @@ export default function Blog() {
         </div>
       </div>
     </div>
-  )
+  );
 }

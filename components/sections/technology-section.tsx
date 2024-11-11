@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Code2 } from 'lucide-react'
+import { Code2 } from "lucide-react";
 
 export default function TechnologySection() {
   return (
@@ -7,7 +7,7 @@ export default function TechnologySection() {
       {/* Animated background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark-navy/50 via-electric-purple/10 to-dark-navy/50" />
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-      
+
       {/* Floating orbs/particles effect */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-32 h-32 bg-neon-pink/20 rounded-full blur-3xl animate-float" />
@@ -18,7 +18,7 @@ export default function TechnologySection() {
         <h2 className="text-5xl font-bold text-center mb-16 gradient-text animate-fade-in">
           Technology Stack
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* AI Framework - now with hover effects and animations */}
           <div className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up">
@@ -27,7 +27,9 @@ export default function TechnologySection() {
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-bold gradient-text mb-2">AI Framework</h3>
+                <h3 className="text-xl font-bold gradient-text mb-2">
+                  AI Framework
+                </h3>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
@@ -55,5 +57,5 @@ export default function TechnologySection() {
         </div>
       </div>
     </section>
-  )
-} 
+  );
+}

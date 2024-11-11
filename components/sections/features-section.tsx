@@ -1,27 +1,29 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const features = [
   {
     title: "Intelligent Engagement",
-    description: "AI-powered responses that maintain authentic community connections",
+    description:
+      "AI-powered responses that maintain authentic community connections",
     benefits: [
       "Natural language understanding",
       "Context-aware conversations",
       "Personality matching",
-      "Sentiment analysis"
-    ]
+      "Sentiment analysis",
+    ],
   },
   {
     title: "24/7 Community Building",
-    description: "Continuous community monitoring and real-time response capabilities",
+    description:
+      "Continuous community monitoring and real-time response capabilities",
     benefits: [
       "Round-the-clock engagement",
       "Instant response system",
       "Community growth automation",
-      "Engagement tracking"
-    ]
+      "Engagement tracking",
+    ],
   },
   {
     title: "Strategic Networking",
@@ -30,18 +32,19 @@ const features = [
       "Industry leader targeting",
       "Smart relationship building",
       "Partnership opportunities",
-      "Influence tracking"
-    ]
+      "Influence tracking",
+    ],
   },
   {
     title: "Advanced Analytics",
-    description: "Comprehensive insights into community engagement and sentiment",
+    description:
+      "Comprehensive insights into community engagement and sentiment",
     benefits: [
       "Performance metrics",
       "Growth analytics",
       "Sentiment tracking",
-      "ROI measurement"
-    ]
+      "ROI measurement",
+    ],
   },
   {
     title: "Trading Integration",
@@ -50,8 +53,8 @@ const features = [
       "Market analysis",
       "Smart trade execution",
       "Risk management",
-      "Performance tracking"
-    ]
+      "Performance tracking",
+    ],
   },
   {
     title: "Custom Strategies",
@@ -60,16 +63,16 @@ const features = [
       "Brand voice customization",
       "Goal-based optimization",
       "Adaptive learning",
-      "Strategy refinement"
-    ]
-  }
-]
+      "Strategy refinement",
+    ],
+  },
+];
 
 export default function FeaturesSection() {
   return (
     <section id="features" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-purple/5 to-transparent" />
-      
+
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
@@ -79,23 +82,28 @@ export default function FeaturesSection() {
             Advanced AI capabilities designed for Web3 communities
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className="glass-card p-8 backdrop-blur-sm border border-white/5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.2)' }}
+              whileHover={{ scale: 1.02, borderColor: "rgba(255,255,255,0.2)" }}
             >
-              <h3 className="text-2xl font-bold mb-4 gradient-text">{feature.title}</h3>
+              <h3 className="text-2xl font-bold mb-4 gradient-text">
+                {feature.title}
+              </h3>
               <p className="text-white/80 mb-6">{feature.description}</p>
               <ul className="space-y-3">
                 {feature.benefits.map((benefit, benefitIndex) => (
-                  <li key={benefitIndex} className="flex items-center text-white/70">
+                  <li
+                    key={benefitIndex}
+                    className="flex items-center text-white/70"
+                  >
                     <span className="text-neon-pink mr-3">✓</span>
                     {benefit}
                   </li>
@@ -106,7 +114,7 @@ export default function FeaturesSection() {
         </div>
 
         <div className="mt-16 text-center">
-          <motion.a 
+          <motion.a
             href="https://forms.gle/zxe1hgrbL8rbTELL7"
             target="_blank"
             rel="noopener noreferrer"
@@ -119,5 +127,5 @@ export default function FeaturesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

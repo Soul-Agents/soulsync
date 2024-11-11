@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Metadata } from 'next'
-import "./globals.css"
-import { Navbar } from "@/components/ui/navbar"
-import { Footer } from "@/components/ui/footer"
-import { Inter } from 'next/font/google'
+import { Metadata } from "next";
+import "./globals.css";
+import { Navbar } from "@/components/ui/navbar";
+import { Footer } from "@/components/ui/footer";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'], // Including all weights we might need
-  variable: '--font-inter',
-})
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"], // Including all weights we might need
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Soul Agents - Next Generation AI Agents",
   description: "Empowering communities with intelligent AI agents",
-  keywords: "AI, marketing, business development, X marketing, Telegram marketing",
+  keywords:
+    "AI, marketing, business development, X marketing, Telegram marketing",
   authors: [{ name: "Soul Team" }],
   openGraph: {
     title: "Soul Agents - AI-Powered Business Development",
@@ -30,24 +31,24 @@ export const metadata: Metadata = {
     creator: "@soul_agents",
   },
   icons: {
-    icon: '/placeholder-avatar2.png', // This adds the tab icon
+    icon: "/placeholder-avatar2.png", // This adds the tab icon
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
-      <body className={`${inter.className} bg-dark-navy min-h-screen antialiased`}>
+      <body
+        className={`${inter.className} bg-dark-navy min-h-screen antialiased`}
+      >
         <Navbar />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
-  )
+  );
 }

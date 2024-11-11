@@ -1,32 +1,34 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
-  const isHomePage = pathname === '/'
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   const homeNavLinks = [
-    { href: '/#about', label: 'About' },
-    { href: '/#features', label: 'Features' },
-    { href: '/#technology', label: 'Technology' },
-    { href: '/#pricing', label: 'Pricing' },
-    { href: '/#testimonials', label: 'Testimonials' },
-    { href: '/#whitepaper', label: 'Whitepaper' },
-    { href: '/#contact', label: 'Contact' }
-  ]
+    { href: "/#about", label: "About" },
+    { href: "/#features", label: "Features" },
+    { href: "/#technology", label: "Technology" },
+    { href: "/#pricing", label: "Pricing" },
+    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/#whitepaper", label: "Whitepaper" },
+    { href: "/#contact", label: "Contact" },
+  ];
 
   const otherPagesNavLinks = [
-    { href: '/', label: 'Home' },
-    ...(pathname !== '/blog' ? [{ href: '/blog', label: 'Blog' }] : []),
-    ...(pathname !== '/whitepaper' ? [{ href: '/whitepaper', label: 'Whitepaper' }] : []),
-  ]
+    { href: "/", label: "Home" },
+    ...(pathname !== "/blog" ? [{ href: "/blog", label: "Blog" }] : []),
+    ...(pathname !== "/whitepaper"
+      ? [{ href: "/whitepaper", label: "Whitepaper" }]
+      : []),
+  ];
 
-  const navLinks = isHomePage ? homeNavLinks : otherPagesNavLinks
+  const navLinks = isHomePage ? homeNavLinks : otherPagesNavLinks;
 
   return (
     <nav className="fixed w-full z-50 top-0">
@@ -36,10 +38,12 @@ export function Navbar() {
             {/* Logo */}
             <div className="flex items-center space-x-4">
               <Link href="/" className="flex items-center">
-                <span className="text-xl font-bold gradient-text">Soul Agents</span>
+                <span className="text-xl font-bold gradient-text">
+                  Soul Agents
+                </span>
               </Link>
-              <Link 
-                href="https://x.com/soul_agents" 
+              <Link
+                href="https://x.com/soul_agents"
                 target="_blank"
                 className="flex"
               >
@@ -56,15 +60,11 @@ export function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="nav-link"
-                >
+                <Link key={link.href} href={link.href} className="nav-link">
                   {link.label}
                 </Link>
               ))}
-              <a 
+              <a
                 href="https://forms.gle/zxe1hgrbL8rbTELL7"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -91,7 +91,11 @@ export function Navbar() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                    d={
+                      isOpen
+                        ? "M6 18L18 6M6 6l12 12"
+                        : "M4 6h16M4 12h16M4 18h16"
+                    }
                   />
                 </svg>
               </button>
@@ -114,7 +118,7 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <a 
+                <a
                   href="https://forms.gle/zxe1hgrbL8rbTELL7"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -129,5 +133,5 @@ export function Navbar() {
         )}
       </div>
     </nav>
-  )
-} 
+  );
+}

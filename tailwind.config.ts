@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 const config: Config = {
   darkMode: ["class"],
@@ -17,21 +17,21 @@ const config: Config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-        'nav': '1024px',
+        nav: "1024px",
       },
     },
     extend: {
       colors: {
-        'dark-navy': '#0f0f1a',
-        'deep-space': '#1a1a2e',
-        'cosmic-purple': '#2a2a4a',
-        'neon-pink': '#FF3CAC',
-        'electric-purple': '#7D5FFF',
-        'aqua-blue': '#00DBDE',
-        'neon-green': '#39FF14',
+        "dark-navy": "#0f0f1a",
+        "deep-space": "#1a1a2e",
+        "cosmic-purple": "#2a2a4a",
+        "neon-pink": "#FF3CAC",
+        "electric-purple": "#7D5FFF",
+        "aqua-blue": "#00DBDE",
+        "neon-green": "#39FF14",
       },
       fontFamily: {
-        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
     },
     borderRadius: {
@@ -66,7 +66,7 @@ const config: Config = {
           opacity: "0.3",
         },
       },
-      "float": {
+      float: {
         "0%, 100%": {
           transform: "translateY(0)",
         },
@@ -88,11 +88,11 @@ const config: Config = {
       "fade-in-up": "fade-in-up 0.5s ease-out",
       "text-shimmer": "text-shimmer 3s ease-in-out infinite",
       "pulse-slow": "pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      "float": "float 6s ease-in-out infinite",
+      float: "float 6s ease-in-out infinite",
       "grid-flow": "grid-flow 20s linear infinite",
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
