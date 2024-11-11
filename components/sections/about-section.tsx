@@ -1,16 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
-const teamMembers = [
-  {
-    name: "Aleksandra",
-    role: "Chief AI Engineer",
-    avatar: "/placeholder-avatar.png",
-    bio: "Visionary behind the Soul AI Agent",
-  },
-  // Add other team members as needed
-]
-
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 relative">

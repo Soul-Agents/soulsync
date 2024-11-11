@@ -1,4 +1,5 @@
-import { Code2, Brain, Network, Shield } from "lucide-react"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Brain, Network, Shield } from 'lucide-react'
 
 export default function TechnologySection() {
   return (

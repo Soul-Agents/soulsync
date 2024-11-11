@@ -3,13 +3,22 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
-interface Props {
-  params: {
-    slug: string
-  }
+// Define valid blog post slugs type
+type ValidBlogSlugs = 'unified-ai-memory' | 'revolutionizing-social-media-engagement'
+
+// Update interface to include type safety
+interface BlogPost {
+  title: string
+  date: string
+  author: string
+  readTime: string
+  category: string
+  description: string
+  content: () => JSX.Element
 }
 
-const blogPosts = {
+// Type the blogPosts object
+const blogPosts: Record<ValidBlogSlugs, BlogPost> = {
   'unified-ai-memory': {
     title: 'Unified Memory: The Future of Cross-Platform AI Interactions',
     date: 'Nov 11, 2024',
@@ -206,12 +215,36 @@ const blogPosts = {
   }
 }
 
-export default function BlogPost({ params }: Props) {
-  const post = blogPosts[params.slug]
+// Update these types to match Next.js expectations
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = blogPosts[params.slug as ValidBlogSlugs]
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found - Soul Agents',
+      description: 'The requested blog post could not be found.'
+    }
+  }
+
+  return {
+    title: `${post.title} - Soul Agents`,
+    description: post.description,
+  }
+}
+
+export default async function BlogPost({ params }: Props) {
+  const post = blogPosts[params.slug as ValidBlogSlugs]
   
   if (!post) {
     notFound()
   }
+
+  const Content = post.content
 
   return (
     <div className="container mx-auto px-4 py-24">
@@ -246,7 +279,7 @@ export default function BlogPost({ params }: Props) {
 
           {/* Content */}
           <div className="prose prose-invert max-w-none">
-            {post.content()}
+            {Content()}
           </div>
         </article>
 
@@ -312,27 +345,4 @@ export default function BlogPost({ params }: Props) {
       </div>
     </div>
   )
-}
-
-export function generateMetadata({ params }: Props): Metadata {
-  const post = blogPosts[params.slug]
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found - Soul Agents',
-      description: 'The requested blog post could not be found.'
-    }
-  }
-
-  return {
-    title: `${post.title} - Soul Agents`,
-    description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-    },
-  }
 } 

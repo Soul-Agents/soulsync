@@ -19,7 +19,7 @@ export default function Privacy() {
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p>
             Soul AI Agents ("we," "our," or "us") is committed to protecting your privacy. 
-            This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
+            This &quot;Privacy Policy&quot; explains how we collect, use, disclose, and safeguard your information 
             when you use our services.
           </p>
         </section>
