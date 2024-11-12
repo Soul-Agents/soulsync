@@ -10,8 +10,8 @@ const features = [
     benefits: [
       "Natural language understanding",
       "Context-aware conversations",
-      "Personality matching",
-      "Sentiment analysis",
+      "Intelligent follows",
+      "Web3-fame analysis",
     ],
   },
   {
@@ -22,7 +22,7 @@ const features = [
       "Round-the-clock engagement",
       "High value accounts response system",
       "Community growth automation",
-      "Engagement tracking",
+      "Automatic interaction improvement",
     ],
   },
   {
@@ -42,7 +42,7 @@ const features = [
     benefits: [
       "Valuable replies to targeted accounts on X",
       "Replies to posts to boost algo ratings",
-      "Sentiment tracking and memetics",
+      "Sentiment tracking and meme engagement",
       "Increased visibility of your brand",
     ],
   },
@@ -62,7 +62,7 @@ const features = [
     benefits: [
       "Brand voice customization",
       "Goal-based optimization",
-      "Adaptive learning",
+      "Adaptive behaviour and learning",
       "Strategy refinement",
     ],
   },

@@ -7,7 +7,7 @@ export default function AboutSection() {
             About Soul AI Agents
           </h2>
           <p className="text-xl mb-8 text-white/80">
-            Launched in November 2024, Soul AI Agents brings emotional intelligence to Web3 community management.
+            Launched in November 2024, Soul AI Agents bring emotional intelligence to Web3 community management.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
@@ -19,7 +19,7 @@ export default function AboutSection() {
             <div className="glass-card p-6">
               <h3 className="text-xl font-bold mb-3">Quality Focus</h3>
               <p>
-                Our Agents know exactly who to talk to on X, you got it! Get the attention of the most influential and most relevant people.
+                Our Agents know exactly who to talk to on X, you got it! Get the attention of the most influential and most relevant people for you.
               </p>
             </div>
             <div className="glass-card p-6">
