@@ -4,6 +4,7 @@ import { Construction } from "lucide-react";
 import Image from "next/image";
 import confetti from "canvas-confetti";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Cases() {
   useEffect(() => {
@@ -76,25 +77,36 @@ export default function Cases() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-electric-purple to-neon-pink opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl"></div>
-            <div
-              className="relative rounded-xl overflow-hidden 
-                        border-2 border-white/10 backdrop-blur-sm
-                        shadow-[0_0_30px_rgba(147,51,234,0.3)] 
-                        bg-gradient-to-r from-electric-purple/10 via-transparent to-neon-pink/10
-                        group-hover:shadow-[0_0_40px_rgba(147,51,234,0.5)]
-                        transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-stripes opacity-5 group-hover:opacity-10 transition-opacity duration-500"></div>
-              <Image
-                src="/crypto_bunny.webp"
-                alt="Crypto Bunny"
-                width={500}
-                height={500}
-                priority
-                className="w-full h-auto transform group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </div>
+            <Link href="/whitepaper#crypto-bunny">
+              <div className="absolute inset-0 bg-gradient-to-r from-electric-purple to-neon-pink opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-xl"></div>
+              <div
+                className="relative rounded-xl overflow-hidden 
+                          border-2 border-white/10 backdrop-blur-sm
+                          shadow-[0_0_30px_rgba(147,51,234,0.3)] 
+                          bg-gradient-to-r from-electric-purple/10 via-transparent to-neon-pink/10
+                          group-hover:shadow-[0_0_40px_rgba(147,51,234,0.5)]
+                          transition-all duration-500
+                          cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-stripes opacity-5 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div className="relative">
+                  <Image
+                    src="/crypto_bunny.webp"
+                    alt="Crypto Bunny"
+                    width={500}
+                    height={500}
+                    priority
+                    className="w-full h-auto transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
+                    <span className="gradient-text text-lg font-semibold flex items-center gap-2">
+                      Learn more about Crypto Bunny 
+                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </motion.div>
 
           {/* Enhanced Coming Soon message */}

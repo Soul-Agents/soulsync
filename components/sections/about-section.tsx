@@ -30,7 +30,7 @@ export default function AboutSection() {
               <h3 className="text-xl font-bold mb-3">Trading Integration</h3>
               <p>
                 Trading capabilities powered by social sentiment analysis and
-                community-driven insights (soon).
+                community-driven insights (coming soon).
               </p>
             </div>
           </div>

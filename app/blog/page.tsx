@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface BlogPost {
   title: string;
@@ -128,10 +129,16 @@ export default function Blog() {
           {blogPosts.map((post, index) => (
             <article
               key={index}
-              className="bg-black/40 border border-white/10 rounded-xl p-8 mb-12 relative transition-all duration-300 
+              className="group bg-black/40 border border-white/10 rounded-xl p-8 mb-12 relative transition-all duration-300 
                 hover:border-electric-purple/30 hover:bg-black/50 cursor-pointer"
               onClick={() => setSelectedPost(post)}
             >
+              {/* Add a "Click to read" indicator that shows on hover */}
+              <div className="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <span className="px-3 py-1 text-sm bg-electric-purple/20 rounded-full border border-electric-purple/30 text-electric-purple font-medium">
+                  Click to read →
+                </span>
+              </div>
               {/* Content */}
               <div className="relative">
                 <div className="flex items-center gap-3 mb-4">
@@ -209,6 +216,24 @@ export default function Blog() {
                       {paragraph}
                     </p>
                   ))}
+                </div>
+
+                {/* Fancy close button */}
+                <div className="mt-12 flex justify-center">
+                  <motion.button
+                    onClick={handleClose}
+                    className="w-full px-8 py-4 rounded-lg 
+                      bg-gradient-to-r from-electric-purple/40 to-neon-pink/40 
+                      text-white/80 font-medium text-lg
+                      transition-all duration-300
+                      hover:from-electric-purple/50 hover:to-neon-pink/50
+                      hover:text-white
+                      backdrop-blur-sm"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Close Article
+                  </motion.button>
                 </div>
               </div>
             </div>

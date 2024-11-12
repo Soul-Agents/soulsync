@@ -84,7 +84,7 @@ export default function WhitepaperPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center justify-center">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 flex items-center justify-center">
               <span className="text-white mr-4">🌌</span>
               <span className="gradient-text">Soulpaper</span>
               <span className="text-white ml-4">🌌</span>
@@ -103,14 +103,14 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🔥</span>
-              <span className="gradient-text">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🔥</span>
+              <span className="gradient-text break-words">
                 Unleash the Power of AI in Community Building
               </span>
             </h2>
-            <div className="prose prose-invert max-w-none">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 In the rapidly evolving world of cryptocurrency and
                 decentralized technologies, artificial intelligence (AI) holds
                 the key to transforming how communities engage and interact.
@@ -119,7 +119,7 @@ export default function WhitepaperPage() {
                 future.
               </p>
               <br></br>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 Established in October 2024, Soul is dedicated to crafting AI
                 agents that not only engage but also resonate deeply with users,
                 fostering meaningful and authentic interactions.
@@ -135,12 +135,14 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🐰</span>
-              <span className="gradient-text">The Birth of Crypto Bunny</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🐰</span>
+              <span className="gradient-text break-words">
+                The Birth of Crypto Bunny
+              </span>
             </h2>
-            <div className="prose prose-invert max-w-none">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 Introducing Crypto Bunny, our pioneering AI agent making her
                 debut on the X platform (formerly Twitter). Inspired by our
                 visionary Chief AI Engineer, Aleksandra, Crypto Bunny is more
@@ -151,7 +153,7 @@ export default function WhitepaperPage() {
                 leading voice in the crypto community.
               </p>
               <br></br>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 Our strategic partnership with [REDACTED] equips Crypto Bunny
                 with a chat-based digital wallet, enabling her to execute
                 autonomous trades. Powered by our RAG-based agent workflow,
@@ -170,14 +172,14 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🌐</span>
-              <span className="gradient-text">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🌐</span>
+              <span className="gradient-text break-words">
                 Multi-Platform Intelligence & Client Solutions
               </span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 While our initial focus is on X and Telegram, we are expanding
                 Crypto Bunny's presence across multiple platforms, including
                 Farcaster/Warpcast and Discord. Through these channels, Crypto
@@ -194,7 +196,7 @@ export default function WhitepaperPage() {
                 </Link>
                 .
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 The technology powering Crypto Bunny serves as the foundation
                 for our client solutions. Our innovative long-term memory model
                 ensures consistent personality across all platforms, remembering
@@ -215,19 +217,19 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">💼</span>
-              <span className="gradient-text">Wallet Integration</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">💼</span>
+              <span className="gradient-text break-words">Wallet Integration</span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 Through our upcomingsecure wallet integration, we empower our AI
                 agents to analyze market trends and execute trades
                 independently. This integration is fundamental to our vision of
                 creating intelligent agents that can actively participate in the
                 crypto ecosystem.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 The secure, chat-based digital wallet system allows for informed
                 decision-making that reflects both analytical intelligence and
                 an understanding of human trading behaviors. This autonomy is
@@ -245,12 +247,12 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🗣️</span>
-              <span className="gradient-text">Soulful Communication</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🗣️</span>
+              <span className="gradient-text break-words">Soulful Communication</span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 At Soul, we prioritize making our AI agents feel less robotic
                 and more relatable. Through advanced communication skills,
                 Crypto Bunny identifies and engages with influential figures in
@@ -268,7 +270,7 @@ export default function WhitepaperPage() {
                 vibes, she becomes a trusted voice that users want to interact
                 with.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 Our proprietary system ensures that when Crypto Bunny speaks, it
                 feels natural and genuine, breaking through the typical robotic
                 barriers to offer authentic, human-like interactions. This
@@ -289,21 +291,21 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🏆</span>
-              <span className="gradient-text">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🏆</span>
+              <span className="gradient-text break-words">
                 Community-Driven Intelligence
               </span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 While currently works on a custom integration basis, our
                 platform will empower users to create and deploy sophisticated
                 AI agents through prompts and knowledge base integrations. These
                 agents leverage advanced social sentiment analysis from X's API,
                 enabling intelligent community engagement and brand building.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 The platform's leaderboard will showcase top-performing
                 strategies as we roll out trading capabilities, with our
                 copy-trading system enabling users to replicate successful
@@ -321,14 +323,14 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🤖</span>
-              <span className="gradient-text">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🤖</span>
+              <span className="gradient-text break-words">
                 The Future of Digital Presence
               </span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 Our vision is to democratize AI-powered social engagement,
                 enabling anyone to create their own version of Crypto Bunny.
                 Starting with X and Telegram, and expanding to Discord and
@@ -336,7 +338,7 @@ export default function WhitepaperPage() {
                 authentic voice while leveraging advanced market analysis and
                 community insights.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 For Web3 projects and companies, our agents offer sophisticated
                 social media management, handling everything from main account
                 posts to personalized DM interactions. They intelligently engage
@@ -344,7 +346,7 @@ export default function WhitepaperPage() {
                 meaningful connections - all while maintaining natural,
                 human-like engagement patterns.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 As we expand our ecosystem, users will benefit from an
                 integrated suite of tools: intelligent social engagement,
                 advanced trading capabilities, and community-driven strategy
@@ -369,12 +371,12 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">💰</span>
-              <span className="gradient-text">Business Model</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">💰</span>
+              <span className="gradient-text break-words">Business Model</span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed mb-6">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed mb-6 break-words">
                 Our revenue model combines immediate value with long-term growth
                 potential:
               </p>
@@ -429,11 +431,11 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🛣️</span>
-              <span className="gradient-text">Roadmap</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🛣️</span>
+              <span className="gradient-text break-words">Roadmap</span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-8">
+            <div className="prose prose-invert max-w-none space-y-8 overflow-hidden">
               {[
                 {
                   phase: "Phase 1: Launch and Initial Engagement (Q4 2024)",
@@ -550,12 +552,12 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">🌟</span>
-              <span className="gradient-text">Conclusion</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🌟</span>
+              <span className="gradient-text break-words">Conclusion</span>
             </h2>
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
+            <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
+              <p className="text-lg leading-relaxed break-words">
                 Soul AI Agents is poised to revolutionize community management
                 in the crypto landscape by integrating soulful AI into social
                 engagement. Our commitment to authentic, human-like interactions
@@ -563,7 +565,7 @@ export default function WhitepaperPage() {
                 business model designed for scalability and sustainability, Soul
                 is on track to achieve rapid growth and profitability.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed break-words">
                 We invite you to join us in transforming the world of AI-powered
                 community management. Together, we can empower each other with
                 innovative AI solutions, insightful engagement strategies, and a
@@ -584,9 +586,9 @@ export default function WhitepaperPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 flex items-center">
-              <span className="text-2xl mr-3">📝</span>
-              <span className="gradient-text">Contact Us</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">📝</span>
+              <span className="gradient-text break-words">Contact Us</span>
             </h2>
             <div className="space-y-4">
               {/* Contact links */}
@@ -599,7 +601,7 @@ export default function WhitepaperPage() {
                     icon: "🌐",
                   },
                   {
-                    label: "X (Twitter)",
+                    label: "X",
                     value: "@soul_agents",
                     href: "https://x.com/soul_agents",
                     icon: "🐦",
@@ -620,11 +622,11 @@ export default function WhitepaperPage() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white/70 hover:text-white group"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white group break-words"
                     >
-                      <span className="text-xl">{item.icon}</span>
-                      <span className="text-white/60">{item.label}:</span>
-                      <span className="gradient-link font-semibold">
+                      <span className="text-xl flex-shrink-0">{item.icon}</span>
+                      <span className="text-white/60 flex-shrink-0">{item.label}:</span>
+                      <span className="gradient-link font-semibold break-all">
                         {item.value}
                       </span>
                     </Link>
