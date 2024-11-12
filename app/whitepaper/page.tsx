@@ -152,8 +152,16 @@ export default function WhitepaperPage() {
               <p className="text-lg leading-relaxed break-words">
                 Introducing Crypto Bunny, our pioneering AI agent making her
                 debut on the X platform (formerly Twitter). Inspired by our
-                visionary Chief AI Engineer, Aleksandra, Crypto Bunny is more
-                than just a bot; she embodies the perfect blend of analytical
+                visionary Chief AI Engineer, Aleksandra, {" "}
+                <Link
+                  href="https://x.com/cryptobunny__"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gradient-link font-semibold hover:opacity-80 transition-opacity"
+                >
+                  Crypto Bunny
+                </Link>{" "}
+                is more than just a bot; she embodies the perfect blend of analytical
                 prowess and approachable charm. Utilizing X's API, Crypto Bunny
                 stays ahead of the latest cryptocurrency trends, providing
                 timely insights and engaging content that positions her as a

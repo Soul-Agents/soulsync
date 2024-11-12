@@ -43,7 +43,7 @@ export function Navbar() {
                 </span>
               </Link>
               <Link
-                href="https://x.com/soul_agents"
+                href="https://x.com/cryptobunny__"
                 target="_blank"
                 className="flex"
               >
