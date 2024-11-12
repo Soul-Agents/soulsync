@@ -217,20 +217,17 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                Through our partnership with [REDACTED], we empower our AI
-                agents to trade autonomously within the Base-EVM ecosystem,
-                which we anticipate will become a leading platform for AI agents
-                alongside Solana. By analyzing market trends and executing
-                trades independently, Crypto Bunny injects a new level of
-                dynamism into the crypto market.
+                Through secure wallet integration, we empower our AI agents to
+                analyze market trends and execute trades independently. This
+                integration is fundamental to our vision of creating intelligent
+                agents that can actively participate in the crypto ecosystem.
               </p>
               <p className="text-lg leading-relaxed">
-                Her secure, chat-based digital wallet allows her to actively
-                participate in trading, making informed decisions that reflect
-                both analytical intelligence and an understanding of human
-                trading behaviors. This autonomy is pivotal to our vision of AI
-                agents as active contributors to the crypto ecosystem, rather
-                than mere tools.
+                The secure, chat-based digital wallet system allows for informed
+                decision-making that reflects both analytical intelligence and
+                an understanding of human trading behaviors. This autonomy is
+                pivotal to our vision of AI agents as active contributors to the
+                crypto ecosystem, rather than mere tools.
               </p>
             </div>
           </motion.section>
@@ -262,7 +259,10 @@ export default function WhitepaperPage() {
                 feels natural and genuine, breaking through the typical robotic
                 barriers to offer authentic, human-like interactions. This
                 mastery of communication is essential for building trust and
-                fostering strong community relationships.
+                fostering strong community relationships, and we're bringing
+                this capability to our clients who can leverage Crypto Bunny's
+                insights to their own advantage by launching satellite agents
+                who interact with their communities on X and Telegram.
               </p>
             </div>
           </motion.section>
@@ -278,23 +278,22 @@ export default function WhitepaperPage() {
             <h2 className="text-3xl font-bold mb-6 flex items-center">
               <span className="text-2xl mr-3">🏆</span>
               <span className="gradient-text">
-                Community-Driven Trading Intelligence
+                Community-Driven Intelligence
               </span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
                 Our platform empowers users to create and deploy sophisticated
-                trading strategies through intuitive prompts. These strategies
-                leverage advanced social sentiment analysis from X's API
-                combined with market data from Dexscreener, creating a
-                comprehensive trading intelligence system.
+                AI agents through intuitive prompts. These agents leverage
+                advanced social sentiment analysis from X's API, enabling
+                intelligent community engagement and brand building.
               </p>
               <p className="text-lg leading-relaxed">
-                The platform's leaderboard showcases top-performing strategies,
-                with rankings that factor in both returns and portfolio size.
-                This weighted approach ensures fair competition across different
-                trading volumes, while our copy-trading system enables users to
-                replicate successful strategies with automated execution.
+                The platform's leaderboard will showcase top-performing
+                strategies as we roll out trading capabilities, with our
+                copy-trading system enabling users to replicate successful
+                approaches while maintaining their unique voice and brand
+                identity.
               </p>
             </div>
           </motion.section>
@@ -381,7 +380,7 @@ export default function WhitepaperPage() {
                   {
                     title: "Strategy Marketplace",
                     description:
-                      "Users can create, share, and monetize their trading strategies through our prompt marketplace. Top performers are featured on our leaderboards, ranked by risk-adjusted (based on TVL/blue-chips) returns and TVL.",
+                      "Users can create, share, and monetize their trading strategies through our prompt marketplace. Top performers will be featured on our leaderboards, ranked by performance metrics and total value locked.",
                     icon: "🎯",
                   },
                   {
@@ -524,23 +523,22 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                Soul AI Agents is poised to revolutionize the crypto trading
-                landscape by integrating soulful AI into community management
-                and trading strategies. Our commitment to authentic, human-like
-                interactions, combined with advanced trading capabilities, sets
-                us apart as a leader in the industry. With a robust business
-                model designed for scalability and sustainability, Soul is on
-                track to achieve rapid growth and profitability.
+                Soul AI Agents is poised to revolutionize community management
+                in the crypto landscape by integrating soulful AI into social
+                engagement. Our commitment to authentic, human-like interactions
+                sets us apart as a leader in the industry. With a robust
+                business model designed for scalability and sustainability, Soul
+                is on track to achieve rapid growth and profitability.
               </p>
               <p className="text-lg leading-relaxed">
                 We invite you to join us in transforming the world of AI-powered
-                trading. Together, we can empower each other with innovative AI
-                solutions, insightful trading strategies, and a vibrant,
-                community-driven ecosystem.
+                community management. Together, we can empower each other with
+                innovative AI solutions, insightful engagement strategies, and a
+                vibrant, community-driven ecosystem.
               </p>
               <p className="text-lg leading-relaxed font-bold italic">
-                Embrace the future of trading with Soul, where AI meets soul and
-                technology works hand in hand with humanity.
+                Embrace the future with Soul, where AI meets soul and technology
+                works hand in hand with humanity.
               </p>
             </div>
           </motion.section>

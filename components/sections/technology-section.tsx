@@ -133,24 +133,24 @@ export default function TechnologySection() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-bold gradient-text mb-2">
-                  Trading Capability
+                  Trading Capability (Coming Nov 2024)
                 </h3>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Executes custom strategies</span>
+                    <span>Future: Custom strategy execution</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>API-powered market analysis</span>
+                    <span>Planned: Market analysis integration</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Base (EVM) Integration</span>
+                    <span>Upcoming: Base (EVM) Integration</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Solana Integration</span>
+                    <span>Planned: Solana Integration</span>
                   </li>
                 </ul>
               </div>

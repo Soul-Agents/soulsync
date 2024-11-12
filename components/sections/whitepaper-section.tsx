@@ -24,7 +24,7 @@ export default function WhitepaperSection() {
                 {
                   title: "Trading Integration",
                   description:
-                    "Autonomous trading through [REDACTED] partnership with user-guided prompts and strategies",
+                    "Future capability: Autonomous trading through a strategic partnership, planned for November 2024 launch with user-guided prompts and strategies",
                 },
                 {
                   title: "Community Focus",
