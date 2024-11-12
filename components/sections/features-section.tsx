@@ -58,7 +58,7 @@ const features = [
   },
   {
     title: "Custom Strategies",
-    description: "Tailored approaches for your specific needs",
+    description: "Tailored approaches for your specific needs and goals",
     benefits: [
       "Brand voice customization",
       "Goal-based optimization",
