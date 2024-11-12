@@ -6,7 +6,7 @@ export default function PricingSection() {
       name: "Starter",
       price: "499",
       period: "/month",
-      description: "Single X account AI agent",
+      description: "Single X Account AI Agent",
       features: [
         "Up to 500 interactions per month",
         "X (Twitter) platform integration",
@@ -22,7 +22,7 @@ export default function PricingSection() {
       name: "Professional",
       price: "999",
       period: "/month",
-      description: "X + Telegram integrated intelligence",
+      description: "X + Telegram Integrated Intelligence",
       features: [
         "Everything in Starter plan",
         "Up to 1,000 interactions per month",
@@ -38,8 +38,8 @@ export default function PricingSection() {
     {
       name: "Whale",
       price: "9999",
-      period: "",
-      description: "Discord, X, TG and Farcaster solution",
+      period: "/month",
+      description: "Discord, X, TG and Farcaster Solution",
       features: [
         "Everything in Professional",
         "10,000+ interactions per month",
@@ -61,7 +61,7 @@ export default function PricingSection() {
         "Set up your strategy and fund your wallet",
         "KOL mention detection and analysis",
         "Automatic trade execution",
-        "Accrue $SOUL",
+        "Accrue rewards",
         "Track your bot's performance on the leaderboard",
         "Get rev share from others copy-trading you",
       ],
@@ -109,10 +109,10 @@ export default function PricingSection() {
                 {tier.features.map((feature, featureIndex) => (
                   <li
                     key={featureIndex}
-                    className="flex items-center text-white/80"
+                    className="flex items-start text-white/80"
                   >
-                    <Check className="h-5 w-5 text-neon-pink mr-2" />
-                    {feature}
+                    <Check className="h-5 w-5 text-neon-pink mr-3 flex-shrink-0 mt-1" />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>

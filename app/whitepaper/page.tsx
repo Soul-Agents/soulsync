@@ -172,33 +172,37 @@ export default function WhitepaperPage() {
           >
             <h2 className="text-3xl font-bold mb-6 flex items-center">
               <span className="text-2xl mr-3">🌐</span>
-              <span className="gradient-text">Broadening Our Horizons</span>
+              <span className="gradient-text">
+                Multi-Platform Intelligence & Client Solutions
+              </span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                While our initial focus is on X and Telegram, we are committed
-                to expanding Crypto Bunny's presence across multiple platforms,
-                including Farcaster/Warpcast and Discord. By integrating with
-                these channels, Crypto Bunny will engage in conversations,
-                participate in voice chats, and interact with other AI agents
-                within communities like the{" "}
+                While our initial focus is on X and Telegram, we are expanding
+                Crypto Bunny's presence across multiple platforms, including
+                Farcaster/Warpcast and Discord. Through these channels, Crypto
+                Bunny demonstrates capabilities in conversations, voice chat
+                participation, and interactions with other AI agents, for
+                example in the{" "}
                 <Link
                   href="https://discord.gg/ai16z"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-electric-purple hover:text-neon-pink transition-colors"
+                  className="gradient-link font-semibold"
                 >
-                  AI16z arena on Discord
+                  ai16z arena on Discord
                 </Link>
                 .
               </p>
               <p className="text-lg leading-relaxed">
-                Our innovative long-term memory model ensures that Crypto Bunny
-                maintains a consistent personality across all platforms,
-                remembering past interactions and building lasting
-                relationships. This seamless integration enhances her ability to
-                provide valuable insights and foster genuine connections within
-                diverse crypto communities.
+                The technology powering Crypto Bunny serves as the foundation
+                for our client solutions. Our innovative long-term memory model
+                ensures consistent personality across all platforms, remembering
+                past interactions and building lasting relationships. This
+                proven architecture enables our clients to create their own
+                authentic AI agents, leveraging Crypto Bunny's capabilities
+                while maintaining their unique brand voice and community
+                engagement style.
               </p>
             </div>
           </motion.section>
@@ -217,17 +221,18 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                Through secure wallet integration, we empower our AI agents to
-                analyze market trends and execute trades independently. This
-                integration is fundamental to our vision of creating intelligent
-                agents that can actively participate in the crypto ecosystem.
+                Through our upcomingsecure wallet integration, we empower our AI
+                agents to analyze market trends and execute trades
+                independently. This integration is fundamental to our vision of
+                creating intelligent agents that can actively participate in the
+                crypto ecosystem.
               </p>
               <p className="text-lg leading-relaxed">
                 The secure, chat-based digital wallet system allows for informed
                 decision-making that reflects both analytical intelligence and
                 an understanding of human trading behaviors. This autonomy is
                 pivotal to our vision of AI agents as active contributors to the
-                crypto ecosystem, rather than mere tools.
+                crypto ecosystem.
               </p>
             </div>
           </motion.section>
@@ -249,10 +254,19 @@ export default function WhitepaperPage() {
                 At Soul, we prioritize making our AI agents feel less robotic
                 and more relatable. Through advanced communication skills,
                 Crypto Bunny identifies and engages with influential figures in
-                the crypto world on X, contributing meaningfully to
-                conversations. By aligning her communication style with specific
-                brands and community vibes, she becomes a trusted voice that
-                users want to interact with.
+                the crypto world on{" "}
+                <Link
+                  href="https://x.com/soul_agents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gradient-link font-semibold hover:opacity-80 transition-opacity"
+                >
+                  @soul_agents
+                </Link>{" "}
+                on X, contributing meaningfully to conversations. By aligning
+                her communication style with specific brands and community
+                vibes, she becomes a trusted voice that users want to interact
+                with.
               </p>
               <p className="text-lg leading-relaxed">
                 Our proprietary system ensures that when Crypto Bunny speaks, it
@@ -283,10 +297,11 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                Our platform empowers users to create and deploy sophisticated
-                AI agents through intuitive prompts. These agents leverage
-                advanced social sentiment analysis from X's API, enabling
-                intelligent community engagement and brand building.
+                While currently works on a custom integration basis, our
+                platform will empower users to create and deploy sophisticated
+                AI agents through prompts and knowledge base integrations. These
+                agents leverage advanced social sentiment analysis from X's API,
+                enabling intelligent community engagement and brand building.
               </p>
               <p className="text-lg leading-relaxed">
                 The platform's leaderboard will showcase top-performing
@@ -423,17 +438,35 @@ export default function WhitepaperPage() {
                 {
                   phase: "Phase 1: Launch and Initial Engagement (Q4 2024)",
                   items: [
-                    "Launch @soul_agents on X: Kick off with a comprehensive marketing and business development campaign starting November 17, 2024.",
+                    {
+                      type: "jsx",
+                      content: (
+                        <>
+                          Launch{" "}
+                          <Link
+                            href="https://x.com/soul_agents"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="gradient-link font-semibold"
+                          >
+                            @soul_agents
+                          </Link>{" "}
+                          on X: Kick off with a comprehensive marketing and
+                          business development campaign starting November 17,
+                          2024.
+                        </>
+                      ),
+                    },
                     "Community Building: Grow our follower base by interacting with key opinion leaders (KOLs), sharing insights about AI, crypto, and memes.",
-                    "Initial AI Agent Deployment: Our first AI agent is already operational and ready for launch.",
+                    "Initial AI Agent Deployment: Our first AI agent is already operational and ready for launch, together with first client integrations.",
                   ],
                   status: "current",
                 },
                 {
                   phase: "Phase 2: Onboarding First Companies (Q1 2025)",
                   items: [
-                    "Client Integration: Begin integrating AI agents into the communities of select Web3 projects.",
-                    "Customized Solutions: Offer tailored AI agents that match the unique vibe and requirements of each project.",
+                    "Client Integration: Grow our client base by integrating AI agents into the communities of select Web3 projects.",
+                    "Tailored Solutions: Offer customized AI agents that match the unique vibe and requirements of each project.",
                     "Expand to Additional Platforms: Explore integration with other platforms based on client needs.",
                   ],
                   status: "upcoming",
@@ -500,7 +533,7 @@ export default function WhitepaperPage() {
                   <ul className="space-y-3">
                     {phase.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="text-white/80">
-                        {item}
+                        {typeof item === "string" ? item : item.content}
                       </li>
                     ))}
                   </ul>
@@ -536,7 +569,7 @@ export default function WhitepaperPage() {
                 innovative AI solutions, insightful engagement strategies, and a
                 vibrant, community-driven ecosystem.
               </p>
-              <p className="text-lg leading-relaxed font-bold italic">
+              <p className="text-lg leading-relaxed font-bold italic hover:text-neon-pink transition-colors duration-300">
                 Embrace the future with Soul, where AI meets soul and technology
                 works hand in hand with humanity.
               </p>
@@ -556,49 +589,70 @@ export default function WhitepaperPage() {
               <span className="gradient-text">Contact Us</span>
             </h2>
             <div className="space-y-4">
-              {[
-                {
-                  label: "Website",
-                  value: "soulagents.io",
-                  href: "https://soulagents.io",
-                  icon: "🌐",
-                },
-                {
-                  label: "X (Twitter)",
-                  value: "@soul_agents",
-                  href: "https://x.com/soul_agents",
-                  icon: "🐦",
-                },
-                {
-                  label: "Telegram",
-                  value: "@soul_agents",
-                  href: "https://t.me/soul_agents",
-                  icon: "📱",
-                },
-                /*                {
-                  label: "Email",
-                  value: "adam@usesoul.ai",
-                  href: "mailto:adam@usesoul.ai",
-                  icon: "✉️",
-                },
-*/
-              ].map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.href}
+              {/* Contact links */}
+              <div className="mb-8">
+                {[
+                  {
+                    label: "Website",
+                    value: "soulagents.io",
+                    href: "https://soulagents.io",
+                    icon: "🌐",
+                  },
+                  {
+                    label: "X (Twitter)",
+                    value: "@soul_agents",
+                    href: "https://x.com/soul_agents",
+                    icon: "🐦",
+                  },
+                  {
+                    label: "Telegram",
+                    value: "@soul_agents",
+                    href: "https://t.me/soul_agents",
+                    icon: "📱",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ x: 4 }}
+                    className="mb-2"
+                  >
+                    <Link
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white group"
+                    >
+                      <span className="text-xl">{item.icon}</span>
+                      <span className="text-white/60">{item.label}:</span>
+                      <span className="gradient-link font-semibold">
+                        {item.value}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Buttons with new layout */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                <a
+                  href="https://forms.gle/zxe1hgrbL8rbTELL7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white/70 hover:text-white group"
-                  whileHover={{ x: 4 }}
+                  className="button-gradient px-6 py-3 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all text-center flex-1"
                 >
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="text-white/60">{item.label}:</span>
-                  <span className="text-electric-purple group-hover:text-neon-pink transition-colors">
-                    {item.value}
-                  </span>
-                </motion.a>
-              ))}
+                  Get Started
+                </a>
+                <a
+                  href="https://forms.gle/fGffRz2P45Q2ZH2K8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button-gradient-secondary px-6 py-3 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all text-center flex-1"
+                >
+                  Join Waitlist
+                </a>
+              </div>
             </div>
+
             <p className="mt-8 text-sm text-white/60 italic">
               Note: This whitepaper is a living document and will be updated as
               Soul continues to grow and evolve. For the latest updates and

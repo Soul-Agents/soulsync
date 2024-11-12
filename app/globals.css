@@ -253,3 +253,19 @@ html {
 .shadow-neon {
   box-shadow: 0 0 20px rgba(149, 76, 233, 0.5);
 }
+
+.gradient-link {
+  background: linear-gradient(to right, #ff1cf7, #b249f8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-link:hover {
+  opacity: 0.8;
+}
+
+.section-divider {
+  @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-8;
+}

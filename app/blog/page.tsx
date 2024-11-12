@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 
 interface BlogPost {
@@ -22,10 +22,9 @@ const blogPosts: BlogPost[] = [
     readTime: "4 min read",
     category: "Company Updates",
     content: `
-      At Soul Agents, we believe in sustainable growth that doesn't compromise on quality. With our current pipeline of early adopters and the success of our initial deployments, we're excited to announce our controlled scaling strategy beginning December 2024.
+      At Soul Agents, we believe in sustainable growth that doesn't compromise on quality. With our current pipeline of early adopters, we're excited to announce our controlled scaling strategy beginning December 2024.
 
       Our Scaling Approach:
-      • Initial Phase: 4 new customers per month
       • Focused onboarding and personalization for each client
       • Careful monitoring of AI agent performance
       • Gradual increase in capacity based on performance metrics
@@ -34,7 +33,6 @@ const blogPosts: BlogPost[] = [
       • Consistent high-quality service
       • Personalized attention to each client
       • Optimal AI agent performance
-      • Sustainable platform growth
 
       We're excited about this next phase of growth while maintaining our commitment to excellence in AI-powered community management.
     `,
@@ -87,6 +85,30 @@ const blogPosts: BlogPost[] = [
 
 export default function Blog() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+
+  // Handle escape key and click outside
+  const handleClose = useCallback(() => {
+    setSelectedPost(null);
+  }, []);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    if (selectedPost) {
+      document.addEventListener("keydown", handleEscape);
+      // Prevent scrolling of the background when modal is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedPost, handleClose]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black">
@@ -144,12 +166,18 @@ export default function Blog() {
 
         {/* Article Modal */}
         {selectedPost && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 overflow-y-auto">
-            <div className="container mx-auto px-4 py-12">
+          <div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 overflow-y-auto"
+            onClick={handleClose}
+          >
+            <div
+              className="container mx-auto px-4 py-12"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="max-w-3xl mx-auto bg-black/90 rounded-xl border border-white/10 p-8">
                 <div className="flex justify-end mb-4">
                   <button
-                    onClick={() => setSelectedPost(null)}
+                    onClick={handleClose}
                     className="text-white/60 hover:text-white transition-colors"
                   >
                     <X className="h-6 w-6" />

@@ -33,26 +33,26 @@ export default function TechnologySection() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Advanced context understanding</span>
+                    <span>Advanced Context Understanding</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Natural language processing</span>
+                    <span>Natural Language Processing</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Community engagement optimization</span>
+                    <span>Community Engagement Optimization</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Sentiment analysis integration</span>
+                    <span>Sentiment Analysis Integration</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Second Card - Copy of AI Framework */}
+          {/* X Integration Card */}
           <div
             className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
             style={{ animationDelay: "200ms" }}
@@ -68,26 +68,26 @@ export default function TechnologySection() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Reads posts of top influencers</span>
+                    <span>Reads Posts from Top Influencers</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Replies in a smart way</span>
+                    <span>Smart Reply System</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Interacts with legitimate accounts</span>
+                    <span>Legitimate Account Interaction</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Is able to post and respond to DMs</span>
+                    <span>Post and DM Management</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Third Card - Copy of AI Framework */}
+          {/* Telegram Integration Card */}
           <div
             className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
             style={{ animationDelay: "400ms" }}
@@ -103,26 +103,26 @@ export default function TechnologySection() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Moderates Community</span>
+                    <span>Community Moderation</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Remembers context from X</span>
+                    <span>Cross-Platform Context Memory</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Knows Your Knowledge Base</span>
+                    <span>Knowledge Base Integration</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Answers Questions</span>
+                    <span>Automated Question Response</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Fourth Card - Copy of AI Framework */}
+          {/* Trading Capability Card */}
           <div
             className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
             style={{ animationDelay: "600ms" }}
@@ -133,16 +133,16 @@ export default function TechnologySection() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-bold gradient-text mb-2">
-                  Trading Capability (Coming Nov 2024)
+                  Trading Capability (Soon)
                 </h3>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Future: Custom strategy execution</span>
+                    <span>Future: Custom Strategy Execution</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Planned: Market analysis integration</span>
+                    <span>Planned: Market Analysis Integration</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />

@@ -12,26 +12,25 @@ export default function AboutSection() {
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-3">What we build?</h3>
+              <h3 className="text-xl font-bold mb-3">Cross-Platform AI</h3>
               <p>
-                We build the ultimate X accounts, which are so smart that you
-                can also talk with them on TG, this is the future of Web3 and
-                beyond.
+                Advanced AI agents that seamlessly operate across X and
+                Telegram, delivering intelligent engagement for Web3
+                communities.
               </p>
             </div>
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-3">Quality Focus</h3>
+              <h3 className="text-xl font-bold mb-3">Strategic Growth</h3>
               <p>
-                Our Agents know exactly who to talk to on X, you got it! Get the
-                attention of the most influential and most relevant people for
-                you.
+                Our AI agents intelligently engage with key industry influencers
+                and decision-makers to expand your network and visibility.
               </p>
             </div>
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-3">Trading Capability</h3>
+              <h3 className="text-xl font-bold mb-3">Trading Integration</h3>
               <p>
-                Ask the bot to trade on your behalf with X analytics and access
-                to trading tools, a leaderboard and copy-trading functionality.
+                Trading capabilities powered by social sentiment analysis and
+                community-driven insights (soon).
               </p>
             </div>
           </div>

@@ -46,7 +46,7 @@ const features = [
     ],
   },
   {
-    title: "Trading Integration (Coming Soon)",
+    title: "Trading Integration (Soon)",
     description:
       "Autonomous trading capabilities powered by AI (launching November 2024)",
     benefits: [
@@ -64,17 +64,6 @@ const features = [
       "Goal-based optimization",
       "Adaptive behaviour and learning",
       "Strategy refinement",
-    ],
-  },
-  {
-    title: "Controlled Growth",
-    description:
-      "Starting December 2024, we're implementing a measured scaling approach",
-    benefits: [
-      "4 new customers monthly",
-      "Personalized onboarding",
-      "Quality-focused growth",
-      "Scaling based on performance",
     ],
   },
 ];
