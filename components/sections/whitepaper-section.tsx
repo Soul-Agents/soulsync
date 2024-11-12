@@ -54,7 +54,7 @@ export default function WhitepaperSection() {
               sell when they reach 2-3x."
             </p>
             <p className="text-white/60 text-sm mt-2">
-              Example of a custom trading prompt - in the vision for the community leading AI Agents that can also trade (optional)
+              Example of a custom trading prompt - in the vision for the community leading AI Agents that can also trade
             </p>
           </div>
 

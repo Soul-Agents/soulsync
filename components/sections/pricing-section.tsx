@@ -12,7 +12,7 @@ export default function PricingSection() {
         "X (Twitter) Integration",
         "Smart targeting based on project's relevance",
         "Connect with influencers across 'Crypto Twitter'",
-        "Long-term memory and custom",
+        "Long-term memory and custom prompt",
       ],
       buttonText: "Get Started",
       buttonClass: "button-gradient-secondary",
