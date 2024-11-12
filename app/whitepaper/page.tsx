@@ -40,9 +40,9 @@ export default function WhitepaperPage() {
           md:translate-x-0 
           /* Responsive width */
           w-36 sm:w-40 md:w-44
-          /* Responsive positioning */
-          top-14 max-h-[calc(100vh-4rem)] 
-          md:top-28 md:max-h-[calc(100vh-8rem)] 
+          /* Responsive positioning - adjusted for navbar height */
+          top-20 max-h-[calc(100vh-5rem)] /* Mobile: 20 = navbar height */
+          md:top-24 md:max-h-[calc(100vh-6rem)] 
           md:ml-4
           /* Container styles */
           overflow-y-auto
