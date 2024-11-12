@@ -14,6 +14,32 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "Scaling Our AI Agents: Controlled Growth Strategy",
+    description:
+      "Starting December 2024, Soul Agents is implementing a measured scaling approach, onboarding 4 new customers monthly to ensure quality and performance.",
+    date: "Nov 12, 2024",
+    author: "Adam",
+    readTime: "4 min read",
+    category: "Company Updates",
+    content: `
+      At Soul Agents, we believe in sustainable growth that doesn't compromise on quality. With our current pipeline of early adopters and the success of our initial deployments, we're excited to announce our controlled scaling strategy beginning December 2024.
+
+      Our Scaling Approach:
+      • Initial Phase: 4 new customers per month
+      • Focused onboarding and personalization for each client
+      • Careful monitoring of AI agent performance
+      • Gradual increase in capacity based on performance metrics
+
+      This measured approach ensures:
+      • Consistent high-quality service
+      • Personalized attention to each client
+      • Optimal AI agent performance
+      • Sustainable platform growth
+
+      We're excited about this next phase of growth while maintaining our commitment to excellence in AI-powered community management.
+    `,
+  },
+  {
     title: "Unified Memory: The Future of Cross-Platform AI Interactions",
     description:
       "Exploring how Soul Agents creates seamless engagement across X and Telegram through shared memory and contextual understanding of conversations.",

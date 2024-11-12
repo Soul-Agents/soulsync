@@ -66,6 +66,17 @@ const features = [
       "Strategy refinement",
     ],
   },
+  {
+    title: "Controlled Growth",
+    description:
+      "Starting December 2024, we're implementing a measured scaling approach",
+    benefits: [
+      "4 new customers monthly",
+      "Personalized onboarding",
+      "Quality-focused growth",
+      "Scaling based on performance",
+    ],
+  },
 ];
 
 export default function FeaturesSection() {
