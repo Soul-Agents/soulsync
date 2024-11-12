@@ -133,14 +133,6 @@ export default function Blog() {
                 hover:border-electric-purple/30 hover:bg-black/50 cursor-pointer"
               onClick={() => setSelectedPost(post)}
             >
-              {/* Move "Click to read" to the bottom right */}
-              <div className="absolute right-8 bottom-8 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="px-4 py-2 text-sm bg-electric-purple/20 rounded-full border border-electric-purple/30 text-electric-purple font-medium">
-                  Click to read →
-                </span>
-              </div>
-
-              {/* Content without forced padding */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 text-sm bg-electric-purple/10 rounded-full border border-electric-purple/20 text-electric-purple font-medium">
@@ -160,10 +152,16 @@ export default function Blog() {
                   {post.description}
                 </p>
 
-                <div className="flex items-center gap-4 text-sm text-white/60 font-medium pt-2">
-                  <span>{post.date}</span>
-                  <span>•</span>
-                  <span>By {post.author}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-2 gap-4">
+                  <div className="flex items-center gap-4 text-sm text-white/60 font-medium">
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>By {post.author}</span>
+                  </div>
+                  
+                  <span className="px-4 py-2 text-sm bg-electric-purple/20 rounded-full border border-electric-purple/30 text-electric-purple font-medium w-fit">
+                    Click to read →
+                  </span>
                 </div>
               </div>
             </article>
