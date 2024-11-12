@@ -31,35 +31,42 @@ export default function WhitepaperPage() {
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Side Navigation - Polished Version */}
+      {/* Side Navigation */}
       <nav
         className={`
-          fixed left-0 h-auto w-44 backdrop-blur-lg bg-black/20 
+          fixed left-0 backdrop-blur-lg bg-black/20 
           transform transition-transform duration-300 ease-in-out z-40
           ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0 md:top-32 md:ml-4
+          md:translate-x-0 
+          /* Responsive width */
+          w-36 sm:w-40 md:w-44
+          /* Responsive positioning */
+          top-14 max-h-[calc(100vh-4rem)] 
+          md:top-28 md:max-h-[calc(100vh-8rem)] 
+          md:ml-4
+          /* Container styles */
+          overflow-y-auto
           rounded-xl border border-white/10 glass-card
         `}
       >
-        <div className="py-4">
+        <div className="py-2 md:py-4">
           <ul className="flex flex-col">
             {sections.map(({ id, label, icon }) => (
               <motion.li
                 key={id}
                 whileHover={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  scale: 1.02,
                 }}
                 className="flex items-center"
               >
                 <a
                   href={`#${id}`}
-                  className="text-white/70 hover:text-white transition-all flex items-center w-full px-4 py-2 text-sm group"
+                  className="text-white/70 hover:text-white transition-all flex items-center w-full px-3 md:px-4 py-1.5 md:py-2 text-sm group"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <span className="text-base mr-2">{icon}</span>
-                  <span className="flex-grow text-xs">{label}</span>
-                  <ArrowRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+                  <span className="text-sm md:text-base mr-1.5 md:mr-2">{icon}</span>
+                  <span className="flex-grow text-[11px] sm:text-xs">{label}</span>
+                  <ArrowRight className="w-2 h-2 md:w-2.5 md:h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
                 </a>
               </motion.li>
             ))}
