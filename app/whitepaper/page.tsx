@@ -29,16 +29,17 @@ export default function WhitepaperPage() {
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Side Navigation - More Compact */}
+      {/* Side Navigation - Polished Version */}
       <nav
         className={`
-        fixed left-0 top-0 h-full w-44 backdrop-blur-lg bg-black/20 border-r border-white/10
-        transform transition-transform duration-300 ease-in-out z-40
-        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0 md:top-32 md:ml-4
-      `}
+          fixed left-0 h-auto w-44 backdrop-blur-lg bg-black/20 
+          transform transition-transform duration-300 ease-in-out z-40
+          ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 md:top-32 md:ml-4
+          rounded-xl border border-white/10 glass-card
+        `}
       >
-        <div className="pt-16 md:pt-0">
+        <div className="py-4">
           <ul className="flex flex-col">
             {sections.map(({ id, label, icon }) => (
               <motion.li
@@ -511,7 +512,7 @@ export default function WhitepaperPage() {
                 {
                   label: "X (Twitter)",
                   value: "@soul_agents",
-                  href: "https://twitter.com/soul_agents",
+                  href: "https://x.com/soul_agents",
                   icon: "🐦",
                 },
                 {

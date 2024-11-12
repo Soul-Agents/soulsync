@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center relative pt-24 sm:pt-16"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-purple/10 to-transparent animate-pulse" />
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 py-16 relative">
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-8 animate-fade-in">
-            <span className="px-4 py-2 bg-electric-purple/10 rounded-full border border-electric-purple/20 text-electric-purple text-sm font-medium">
+            <span className="px-3 sm:px-4 py-2 bg-electric-purple/10 rounded-full border border-electric-purple/20 text-electric-purple text-xs sm:text-sm font-medium whitespace-nowrap">
               Revolutionizing Community Engagement
             </span>
           </div>
