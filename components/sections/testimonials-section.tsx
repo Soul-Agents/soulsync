@@ -3,25 +3,25 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const testimonials = [
   {
-    name: "TomWeb3",
+    name: "Tom",
     role: "ProtoKOLs founder",
     avatar: "/PROTOKOLS_ICON_WHITE.svg",
     quote:
       "Soul's AI Intern is an extremely bullish concept that can revolutionize the Web3 world.",
   },
   {
-    name: "Anon",
-    role: "BD Lead in Crypto",
+    name: "Early Tester",
+    role: "Alpha Tester",
     avatar: "/placeholder-avatar.png",
     quote:
-      "The reach out to relevant accounts from the main account on X and from our intern account is a game changer, AI is working when I sleep.",
+      "The AI's ability to maintain context across platforms while engaging with relevant accounts is impressive.",
   },
   {
-    name: "Anon",
-    role: "Community Manager",
+    name: "Beta User",
+    role: "Project Lead",
     avatar: "/placeholder-avatar.png",
     quote:
-      "The multi-platform presence and autonomous engagement will make managing our community effortless and more effective.",
+      "Looking forward to the full release. The demo showed great potential for automated community building.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
     <section id="testimonials" className="py-20 bg-dark-navy/30">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-          What Our Users Say
+          Early Feedback
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (

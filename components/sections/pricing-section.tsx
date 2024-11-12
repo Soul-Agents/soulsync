@@ -9,10 +9,10 @@ export default function PricingSection() {
       description: "Single X account AI agent",
       features: [
         "Up to 500 interactions per month",
-        "X (Twitter) Integration",
-        "Smart targeting based on project's relevance",
+        "X (Twitter) platform integration",
+        "AI-powered targeting by relevance",
         "Connect with influencers across 'Crypto Twitter'",
-        "Long-term memory and custom prompt",
+        "Long-term memory and custom prompts",
       ],
       buttonText: "Get Started",
       buttonClass: "button-gradient-secondary",
@@ -24,11 +24,11 @@ export default function PricingSection() {
       period: "/month",
       description: "X + Telegram integrated intelligence",
       features: [
-        "Everything in 'Starter'",
-        "Up to 1000 interactions per month",
+        "Everything in Starter plan",
+        "Up to 1,000 interactions per month",
         "X and Telegram platform integration",
         "Cross-platform intelligence sharing",
-        "Increased amount of followed accounts on X",
+        "Build your following on X and Telegram",
       ],
       buttonText: "Get Started",
       buttonClass: "button-gradient",
@@ -45,7 +45,7 @@ export default function PricingSection() {
         "10,000+ interactions per month",
         "Seamless cross-platform implementation",
         "Discord integration with voice chat",
-        "Custom Agents (you name it, we ship it)",
+        "Custom solutions tailored to your vision",
       ],
       buttonText: "Contact Us",
       buttonClass: "button-gradient",
@@ -73,7 +73,10 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20">
+    <section id="pricing" className="py-20 bg-dark-navy/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-electric-purple/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
           Pricing

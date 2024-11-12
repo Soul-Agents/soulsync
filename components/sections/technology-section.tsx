@@ -129,19 +129,19 @@ export default function TechnologySection() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Able to execute strategies</span>
+                    <span>Executes custom strategies</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Learns from the past</span>
+                    <span>API-powered market analysis</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>EVM Integration (Base)</span>
+                    <span>Base (EVM) Integration</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Solana Integration (soon)</span>
+                    <span>Solana Integration</span>
                   </li>
                 </ul>
               </div>

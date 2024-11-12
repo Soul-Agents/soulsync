@@ -30,9 +30,23 @@ export const metadata: Metadata = {
     description: "Revolutionizing business growth with AI-powered marketing",
     creator: "@soul_agents",
   },
-  icons: {
-    icon: "/placeholder-avatar2.png", // This adds the tab icon
+  metadataBase: new URL('https://soulagents.io'),
+  robots: {
+    index: true,
+    follow: true,
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  themeColor: '#000033',
+  manifest: '/manifest.json',
+  icons: {
+    icon: "/placeholder-avatar2.png",
+    apple: "/placeholder-avatar2.png",
+    shortcut: "/placeholder-avatar2.png"
+  }
 };
 
 export default function RootLayout({
