@@ -29,7 +29,7 @@ export default function WhitepaperSection() {
                 {
                   title: "Community Focus",
                   description:
-                    "Strategy creators earn 20% of transaction fees when others adopt their prompts (vision for the future)",
+                    "Strategy creators earn 50% of transaction fees when others adopt their prompts (vision for the future)",
                 },
                 {
                   title: "Multi-Platform",

@@ -12,7 +12,10 @@ export function Footer() {
       { label: "Terms of Service", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
     ],
-    social: [{ label: "X (Twitter)", href: "https://x.com/soul_agents" }],
+    social: [
+      { label: "X (Twitter)", href: "https://x.com/soul_agents" },
+      { label: "Telegram", href: "https://t.me/soul_agents" },
+    ],
   };
 
   return (

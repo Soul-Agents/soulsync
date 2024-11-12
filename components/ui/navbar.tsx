@@ -48,7 +48,7 @@ export function Navbar() {
                 className="flex"
               >
                 <Image
-                  src="/placeholder-avatar.png"
+                  src="/placeholder-avatar4.png"
                   alt="Soul AI Agents"
                   width={32}
                   height={32}

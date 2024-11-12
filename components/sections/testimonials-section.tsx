@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Beta User",
     role: "Project Lead",
-    avatar: "/placeholder-avatar.png",
+    avatar: "/placeholder-avatar3.png",
     quote:
       "Looking forward to the full release. The demo showed great potential for automated community building.",
   },

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Menu, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 const sections = [
   { id: "introduction", label: "Introduction", icon: "🔥" },
@@ -10,6 +11,7 @@ const sections = [
   { id: "wallet", label: "Wallet", icon: "💼" },
   { id: "communication", label: "Communication", icon: "🗣️" },
   { id: "features", label: "Features", icon: "🏆" },
+  { id: "ai-agents", label: "AI Agents", icon: "🤖" },
   { id: "business", label: "Business", icon: "💰" },
   { id: "roadmap", label: "Roadmap", icon: "🛣️" },
   { id: "conclusion", label: "Conclusion", icon: "🌟" },
@@ -104,7 +106,7 @@ export default function WhitepaperPage() {
             <h2 className="text-3xl font-bold mb-6 flex items-center">
               <span className="text-2xl mr-3">🔥</span>
               <span className="gradient-text">
-                Unleash the Power of AI in Crypto Trading
+                Unleash the Power of AI in Community Building
               </span>
             </h2>
             <div className="prose prose-invert max-w-none">
@@ -116,6 +118,7 @@ export default function WhitepaperPage() {
                 with crypto trading to create an optimistic and impactful
                 future.
               </p>
+              <br></br>
               <p className="text-lg leading-relaxed">
                 Established in October 2024, Soul is dedicated to crafting AI
                 agents that not only engage but also resonate deeply with users,
@@ -147,13 +150,14 @@ export default function WhitepaperPage() {
                 timely insights and engaging content that positions her as a
                 leading voice in the crypto community.
               </p>
+              <br></br>
               <p className="text-lg leading-relaxed">
-                Our strategic partnership with Brian AI equips Crypto Bunny with
-                a chat-based digital wallet, enabling her to execute autonomous
-                trades. Powered by our LangChain-based system, Crypto Bunny is
-                the first of many AI agents designed to be as intelligent as
-                they are personable, setting the stage for a new era of
-                AI-driven community management and trading.
+                Our strategic partnership with [REDACTED] equips Crypto Bunny
+                with a chat-based digital wallet, enabling her to execute
+                autonomous trades. Powered by our RAG-based agent workflow,
+                Crypto Bunny is the first of many AI agents designed to be as
+                intelligent as they are personable, setting the stage for a new
+                era of AI-driven community management and trading.
               </p>
             </div>
           </motion.section>
@@ -177,7 +181,16 @@ export default function WhitepaperPage() {
                 including Farcaster/Warpcast and Discord. By integrating with
                 these channels, Crypto Bunny will engage in conversations,
                 participate in voice chats, and interact with other AI agents
-                within communities like the AI16z arena on Discord.
+                within communities like the{" "}
+                <Link
+                  href="https://discord.gg/ai16z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-electric-purple hover:text-neon-pink transition-colors"
+                >
+                  AI16z arena on Discord
+                </Link>
+                .
               </p>
               <p className="text-lg leading-relaxed">
                 Our innovative long-term memory model ensures that Crypto Bunny
@@ -204,9 +217,9 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                Through our partnership with Brian AI, we empower our AI agents
-                to trade autonomously within the Base-EVM ecosystem, which we
-                anticipate will become a leading platform for AI agents
+                Through our partnership with [REDACTED], we empower our AI
+                agents to trade autonomously within the Base-EVM ecosystem,
+                which we anticipate will become a leading platform for AI agents
                 alongside Solana. By analyzing market trends and executing
                 trades independently, Crypto Bunny injects a new level of
                 dynamism into the crypto market.
@@ -232,7 +245,7 @@ export default function WhitepaperPage() {
           >
             <h2 className="text-3xl font-bold mb-6 flex items-center">
               <span className="text-2xl mr-3">🗣️</span>
-              <span className="gradient-text">Mastery of the Word</span>
+              <span className="gradient-text">Soulful Communication</span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
@@ -265,27 +278,71 @@ export default function WhitepaperPage() {
             <h2 className="text-3xl font-bold mb-6 flex items-center">
               <span className="text-2xl mr-3">🏆</span>
               <span className="gradient-text">
-                Leaderboard, SaaS Agents, and Copy-Trading
+                Community-Driven Trading Intelligence
               </span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
-                With the launch of our SaaS platform, users can create and
-                deploy their own AI agents with custom trading strategies. This
-                platform features a leaderboard showcasing top-performing AI
-                models and community-created prompts, allowing users to draw
-                inspiration and copy successful strategies through our intuitive
-                copy-trading feature.
+                Our platform empowers users to create and deploy sophisticated
+                trading strategies through intuitive prompts. These strategies
+                leverage advanced social sentiment analysis from X's API
+                combined with market data from Dexscreener, creating a
+                comprehensive trading intelligence system.
               </p>
               <p className="text-lg leading-relaxed">
-                Our business model is straightforward: a 1% fee per transaction
-                on the platform, with 20% of that fee going to the creator of
-                the trading strategy when others copy it. This incentivizes
-                innovation and rewards effective strategies, creating a
-                collaborative and thriving ecosystem. Additionally, our
-                governance token, managed by a Decentralized Autonomous
-                Organization (DAO), will further align interests and reward
-                contributions within the community.
+                The platform's leaderboard showcases top-performing strategies,
+                with rankings that factor in both returns and portfolio size.
+                This weighted approach ensures fair competition across different
+                trading volumes, while our copy-trading system enables users to
+                replicate successful strategies with automated execution.
+              </p>
+            </div>
+          </motion.section>
+
+          {/* AI Agents for the World */}
+          <motion.section
+            id="ai-agents"
+            className="glass-card p-8 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold mb-6 flex items-center">
+              <span className="text-2xl mr-3">🤖</span>
+              <span className="gradient-text">
+                The Future of Digital Presence
+              </span>
+            </h2>
+            <div className="prose prose-invert max-w-none space-y-6">
+              <p className="text-lg leading-relaxed">
+                Our vision is to democratize AI-powered social engagement,
+                enabling anyone to create their own version of Crypto Bunny.
+                Starting with X and Telegram, and expanding to Discord and
+                Farcaster/Warpcast, these intelligent agents maintain your
+                authentic voice while leveraging advanced market analysis and
+                community insights.
+              </p>
+              <p className="text-lg leading-relaxed">
+                For Web3 projects and companies, our agents offer sophisticated
+                social media management, handling everything from main account
+                posts to personalized DM interactions. They intelligently engage
+                with relevant content, boost algorithmic visibility, and build
+                meaningful connections - all while maintaining natural,
+                human-like engagement patterns.
+              </p>
+              <p className="text-lg leading-relaxed">
+                As we expand our ecosystem, users will benefit from an
+                integrated suite of tools: intelligent social engagement,
+                advanced trading capabilities, and community-driven strategy
+                optimization. Please refer to the{" "}
+                <Link
+                  href="/cases"
+                  className="text-electric-purple hover:text-neon-pink transition-colors"
+                >
+                  Case Studies
+                </Link>{" "}
+                section to see how our AI agents are transforming digital
+                presence and trading performance across the Web3 landscape.
               </p>
             </div>
           </motion.section>
@@ -304,33 +361,33 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed mb-6">
-                Our revenue model is designed to foster innovation and teamwork
-                while ensuring sustainability:
+                Our revenue model combines immediate value with long-term growth
+                potential:
               </p>
               <div className="grid gap-4">
                 {[
                   {
-                    title: "SaaS Subscriptions",
+                    title: "AI Agent Subscriptions",
                     description:
-                      "For $999/month, companies can deploy customized AI agents to enhance their community engagement and outreach.",
+                      "Tiered pricing starting at $499/month per agent, with our professional tier at $999/month offering comprehensive X and Telegram integration. Custom solutions available for larger organizations seeking enhanced capabilities.",
                     icon: "🚀",
                   },
                   {
-                    title: "Transaction Fees",
+                    title: "Trading Platform",
                     description:
-                      "A modest 1% fee per transaction on the platform supports ongoing development and operational costs.",
+                      "A 1% fee per transaction, with 50% distributed to strategy creators. Performance rankings weighted by portfolio size and time horizon, ensuring fair competition between different trading volumes.",
                     icon: "💎",
                   },
                   {
-                    title: "Community Rewards",
+                    title: "Strategy Marketplace",
                     description:
-                      "Strategy creators earn 20% of the transaction fee when their prompts are copied, encouraging the creation of effective and innovative trading strategies.",
+                      "Users can create, share, and monetize their trading strategies through our prompt marketplace. Top performers are featured on our leaderboards, ranked by risk-adjusted (based on TVL/blue-chips) returns and TVL.",
                     icon: "🎯",
                   },
                   {
-                    title: "Governance Token",
+                    title: "$SOUL Token",
                     description:
-                      "Our upcoming token will provide additional incentives and enable decentralized decision-making, ensuring that the ecosystem remains aligned with the interests of all participants.",
+                      "Platform utility token enabling premium features, fee discounts, and revenue sharing opportunities. Staking mechanisms will reward long-term platform engagement and liquidity provision.",
                     icon: "⚡",
                   },
                 ].map((item, index) => (
