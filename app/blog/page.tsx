@@ -144,9 +144,7 @@ export default function Blog() {
                   </span>
                 </div>
 
-                <h2 className="text-3xl font-bold text-white">
-                  {post.title}
-                </h2>
+                <h2 className="text-3xl font-bold text-white">{post.title}</h2>
 
                 <p className="text-lg text-white/70 leading-relaxed">
                   {post.description}
@@ -158,7 +156,7 @@ export default function Blog() {
                     <span>•</span>
                     <span>By {post.author}</span>
                   </div>
-                  
+
                   <span className="px-4 py-2 text-sm bg-electric-purple/20 rounded-full border border-electric-purple/30 text-electric-purple font-medium w-fit">
                     Click to read →
                   </span>

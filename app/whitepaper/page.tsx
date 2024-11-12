@@ -64,8 +64,12 @@ export default function WhitepaperPage() {
                   className="text-white/70 hover:text-white transition-all flex items-center w-full px-3 md:px-4 py-1.5 md:py-2 text-sm group"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <span className="text-sm md:text-base mr-1.5 md:mr-2">{icon}</span>
-                  <span className="flex-grow text-[11px] sm:text-xs">{label}</span>
+                  <span className="text-sm md:text-base mr-1.5 md:mr-2">
+                    {icon}
+                  </span>
+                  <span className="flex-grow text-[11px] sm:text-xs">
+                    {label}
+                  </span>
                   <ArrowRight className="w-2 h-2 md:w-2.5 md:h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
                 </a>
               </motion.li>
@@ -152,7 +156,7 @@ export default function WhitepaperPage() {
               <p className="text-lg leading-relaxed break-words">
                 Introducing Crypto Bunny, our pioneering AI agent making her
                 debut on the X platform (formerly Twitter). Inspired by our
-                visionary Chief AI Engineer, Aleksandra, {" "}
+                visionary Chief AI Engineer, Aleksandra,{" "}
                 <Link
                   href="https://x.com/cryptobunny__"
                   target="_blank"
@@ -161,11 +165,11 @@ export default function WhitepaperPage() {
                 >
                   Crypto Bunny
                 </Link>{" "}
-                is more than just a bot; she embodies the perfect blend of analytical
-                prowess and approachable charm. Utilizing X's API, Crypto Bunny
-                stays ahead of the latest cryptocurrency trends, providing
-                timely insights and engaging content that positions her as a
-                leading voice in the crypto community.
+                is more than just a bot; she embodies the perfect blend of
+                analytical prowess and approachable charm. Utilizing X's API,
+                Crypto Bunny stays ahead of the latest cryptocurrency trends,
+                providing timely insights and engaging content that positions
+                her as a leading voice in the crypto community.
               </p>
               <br></br>
               <p className="text-lg leading-relaxed break-words">
@@ -234,7 +238,9 @@ export default function WhitepaperPage() {
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
               <span className="text-xl md:text-2xl mr-3 flex-shrink-0">💼</span>
-              <span className="gradient-text break-words">Wallet Integration</span>
+              <span className="gradient-text break-words">
+                Wallet Integration
+              </span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
@@ -264,7 +270,9 @@ export default function WhitepaperPage() {
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
               <span className="text-xl md:text-2xl mr-3 flex-shrink-0">🗣️</span>
-              <span className="gradient-text break-words">Soulful Communication</span>
+              <span className="gradient-text break-words">
+                Soulful Communication
+              </span>
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
@@ -640,7 +648,9 @@ export default function WhitepaperPage() {
                       className="flex items-center space-x-2 text-white/70 hover:text-white group break-words"
                     >
                       <span className="text-xl flex-shrink-0">{item.icon}</span>
-                      <span className="text-white/60 flex-shrink-0">{item.label}:</span>
+                      <span className="text-white/60 flex-shrink-0">
+                        {item.label}:
+                      </span>
                       <span className="gradient-link font-semibold break-all">
                         {item.value}
                       </span>

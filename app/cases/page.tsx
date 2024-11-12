@@ -100,8 +100,10 @@ export default function Cases() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
                     <span className="gradient-text text-lg font-semibold flex items-center gap-2">
-                      Learn more about Crypto Bunny 
-                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                      Learn more about Crypto Bunny
+                      <span className="transform group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </span>
                   </div>
                 </div>
