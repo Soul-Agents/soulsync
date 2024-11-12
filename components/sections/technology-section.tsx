@@ -53,7 +53,10 @@ export default function TechnologySection() {
           </div>
 
           {/* Second Card - Copy of AI Framework */}
-          <div className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          <div
+            className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
+            style={{ animationDelay: "200ms" }}
+          >
             <div className="flex items-start mb-4 group">
               <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
@@ -85,7 +88,10 @@ export default function TechnologySection() {
           </div>
 
           {/* Third Card - Copy of AI Framework */}
-          <div className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+          <div
+            className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
+            style={{ animationDelay: "400ms" }}
+          >
             <div className="flex items-start mb-4 group">
               <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
@@ -117,7 +123,10 @@ export default function TechnologySection() {
           </div>
 
           {/* Fourth Card - Copy of AI Framework */}
-          <div className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+          <div
+            className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up"
+            style={{ animationDelay: "600ms" }}
+          >
             <div className="flex items-start mb-4 group">
               <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />

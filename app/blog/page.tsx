@@ -147,8 +147,11 @@ export default function Blog() {
                 </div>
 
                 <div className="prose prose-invert max-w-none">
-                  {selectedPost.content?.split('\n').map((paragraph, index) => (
-                    <p key={index} className="text-lg text-white/80 mb-6 leading-relaxed">
+                  {selectedPost.content?.split("\n").map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-lg text-white/80 mb-6 leading-relaxed"
+                    >
                       {paragraph}
                     </p>
                   ))}

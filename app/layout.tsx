@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/ui/footer";
@@ -11,6 +11,13 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#000033",
+};
+
 export const metadata: Metadata = {
   title: "Soul Agents - Next Generation AI Agents",
   description: "Empowering communities with intelligent AI agents",
@@ -19,7 +26,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Soul Team" }],
   openGraph: {
     title: "Soul Agents - AI-Powered Business Development",
-    description: "Revolutionizing business and project growth with AI-powered marketing",
+    description:
+      "Revolutionizing business and project growth with AI-powered marketing",
     type: "website",
     locale: "en_US",
     url: "https://soulagents.io",
@@ -30,23 +38,17 @@ export const metadata: Metadata = {
     description: "Revolutionizing business growth with AI-powered marketing",
     creator: "@soul_agents",
   },
-  metadataBase: new URL('https://soulagents.io'),
+  metadataBase: new URL("https://soulagents.io"),
   robots: {
     index: true,
     follow: true,
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#000033',
-  manifest: '/manifest.json',
+  manifest: "/manifest.json",
   icons: {
     icon: "/placeholder-avatar2.png",
     apple: "/placeholder-avatar2.png",
-    shortcut: "/placeholder-avatar2.png"
-  }
+    shortcut: "/placeholder-avatar2.png",
+  },
 };
 
 export default function RootLayout({

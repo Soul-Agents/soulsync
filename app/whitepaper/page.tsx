@@ -117,10 +117,9 @@ export default function WhitepaperPage() {
                 future.
               </p>
               <p className="text-lg leading-relaxed">
-                Conceived in January 2022 and officially established in October
-                2024, Soul is dedicated to crafting AI agents that not only
-                engage but also resonate deeply with users, fostering meaningful
-                and authentic interactions.
+                Established in October 2024, Soul is dedicated to crafting AI
+                agents that not only engage but also resonate deeply with users,
+                fostering meaningful and authentic interactions.
               </p>
             </div>
           </motion.section>
@@ -521,14 +520,14 @@ export default function WhitepaperPage() {
                   href: "https://t.me/soul_agents",
                   icon: "📱",
                 },
-/*                {
+                /*                {
                   label: "Email",
                   value: "adam@usesoul.ai",
                   href: "mailto:adam@usesoul.ai",
                   icon: "✉️",
                 },
-*/ 
-                ].map((item, index) => (
+*/
+              ].map((item, index) => (
                 <motion.a
                   key={index}
                   href={item.href}

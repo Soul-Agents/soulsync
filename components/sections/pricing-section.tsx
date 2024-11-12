@@ -73,7 +73,10 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-dark-navy/30 relative overflow-hidden">
+    <section
+      id="pricing"
+      className="py-20 bg-dark-navy/30 relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-electric-purple/5 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
@@ -87,8 +90,8 @@ export default function PricingSection() {
             <div
               key={index}
               className={`glass-card p-8 animate-fade-in-up ${
-                tier.featured ? 'border-2 border-neon-pink' : ''
-              } ${tier.special ? 'border-2 border-neon-blue' : ''}`}
+                tier.featured ? "border-2 border-neon-pink" : ""
+              } ${tier.special ? "border-2 border-neon-blue" : ""}`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="text-center mb-6">
@@ -96,7 +99,7 @@ export default function PricingSection() {
                   {tier.name}
                 </h3>
                 <div className="text-3xl font-bold text-white mb-4">
-                  {tier.price.startsWith('$') ? tier.price : `$${tier.price}`}
+                  {tier.price.startsWith("$") ? tier.price : `$${tier.price}`}
                   <span className="text-lg text-white/60">{tier.period}</span>
                 </div>
                 <p className="text-white/80 mb-6">{tier.description}</p>
@@ -115,7 +118,9 @@ export default function PricingSection() {
               </ul>
 
               <button
-                onClick={() => tier.buttonLink && window.open(tier.buttonLink, '_blank')}
+                onClick={() =>
+                  tier.buttonLink && window.open(tier.buttonLink, "_blank")
+                }
                 className={`w-full ${tier.buttonClass} text-white font-bold py-4 rounded-lg`}
               >
                 {tier.buttonText}

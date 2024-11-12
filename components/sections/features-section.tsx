@@ -37,8 +37,7 @@ const features = [
   },
   {
     title: "Advanced Analytics",
-    description:
-      "Insights-based community engagement and real value creation",
+    description: "Insights-based community engagement and real value creation",
     benefits: [
       "Valuable replies to targeted accounts on X",
       "Replies to posts to boost algo ratings",
@@ -48,7 +47,8 @@ const features = [
   },
   {
     title: "Trading Integration",
-    description: "Autonomous trading capabilities powered by AI (coming in November 2024)",
+    description:
+      "Autonomous trading capabilities powered by AI (coming in November 2024)",
     benefits: [
       "Market analysis",
       "Smart trade execution",
