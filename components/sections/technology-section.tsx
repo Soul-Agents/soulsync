@@ -68,7 +68,7 @@ export default function TechnologySection() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Reads Posts from Top Influencers</span>
+                    <span>Top Influencer Posts Analysis</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
