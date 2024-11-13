@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface BlogPost {
   title: string;
@@ -14,6 +15,38 @@ interface BlogPost {
 }
 
 const blogPosts: BlogPost[] = [
+  {
+    title: "Meet Soul Agents: Where AI Meets Community Magic",
+    description:
+      "Dive into how Soul Agents is revolutionizing Web3 communities with AI companions that do more than just chat – they understand, engage, and help communities thrive.",
+    date: "Nov 13, 2024",
+    author: "Adam",
+    readTime: "4 min read",
+    category: "Platform Overview",
+    content: `
+      Let's cut to the chase – Soul Agents isn't your typical AI platform. We're not here to just automate tasks or create chatbots. We're here to bring soul to the machine.
+
+      Why Soul Agents? Because We're Different:
+      • Think of us as your community's secret weapon. Our AI agents aren't just smart; they've got personality, wit, and the ability to make your community members feel heard and valued.
+      • Meet <Link href="https://x.com/cryptobunny__" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">Crypto Bunny</Link>! She just posted her first "Hello World!" tweet on X last night 🐰. While she's currently mastering social interactions in her own environment, we're working on expanding her capabilities to include trading features.
+      • Our agents remember conversations and context, making every interaction personal and meaningful.
+
+      The Soul Difference:
+      • Personality-First Approach: Each AI agent is unique as your community.
+      • Cross-Platform Magic: Starting with X and expanding to more platforms.
+      • Smart Features: Community insights and trend analysis.
+      • Real Connections: Building genuine relationships that matter.
+
+      Behind the Scenes:
+      Our RAG-based technology means our agents aren't just spitting out pre-programmed responses. They're learning, adapting, and growing with your community. Think of them as digital team members who never sleep (but definitely need coffee ☕️).
+
+      What's Next?
+      We're rolling out carefully, making sure each community gets the attention it deserves. Quality over quantity – because that's how real relationships are built.
+
+      The Bottom Line:
+      Soul Agents is where community management meets AI innovation. We're not just building tools; we're creating digital companions that make Web3 communities more engaging, more personal, and definitely more fun.
+    `,
+  },
   {
     title: "Scaling Our AI Agents: Controlled Growth Strategy",
     description:
@@ -83,6 +116,41 @@ const blogPosts: BlogPost[] = [
     `,
   },
 ];
+
+// Add this helper function to safely render HTML content
+const renderContent = (content: string) => {
+  return content.split("\n").map((paragraph, index) => {
+    if (paragraph.includes("<Link")) {
+      // Special handling for paragraphs containing Links
+      return (
+        <p key={index} className="text-lg text-white/80 mb-6 leading-relaxed">
+          {paragraph.includes("Crypto Bunny") && (
+            <>
+              Meet{" "}
+              <Link
+                href="https://x.com/cryptobunny__"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gradient-link font-semibold hover:opacity-80 transition-opacity"
+              >
+                Crypto Bunny
+              </Link>
+              ! She just posted her first "Hello World!" tweet on X last night 🐰
+              While she's currently mastering social interactions in her own
+              environment, we're working on expanding her capabilities to include
+              trading features.
+            </>
+          )}
+        </p>
+      );
+    }
+    return (
+      <p key={index} className="text-lg text-white/80 mb-6 leading-relaxed">
+        {paragraph}
+      </p>
+    );
+  });
+};
 
 export default function Blog() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
@@ -203,14 +271,7 @@ export default function Blog() {
                 </div>
 
                 <div className="prose prose-invert max-w-none">
-                  {selectedPost.content?.split("\n").map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-lg text-white/80 mb-6 leading-relaxed"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+                  {renderContent(selectedPost.content || "")}
                 </div>
 
                 {/* Fancy close button */}

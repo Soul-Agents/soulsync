@@ -40,9 +40,9 @@ export default function WhitepaperPage() {
           md:translate-x-0 
           /* Responsive width */
           w-36 sm:w-40 md:w-44
-          /* Responsive positioning - adjusted for navbar height */
-          top-20 max-h-[calc(100vh-5rem)] /* Mobile: 20 = navbar height */
-          md:top-24 md:max-h-[calc(100vh-6rem)] 
+          /* Responsive positioning - adjusted mobile only */
+          top-24 md:top-24 max-h-[calc(100vh-6rem)] /* Changed top-20 to top-24 for mobile only */
+          md:max-h-[calc(100vh-6rem)] 
           md:ml-4
           /* Container styles */
           overflow-y-auto
@@ -101,7 +101,7 @@ export default function WhitepaperPage() {
               <span className="text-white ml-4">🌌</span>
             </h1>
             <p className="text-xl text-white/80 flex items-center justify-center space-x-2">
-              <span>AI-Powered Crypto Trading Platform</span>
+              <span>AI-Powered Community Management Platform with Trading</span>
               <span className="text-2xl">🤖</span>
             </p>
           </motion.div>

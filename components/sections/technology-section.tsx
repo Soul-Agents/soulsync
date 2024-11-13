@@ -37,11 +37,11 @@ export default function TechnologySection() {
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
-                    <span>Natural Language Processing</span>
+                    <span>Long-term Memory Agent</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>Community Engagement Optimization</span>
+                    <span>Cognitive Reasoning</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />
