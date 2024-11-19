@@ -5,12 +5,66 @@ import { ChevronLeft, ChevronRight, Lock, ChevronDown, Maximize2, Minimize2 } fr
 import confetti from 'canvas-confetti';
 import { useResponsiveScale } from './hooks/useResponsiveScale';
 
-// 1. First define all helper components
+// Define interface for Tweet props
+interface TweetProps {
+  author: string;
+  handle: string;
+  content: string;
+  timestamp: string;
+  isAI?: boolean;
+}
 
-const GrowthChart = () => {
+// Tweet component with proper typing
+const Tweet: React.FC<TweetProps> = ({ 
+  author, 
+  handle, 
+  content, 
+  timestamp, 
+  isAI = false 
+}) => {
   return (
     <motion.div 
-      className="w-full h-32 bg-black/20 rounded-lg p-4"
+      className="glass-card p-4 max-w-xl mx-auto mb-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className="flex items-start gap-3">
+        <img 
+          src={isAI ? "/placeholder-avatar2.png" : "/user-avatar.png"} 
+          alt={`${author}'s avatar`}
+          className="w-12 h-12 rounded-full"
+        />
+        <div className="flex-1">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-white">{author}</span>
+            <span className="text-white/60">@{handle}</span>
+            <span className="text-white/40">· {timestamp}</span>
+          </div>
+          <p className="text-white/90 mt-1">{content}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Define interface for Slide
+interface Slide {
+  id: number;
+  title: string;
+  content: React.ReactNode;
+}
+
+// 1. First define all helper components
+
+interface ChartProps {
+  className?: string;
+}
+
+const GrowthChart: React.FC<ChartProps> = ({ className = "" }) => {
+  return (
+    <motion.div 
+      className={`w-full h-32 bg-black/20 rounded-lg p-4 ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -56,7 +110,7 @@ const GrowthChart = () => {
   );
 };
 
-const TradingDashboard = () => {
+const TradingDashboard: React.FC<ChartProps> = ({ className = "" }) => {
   // Calculate points for the connecting line
   const linePoints = [...Array(8)].map((_, i) => ({
     x: 37.5 * i + 20,
@@ -68,7 +122,7 @@ const TradingDashboard = () => {
 
   return (
     <motion.div 
-      className="w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden"
+      className={`w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden ${className}`}
     >
       <div className="h-full flex items-center justify-center">
         <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="xMidYMid meet">
@@ -139,18 +193,13 @@ const TradingDashboard = () => {
 };
 
 // 2. Then define interfaces and slides
-interface Slide {
-  id: number;
-  title: string;
-  content: React.ReactNode;
-}
-
-const slides: Slide[] = [
+const slides: Array<Slide> = [
   {
     id: 1,
     title: "Soul Agents",
     content: (
       <div className="text-center space-y-4 sm:space-y-8 px-2 sm:px-0">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">01</div>
         <h1 className="text-4xl sm:text-6xl font-bold mb-4 sm:mb-6 gradient-text">Soul Agents</h1>
         <p className="text-xl text-white/60 mb-8">
           AI-Powered Community Management & Trading
@@ -164,10 +213,13 @@ const slides: Slide[] = [
             rel="noopener noreferrer"
             className="hover:opacity-90 transition-opacity"
           >
-            <img 
-              src="/placeholder-avatar2.png" 
+            <motion.img 
+              src="/cryptobunny.png"
               alt="Crypto Bunny"
-              className="w-64 h-64 rounded-full"
+              className="w-64 h-64 rounded-full border-2 border-electric-purple"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
             />
           </a>
         </div>
@@ -238,6 +290,7 @@ const slides: Slide[] = [
     title: "Two Problems, One Solution",
     content: (
       <div className="space-y-6 max-w-6xl mx-auto px-4">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">02</div>
         <h2 className="text-3xl md:text-5xl font-bold text-center gradient-text">
           Two Problems, One Solution
         </h2>
@@ -373,10 +426,152 @@ const slides: Slide[] = [
   },
   {
     id: 3,
+    title: "Live Demo",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">03</div>
+        
+        <h2 className="text-3xl font-bold text-center mb-12 gradient-text">
+          Intelligent Context-Aware Responses
+        </h2>
+
+        <div className="space-y-6">
+          {/* Original Tweet */}
+          <Tweet 
+            author="Crypto Trader"
+            handle="trader123"
+            content="Anyone else seeing these weird patterns on $PEPE? Volume's acting strange 🤔"
+            timestamp="2m"
+          />
+
+          {/* Random Reply */}
+          <Tweet 
+            author="Moon Boy"
+            handle="x1000gains"
+            content="To the moon! 🚀🚀🚀"
+            timestamp="1m"
+          />
+
+          {/* AI's Intelligent Response */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2 }}
+          >
+            <Tweet 
+              author="Crypto Bunny"
+              handle="cryptobunny__"
+              content="Looking at the data, there's an interesting correlation with DEX liquidity movements from the past hour. Similar pattern occurred during the last major price action. Worth monitoring the whale wallets I'm tracking - they've been accumulating quietly. 🧐 Check the analysis in my next thread."
+              timestamp="Just now"
+              isAI={true}
+            />
+          </motion.div>
+        </div>
+
+        {/* Explanation */}
+        <motion.div 
+          className="mt-12 text-center text-white/70"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3 }}
+        >
+          <p>
+            Our AI agents provide intelligent, data-driven insights by analyzing:<br/>
+            <span className="text-electric-purple">On-chain data</span> • 
+            <span className="text-neon-pink"> Market sentiment</span> • 
+            <span className="text-electric-purple"> Historical patterns</span>
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 4,
+    title: "Strategy Marketplace",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">04</div>
+        
+        <h2 className="text-3xl font-bold text-center mb-8 gradient-text">
+          AI-Powered Strategy Marketplace
+        </h2>
+
+        {/* Top Strategies Leaderboard */}
+        <div className="glass-card p-6 mb-8">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-bold text-electric-purple">Top Performing Strategies</h3>
+            <span className="text-sm text-white/60">Last 30 days</span>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                name: "DeSci Gems Hunter",
+                description: "Buy DeSci tokens <$3M mcap, verified by KOLs",
+                returns: "+312%",
+                tvl: "$1.2M",
+                trades: 14,
+                winRate: "86%"
+              },
+              {
+                name: "Momentum Rider",
+                description: "Track whale accumulation + social sentiment",
+                returns: "+156%",
+                tvl: "$2.8M",
+                trades: 23,
+                winRate: "78%"
+              }
+            ].map((strategy, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center gap-4 p-4 bg-black/20 rounded-lg"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h4 className="font-bold text-white">{strategy.name}</h4>
+                    <span className="px-2 py-1 text-xs bg-electric-purple/20 rounded-full text-electric-purple">
+                      {strategy.returns}
+                    </span>
+                  </div>
+                  <p className="text-sm text-white/70">{strategy.description}</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm text-white/60">TVL: <span className="text-white">{strategy.tvl}</span></div>
+                  <div className="text-sm text-white/60">Win Rate: <span className="text-neon-pink">{strategy.winRate}</span></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* AI Strategy Creation */}
+        <motion.div 
+          className="text-center text-white/70"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="mb-4">
+            Create custom strategies using natural language:<br/>
+            <span className="text-electric-purple">"Buy tokens under $5M mcap with increasing whale accumulation and positive sentiment from top 100 KOLs"</span>
+          </p>
+          <p className="text-sm">
+            Our AI validates and backtests strategies before deployment
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 5,
     title: "Multi-Agent Intelligence Network",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
-        {/* Main Title */}
+        <div className="absolute top-4 left-4 text-white/40 font-mono">05</div>
+        
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
           Multi-Agent Intelligence Network
         </h2>
@@ -483,7 +678,7 @@ const slides: Slide[] = [
               <li>• Data-driven decision making</li>
               <li>• Powered by Brian AI integration</li>
               <li className="text-neon-pink">• Copy-trading with performance leaderboard</li>
-              <li className="text-neon-pink">• Strategy marketplace & revenue sharing</li>
+              <li className="text-neon-pink"> Strategy marketplace & revenue sharing</li>
             </ul>
           </div>
         </div>
@@ -498,7 +693,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 4,
+    id: 6,
     title: "Two Massive Markets",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -580,12 +775,12 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 5,
+    id: 7,
     title: "Why Soul Agents Wins",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
         {/* Slide Number */}
-        <div className="absolute top-4 left-4 text-white/40 font-mono">05</div>
+        <div className="absolute top-4 left-4 text-white/40 font-mono">07</div>
         
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
           Why Soul Agents Wins
@@ -658,11 +853,11 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 6,
+    id: 8,
     title: "Market Positioning",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
-        <div className="absolute top-4 left-4 text-white/40 font-mono">06</div>
+        <div className="absolute top-4 left-4 text-white/40 font-mono">08</div>
         
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">
           Market Positioning
@@ -705,7 +900,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 7,
+    id: 9,
     title: "Dual Revenue Streams",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -794,7 +989,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 8,
+    id: 10,
     title: "Meet the Team",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -884,7 +1079,7 @@ const slides: Slide[] = [
         >
           <p>
             Core: Sebastian Ołdak (Fullstack, Web3 Dev & co-founder)<br />
-            Advisors: TomWeb3 (ProtoKOLs), Bogumiła Chwalibóg
+            Advisors: TomWeb3 (ProtoKOLs), ExHuman
           </p>
         </motion.div>
 
@@ -903,7 +1098,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 9,
+    id: 11,
     title: "Growth Strategy & Roadmap",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -1000,7 +1195,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 10,
+    id: 12,
     title: "Our Edge",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -1075,7 +1270,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 11,
+    id: 13,
     title: "$SOUL Token Economics",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -1154,42 +1349,59 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 12,
+    id: 14,
     title: "Contact",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">14</div>
+        
+        {/* Crypto Bunny Avatar */}
+        <motion.div 
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <a 
+            href="https://x.com/cryptobunny__" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-90 transition-opacity"
+          >
+            <img 
+              src="/placeholder-avatar2.png"
+              alt="Crypto Bunny"
+              className="w-32 h-32 rounded-full border-2 border-electric-purple"
+            />
+          </a>
+        </motion.div>
+
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Links */}
+          {/* Left Column - Contact */}
           <motion.div 
             className="glass-card p-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-center">
-              Contact
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8 gradient-text">Contact</h2>
             <ul className="space-y-4 text-white/80">
-              <li>• Telegram: @adag1oeth</li>
-              <li>• X: @adag1oeth</li>
-              <li>• Email: adag1oeth@gmail.com</li>
+              <li>• Telegram: @soul_agents</li>
+              <li>• X: @soul_agents</li>
             </ul>
           </motion.div>
 
-          {/* Right Column - Social Links */}
+          {/* Right Column - Project Links */}
           <motion.div 
             className="glass-card p-8"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-center">
-              Social Links
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-8 gradient-text">Project Links</h2>
             <ul className="space-y-4 text-white/80">
-              <li>• Telegram: @adag1oeth</li>
-              <li>• X: @adag1oeth</li>
-              <li>• Twitter: @adag1oeth</li>
+              <li>• X: <a href="https://x.com/soul_agents" className="gradient-text">@soul_agents</a></li>
+              <li>• Telegram: <a href="https://t.me/soul_agents" className="gradient-text">@soul_agents</a></li>
             </ul>
           </motion.div>
         </div>
@@ -1197,13 +1409,14 @@ const slides: Slide[] = [
     ),
   },
 ];
-export default function PitchDeck() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState("");
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+
+export default function PitchDeck(): JSX.Element {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const scale = useResponsiveScale();
@@ -1228,26 +1441,32 @@ export default function PitchDeck() {
 
   useEffect(() => {
     // Keyboard navigation
-    const handleKeyPress = (e: KeyboardEvent) => {
+    const handleKeyPress = (e: KeyboardEvent): void => {
+      if (!isAuthenticated) return; // Don't handle keys if not authenticated
+      
       if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault(); // Prevent space from scrolling
         nextSlide();
       } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
         prevSlide();
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentSlide]);
+  }, [currentSlide, isAuthenticated]);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--current-scale', scale.toString());
+    if (typeof scale === 'number' && !isNaN(scale)) {
+      document.documentElement.style.setProperty('--current-scale', scale.toString());
+    }
   }, [scale]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
+    setError(null);
 
     try {
       const response = await fetch("/api/auth/deck", {
@@ -1273,22 +1492,22 @@ export default function PitchDeck() {
         spread: 70,
         origin: { y: 0.6 }
       });
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Authentication failed");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     if (currentSlide < slides.length - 1) {
-      setCurrentSlide(curr => curr + 1);
+      setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1));
     }
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     if (currentSlide > 0) {
-      setCurrentSlide(curr => curr - 1);
+      setCurrentSlide(prev => Math.max(prev - 1, 0));
     }
   };
 
@@ -1302,34 +1521,33 @@ export default function PitchDeck() {
     }
   };
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches[0]) {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
+    if (e.touches && e.touches[0]) {
       setTouchStart(e.touches[0].clientX);
     }
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches[0]) {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>): void => {
+    if (e.touches && e.touches[0]) {
       setTouchEnd(e.touches[0].clientX);
     }
   };
 
-  const handleTouchEnd = () => {
-    if (touchStart === null || touchEnd === null) return;
+  const handleTouchEnd = (): void => {
+    if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentSlide < slides.length - 1) {
+    if (isLeftSwipe) {
       nextSlide();
-    }
-    if (isRightSwipe && currentSlide > 0) {
+    } else if (isRightSwipe) {
       prevSlide();
     }
-
-    setTouchStart(null);
+    
     setTouchEnd(null);
+    setTouchStart(null);
   };
 
   // Login Screen
@@ -1350,22 +1568,22 @@ export default function PitchDeck() {
               </p>
               <div className="flex flex-col gap-1 text-sm">
                 <a
-                  href="https://t.me/adag1oeth"
+                  href="https://t.me/soul_agents"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/60 hover:text-white flex items-center justify-center gap-2 transition-colors"
                 >
                   <span>Telegram:</span>
-                  <span className="gradient-text">@adag1oeth</span>
+                  <span className="gradient-text">@soul_agents</span>
                 </a>
                 <a
-                  href="https://x.com/adag1oeth"
+                  href="https://x.com/soul_agents"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/60 hover:text-white flex items-center justify-center gap-2 transition-colors"
                 >
                   <span>X:</span>
-                  <span className="gradient-text">@adag1oeth</span>
+                  <span className="gradient-text">@soul_agents</span>
                 </a>
               </div>
             </div>
@@ -1459,7 +1677,7 @@ export default function PitchDeck() {
                 ['--deck-scale' as string]: 'var(--current-scale, 1)'
               } as React.CSSProperties}
             >
-              {slides[currentSlide]?.content}
+              {slides[currentSlide]?.content ?? <div>No content available</div>}
             </div>
           </motion.div>
         </AnimatePresence>
