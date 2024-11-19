@@ -14,7 +14,9 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
+  minimumScale: 0.5,
+  userScalable: true,
   themeColor: "#000033",
 };
 
@@ -58,9 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
-      <body
-        className={`${inter.className} bg-dark-navy min-h-screen antialiased`}
-      >
+      <body className={`${inter.className} bg-dark-navy min-h-screen antialiased`}>
         <Navbar />
         <main>{children}</main>
         <Footer />

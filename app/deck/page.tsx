@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Lock, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, Lock, ChevronDown, Maximize2, Minimize2 } from "lucide-react";
 import confetti from 'canvas-confetti';
 
 // Define components first
@@ -127,8 +127,8 @@ const slides: Slide[] = [
     id: 1,
     title: "Soul Agents",
     content: (
-      <div className="text-center space-y-8">
-        <h1 className="text-6xl font-bold mb-6 gradient-text">Soul Agents</h1>
+      <div className="text-center space-y-4 sm:space-y-8 px-2 sm:px-0">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-4 sm:mb-6 gradient-text">Soul Agents</h1>
         <p className="text-xl text-white/60 mb-8">
           AI-Powered Community Management & Trading
         </p>
@@ -212,8 +212,8 @@ const slides: Slide[] = [
     id: 2,
     title: "Two Problems, One Solution",
     content: (
-      <div className="space-y-8 h-full flex flex-col">
-        <h2 className="text-5xl font-bold text-center gradient-text mb-12">
+      <div className="space-y-4 sm:space-y-8 h-full flex flex-col px-2 sm:px-0">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center gradient-text mb-4 sm:mb-6 md:mb-12">
           Two Problems, One Solution
         </h2>
 
@@ -249,7 +249,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-lg pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
@@ -271,7 +271,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-lg pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
@@ -312,7 +312,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-lg pl-4 border-l-2 border-electric-purple/30"
+                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-electric-purple/30"
                     >
                       {text}
                     </motion.li>
@@ -333,7 +333,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-lg pl-4 border-l-2 border-electric-purple/30"
+                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-electric-purple/30"
                     >
                       {text}
                     </motion.li>
@@ -355,6 +355,9 @@ export default function PitchDeck() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     // Check if token exists
@@ -424,23 +427,63 @@ export default function PitchDeck() {
     }
   };
 
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches[0]) {
+      setTouchStart(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches[0]) {
+      setTouchEnd(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart === null || touchEnd === null) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentSlide < slides.length - 1) {
+      nextSlide();
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      prevSlide();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   // Login Screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black flex items-center justify-center">
-        <div className="max-w-md w-full mx-4">
-          <form onSubmit={handleLogin} className="space-y-6 glass-card p-8">
-            <div className="flex items-center justify-center mb-8">
-              <Lock className="w-12 h-12 text-electric-purple animate-pulse" />
+      <div className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black flex items-center justify-center p-4">
+        <div className="w-full max-w-sm">
+          <form onSubmit={handleLogin} className="space-y-4 glass-card p-6">
+            <div className="flex items-center justify-center mb-4">
+              <Lock className="w-8 h-8 text-electric-purple animate-pulse" />
             </div>
-            <div className="text-center space-y-4 mb-8">
-              <h2 className="text-3xl font-bold gradient-text">
+            <div className="text-center space-y-2 mb-4">
+              <h2 className="text-2xl font-bold gradient-text">
                 Soul Agents Pitch Deck
               </h2>
-              <p className="text-white/70">
+              <p className="text-white/70 text-sm">
                 To access the deck, please contact Adam:
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1 text-sm">
                 <a
                   href="https://t.me/adag1oeth"
                   target="_blank"
@@ -488,8 +531,13 @@ export default function PitchDeck() {
 
   // Pitch Deck View
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black">
-      <div className="container mx-auto px-4 py-12 relative min-h-screen">
+    <div 
+      className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div className="container mx-auto px-2 py-6 relative min-h-screen">
         {/* Navigation Controls */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 z-10">
           <button
@@ -514,16 +562,18 @@ export default function PitchDeck() {
           </button>
         </div>
 
-        {/* Progress Bar */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 px-4">
-          {slides.map((_, index) => (
-            <div
-              key={index}
-              className={`h-1 w-12 sm:w-16 rounded-full transition-colors ${
-                index === currentSlide ? "bg-electric-purple" : "bg-white/20"
-              }`}
-            />
-          ))}
+        {/* Fullscreen Button */}
+        <div className="absolute top-4 right-4 z-20">
+          <button
+            onClick={toggleFullscreen}
+            className="p-2 rounded-full bg-black/40 text-white/60 hover:text-white transition-colors"
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-5 h-5" />
+            ) : (
+              <Maximize2 className="w-5 h-5" />
+            )}
+          </button>
         </div>
 
         {/* Slide Content */}
@@ -534,13 +584,30 @@ export default function PitchDeck() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="max-w-4xl mx-auto h-[calc(100vh-6rem)] flex items-center justify-center"
+            className="h-[calc(100vh-4rem)] w-full flex items-center justify-center overflow-hidden"
           >
-            <div className="w-full">
-              {slides[currentSlide]?.content}
+            <div className="w-full h-full flex items-center justify-center">
+              <div 
+                className="w-full transform scale-[0.65] xs:scale-[0.75] sm:scale-[0.85] md:scale-[0.9] lg:scale-100 transition-transform"
+                style={{ maxHeight: 'calc(100vh - 6rem)' }}
+              >
+                {slides[currentSlide]?.content}
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Progress Bar */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1 px-2">
+          {slides.map((_, index) => (
+            <div
+              key={index}
+              className={`h-1 w-12 sm:w-16 rounded-full transition-colors ${
+                index === currentSlide ? "bg-electric-purple" : "bg-white/20"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
