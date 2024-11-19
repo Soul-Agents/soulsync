@@ -269,3 +269,11 @@ html {
 .section-divider {
   @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-8;
 }
+
+/* Add these rules */
+html.deck-view,
+html.deck-view body {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}

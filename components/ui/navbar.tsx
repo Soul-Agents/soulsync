@@ -8,6 +8,10 @@ import { usePathname } from "next/navigation";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  
+  // Hide navbar on deck page
+  if (pathname === '/deck') return null;
+  
   const isHomePage = pathname === "/";
 
   const homeNavLinks = [
