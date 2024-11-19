@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Lock, ChevronDown, Maximize2, Minimize2 } from "lucide-react";
 import confetti from 'canvas-confetti';
+import { useResponsiveScale } from './hooks/useResponsiveScale';
 
-// Define components first
+// 1. First define all helper components
+
 const GrowthChart = () => {
   return (
     <motion.div 
@@ -54,68 +56,89 @@ const GrowthChart = () => {
   );
 };
 
-const TradingDashboard = ({ showMetrics }: { showMetrics: boolean }) => {
+const TradingDashboard = () => {
+  // Calculate points for the connecting line
+  const linePoints = [...Array(8)].map((_, i) => ({
+    x: 37.5 * i + 20,
+    y: 50 + Math.sin(i * 1.5) * 15
+  }));
+
+  // Create SVG path from points
+  const linePath = `M ${linePoints.map(p => `${p.x} ${p.y}`).join(' L ')}`;
+
   return (
     <motion.div 
-      className="w-full h-32 bg-black/20 rounded-lg p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      className="w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden"
     >
-      <div className="grid grid-cols-3 gap-2 h-full">
-        {/* Candlestick Chart */}
-        <div className="col-span-2">
-          <svg className="w-full h-full" viewBox="0 0 200 100">
-            {/* Animated candlesticks */}
-            {[...Array(8)].map((_, i) => (
-              <motion.g key={i} 
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <line 
-                  x1={25 * i + 10} 
-                  y1={30 + Math.random() * 40} 
-                  x2={25 * i + 10} 
-                  y2={60 + Math.random() * 20}
-                  stroke="rgba(255,255,255,0.3)"
-                  strokeWidth="1"
-                />
-                <rect 
-                  x={25 * i + 5} 
-                  y={40 + Math.random() * 30}
-                  width="10"
-                  height="15"
-                  fill={i % 2 ? "#22c55e" : "#ef4444"}
-                />
-              </motion.g>
-            ))}
-          </svg>
-        </div>
-        
-        {/* Metrics */}
-        {showMetrics && (
-          <div className="space-y-2">
-            {["+2.5%", "1.24K", "89%"].map((value, i) => (
-              <motion.div
-                key={i}
-                className="text-sm bg-black/40 backdrop-blur-sm rounded-lg p-2 text-center border border-white/5"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-              >
-                <span className="gradient-text font-medium">{value}</span>
-              </motion.div>
-            ))}
-          </div>
-        )}
+      <div className="h-full flex items-center justify-center">
+        <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="xMidYMid meet">
+          {/* Grid lines */}
+          {[...Array(4)].map((_, i) => (
+            <motion.line
+              key={`grid-${i}`}
+              x1="0"
+              y1={25 * i + 25}
+              x2="300"
+              y2={25 * i + 25}
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="1"
+            />
+          ))}
+          
+          {/* Connecting line */}
+          <motion.path
+            d={linePath}
+            fill="none"
+            stroke="url(#gradientLine)"
+            strokeWidth="2"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.5 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+          />
+
+          {/* Gradient for the line */}
+          <defs>
+            <linearGradient id="gradientLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#ffffff" />
+            </linearGradient>
+          </defs>
+          
+          {/* Candlesticks */}
+          {[...Array(8)].map((_, i) => (
+            <motion.g
+              key={`candle-${i}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.1 }}
+            >
+              {/* Wick */}
+              <line
+                x1={37.5 * i + 20}
+                y1={30 + Math.sin(i * 1.5) * 15}
+                x2={37.5 * i + 20}
+                y2={70 + Math.sin(i * 1.5) * 15}
+                stroke={i % 2 ? "#22c55e" : "#ef4444"}
+                strokeWidth="2"
+              />
+              {/* Body */}
+              <rect
+                x={37.5 * i + 15}
+                y={40 + Math.sin(i * 1.5) * 15}
+                width="10"
+                height="20"
+                fill={i % 2 ? "#22c55e" : "#ef4444"}
+              />
+            </motion.g>
+          ))}
+        </svg>
       </div>
     </motion.div>
   );
 };
 
-// Then define interfaces and slides
+// 2. Then define interfaces and slides
 interface Slide {
   id: number;
   title: string;
@@ -196,15 +219,17 @@ const slides: Slide[] = [
           </motion.div>
         </div>
 
-        {/* Add scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: [0, 1, 0], y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <ChevronDown className="w-6 h-6 text-white/40" />
-        </motion.div>
+        {/* Show arrow only on mobile */}
+        <div className="sm:hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: [0, 1, 0], y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          >
+            <ChevronDown className="w-6 h-6 text-white/40" />
+          </motion.div>
+        </div>
       </div>
     ),
   },
@@ -212,12 +237,12 @@ const slides: Slide[] = [
     id: 2,
     title: "Two Problems, One Solution",
     content: (
-      <div className="space-y-4 sm:space-y-8 h-full flex flex-col px-2 sm:px-0">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center gradient-text mb-4 sm:mb-6 md:mb-12">
+      <div className="space-y-6 max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-center gradient-text">
           Two Problems, One Solution
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Left Column - Outreach & Growth */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -294,7 +319,7 @@ const slides: Slide[] = [
             </h3>
             
             <div className="mb-8">
-              <TradingDashboard showMetrics={false} />
+              <TradingDashboard />
             </div>
             
             <div className="space-y-8">
@@ -346,9 +371,782 @@ const slides: Slide[] = [
       </div>
     )
   },
-  // Add more slides here
-];
+  {
+    id: 3,
+    title: "Multi-Agent Intelligence Network",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        {/* Main Title */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
+          Multi-Agent Intelligence Network
+        </h2>
 
+        {/* Data Sources Section */}
+        <div className="mb-8">
+          <h3 className="text-xl sm:text-2xl font-semibold gradient-text mb-6 text-center">
+            Comprehensive Market Intelligence
+          </h3>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {/* Each card has identical height and styling */}
+            {[
+              {
+                icon: "/defined-logo-optimized.png",
+                title: "Trading Analytics",
+                desc: "DEX Screener & Codex real-time data",
+                isImage: true
+              },
+              {
+                icon: "/x-logo.png",
+                title: "Social Intelligence",
+                desc: "X/Twitter sentiment & news",
+                isImage: true
+              },
+              {
+                icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+                title: "Web Intelligence",
+                desc: "Real-time web search & analysis"
+              },
+              {
+                icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+                title: "Memory Systems",
+                desc: "Vector DB & short-term memory"
+              },
+              {
+                icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+                title: "KOL Signals",
+                desc: "Historical shill analysis"
+              }
+            ].map((item, i) => (
+              <div key={i} className="glass-card p-4 flex flex-col items-center text-center h-full">
+                {item.isImage ? (
+                  <img src={item.icon} alt={item.title} className="w-12 h-12 mb-3 opacity-80" />
+                ) : (
+                  <svg className="w-12 h-12 mb-3 text-electric-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeWidth={2} d={item.icon} />
+                  </svg>
+                )}
+                <h4 className="text-base font-semibold mb-2">{item.title}</h4>
+                <p className="text-sm text-white/70">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Multi-Agent System - More compact */}
+          <div className="mt-6 glass-card p-4 bg-black/40">
+            <div className="flex items-center justify-center gap-3">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="w-6 h-6"
+              >
+                <svg className="text-electric-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </motion.div>
+              <h4 className="text-base font-semibold gradient-text">Multi-Agent Processing System</h4>
+            </div>
+          </div>
+        </div>
+
+        {/* Applications Section */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Marketing Service */}
+          <div className="glass-card p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <h3 className="text-lg font-semibold gradient-text">Autonomous Marketing</h3>
+              <span className="px-2 py-1 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
+                $499-999/mo
+              </span>
+            </div>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li>• AI-powered brand growth and community engagement</li>
+              <li>• Intelligent post creation and interaction</li>
+              <li>• Multi-platform support (X, Telegram, Discord, Farcaster)</li>
+              <li>• Community management via AI chatbots</li>
+              <li className="text-electric-purple">• Social intelligence from human interactions</li>
+              <li className="text-electric-purple">• Adaptive learning from community feedback</li>
+            </ul>
+          </div>
+
+          {/* Trading Platform */}
+          <div className="glass-card p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <h3 className="text-lg font-semibold gradient-text">AI Strategy Trading</h3>
+              <span className="px-2 py-1 text-xs bg-black/40 rounded-full text-neon-pink border border-neon-pink/30">
+                1% fee split
+              </span>
+            </div>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li>• Prompt-based strategy deployment</li>
+              <li>• Long-term investment focus</li>
+              <li>• Data-driven decision making</li>
+              <li>• Powered by Brian AI integration</li>
+              <li className="text-neon-pink">• Copy-trading with performance leaderboard</li>
+              <li className="text-neon-pink">• Strategy marketplace & revenue sharing</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Optional: Add a small note about copy-trading */}
+        <div className="text-center mt-4">
+          <p className="text-sm text-white/60">
+            Join the community of strategy creators and traders on our performance-based marketplace
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 4,
+    title: "Two Massive Markets",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        {/* Main Title */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Two Massive Markets
+        </h2>
+
+        {/* Market Comparison Table */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+          {/* Community Management Market */}
+          <div className="glass-card p-6">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 gradient-text">
+              Community Management
+            </h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Total Market:</h4>
+                <p className="text-2xl font-bold text-electric-purple">$10B+ Annual Spend</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Addressable Market:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• 500K+ Web3 projects</li>
+                  <li>• 50K+ active projects</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Current Solutions:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Manual management</li>
+                  <li>• Traditional agencies</li>
+                  <li>• Basic automation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Trading Market */}
+          <div className="glass-card p-6">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 gradient-text">
+              Trading Market (Crypto)
+            </h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Total Market:</h4>
+                <p className="text-2xl font-bold text-neon-pink">$20B+ Annual Volume</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Addressable Market:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• 10M+ retail traders</li>
+                  <li>• 100K+ strategy creators</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">Current Solutions:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Basic trading bots</li>
+                  <li>• Copy trading platforms</li>
+                  <li>• Signal groups</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Text */}
+        <p className="text-center text-base text-white/60">
+          Capturing value through AI innovation in both markets
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: 5,
+    title: "Why Soul Agents Wins",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        {/* Slide Number */}
+        <div className="absolute top-4 left-4 text-white/40 font-mono">05</div>
+        
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Why Soul Agents Wins
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {/* Trading Intelligence */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Trading Intelligence</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Multi-chain data analysis</li>
+              <li>• Predictive analytics</li>
+              <li>• Risk management</li>
+            </ul>
+          </motion.div>
+
+          {/* Community Management */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Community Management</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Automated engagement</li>
+              <li>• Content generation</li>
+              <li>• KOL analytics</li>
+            </ul>
+          </motion.div>
+
+          {/* Revenue Model */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Revenue Model</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Trading fees</li>
+              <li>• Agent subscriptions</li>
+              <li>• Strategy marketplace</li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Bottom Text */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="text-lg text-white/80">
+            Building the most sophisticated AI trading ecosystem:<br />
+            <span className="text-electric-purple">Think intelligent A.I. interns</span> and a 
+            <span className="text-neon-pink"> leaderboard-based trading strategies</span> with copy-trading
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 6,
+    title: "Dual Revenue Streams",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Dual Revenue Streams
+        </h2>
+
+        {/* Revenue Streams Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Marketing Service */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Marketing Service</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-3">Subscription Model:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Basic: $499/month</li>
+                  <li>• Pro: $999/month</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
+                <p className="text-electric-purple">50 clients ($400k annual)</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">2026 Target:</h4>
+                <p className="text-electric-purple">150 clients ($1.2M annual)</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Trading Platform */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Trading Platform</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-3">Transaction Model:</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• 1% fee per trade</li>
+                  <li>• 50% to strategy creators</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
+                <p className="text-neon-pink">$10M monthly volume</p>
+                <p className="text-sm text-white/60">($960k annual at 0.8% fee)</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold mb-2">2026 Target:</h4>
+                <p className="text-neon-pink">$25M monthly volume</p>
+                <p className="text-sm text-white/60">($2.4M annual at 0.8% fee)</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Projection */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <p className="text-lg text-white/80">
+            Projected <span className="text-electric-purple font-semibold">$1.36M</span> revenue in 2025, 
+            scaling to <span className="text-neon-pink font-semibold">$3.6M</span> in 2026
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 7,
+    title: "Meet the Team",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Meet the Team
+        </h2>
+
+        {/* Team Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* CEO */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex flex-col items-center mb-4">
+              <img 
+                src="/placeholder-avatar2.png" 
+                alt="Team Member" 
+                className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple"
+              />
+              <h3 className="text-xl font-bold gradient-text">Adam Zasada</h3>
+              <p className="text-white/60">CEO & co-founder</p>
+            </div>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li>• 0xKYC founder (backed by Outlier Ventures, BuffiCorn & Celestia's CTO)</li>
+              <li>• Ecosystem & Product Lead at Hinkal (Privacy)</li>
+              <li>• Growth at Elympics</li>
+              <li>• LSE grad (6y exp in prod mgmt)</li>
+            </ul>
+          </motion.div>
+
+          {/* CAIO */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="flex flex-col items-center mb-4">
+              <img 
+                src="/placeholder-avatar2.png" 
+                alt="Team Member" 
+                className="w-24 h-24 rounded-full mb-4 border-2 border-neon-pink"
+              />
+              <h3 className="text-xl font-bold gradient-text">Aleksandra Zajączkowska</h3>
+              <p className="text-white/60">CAIO & co-founder</p>
+            </div>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li>• 6 years of experience as an A.I. Engineer specializing in LLMs, Agent Workflows, RAG systems, and explainable AI</li>
+              <li>• Master Thesis in "Social Business Intelligence" from CBS (Copenhagen Business School)</li>
+            </ul>
+          </motion.div>
+
+          {/* CBDO */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="flex flex-col items-center mb-4">
+              <img 
+                src="/placeholder-avatar2.png" 
+                alt="Team Member" 
+                className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple/50"
+              />
+              <h3 className="text-xl font-bold gradient-text">Stealth</h3>
+              <p className="text-white/60">CBDO & co-founder</p>
+            </div>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li>• CBDO (leading Web3 startup)</li>
+              <li>• Co-founder of a successful exit crypto startup</li>
+              <li>• Experienced across multiple leading Web3 companies</li>
+              <li>• Avid attendee of conferences</li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Core Team & Advisors */}
+        <motion.div 
+          className="text-center text-sm text-white/70 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <p>
+            Core: Sebastian Ołdak (Fullstack & Web3 Dev)<br />
+            Advisors: TomWeb3 (ProtoKOLs), Bogumiła Chwalibóg
+          </p>
+        </motion.div>
+
+        {/* Bottom Text */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <p className="text-lg text-white/80">
+            Combined experience in AI, Trading, and Community Building
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 8,
+    title: "Growth Strategy & Roadmap",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Growth Strategy & Roadmap
+        </h2>
+
+        {/* Two Column Layout */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Strategic Focus */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">
+              Strategic Focus (budget allocation)
+            </h3>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-electric-purple mb-3">
+                  Tech Development (60%)
+                </h4>
+                <p className="text-white/80">
+                  Advanced agent network with multi-chain intelligence (EVM and Solana) 
+                  and predictive trading capabilities
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-neon-pink mb-3">
+                  Product Growth (40%)
+                </h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• User-generated strategies integration into the A.I. trading module, 
+                      intel (DEX Screener, KOL & sentiment analytics)</li>
+                  <li>• State of art X posting agents biz dev</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Key Milestones */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Key Milestones</h3>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-electric-purple mb-3">Q4 2024</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Full AI launch</li>
+                  <li>• Basic trading features</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-electric-purple mb-3">Q1 2025</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Strategy marketplace with multi-chain trading</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-neon-pink mb-3">Q2 2025</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Advanced AI features & copy-trading</li>
+                  <li>• Enterprise X agents deployment</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Vision */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <p className="text-lg text-white/80">
+            Building an intelligent network of AI agents powered by multi-source data,<br />
+            combining X posting with risk-adjusted trading strategies
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 9,
+    title: "Our Edge",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+          Our Edge
+        </h2>
+
+        {/* Three Column Layout */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {/* Deep X Analytics */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Deep X Analytics</h3>
+            <ul className="space-y-3 text-white/80">
+              <li>• Advanced KOL verification system tracking past performance</li>
+              <li>• Advanced NLP context based social analysis of entire X crypto sphere</li>
+              <li>• Performance-based ranking</li>
+            </ul>
+          </motion.div>
+
+          {/* AI-First Platform */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">AI-First Platform</h3>
+            <ul className="space-y-3 text-white/80">
+              <li>• Multi-chain intelligence network</li>
+              <li>• Unified memory across X and Telegram</li>
+              <li>• RAG-powered agent workflow with custom 'brain' fine-tuning</li>
+            </ul>
+          </motion.div>
+
+          {/* Revenue Ecosystem */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Revenue Ecosystem</h3>
+            <ul className="space-y-3 text-white/80">
+              <li>• Custom AI agent deployments ($499-999/mo, early-discounts)</li>
+              <li>• Trading fees from validated strategies</li>
+              <li>• Strategy marketplace with leaderboard</li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Bottom Text */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="text-lg text-white/80">
+            Where X analytics meets competitive trading: Users create winning strategies,<br />
+            AI agents trade them and post updates, brands deploy custom agents
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 10,
+    title: "$SOUL Token Economics",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+            $SOUL Token Economics <span role="img" aria-label="money">💸</span>
+          </h2>
+        </motion.div>
+
+        {/* Three Column Layout */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {/* Distribution */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Distribution</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• 80% Fair Launch Pool</li>
+              <li>• 10% Team (6mo vest)</li>
+              <li>• 10% Initial Investors (6mo vest)</li>
+              <li className="text-sm text-white/60">• Subject to launchpad rules etc.</li>
+            </ul>
+          </motion.div>
+
+          {/* Supply Details */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Supply Details</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Total Supply: 1,000,000,000 $SOUL</li>
+              <li>• 5% tax first 6 months</li>
+              <li>• 50% instant unlock,<br />50% linear 6mo</li>
+            </ul>
+          </motion.div>
+
+          {/* Revenue Share */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Revenue Share</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Buy-back and burn from a share of platform fees - amount decided by DAO</li>
+              <li>• 20% of fees to staking rewards (after 6 mo) - decided by DAO</li>
+              <li>• Tax reduces to 1% after 6 months</li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Bottom Text */}
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="text-lg text-white/80">
+            Modern tokenomics focused on sustainable growth:<br />
+            Fair launch, buy-back & burn, and delayed staking rewards
+          </p>
+        </motion.div>
+      </div>
+    ),
+  },
+  {
+    id: 11,
+    title: "Contact",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Links */}
+          <motion.div 
+            className="glass-card p-8"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-center">
+              Contact
+            </h2>
+            <ul className="space-y-4 text-white/80">
+              <li>• Telegram: @adag1oeth</li>
+              <li>• X: @adag1oeth</li>
+              <li>• Email: adag1oeth@gmail.com</li>
+            </ul>
+          </motion.div>
+
+          {/* Right Column - Social Links */}
+          <motion.div 
+            className="glass-card p-8"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-center">
+              Social Links
+            </h2>
+            <ul className="space-y-4 text-white/80">
+              <li>• Telegram: @adag1oeth</li>
+              <li>• X: @adag1oeth</li>
+              <li>• Twitter: @adag1oeth</li>
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    ),
+  },
+];
 export default function PitchDeck() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
@@ -358,6 +1156,17 @@ export default function PitchDeck() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const scale = useResponsiveScale();
+
+  useEffect(() => {
+    // Add class to prevent scrolling
+    document.documentElement.classList.add('deck-view');
+    
+    return () => {
+      // Remove class when component unmounts
+      document.documentElement.classList.remove('deck-view');
+    };
+  }, []);
 
   useEffect(() => {
     // Check if token exists
@@ -370,14 +1179,20 @@ export default function PitchDeck() {
   useEffect(() => {
     // Keyboard navigation
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (!isAuthenticated) return;
-      if (e.key === "ArrowRight") nextSlide();
-      if (e.key === "ArrowLeft") prevSlide();
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
     };
 
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [isAuthenticated]);
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentSlide]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--current-scale', scale.toString());
+  }, [scale]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -532,12 +1347,12 @@ export default function PitchDeck() {
   // Pitch Deck View
   return (
     <div 
-      className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-electric-purple/5 to-black overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="container mx-auto px-2 py-6 relative min-h-screen">
+      <div className="w-full h-full relative">
         {/* Navigation Controls */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 z-10">
           <button
@@ -584,21 +1399,23 @@ export default function PitchDeck() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="h-[calc(100vh-4rem)] w-full flex items-center justify-center overflow-hidden"
+            className="min-h-screen w-full flex items-center justify-center p-4"
           >
-            <div className="w-full h-full flex items-center justify-center">
-              <div 
-                className="w-full transform scale-[0.65] xs:scale-[0.75] sm:scale-[0.85] md:scale-[0.9] lg:scale-100 transition-transform"
-                style={{ maxHeight: 'calc(100vh - 6rem)' }}
-              >
-                {slides[currentSlide]?.content}
-              </div>
+            <div 
+              className="w-full max-w-7xl mx-auto"
+              style={{
+                transform: 'scale(var(--deck-scale))',
+                transformOrigin: 'center center',
+                ['--deck-scale' as string]: 'var(--current-scale, 1)'
+              } as React.CSSProperties}
+            >
+              {slides[currentSlide]?.content}
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Progress Bar */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1 px-2">
+        {/* Progress Bar - moved inside for better positioning */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-1 px-2">
           {slides.map((_, index) => (
             <div
               key={index}
@@ -612,3 +1429,4 @@ export default function PitchDeck() {
     </div>
   );
 }
+
