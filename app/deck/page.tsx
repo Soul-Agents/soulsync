@@ -393,7 +393,7 @@ const slides: Slide[] = [
               {
                 icon: "/defined-logo-optimized.png",
                 title: "Trading Analytics",
-                desc: "DEX Screener & Codex real-time data",
+                desc: "Codex & Brian AI real-time data",
                 isImage: true
               },
               {
@@ -659,6 +659,53 @@ const slides: Slide[] = [
   },
   {
     id: 6,
+    title: "Market Positioning",
+    content: (
+      <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
+        <div className="absolute top-4 left-4 text-white/40 font-mono">06</div>
+        
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">
+          Market Positioning
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Competition Analysis */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Current Solutions</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Spectral Labs - Trading agents without social features</li>
+              <li>• Noks - Limited intelligence integration</li>
+              <li>• Eliza (a16z) - Ecosystem expansion opportunity</li>
+              <li>• Agent Launchers (Virtuals, vvaifu) - Different focus</li>
+            </ul>
+          </motion.div>
+
+          {/* Our Advantages */}
+          <motion.div 
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">Soul Agents Edge</h3>
+            <ul className="space-y-4 text-white/80">
+              <li>• Full-stack solution (trading + social)</li>
+              <li>• Advanced AI integration (RAG + Memory)</li>
+              <li>• Copy-trading marketplace</li>
+              <li>• Ready-made, customizable agents</li>
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 7,
     title: "Dual Revenue Streams",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -747,7 +794,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 7,
+    id: 8,
     title: "Meet the Team",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -836,7 +883,7 @@ const slides: Slide[] = [
           transition={{ delay: 0.5 }}
         >
           <p>
-            Core: Sebastian Ołdak (Fullstack & Web3 Dev)<br />
+            Core: Sebastian Ołdak (Fullstack, Web3 Dev & co-founder)<br />
             Advisors: TomWeb3 (ProtoKOLs), Bogumiła Chwalibóg
           </p>
         </motion.div>
@@ -856,7 +903,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 8,
+    id: 9,
     title: "Growth Strategy & Roadmap",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -890,12 +937,12 @@ const slides: Slide[] = [
 
               <div>
                 <h4 className="text-lg font-semibold text-neon-pink mb-3">
-                  Product Growth (40%)
+                  Product Growth & Partnerships (40%)
                 </h4>
                 <ul className="space-y-2 text-white/80">
-                  <li>• User-generated strategies integration into the A.I. trading module, 
-                      intel (DEX Screener, KOL & sentiment analytics)</li>
-                  <li>• State of art X posting agents biz dev</li>
+                  <li>• Integration with Brian AI for trading and Codex for market intel</li>
+                  <li>• State of art X posting agents with Eliza integration</li>
+                  <li className="text-electric-purple">• Pipeline: 2 top-tier projects and leading memecoin for AI agent setup</li>
                 </ul>
               </div>
             </div>
@@ -953,7 +1000,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 9,
+    id: 10,
     title: "Our Edge",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -990,6 +1037,8 @@ const slides: Slide[] = [
               <li>• Multi-chain intelligence network</li>
               <li>• Unified memory across X and Telegram</li>
               <li>• RAG-powered agent workflow with custom 'brain' fine-tuning</li>
+              <li>• Pre-production security audit for trading module</li>
+              <li>• Advanced AI security measures by expert team</li>
             </ul>
           </motion.div>
 
@@ -1005,6 +1054,7 @@ const slides: Slide[] = [
               <li>• Custom AI agent deployments ($499-999/mo, early-discounts)</li>
               <li>• Trading fees from validated strategies</li>
               <li>• Strategy marketplace with leaderboard</li>
+              <li className="text-electric-purple">• Token utility & governance details coming soon</li>
             </ul>
           </motion.div>
         </div>
@@ -1025,7 +1075,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 10,
+    id: 11,
     title: "$SOUL Token Economics",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
@@ -1104,7 +1154,7 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 11,
+    id: 12,
     title: "Contact",
     content: (
       <div className="max-w-6xl mx-auto px-4 h-screen flex flex-col justify-center">
