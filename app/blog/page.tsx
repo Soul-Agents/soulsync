@@ -16,6 +16,28 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "Crypto Bunny Launch Update: Fine-tuning for Excellence",
+    description:
+      "A brief update on the deployment timeline for our first AI agent, Crypto Bunny, as we ensure everything is working smoothly for our community.",
+    date: "Nov 19, 2024",
+    author: "Adam",
+    readTime: "2 min read",
+    category: "Development Updates",
+    content: `
+      We wanted to provide a quick update regarding the launch of Crypto Bunny, our first AI agent initially scheduled for November 17th.
+
+      While Crypto Bunny is ready and performing wonderfully in our testing environment, we've decided to take a few extra days to ensure everything is close to perfect before the public launch. This brief delay allows us to:
+      • Fine-tune her interaction patterns
+      • Enhance response quality
+      • Perform additional security checks
+      • Ensure seamless integration with X's platform
+
+      The good news? Crypto Bunny is already showing impressive capabilities in our local environment, and we're incredibly excited about what she'll bring to the community. We're just taking a little extra time to make sure her debut is as smooth as possible.
+
+      Stay tuned for the official launch announcement – it's coming very soon! We appreciate your patience and can't wait to introduce Crypto Bunny to everyone.
+    `,
+  },
+  {
     title: "Meet Soul Agents: Where AI Meets Community Magic",
     description:
       "Dive into how Soul Agents is revolutionizing Web3 communities with AI companions that do more than just chat – they understand, engage, and help communities thrive.",
