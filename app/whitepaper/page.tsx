@@ -133,7 +133,8 @@ export default function WhitepaperPage() {
               <p className="text-lg leading-relaxed break-words">
                 Established in October 2024, Soul is dedicated to crafting AI
                 agents that not only engage but also resonate deeply with users,
-                fostering meaningful and authentic interactions.
+                fostering meaningful and authentic interactions through natural
+                language strategy creation and multi-chain data analysis.
               </p>
             </div>
           </motion.section>
@@ -173,12 +174,7 @@ export default function WhitepaperPage() {
               </p>
               <br></br>
               <p className="text-lg leading-relaxed break-words">
-                Our strategic partnership with [REDACTED] equips Crypto Bunny
-                with a chat-based digital wallet, enabling her to execute
-                autonomous trades. Powered by our RAG-based agent workflow,
-                Crypto Bunny is the first of many AI agents designed to be as
-                intelligent as they are personable, setting the stage for a new
-                era of AI-driven community management and trading.
+                Our strategic partnership with leading wallet providers equips Crypto Bunny with a chat-based digital wallet, enabling her to execute autonomous trades. Powered by our RAG-based agent workflow, Crypto Bunny is the first of many AI agents designed to be as intelligent as they are personable, setting the stage for a new era of AI-driven community management and trading.
               </p>
             </div>
           </motion.section>
@@ -203,17 +199,9 @@ export default function WhitepaperPage() {
                 Crypto Bunny's presence across multiple platforms, including
                 Farcaster/Warpcast and Discord. Through these channels, Crypto
                 Bunny demonstrates capabilities in conversations, voice chat
-                participation, and interactions with other AI agents, for
-                example in the{" "}
-                <Link
-                  href="https://discord.gg/ai16z"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gradient-link font-semibold"
-                >
-                  ai16z arena on Discord
-                </Link>
-                .
+                participation, and interactions with other AI agents, leveraging
+                advanced social sentiment analysis and on-chain data
+                integration.
               </p>
               <p className="text-lg leading-relaxed break-words">
                 The technology powering Crypto Bunny serves as the foundation
@@ -244,11 +232,7 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
-                Through our upcomingsecure wallet integration, we empower our AI
-                agents to analyze market trends and execute trades
-                independently. This integration is fundamental to our vision of
-                creating intelligent agents that can actively participate in the
-                crypto ecosystem.
+                Through our upcoming secure wallet integration, we empower our AI agents to analyze market trends and execute trades independently. This integration is fundamental to our vision of creating intelligent agents that can actively participate in the crypto ecosystem.
               </p>
               <p className="text-lg leading-relaxed break-words">
                 The secure, chat-based digital wallet system allows for informed
@@ -414,7 +398,7 @@ export default function WhitepaperPage() {
                   {
                     title: "Trading Platform",
                     description:
-                      "A 1% fee per transaction, with 50% distributed to strategy creators. Performance rankings weighted by portfolio size and time horizon, ensuring fair competition between different trading volumes.",
+                      "A 1% fee per transaction, with 50% distributed to strategy creators. Performance rankings weighted by portfolio size and time horizon.",
                     icon: "💎",
                   },
                   {
@@ -476,9 +460,7 @@ export default function WhitepaperPage() {
                           >
                             @soul_agents
                           </Link>{" "}
-                          on X: Kick off with a comprehensive marketing and
-                          business development campaign starting November 17,
-                          2024.
+                          on X: Kick off with our first AI agent, Crypto Bunny which started on November 20th, 2024.
                         </>
                       ),
                     },
