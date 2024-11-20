@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from "framer-motion";
+import React from "react";
 
 interface SlideLayoutProps {
   title: string;
@@ -7,24 +7,26 @@ interface SlideLayoutProps {
   children: React.ReactNode;
 }
 
-export const SlideLayout: React.FC<SlideLayoutProps> = ({ 
-  title, 
-  slideNumber, 
-  children 
+export const SlideLayout: React.FC<SlideLayoutProps> = ({
+  title,
+  slideNumber,
+  children,
 }) => {
   return (
     <div className="min-h-screen w-full flex flex-col p-8">
       <div className="relative mb-12">
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold gradient-text">{title}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold gradient-text">
+            {title}
+          </h2>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="absolute bottom-0 right-0 flex items-center"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -39,9 +41,7 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
         </motion.div>
       </div>
 
-      <div className="flex-1">
-        {children}
-      </div>
+      <div className="flex-1">{children}</div>
     </div>
   );
 };

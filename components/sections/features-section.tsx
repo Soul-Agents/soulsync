@@ -48,7 +48,7 @@ const features = [
   {
     title: "Trading Integration (Soon)",
     description:
-      "Autonomous trading capabilities powered by AI (launching November 2024)",
+      "Autonomous trading capabilities powered by AI and community insights (Q1 2025)",
     benefits: [
       "Planned: Market analysis",
       "Future: Smart trade execution",
