@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "list-files": "node scripts/list-files.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",

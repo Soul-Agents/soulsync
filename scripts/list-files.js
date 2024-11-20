@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-function listFiles(dir, indent = "") {
+function listFiles(dir, outputFilePath, indent = "") {
   const files = fs.readdirSync(dir);
 
   files.forEach((file) => {
@@ -12,12 +12,24 @@ function listFiles(dir, indent = "") {
       return;
     }
 
-    console.log(`${indent}${file}${stats.isDirectory() ? "/" : ""}`);
+    const line = `${indent}${file}${stats.isDirectory() ? "/" : ""}\n`;
+
+    // Write to the file instead of console.log
+    fs.appendFileSync(outputFilePath, line, "utf8");
 
     if (stats.isDirectory()) {
-      listFiles(filePath, indent + "  ");
+      listFiles(filePath, outputFilePath, indent + "  ");
     }
   });
 }
 
-listFiles(".");
+// Specify the output file path
+const outputFilePath = "output.txt";
+
+// Clear the file if it already exists
+fs.writeFileSync(outputFilePath, "", "utf8");
+
+// Start listing files and write to the file
+listFiles(".", outputFilePath);
+
+console.log(`Directory structure written to ${outputFilePath}`);
