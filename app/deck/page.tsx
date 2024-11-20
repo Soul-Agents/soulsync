@@ -229,6 +229,14 @@ export default function DeckPage(): JSX.Element {
                 >
                   {isLoading ? "Authenticating..." : "View Pitch Deck"}
                 </button>
+
+                {/* New Home button */}
+                <a
+                  href="/"
+                  className="block w-full text-center text-white/60 hover:text-white py-2 transition-colors"
+                >
+                  ← Back to Home
+                </a>
               </div>
             </form>
           </div>
@@ -292,16 +300,14 @@ export default function DeckPage(): JSX.Element {
               <div
                 key={index}
                 className={`h-1 w-4 md:w-12 rounded-full transition-colors ${
-                  index === currentSlide
-                    ? "bg-electric-purple"
-                    : "bg-white/20"
+                  index === currentSlide ? "bg-electric-purple" : "bg-white/20"
                 }`}
               />
             ))}
           </div>
 
           {/* Scrollable Content Wrapper - Mobile-specific changes */}
-          <div 
+          <div
             className="flex-1 md:h-screen h-[100dvh] overflow-y-auto md:overflow-hidden overscroll-contain touch-pan-y"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -724,11 +730,11 @@ const slides: Slide[] = [
                 Hinkal and Twyne early commitments to using our A.I. Agents
               </p>
             </div>
-  
+
             <div className="mb-4 md:mb-8 scale-90">
               <GrowthChart />
             </div>
-  
+
             <div className="space-y-4 md:space-y-8">
               <div>
                 <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
@@ -753,7 +759,7 @@ const slides: Slide[] = [
                   ))}
                 </motion.ul>
               </div>
-  
+
               <div>
                 <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
                   Users
@@ -779,7 +785,7 @@ const slides: Slide[] = [
               </div>
             </div>
           </motion.div>
-  
+
           {/* Right column remains similar but with matching adjustments */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -790,11 +796,11 @@ const slides: Slide[] = [
             <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-electric-purple">
               Asymmetrical Information in Trading
             </h3>
-  
+
             <div className="mb-4 md:mb-8 scale-90">
               <TradingDashboard />
             </div>
-  
+
             <div className="space-y-4 md:space-y-8">
               <div>
                 <h4 className="text-2xl font-semibold mb-4 gradient-text">

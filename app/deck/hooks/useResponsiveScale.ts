@@ -22,7 +22,7 @@ export function useResponsiveScale() {
 
       document.documentElement.style.setProperty(
         "--current-scale",
-        scale.toString()
+        scale.toString(),
       );
     };
 

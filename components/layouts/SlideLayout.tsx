@@ -41,9 +41,7 @@ export const SlideLayout: React.FC<SlideLayoutProps> = ({
         </motion.div>
       </div>
 
-      <div className="flex-1 overflow-y-auto touch-pan-y pb-20">
-        {children}
-      </div>
+      <div className="flex-1 overflow-y-auto touch-pan-y pb-20">{children}</div>
     </div>
   );
 };
