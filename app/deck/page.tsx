@@ -246,12 +246,6 @@ export default function DeckPage(): JSX.Element {
       {/* Main Deck Content */}
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
-          {/* Mobile Notice */}
-          <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
-            <p className="text-white/80 text-xs">
-              ⚠️ Best viewed on desktop.
-            </p>
-          </div>
 
           {/* Fullscreen Toggle Button */}
           <button
