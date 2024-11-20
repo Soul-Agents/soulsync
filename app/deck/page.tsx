@@ -169,10 +169,9 @@ export default function DeckPage(): JSX.Element {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Mobile Notice */}
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-4 z-50 text-center">
-        <p className="text-white/80 text-sm">
-          ⚠️ Mobile optimization in progress. For best experience, please view
-          on desktop.
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
+        <p className="text-white/80 text-xs">
+          ⚠️ Best viewed on desktop. Scroll to view full content.
         </p>
       </div>
 
@@ -238,56 +237,76 @@ export default function DeckPage(): JSX.Element {
 
       {/* Main Deck Content */}
       {isAuthenticated && (
-        <div
-          className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-electric-purple/5 to-black overflow-hidden touch-pan-y"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="w-full h-full relative">
-            {/* Navigation Controls */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 z-10">
-              <button
-                onClick={prevSlide}
-                disabled={currentSlide === 0}
-                aria-label="Previous slide"
-                className={`p-2 rounded-full bg-black/40 text-white/60 hover:text-white disabled:opacity-50 transition-opacity ${
-                  currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
-                }`}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 z-10">
-              <button
-                onClick={nextSlide}
-                disabled={currentSlide === slides.length - 1}
-                aria-label="Next slide"
-                className={`p-2 rounded-full bg-black/40 text-white/60 hover:text-white disabled:opacity-50 transition-opacity ${
-                  currentSlide === slides.length - 1
-                    ? "opacity-0 pointer-events-none"
-                    : ""
-                }`}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
+          {/* Mobile Notice */}
+          <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
+            <p className="text-white/80 text-xs">
+              ⚠️ Best viewed on desktop. Scroll to view full content.
+            </p>
+          </div>
 
-            {/* Fullscreen Button */}
-            <div className="absolute top-4 right-4 z-20">
-              <button
-                onClick={toggleFullscreen}
-                className="p-2 rounded-full bg-black/40 text-white/60 hover:text-white transition-colors"
-              >
-                {isFullscreen ? (
-                  <Minimize2 className="w-5 h-5" />
-                ) : (
-                  <Maximize2 className="w-5 h-5" />
-                )}
-              </button>
-            </div>
+          {/* Fullscreen Toggle Button */}
+          <button
+            onClick={toggleFullscreen}
+            className="fixed top-4 right-4 z-50 p-2 rounded-full bg-black/80 text-white/80 hover:text-white transition-colors backdrop-blur-sm"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-5 h-5" />
+            ) : (
+              <Maximize2 className="w-5 h-5" />
+            )}
+          </button>
 
-            {/* Slide Content */}
+          {/* Navigation Controls */}
+          <div className="fixed top-1/2 -translate-y-1/2 left-2 md:left-8 z-40">
+            <button
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              aria-label="Previous slide"
+              className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
+                currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
+              }`}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="fixed top-1/2 -translate-y-1/2 right-2 md:right-8 z-40">
+            <button
+              onClick={nextSlide}
+              disabled={currentSlide === slides.length - 1}
+              aria-label="Next slide"
+              className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
+                currentSlide === slides.length - 1
+                  ? "opacity-0 pointer-events-none"
+                  : ""
+              }`}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-0.5 px-2 md:px-2 md:bottom-6 md:gap-1 z-40 pointer-events-none">
+            {slides.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1 w-4 md:w-12 rounded-full transition-colors ${
+                  index === currentSlide
+                    ? "bg-electric-purple"
+                    : "bg-white/20"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Scrollable Content Wrapper - Mobile-specific changes */}
+          <div 
+            className="flex-1 md:h-screen h-[100dvh] overflow-y-auto md:overflow-hidden overscroll-contain touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -295,17 +314,15 @@ export default function DeckPage(): JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="min-h-screen w-full flex items-center justify-center p-4"
+                className="min-h-full w-full flex flex-col pt-16 md:pt-0 pb-20 md:pb-0 px-4 md:p-4"
               >
                 <div
                   className="w-full max-w-7xl mx-auto"
-                  style={
-                    {
-                      transform: "scale(var(--deck-scale))",
-                      transformOrigin: "center center",
-                      ["--deck-scale" as string]: "var(--current-scale, 1)",
-                    } as React.CSSProperties
-                  }
+                  style={{
+                    transform: "scale(var(--deck-scale))",
+                    transformOrigin: "top center",
+                    ["--deck-scale" as string]: "var(--current-scale, 1)",
+                  }}
                 >
                   {slides[currentSlide]?.content ?? (
                     <div className="text-center text-white/60">
@@ -316,20 +333,6 @@ export default function DeckPage(): JSX.Element {
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Progress Bar */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-1 px-2">
-              {slides.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1 w-12 sm:w-16 rounded-full transition-colors ${
-                    index === currentSlide
-                      ? "bg-electric-purple"
-                      : "bg-white/20"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       )}
@@ -683,7 +686,7 @@ const slides: Slide[] = [
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white flex items-center gap-2 transition-colors"
             >
-              <span>Soul X:</span>
+              <span>X:</span>
               <span className="gradient-text">@soul_agents</span>
             </a>
             <a
@@ -705,28 +708,33 @@ const slides: Slide[] = [
     title: "Two Problems, One Solution",
     content: (
       <SlideLayout title="Two Problems, One Solution" slideNumber={2}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {/* Left Column - Outreach & Growth */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-8 hover:border-neon-pink/30 transition-all duration-300"
+            className="glass-card p-4 md:p-8 hover:border-neon-pink/30 transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-8 text-center text-neon-pink">
-              Web3 Marketing Challenges
-            </h3>
-
-            <div className="mb-8">
+            <div className="flex flex-col items-center">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-neon-pink">
+                Web3 Marketing Challenges
+              </h3>
+              <p className="text-xs text-white/70 mb-4 italic">
+                Hinkal and Twyne early commitments to using our A.I. Agents.
+              </p>
+            </div>
+  
+            <div className="mb-4 md:mb-8 scale-90">
               <GrowthChart />
             </div>
-
-            <div className="space-y-8">
+  
+            <div className="space-y-4 md:space-y-8">
               <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
+                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
                   Problems
                 </h4>
-                <motion.ul className="space-y-3">
+                <motion.ul className="space-y-2">
                   {[
                     "High KOL costs ($10-20k monthly)",
                     "Time-consuming manual outreach",
@@ -738,29 +746,19 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
                   ))}
                 </motion.ul>
               </div>
-
-              {/* Add the new Early Adoption section here */}
-              <motion.div className="mt-4 glass-card p-3 bg-black/20">
-                <h4 className="text-base font-semibold mb-2 text-neon-pink/90">
-                  Early Adoption:
-                </h4>
-                <p className="text-white/90">
-                  • 8 projects committed to using our Marketing Agent at launch
-                </p>
-              </motion.div>
-
+  
               <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
+                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
                   Users
                 </h4>
-                <motion.ul className="space-y-3">
+                <motion.ul className="space-y-2">
                   {[
                     "Web3 Projects",
                     "Marketing Teams",
@@ -772,7 +770,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
@@ -781,23 +779,23 @@ const slides: Slide[] = [
               </div>
             </div>
           </motion.div>
-
-          {/* Right Column - Trading */}
+  
+          {/* Right column remains similar but with matching adjustments */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-8 hover:border-electric-purple/30 transition-all duration-300"
+            className="glass-card p-4 md:p-8 hover:border-electric-purple/30 transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-8 text-center text-electric-purple">
+            <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-electric-purple">
               Asymmetrical Information in Trading
             </h3>
-
-            <div className="mb-8">
+  
+            <div className="mb-4 md:mb-8 scale-90">
               <TradingDashboard />
             </div>
-
-            <div className="space-y-8">
+  
+            <div className="space-y-4 md:space-y-8">
               <div>
                 <h4 className="text-2xl font-semibold mb-4 gradient-text">
                   Problems
