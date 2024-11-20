@@ -1,0 +1,79 @@
+.env.local
+.gitattributes
+.gitignore
+app/
+  api/
+    auth/
+      deck/
+        route.ts
+  blog/
+    page.tsx
+  cases/
+    page.tsx
+  deck/
+    hooks/
+      useResponsiveScale.ts
+    page.tsx
+  fonts/
+    GeistMonoVF.woff
+    GeistVF.woff
+  globals.css
+  layout.tsx
+  loading.tsx
+  page.tsx
+  privacy/
+    page.tsx
+  terms/
+    page.tsx
+  whitepaper/
+    page.tsx
+components/
+  layouts/
+    MainLayout.tsx
+  sections/
+    about-section.tsx
+    contact-section.tsx
+    features-section.tsx
+    hero-section.tsx
+    pricing-section.tsx
+    technology-section.tsx
+    testimonials-section.tsx
+    whitepaper-section.tsx
+  ui/
+    avatar.tsx
+    button.tsx
+    card.tsx
+    footer.tsx
+    input.tsx
+    navbar.tsx
+    textarea.tsx
+lib/
+  rate-limit.ts
+  utils.ts
+next-env.d.ts
+next.config.js
+output.txt
+package-lock.json
+package.json
+postcss.config.mjs
+public/
+  brian-ai-logo.png
+  crypto-trader.png
+  crypto-trader2.png
+  cryptobunny.png
+  crypto_bunny.webp
+  defined-logo-optimized.png
+  manifest.json
+  moon-boy.png
+  placeholder-avatar.png
+  placeholder-avatar2.png
+  placeholder-avatar3.png
+  placeholder-avatar4.png
+  PROTOKOLS_ICON_WHITE.svg
+  x-logo.png
+README.md
+scripts/
+  list-files.js
+soulsync.code-workspace
+tailwind.config.ts
+tsconfig.json
