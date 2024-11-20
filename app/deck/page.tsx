@@ -246,7 +246,6 @@ export default function DeckPage(): JSX.Element {
       {/* Main Deck Content */}
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
-
           {/* Fullscreen Toggle Button */}
           <button
             onClick={toggleFullscreen}
