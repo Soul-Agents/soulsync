@@ -7,23 +7,23 @@ export function useResponsiveScale() {
     const updateScale = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
+      const isMobile = width < 768;
 
-      // Base size that we're designing for
-      const baseWidth = 1280;
-      const baseHeight = 720;
-
-      // Calculate scale based on both dimensions
-      const widthScale = width / baseWidth;
-      const heightScale = height / baseHeight;
-
-      // Use the smaller scale to ensure content fits
-      const newScale = Math.min(widthScale, heightScale, 1);
+      if (isMobile) {
+        // More aggressive scaling for mobile
+        const mobileScale = Math.min(width / 1280, height / 720) * 0.45; // 45% of normal scale
+        setScale(mobileScale);
+      } else {
+        // Desktop scaling remains the same
+        const widthScale = width / 1280;
+        const heightScale = height / 720;
+        setScale(Math.min(widthScale, heightScale, 1));
+      }
 
       document.documentElement.style.setProperty(
         "--current-scale",
-        newScale.toString(),
+        scale.toString()
       );
-      setScale(newScale);
     };
 
     updateScale();

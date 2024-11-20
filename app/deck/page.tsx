@@ -169,10 +169,9 @@ export default function DeckPage(): JSX.Element {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Mobile Notice */}
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-4 z-50 text-center">
-        <p className="text-white/80 text-sm">
-          ⚠️ Mobile optimization in progress. For best experience, please view
-          on desktop.
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
+        <p className="text-white/80 text-xs">
+          ⚠️ Best viewed on desktop. Scroll to view full content.
         </p>
       </div>
 
@@ -238,56 +237,76 @@ export default function DeckPage(): JSX.Element {
 
       {/* Main Deck Content */}
       {isAuthenticated && (
-        <div
-          className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-electric-purple/5 to-black overflow-hidden touch-pan-y"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="w-full h-full relative">
-            {/* Navigation Controls */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 z-10">
-              <button
-                onClick={prevSlide}
-                disabled={currentSlide === 0}
-                aria-label="Previous slide"
-                className={`p-2 rounded-full bg-black/40 text-white/60 hover:text-white disabled:opacity-50 transition-opacity ${
-                  currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
-                }`}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 z-10">
-              <button
-                onClick={nextSlide}
-                disabled={currentSlide === slides.length - 1}
-                aria-label="Next slide"
-                className={`p-2 rounded-full bg-black/40 text-white/60 hover:text-white disabled:opacity-50 transition-opacity ${
-                  currentSlide === slides.length - 1
-                    ? "opacity-0 pointer-events-none"
-                    : ""
-                }`}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
+        <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
+          {/* Mobile Notice */}
+          <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
+            <p className="text-white/80 text-xs">
+              ⚠️ Best viewed on desktop. Scroll to view full content.
+            </p>
+          </div>
 
-            {/* Fullscreen Button */}
-            <div className="absolute top-4 right-4 z-20">
-              <button
-                onClick={toggleFullscreen}
-                className="p-2 rounded-full bg-black/40 text-white/60 hover:text-white transition-colors"
-              >
-                {isFullscreen ? (
-                  <Minimize2 className="w-5 h-5" />
-                ) : (
-                  <Maximize2 className="w-5 h-5" />
-                )}
-              </button>
-            </div>
+          {/* Fullscreen Toggle Button */}
+          <button
+            onClick={toggleFullscreen}
+            className="fixed top-4 right-4 z-50 p-2 rounded-full bg-black/80 text-white/80 hover:text-white transition-colors backdrop-blur-sm"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-5 h-5" />
+            ) : (
+              <Maximize2 className="w-5 h-5" />
+            )}
+          </button>
 
-            {/* Slide Content */}
+          {/* Navigation Controls */}
+          <div className="fixed top-1/2 -translate-y-1/2 left-2 md:left-8 z-40">
+            <button
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              aria-label="Previous slide"
+              className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
+                currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
+              }`}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="fixed top-1/2 -translate-y-1/2 right-2 md:right-8 z-40">
+            <button
+              onClick={nextSlide}
+              disabled={currentSlide === slides.length - 1}
+              aria-label="Next slide"
+              className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
+                currentSlide === slides.length - 1
+                  ? "opacity-0 pointer-events-none"
+                  : ""
+              }`}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-0.5 px-2 md:px-2 md:bottom-6 md:gap-1 z-40 pointer-events-none">
+            {slides.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1 w-4 md:w-12 rounded-full transition-colors ${
+                  index === currentSlide
+                    ? "bg-electric-purple"
+                    : "bg-white/20"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Scrollable Content Wrapper - Mobile-specific changes */}
+          <div 
+            className="flex-1 md:h-screen h-[100dvh] overflow-y-auto md:overflow-hidden overscroll-contain touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -295,17 +314,15 @@ export default function DeckPage(): JSX.Element {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="min-h-screen w-full flex items-center justify-center p-4"
+                className="min-h-full w-full flex flex-col pt-16 md:pt-0 pb-20 md:pb-0 px-4 md:p-4"
               >
                 <div
                   className="w-full max-w-7xl mx-auto"
-                  style={
-                    {
-                      transform: "scale(var(--deck-scale))",
-                      transformOrigin: "center center",
-                      ["--deck-scale" as string]: "var(--current-scale, 1)",
-                    } as React.CSSProperties
-                  }
+                  style={{
+                    transform: "scale(var(--deck-scale))",
+                    transformOrigin: "top center",
+                    ["--deck-scale" as string]: "var(--current-scale, 1)",
+                  }}
                 >
                   {slides[currentSlide]?.content ?? (
                     <div className="text-center text-white/60">
@@ -316,20 +333,6 @@ export default function DeckPage(): JSX.Element {
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Progress Bar */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-1 px-2">
-              {slides.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1 w-12 sm:w-16 rounded-full transition-colors ${
-                    index === currentSlide
-                      ? "bg-electric-purple"
-                      : "bg-white/20"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       )}
@@ -683,7 +686,7 @@ const slides: Slide[] = [
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white flex items-center gap-2 transition-colors"
             >
-              <span>Soul X:</span>
+              <span>X:</span>
               <span className="gradient-text">@soul_agents</span>
             </a>
             <a
