@@ -7,7 +7,7 @@ const testimonials = [
     role: "ProtoKOLs founder",
     avatar: "/PROTOKOLS_ICON_WHITE.svg",
     quote:
-      "Soul's AI Intern is an extremely bullish concept that can revolutionize the Web3 world.",
+      "Soul's AI Agents is an extremely bullish concept that can revolutionize how we build Web3 communities.",
   },
   {
     name: "Early Tester",

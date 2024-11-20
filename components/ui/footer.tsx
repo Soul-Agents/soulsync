@@ -3,10 +3,10 @@ import { usePathname } from "next/navigation";
 
 export function Footer() {
   const pathname = usePathname();
-  
+
   // Hide footer on deck page
-  if (pathname === '/deck') return null;
-  
+  if (pathname === "/deck") return null;
+
   const currentYear = new Date().getFullYear();
 
   const sections = {

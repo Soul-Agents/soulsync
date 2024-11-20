@@ -196,10 +196,10 @@ const renderContent = (content: string) => {
               >
                 Crypto Bunny
               </Link>
-              ! She just posted her first "Hello World!" tweet on X last night 🐰
-              While she's currently mastering social interactions in her own
-              environment, we're working on expanding her capabilities to include
-              trading features.
+              ! She just posted her first "Hello World!" tweet on X last night
+              🐰 While she's currently mastering social interactions in her own
+              environment, we're working on expanding her capabilities to
+              include trading features.
             </>
           )}
         </p>

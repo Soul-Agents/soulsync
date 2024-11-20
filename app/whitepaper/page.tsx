@@ -174,7 +174,12 @@ export default function WhitepaperPage() {
               </p>
               <br></br>
               <p className="text-lg leading-relaxed break-words">
-                Our strategic partnership with leading wallet providers equips Crypto Bunny with a chat-based digital wallet, enabling her to execute autonomous trades. Powered by our RAG-based agent workflow, Crypto Bunny is the first of many AI agents designed to be as intelligent as they are personable, setting the stage for a new era of AI-driven community management and trading.
+                Our strategic partnership with leading wallet providers equips
+                Crypto Bunny with a chat-based digital wallet, enabling her to
+                execute autonomous trades. Powered by our RAG-based agent
+                workflow, Crypto Bunny is the first of many AI agents designed
+                to be as intelligent as they are personable, setting the stage
+                for a new era of AI-driven community management and trading.
               </p>
             </div>
           </motion.section>
@@ -232,7 +237,11 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
-                Through our upcoming secure wallet integration, we empower our AI agents to analyze market trends and execute trades independently. This integration is fundamental to our vision of creating intelligent agents that can actively participate in the crypto ecosystem.
+                Through our upcoming secure wallet integration, we empower our
+                AI agents to analyze market trends and execute trades
+                independently. This integration is fundamental to our vision of
+                creating intelligent agents that can actively participate in the
+                crypto ecosystem.
               </p>
               <p className="text-lg leading-relaxed break-words">
                 The secure, chat-based digital wallet system allows for informed
@@ -460,7 +469,8 @@ export default function WhitepaperPage() {
                           >
                             @soul_agents
                           </Link>{" "}
-                          on X: Kick off with our first AI agent, Crypto Bunny which started on November 20th, 2024.
+                          on X: Kick off with our first AI agent, Crypto Bunny
+                          which started on November 20th, 2024.
                         </>
                       ),
                     },

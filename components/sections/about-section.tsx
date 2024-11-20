@@ -7,8 +7,9 @@ export default function AboutSection() {
             About Soul AI Agents
           </h2>
           <p className="text-xl mb-8 text-white/80">
-            Launched in November 2024, Soul AI Agents bring emotional
-            intelligence to Web3 community management.
+            Launched in October 2024, Soul AI Agents brings autonomous
+            intelligence to Web3 community management, starting with Crypto
+            Bunny's journey of daily growth and learning.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
