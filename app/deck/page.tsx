@@ -721,7 +721,7 @@ const slides: Slide[] = [
                 Web3 Marketing Challenges
               </h3>
               <p className="text-xs text-white/70 mb-4 italic">
-                Hinkal and Twyne early commitments to using our A.I. Agents.
+                Hinkal and Twyne early commitments to using our A.I. Agents
               </p>
             </div>
   
