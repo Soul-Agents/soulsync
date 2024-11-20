@@ -249,7 +249,7 @@ export default function DeckPage(): JSX.Element {
           {/* Mobile Notice */}
           <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
             <p className="text-white/80 text-xs">
-              ⚠️ Best viewed on desktop. Scroll to view full content.
+              ⚠️ Best viewed on desktop.
             </p>
           </div>
 
