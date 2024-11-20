@@ -820,7 +820,7 @@ const slides: Slide[] = [
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.6 }}
             >
               <Tweet 
                 author="Crypto Bunny"
@@ -987,9 +987,9 @@ const slides: Slide[] = [
     content: (
       <SlideLayout title="Multi-Agent Intelligence Network" slideNumber={5}>
         <div className="space-y-8">
-          <div className="text-xl text-white/80 text-center mb-8">
-            Comprehensive Market Intelligence
-          </div>
+        <div className="text-xl text-white/80 font-bold text-center mb-8">
+          Comprehensive Market Intelligence
+        </div>
   
           {/* Data Sources Section */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -1041,27 +1041,38 @@ const slides: Slide[] = [
               </motion.div>
             ))}
           </div>
+
           {/* Multi-Agent System */}
           <motion.div 
-            className="glass-card p-4 bg-black/40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            <div className="flex items-center justify-center gap-3">
+            className="glass-card py-8 px-8 bg-black/40 w-full border border-electric-purple/20 backdrop-blur-sm hover:bg-black/50 hover:border-electric-purple/40 hover:scale-[1.02] hover:shadow-xl transition-all duration-500 ease-out shadow-lg shadow-electric-purple/20 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+            whileHover={{ y: -5 }}
+            >
+            <div className="flex flex-col items-center justify-center gap-6 relative">
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="w-6 h-6"
+                animate={{ 
+                  rotate: 360,
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="w-12 h-12 relative z-10"
               >
-                <svg className="text-electric-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <div className="absolute inset-0 bg-electric-purple/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
+                <svg className="text-electric-purple w-full h-full group-hover:text-[#ff00ff] transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </motion.div>
-              <h4 className="text-base font-semibold gradient-text">Multi-Agent Processing System</h4>
+              <h4 className="text-2xl font-bold gradient-text bg-clip-text text-transparent bg-gradient-to-r from-electric-purple via-[#ff00ff] to-electric-purple group-hover:from-[#ff00ff] group-hover:via-electric-purple group-hover:to-[#ff00ff] transition-all duration-300">
+                Multi-Agent Processing System
+              </h4>
             </div>
           </motion.div>
-  
+
           {/* Applications Section */}
           <div className="grid md:grid-cols-2 gap-4">
             {/* Marketing Service */}
@@ -1127,21 +1138,20 @@ const slides: Slide[] = [
   },
   {
     id: 6,
-    title: "Two Massive Markets",
+    title: "Two Strategic Markets",
     content: (
-      <SlideLayout title="Two Massive Markets" slideNumber={6}>
+      <SlideLayout title="Two Strategic Markets" slideNumber={6}>
         <div className="space-y-8">
-          {/* Market Comparison Grid */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Community Management Market */}
             <motion.div 
-              className="glass-card p-6"
+              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-electric-purple/20 border border-electric-purple/20"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl md:text-2xl font-bold text-center mb-6 gradient-text">
-                Community Management
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-electric-purple to-blue-500">
+                Web3 Community Growth
               </h3>
               
               <div className="space-y-6">
@@ -1149,20 +1159,26 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Total Market:</h4>
-                  <p className="text-2xl font-bold text-electric-purple">$10B+ Annual Spend</p>
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">Market Size:</h4>
+                  <p className="text-3xl font-bold text-electric-purple">$10B+ Annual Revenue</p>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Addressable Market:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• 500K+ Web3 projects</li>
-                    <li>• 50K+ active projects</li>
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">Target Market:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> 500K+ Web3 Communities
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> 50K+ Active Projects
+                    </li>
                   </ul>
                 </motion.div>
 
@@ -1170,12 +1186,19 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Current Solutions:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• Manual management</li>
-                    <li>• Traditional agencies</li>
-                    <li>• Basic automation</li>
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">Current Solutions:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> Manual Management
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> Traditional Agencies
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> Basic Automation
+                    </li>
                   </ul>
                 </motion.div>
               </div>
@@ -1183,13 +1206,13 @@ const slides: Slide[] = [
 
             {/* Trading Market */}
             <motion.div 
-              className="glass-card p-6"
+              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-neon-pink/20 border border-neon-pink/20"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl md:text-2xl font-bold text-center mb-6 gradient-text">
-                Trading Market (Crypto)
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-neon-pink to-purple-500">
+                Crypto Trading
               </h3>
               
               <div className="space-y-6">
@@ -1197,20 +1220,26 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Total Market:</h4>
-                  <p className="text-2xl font-bold text-neon-pink">$20B+ Annual Volume</p>
+                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">Market Size:</h4>
+                  <p className="text-3xl font-bold text-neon-pink">$20B+ Annual Volume</p>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Addressable Market:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• 10M+ retail traders</li>
-                    <li>• 100K+ strategy creators</li>
+                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">Target Market:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> 10M+ Active Traders
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> 100K+ Strategy Creators
+                    </li>
                   </ul>
                 </motion.div>
 
@@ -1218,24 +1247,55 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-2">Current Solutions:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• Basic trading bots</li>
-                    <li>• Copy trading platforms</li>
-                    <li>• Signal groups</li>
+                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">Current Solutions:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Basic Trading Bots & First A.I. Agents
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Copy Trading Platforms
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Signal Groups
+                    </li>
                   </ul>
                 </motion.div>
               </div>
             </motion.div>
           </div>
 
-          {/* Bottom Text */}
-          <motion.p 
-            className="text-center text-base text-white/60"
+          {/* Market Size Analysis */}
+          <motion.div 
+            className="mt-12 grid grid-cols-3 gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">SOM</h4>
+              <p className="text-2xl font-bold gradient-text">$500M+</p>
+              <p className="text-sm text-white/60 mt-1">Serviceable Obtainable Market</p>
+            </div>
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">SAM</h4>
+              <p className="text-2xl font-bold gradient-text">$5B+</p>
+              <p className="text-sm text-white/60 mt-1">Serviceable Available Market</p>
+            </div>
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">TAM</h4>
+              <p className="text-2xl font-bold gradient-text">$30B+</p>
+              <p className="text-sm text-white/60 mt-1">Total Available Market</p>
+            </div>
+          </motion.div>
+
+          {/* Bottom Text */}
+          <motion.p 
+            className="text-center text-lg font-medium text-white/80 hover:text-white transition-colors duration-300 mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, type: "spring" }}
           >
             Capturing value through AI innovation in both markets
           </motion.p>
@@ -1257,100 +1317,116 @@ const slides: Slide[] = [
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
             >
-              <div className="text-2xl text-electric-purple font-semibold mb-6">01</div>
-              <h3 className="text-xl font-bold mb-6 gradient-text">Trading Intelligence</h3>
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">Trading Intelligence</h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">01</div>
+              </div>
               <ul className="space-y-4 text-white/80">
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                >• Multi-chain data analysis</motion.li>
+                >• Multi-Chain Data Analysis</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                >• Predictive analytics</motion.li>
+                >• Predictive Analytics</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                >• Risk management</motion.li>
+                >• Risk Management</motion.li>
               </ul>
             </motion.div>
-
+  
             {/* Community Management */}
             <motion.div 
               className="glass-card p-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
             >
-              <div className="text-2xl text-electric-purple font-semibold mb-6">02</div>
-              <h3 className="text-xl font-bold mb-6 gradient-text">Community Management</h3>
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">Community Management</h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">02</div>
+              </div>
               <ul className="space-y-4 text-white/80">
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                >• Automated engagement</motion.li>
+                >• Automated Engagement</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                >• Content generation</motion.li>
+                >• Content Generation</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                >• KOL analytics</motion.li>
+                >• KOL Analytics with AI Backtesting</motion.li>
               </ul>
             </motion.div>
-
+  
             {/* Revenue Model */}
             <motion.div 
               className="glass-card p-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              whileHover={{ scale: 1.02 }}
             >
-              <div className="text-2xl text-electric-purple font-semibold mb-6">03</div>
-              <h3 className="text-xl font-bold mb-6 gradient-text">Revenue Model</h3>
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">Revenue Model</h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">03</div>
+              </div>
               <ul className="space-y-4 text-white/80">
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                >• Trading fees</motion.li>
+                >• Trading Fees with Fee Share</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                >• Agent subscriptions</motion.li>
+                >• Agent Subscriptions</motion.li>
                 <motion.li 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
-                >• Strategy marketplace</motion.li>
+                >• Strategy Marketplace</motion.li>
               </ul>
             </motion.div>
           </div>
-          {/* Deep X Analytics Section */}
+  
+          {/* AI-First Platform Section */}
           <motion.div 
-            className="glass-card p-6 bg-black/40 border border-electric-purple/20"
+            className="glass-card p-8 bg-black/40 border border-electric-purple/20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <h3 className="text-xl font-bold gradient-text mb-4">Deep X Analytics</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold gradient-text">AI-First Platform & Deep Analytics</h3>
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-electric-purple to-neon-pink blur-sm opacity-50" /> {/* Glow effect */}
+                  <div className="h-0.5 w-32 bg-gradient-to-r from-electric-purple to-neon-pink relative" /> {/* Single line, slightly longer */}
+                </div>
+                <div className="text-2xl text-electric-purple/80 font-semibold">04</div>
+              </div>
+            </div>
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                'Advanced KOL verification system tracking past performance',
-                'Advanced NLP context based social analysis',
-                'Performance-based ranking'
+                'Multi-Chain Intelligence Network',
+                'RAG-Powered Agent Workflow',
+                'Advanced KOL Performance Tracking',
+                'Unified Memory Across Platforms',
+                'Context-Based Social Analysis',
+                'Pre-Production Security Audit'
               ].map((item, index) => (
                 <motion.div 
                   key={index}
@@ -1365,37 +1441,6 @@ const slides: Slide[] = [
             </div>
           </motion.div>
   
-          {/* AI-First Platform Section */}
-          <motion.div 
-            className="glass-card p-6 bg-black/40 border border-electric-purple/20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="text-2xl text-electric-purple font-semibold">04</div>
-              <h3 className="text-xl font-bold gradient-text">AI-First Platform</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                'Multi-chain intelligence network',
-                'Unified memory across X and Telegram',
-                'RAG-powered agent workflow',
-                'Pre-production security audit'
-              ].map((item, index) => (
-                <motion.div 
-                  key={index}
-                  className="glass-card p-4"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + (index * 0.1) }}
-                >
-                  <p className="text-white/80">• {item}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Bottom Text */}
           <motion.div 
             className="text-center"
@@ -1405,8 +1450,8 @@ const slides: Slide[] = [
           >
             <p className="text-lg text-white/80">
               Building the most sophisticated AI trading ecosystem:<br />
-              <span className="text-electric-purple">Think intelligent A.I. interns</span> and a 
-              <span className="text-neon-pink"> leaderboard-based trading strategies</span> with copy-trading
+              <span className="text-electric-purple">Think Intelligent AI Agents</span> with 
+              <span className="text-neon-pink"> Leaderboard-Driven Trading Strategies</span> and Copy-Trading
             </p>
           </motion.div>
         </div>
@@ -1426,12 +1471,20 @@ const slides: Slide[] = [
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="text-xl font-bold mb-6 gradient-text">Current Solutions</h3>
+            <h3 className="text-xl font-bold mb-6 gradient-text">Market Landscape</h3>
             <ul className="space-y-4 text-white/80">
-              <li>• Spectral Labs - Trading agents without social features</li>
-              <li>• Noks - Limited intelligence integration</li>
-              <li>• Other AI agents - Potential collaboration opportunities</li>
-              <li>• Agent Launchers (Virtuals, vvaifu) - Different focus</li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Trading Agents: Spectral, Noks
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Community Tools: AI Agent Layer, Basic Automation
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> AI Infrastructure: ai16z Eliza, Virtuals
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Early Adoption: DeFi & Privacy Protocols, Leading Solana Meme
+              </li>
             </ul>
           </motion.div>
 
@@ -1442,66 +1495,103 @@ const slides: Slide[] = [
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-xl font-bold mb-6 gradient-text">Soul Agents Edge</h3>
+            <h3 className="text-xl font-bold mb-6 gradient-text">Soul Agents Advantage</h3>
             <ul className="space-y-4 text-white/80">
-              <li>• Full-stack solution (trading + social)</li>
-              <li>• Advanced AI integration (RAG + Memory)</li>
-              <li>• Copy-trading marketplace</li>
-              <li>• Ready-made, customizable agents</li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Unified Trading & Social Platform
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Advanced AI with Cross-Platform Memory
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Performance-Based Strategy Marketplace
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Customizable Agent Templates
+              </li>
             </ul>
           </motion.div>
         </div>
+
+        {/* Bottom Section: Key Differentiators */}
+        <motion.div 
+          className="glass-card p-8 bg-black/40 border border-electric-purple/20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <h3 className="text-xl font-bold gradient-text mb-6">Key Differentiators</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              'End-to-End Integration',
+              'Multi-Chain Intelligence',
+              'Community-Driven Growth',
+              'Verified Performance Data',
+              'Automated Risk Management',
+              'Rapid Agent Deployment'
+            ].map((item, index) => (
+              <motion.div 
+                key={index}
+                className="glass-card p-4"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + (index * 0.1) }}
+              >
+                <p className="text-white/80">• {item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </SlideLayout>
     ),
-  },  
+  },
   {
     id: 9,
     title: "Dual Revenue Streams",
     content: (
       <SlideLayout title="Dual Revenue Streams" slideNumber={9}>
-        <div className="space-y-8">
-          {/* Revenue Streams Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {/* Marketing Service */}
             <motion.div 
               className="glass-card p-6"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.01 }}
             >
-              <h3 className="text-xl font-bold mb-6 gradient-text">Marketing Service</h3>
-              
-              <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <h4 className="text-lg font-semibold mb-3">Subscription Model:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• Basic: <span className="text-electric-purple">$499/month</span></li>
-                    <li>• Pro: <span className="text-electric-purple">$999/month</span></li>
+              <h3 className="text-xl font-bold mb-4 gradient-text">Marketing Service</h3>
+              <div className="space-y-4">
+                <motion.div className="glass-card p-3 bg-black/20">
+                  <h4 className="text-base font-semibold mb-2 text-electric-purple/90">Core Services:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex justify-between items-center">
+                      <span>• Basic Plan</span>
+                      <span className="text-electric-purple font-bold">$499/mo</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Pro Plan</span>
+                      <span className="text-electric-purple font-bold">$999/mo</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Early Discounts</span>
+                      <span className="text-electric-purple font-bold">Up to 80%</span>
+                    </li>
                   </ul>
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2">2024 Target:</h4>
-                  <p className="text-electric-purple font-bold">10 clients ($80k annual)</p>
-                </motion.div>
+                <div className="grid grid-cols-2 gap-3">
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">2025 Target:</h4>
+                    <p className="text-lg text-electric-purple font-bold">50 clients</p>
+                    <p className="text-xs text-white/60">($400k annual)</p>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
-                  <p className="text-electric-purple font-bold">50 clients ($400k annual)</p>
-                </motion.div>
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">2026 Target:</h4>
+                    <p className="text-lg text-electric-purple font-bold">150 clients</p>
+                    <p className="text-xs text-white/60">($1.2M annual)</p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
 
@@ -1511,90 +1601,95 @@ const slides: Slide[] = [
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.01 }}
             >
-              <h3 className="text-xl font-bold mb-6 gradient-text">Trading Platform</h3>
-              
-              <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <h4 className="text-lg font-semibold mb-3">Transaction Model:</h4>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• 1% fee per trade</li>
-                    <li>• 50% to strategy creators</li>
+              <h3 className="text-xl font-bold mb-4 gradient-text">Trading Platform</h3>
+              <div className="space-y-4">
+                <motion.div className="glass-card p-3 bg-black/20">
+                  <h4 className="text-base font-semibold mb-2 text-neon-pink/90">Revenue Model:</h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex justify-between items-center">
+                      <span>• Trading Fee</span>
+                      <span className="text-neon-pink font-bold">1%</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Creator Share</span>
+                      <span className="text-neon-pink font-bold">50%</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• $SOUL Governance</span>
+                      <span className="text-neon-pink font-bold">Q2 2025</span>
+                    </li>
                   </ul>
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2">2024 Target:</h4>
-                  <p className="text-neon-pink font-bold">$2M monthly volume</p>
-                  <p className="text-sm text-white/60">($220k annual at 0.8% fee)</p>
-                </motion.div>
+                <div className="grid grid-cols-2 gap-3">
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">2025 Target:</h4>
+                    <p className="text-lg text-neon-pink font-bold">$10M monthly volume</p>
+                    <p className="text-xs text-white/60">($960k annual)</p>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
-                  <p className="text-neon-pink font-bold">$10M monthly volume</p>
-                  <p className="text-sm text-white/60">($960k annual at 0.8% fee)</p>
-                </motion.div>
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">2026 Target:</h4>
+                    <p className="text-lg text-neon-pink font-bold">$25M monthly volume</p>
+                    <p className="text-xs text-white/60">($2.4M annual)</p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Additional Revenue Streams Section */}
-          <motion.div 
-            className="glass-card p-6 bg-black/40 border border-electric-purple/20 md:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <h3 className="text-xl font-bold gradient-text">Additional Revenue Streams</h3>
-              <span className="px-3 py-1 text-sm bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
-                Growth Potential
-              </span>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                'Custom AI agent deployments ($499-999/mo)',
-                'Trading fees from validated strategies',
-                'Strategy marketplace with leaderboard'
-              ].map((item, index) => (
-                <motion.div 
-                  key={index}
-                  className="glass-card p-4"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + (index * 0.1) }}
-                >
-                  <p className="text-white/80">• {item}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          {/* Bottom Chart and Projection */}
+          <div className="space-y-4">
+            <motion.div 
+              className="glass-card p-6 bg-black/20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {/* Revenue Growth Chart */}
+              <div className="relative h-24 w-full flex items-end justify-between gap-1 mb-4">
 
-          {/* Bottom Projection */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-          >
-            <p className="text-lg text-white/80">
-              Projected <span className="text-electric-purple font-bold">$300K</span> revenue in 2024, 
-              scaling to <span className="text-neon-pink font-bold">$1.36M</span> in 2025
-            </p>
-          </motion.div>
+                {/* Bars with Quarterly Revenue */}
+                {[
+                  { month: 'Q4 24', height: 'h-4', value: '30K', emoji: '🙂' },
+                  { month: 'Q1 25', height: 'h-8', value: '120K', emoji: '😊' },
+                  { month: 'Q2 25', height: 'h-12', value: '280K', emoji: '😄' },
+                  { month: 'Q3 25', height: 'h-16', value: '420K', emoji: '🤩' },
+                  { month: 'Q4 25', height: 'h-20', value: '540K', emoji: '🚀' },
+                  { month: 'Q1 26', height: 'h-24', value: '700K', emoji: '💫' },
+                  { month: 'Q2 26', height: 'h-28', value: '800K', emoji: '✨' },
+                  { month: 'Q3 26', height: 'h-30', value: '950K', emoji: '🌟' },
+                  { month: 'Q4 26', height: 'h-32', value: '1.1M', emoji: '💎' }
+                ].map((item, index) => (
+                    <div key={index} className="flex flex-col items-center flex-1">
+                      <motion.div 
+                        className="text-xl mb-2"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.6 + (index * 0.1) }}
+                      >
+                        {item.emoji}
+                      </motion.div>
+                      <motion.div 
+                        className={`w-full ${item.height} rounded-t bg-gradient-to-t from-electric-purple to-neon-pink opacity-60`}
+                        initial={{ height: 0 }}
+                        animate={{ height: 'auto' }}
+                        transition={{ delay: 0.8 + (index * 0.1) }}
+                      />
+                      <p className="text-xs text-white/60 mt-1">{item.month}</p>
+                      <p className="text-xs text-white/90 font-bold">${item.value}</p>
+                    </div>
+                  ))}
+              </div>
+
+              {/* Projection Text */}
+              <p className="text-lg text-white/90 text-center">
+                Projected <span className="text-electric-purple font-bold">$1.36M</span> annual revenue in 2025, 
+                scaling to <span className="text-neon-pink font-bold">$3.6M</span> annual revenue in 2026
+              </p>
+            </motion.div>
+          </div>
         </div>
       </SlideLayout>
     ),
@@ -1609,121 +1704,112 @@ const slides: Slide[] = [
           <div className="grid md:grid-cols-3 gap-8">
             {/* CEO */}
             <motion.div 
-              className="glass-card p-6"
+              className="glass-card p-6 flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
-                className="flex flex-col items-center mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
+              <div className="flex flex-col items-center mb-4">
                 <img 
-                  src="/placeholder-avatar2.png" 
+                  src="/adam.png" 
                   alt="Adam Zasada" 
                   className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple"
                 />
                 <h3 className="text-xl font-bold gradient-text">Adam Zasada</h3>
-                <p className="text-white/60">CEO & co-founder</p>
-              </motion.div>
-              <motion.ul 
-                className="space-y-2 text-sm text-white/80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <li>• 0xKYC founder (backed by Outlier Ventures, BuffiCorn & Celestia's CTO)</li>
-                <li>• Ecosystem & Product Lead at Hinkal (Privacy)</li>
-                <li>• Growth at Elympics</li>
-                <li>• LSE grad (6y exp in prod mgmt)</li>
-              </motion.ul>
+                <p className="text-white/60">CEO & Co-Founder</p>
+              </div>
+              <div className="bg-black/20 rounded-lg p-4 flex-grow">
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li>• 0xKYC Founder (Backed by Outlier Ventures, BuffiCorn & Celestia's CTO)</li>
+                  <li>• Ecosystem & Product Lead at Hinkal</li>
+                  <li>• Growth at Elympics</li>
+                  <li>• LSE Grad & Experienced PM</li>
+                </ul>
+              </div>
             </motion.div>
-
+  
             {/* CAIO */}
             <motion.div 
-              className="glass-card p-6"
+              className="glass-card p-6 flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
-                className="flex flex-col items-center mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
+              <div className="flex flex-col items-center mb-4">
                 <img 
-                  src="/placeholder-avatar2.png" 
+                  src="/ola.png" 
                   alt="Aleksandra Zajączkowska" 
                   className="w-24 h-24 rounded-full mb-4 border-2 border-neon-pink"
                 />
                 <h3 className="text-xl font-bold gradient-text">Aleksandra Zajączkowska</h3>
-                <p className="text-white/60">CAIO & co-founder</p>
-              </motion.div>
-              <motion.ul 
-                className="space-y-2 text-sm text-white/80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <li>• 6 years of experience as an A.I. Engineer specializing in LLMs, Agent Workflows, RAG systems, and explainable AI</li>
-                <li>• Master Thesis in "Social Business Intelligence" from CBS (Copenhagen Business School)</li>
-              </motion.ul>
+                <p className="text-white/60">CAIO & Co-Founder</p>
+              </div>
+              <div className="bg-black/20 rounded-lg p-4 flex-grow">
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li>• Expert in LLMs & Agent Workflows</li>
+                  <li>• Specializing in RAG Systems & AI</li>
+                  <li>• 6 Years as A.I. Engineer</li>
+                  <li>• CBS Graduate with a Master Thesis in Social Business Intelligence</li>
+                </ul>
+              </div>
             </motion.div>
-
+  
             {/* CBDO */}
             <motion.div 
-              className="glass-card p-6"
+              className="glass-card p-6 flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
-                className="flex flex-col items-center mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
+              <div className="flex flex-col items-center mb-4">
                 <img 
                   src="/placeholder-avatar2.png" 
-                  alt="Peter Makowski" 
+                  alt="Stealth" 
                   className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple/50"
                 />
-                <h3 className="text-xl font-bold gradient-text">Peter Makowski</h3>
-                <p className="text-white/60">CBDO & co-founder</p>
-              </motion.div>
-              <motion.ul 
-                className="space-y-2 text-sm text-white/80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                <li>• CBDO (leading Web3 startup)</li>
-                <li>• Co-founder of a successful exit crypto startup</li>
-                <li>• Experienced across multiple leading Web3 companies</li>
-                <li>• Avid attendee of conferences</li>
-              </motion.ul>
+                <h3 className="text-xl font-bold gradient-text">Stealth</h3>
+                <p className="text-white/60">CBDO & Co-Founder</p>
+              </div>
+              <div className="bg-black/20 rounded-lg p-4 flex-grow">
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li>• Leading Web3 Startup CBDO</li>
+                  <li>• Co-Founder at exited Crypto Startup</li>
+                  <li>• Ex-Many Leading Web3 Companies and Founder of Own Web3 Marketing Agency</li>
+                  <li>• Avid Attendee of Conferences</li>
+                </ul>
+              </div>
             </motion.div>
           </div>
-
+  
           {/* Core Team & Advisors */}
           <motion.div 
-            className="glass-card p-4 text-center text-sm text-white/70"
+            className="glass-card p-6 text-center bg-black/20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <p>
-              <span className="text-electric-purple">Core:</span> Sebastian Ołdak (Web3 Dev & co-founder)<br />
-              <span className="text-neon-pink">Advisors:</span> Tom (ProtoKOLs)
-            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-electric-purple font-semibold mb-2">Core Team</h4>
+                <div className="text-white/80">
+                  <p className="text-sm">
+                    <span className="font-semibold">Sebastian Ołdak</span> - Web3 Dev & Co-Founder
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-neon-pink font-semibold mb-2">Advisors</h4>
+                <div className="text-white/80">
+                  <p className="text-sm">
+                  <span className="font-semibold">Tom</span> - Co-Founder of ProtoKOLs &nbsp;&nbsp;&nbsp; <span className="font-semibold">ExHuman</span> - thePolacy</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
-
+  
           {/* Bottom Text */}
           <motion.div 
             className="text-center"
@@ -1747,7 +1833,6 @@ const slides: Slide[] = [
     content: (
       <SlideLayout title="Growth Strategy & Roadmap" slideNumber={11}>
         <div className="space-y-8">
-          {/* Two Column Layout */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Strategic Focus */}
             <motion.div 
@@ -1765,7 +1850,7 @@ const slides: Slide[] = [
                 <h3 className="text-xl font-bold mb-6 gradient-text">
                   Strategic Focus (budget allocation)
                 </h3>
-
+  
                 <div className="space-y-6">
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -1775,30 +1860,34 @@ const slides: Slide[] = [
                     <h4 className="text-lg font-semibold text-electric-purple mb-3">
                       Tech Development (60%)
                     </h4>
-                    <p className="text-white/80">
-                      Advanced agent network with multi-chain intelligence (EVM and Solana) 
-                      and predictive trading capabilities
-                    </p>
+                    <ul className="space-y-2 text-white/80">
+                      <li>• Natural language strategy creation</li>
+                      <li>• Multi-chain data analysis & backtesting</li>
+                      <li>• Social intelligence with sentiment analysis</li>
+                      <li>• AI-powered risk management system</li>
+                      <li>• Cross-platform integrations (Discord, X, TG and Farcaster)</li>
+                    </ul>
                   </motion.div>
-
+  
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
                     <h4 className="text-lg font-semibold text-neon-pink mb-3">
-                      Product Growth & Partnerships (40%)
+                      Growth & Operations (40%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Integration with multiple AI models for trading intelligence</li>
-                      <li>• Advanced X posting agents with multi-model capabilities</li>
-                      <li className="text-electric-purple">• Pipeline: Multiple projects interested in AI agent setup</li>
+                      <li>• Core team expansion (tech & product)</li>
+                      <li>• Full-time designer for brand & narrative</li>
+                      <li>• Legal & compliance framework</li>
+                      <li className="text-electric-purple">• Marketing & community development</li>
                     </ul>
                   </motion.div>
                 </div>
               </motion.div>
             </motion.div>
-
+  
             {/* Key Milestones */}
             <motion.div 
               className="glass-card p-6"
@@ -1813,28 +1902,31 @@ const slides: Slide[] = [
                 transition={{ delay: 0.2 }}
               >
                 <h3 className="text-xl font-bold mb-6 gradient-text">Key Milestones</h3>
-
+  
                 <div className="space-y-6">
                   {[
                     {
-                      quarter: "Q4 2023",
+                      quarter: "Q4 2024",
                       items: [
-                        "Initial AI launch (KPI: 1K active users)",
-                        "Basic trading features development"
+                        "CryptoBunny AI viral launch (1K followers)",
+                        "First 5 enterprise clients (80% early bird)",
+                        "Core team formation (5 members)"
                       ]
                     },
                     {
-                      quarter: "Q1 2024",
+                      quarter: "H1 2025",
                       items: [
-                        "Strategy marketplace with EVM trading (KPI: 25+ verified strategies)",
-                        "Community building (KPI: 10K+ followers)"
+                        "Strategy marketplace & copy trading",
+                        "25 clients @ $499-999/mo ($150K/quarter)",
+                        "$25M monthly volume ($75K trading fees)"
                       ]
                     },
                     {
-                      quarter: "Q2 2024",
+                      quarter: "H2 2025",
                       items: [
-                        "Advanced AI features & copy-trading beta",
-                        "First enterprise X agents deployment"
+                        "$SOUL token & governance launch",
+                        "50 enterprise clients ($400K annual)",
+                        "$100M volume ($960K annual trading)"
                       ]
                     }
                   ].map((milestone, index) => (
@@ -1858,7 +1950,7 @@ const slides: Slide[] = [
               </motion.div>
             </motion.div>
           </div>
-
+  
           {/* Bottom Vision */}
           <motion.div 
             className="glass-card p-4 text-center"
@@ -1867,8 +1959,8 @@ const slides: Slide[] = [
             transition={{ delay: 0.6 }}
           >
             <p className="text-lg text-white/80">
-              Building an intelligent network of <span className="text-electric-purple">AI agents</span> powered by multi-source data,<br />
-              combining <span className="text-neon-pink">X posting</span> with <span className="text-electric-purple">risk-adjusted trading strategies</span>
+              Building the most sophisticated <span className="text-electric-purple">AI trading ecosystem</span> with<br />
+              <span className="text-neon-pink">Intelligent AI Agents</span> and <span className="text-electric-purple">Leaderboard-Driven Trading Strategies</span>
             </p>
           </motion.div>
         </div>
@@ -1886,10 +1978,13 @@ const slides: Slide[] = [
             {/* Distribution */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.02 }}
+              initial={{ opacity: 0, y: 20, rotateX: -15 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.5, type: "spring" }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" 
+              }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -1898,36 +1993,51 @@ const slides: Slide[] = [
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold gradient-text">Distribution</h3>
-                  <span role="img" aria-label="chart" className="text-2xl">📊</span>
+                  <motion.span 
+                    role="img" 
+                    aria-label="chart" 
+                    className="text-2xl"
+                    animate={{ 
+                      rotate: [0, -10, 10, -10, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 5 }}
+                  >
+                    📊
+                  </motion.span>
                 </div>
                 <ul className="space-y-4">
                   {[
-                    { text: '80% Fair Launch Pool', color: 'text-electric-purple' },
-                    { text: '10% Team (6mo vest)', color: 'text-neon-pink' },
-                    { text: '10% Initial Investors (6mo vest)', color: 'text-neon-pink' },
-                    { text: 'Subject to launchpad rules etc.', color: 'text-white/60', small: true }
+                    { text: '80% Fair Launch Pool', color: 'text-electric-purple', detail: '(800M tokens)' },
+                    { text: '10% Team Allocation', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
+                    { text: '10% Initial Investors', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
+                    { text: 'No team tokens at TGE', color: 'text-white/60', small: true },
+                    { text: 'Linear vesting after cliff', color: 'text-white/60', small: true }
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
                       className={`${item.color} ${item.small ? 'text-sm' : ''}`}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + (index * 0.1) }}
                     >
-                      • {item.text}
+                      • {item.text} <span className="text-white/60">{item.detail}</span>
                     </motion.li>
                   ))}
                 </ul>
               </motion.div>
             </motion.div>
-
+  
             {/* Supply Details */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              initial={{ opacity: 0, y: 20, rotateX: -15 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, type: "spring" }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 0 20px rgba(236, 72, 153, 0.3)" 
+              }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -1936,17 +2046,30 @@ const slides: Slide[] = [
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold gradient-text">Supply Details</h3>
-                  <span role="img" aria-label="token" className="text-2xl">🪙</span>
+                  <motion.span 
+                    role="img" 
+                    aria-label="token" 
+                    className="text-2xl"
+                    animate={{ 
+                      rotateY: [0, 360],
+                      scale: [1, 1.2, 1]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }}
+                  >
+                    🪙
+                  </motion.span>
                 </div>
                 <ul className="space-y-4 text-white/80">
                   {[
                     'Total Supply: 1,000,000,000 $SOUL',
-                    '5% tax first 6 months',
-                    '50% instant unlock,\n50% linear 6mo'
+                    'Initial Tax: 5% (first 6 months)',
+                    'Fair Launch: 50% instant unlock',
+                    'Vesting: 50% linear over 6 months',
+                    'Min. Hold: 1000 $SOUL for rewards'
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + (index * 0.1) }}
                     >
@@ -1956,14 +2079,17 @@ const slides: Slide[] = [
                 </ul>
               </motion.div>
             </motion.div>
-
+  
             {/* Revenue Share */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              initial={{ opacity: 0, y: 20, rotateX: -15 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" 
+              }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -1972,18 +2098,31 @@ const slides: Slide[] = [
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold gradient-text">Revenue Share</h3>
-                  <span role="img" aria-label="money" className="text-2xl">💸</span>
+                  <motion.span 
+                    role="img" 
+                    aria-label="money" 
+                    className="text-2xl"
+                    animate={{ 
+                      y: [0, -10, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  >
+                    💸
+                  </motion.span>
                 </div>
                 <ul className="space-y-4">
                   {[
-                    'Buy-back and burn mechanism from platform fees',
-                    'Staking rewards program (after 6 months)',
-                    'Reduced tax structure after initial period'
+                    '30% of fees for buy-back & burn',
+                    '20% for staking rewards (6mo lock)',
+                    'Tax reduces to 2% after 6 months',
+                    'Governance voting rights',
+                    'Platform fee discounts for holders'
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
                       className="text-white/80"
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 + (index * 0.1) }}
                     >
@@ -1994,19 +2133,42 @@ const slides: Slide[] = [
               </motion.div>
             </motion.div>
           </div>
-
+  
           {/* Bottom Text */}
           <motion.div 
             className="glass-card p-4 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
+            transition={{ 
+              duration: 0.5, 
+              delay: 0.7,
+              type: "spring",
+              stiffness: 100 
+            }}
           >
             <p className="text-lg text-white/80">
               Modern tokenomics focused on sustainable growth:<br />
-              <span className="text-electric-purple">Fair launch</span>, 
-              <span className="text-neon-pink"> buy-back & burn</span>, and 
-              <span className="text-electric-purple"> delayed staking rewards</span>
+              <motion.span 
+                className="text-electric-purple"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Fair launch
+              </motion.span>, 
+              <motion.span 
+                className="text-neon-pink"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
+              >
+                buy-back & burn
+              </motion.span>, and 
+              <motion.span 
+                className="text-electric-purple"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1.4 }}
+              >
+                delayed staking rewards
+              </motion.span>
             </p>
           </motion.div>
         </div>

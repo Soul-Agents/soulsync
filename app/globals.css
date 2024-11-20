@@ -301,3 +301,6 @@ html.deck-view body {
 .shadow-neon-sm {
   box-shadow: 0 0 15px rgba(255, 28, 247, 0.1);
 }
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.3));
+}
