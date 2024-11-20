@@ -708,28 +708,33 @@ const slides: Slide[] = [
     title: "Two Problems, One Solution",
     content: (
       <SlideLayout title="Two Problems, One Solution" slideNumber={2}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {/* Left Column - Outreach & Growth */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-8 hover:border-neon-pink/30 transition-all duration-300"
+            className="glass-card p-4 md:p-8 hover:border-neon-pink/30 transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-8 text-center text-neon-pink">
-              Web3 Marketing Challenges
-            </h3>
-
-            <div className="mb-8">
+            <div className="flex flex-col items-center">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-neon-pink">
+                Web3 Marketing Challenges
+              </h3>
+              <p className="text-xs text-white/70 mb-4 italic">
+                Hinkal and Twyne committed to using our A.I. Agent at launch.
+              </p>
+            </div>
+  
+            <div className="mb-4 md:mb-8 scale-90">
               <GrowthChart />
             </div>
-
-            <div className="space-y-8">
+  
+            <div className="space-y-4 md:space-y-8">
               <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
+                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
                   Problems
                 </h4>
-                <motion.ul className="space-y-3">
+                <motion.ul className="space-y-2">
                   {[
                     "High KOL costs ($10-20k monthly)",
                     "Time-consuming manual outreach",
@@ -741,29 +746,19 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
                   ))}
                 </motion.ul>
               </div>
-
-              {/* Add the new Early Adoption section here */}
-              <motion.div className="mt-4 glass-card p-3 bg-black/20">
-                <h4 className="text-base font-semibold mb-2 text-neon-pink/90">
-                  Early Adoption:
-                </h4>
-                <p className="text-white/90">
-                  • 8 projects committed to using our Marketing Agent at launch
-                </p>
-              </motion.div>
-
+  
               <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
+                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
                   Users
                 </h4>
-                <motion.ul className="space-y-3">
+                <motion.ul className="space-y-2">
                   {[
                     "Web3 Projects",
                     "Marketing Teams",
@@ -775,7 +770,7 @@ const slides: Slide[] = [
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
@@ -784,23 +779,23 @@ const slides: Slide[] = [
               </div>
             </div>
           </motion.div>
-
-          {/* Right Column - Trading */}
+  
+          {/* Right column remains similar but with matching adjustments */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-8 hover:border-electric-purple/30 transition-all duration-300"
+            className="glass-card p-4 md:p-8 hover:border-electric-purple/30 transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-8 text-center text-electric-purple">
+            <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-electric-purple">
               Asymmetrical Information in Trading
             </h3>
-
-            <div className="mb-8">
+  
+            <div className="mb-4 md:mb-8 scale-90">
               <TradingDashboard />
             </div>
-
-            <div className="space-y-8">
+  
+            <div className="space-y-4 md:space-y-8">
               <div>
                 <h4 className="text-2xl font-semibold mb-4 gradient-text">
                   Problems
