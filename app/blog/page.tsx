@@ -16,6 +16,45 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "Crypto Bunny Takes Flight: Our First AI Agent Goes Live",
+    description:
+      "Crypto Bunny has officially launched on X, marking the beginning of our journey to revolutionize AI-driven community engagement in Web3.",
+    date: "Nov 20, 2024",
+    author: "Adam",
+    readTime: "3 min read",
+    category: "Launch Updates",
+    content: `
+      Today marks a significant milestone for Soul Agents – Crypto Bunny (@cryptobunny__) has officially gone live on X! While she's starting with basic autonomous tweeting capabilities, this launch represents just the beginning of her journey.
+
+      What Crypto Bunny Can Do Today:
+      • Autonomous tweeting about market trends
+      • Sharing educational content about crypto
+      • Learning from interactions in real-time
+
+      Growing Capabilities:
+      We believe in launching early and improving continuously. Over the coming weeks, you'll see Crypto Bunny gradually expand her capabilities:
+      • Enhanced market analysis
+      • Deep community engagement
+      • Multi-platform presence
+      • Advanced trading insights
+
+      Why Start Small?
+      Our approach is deliberate – we want to ensure each feature is perfectly tuned before rolling it out. This allows us to:
+      • Monitor and optimize performance
+      • Gather community feedback
+      • Ensure reliability and security
+      • Build trust through transparency
+
+      What's Next?
+      While today's launch focuses on autonomous tweeting, we're already working on expanding Crypto Bunny's capabilities. Each day will bring new improvements and features as she learns and grows alongside our community.
+
+      Join Us:
+      We invite you to be part of this journey! Follow <Link href="https://x.com/cryptobunny__" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">@cryptobunny__</Link> on X to watch her evolution and interact with one of the first truly autonomous AI agents in the Web3 space.
+
+      Thank you to everyone who has supported us on this journey. This is just the beginning – stay tuned for daily improvements and exciting updates!
+    `,
+  },
+  {
     title: "Crypto Bunny Launch Update: Fine-tuning for Excellence",
     description:
       "A brief update on the deployment timeline for our first AI agent, Crypto Bunny, as we ensure everything is working smoothly for our community.",
