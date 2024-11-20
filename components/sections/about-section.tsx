@@ -35,18 +35,6 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-
-          <div className="mt-12">
-            <p className="text-white/80 mb-4">
-              Want to learn more about Soul AI Agents?
-            </p>
-            <a
-              href="/deck"
-              className="inline-block px-6 py-3 rounded-lg bg-electric-purple hover:bg-electric-purple/80 transition-colors text-white font-semibold"
-            >
-              View Our Deck →
-            </a>
-          </div>
         </div>
       </div>
     </section>

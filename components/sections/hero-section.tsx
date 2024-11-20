@@ -119,17 +119,16 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
-
           <div className="animate-fade-in-delay-2">
             <a
-              href="https://forms.gle/zxe1hgrbL8rbTELL7"
+              href="/deck"
               target="_blank"
               rel="noopener noreferrer"
               className="button-gradient inline-flex items-center gap-2 px-8 py-6 text-lg font-bold text-white 
                        hover:opacity-90 transition-all transform hover:scale-105 
                        shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
             >
-              <span>Get Started</span>
+              <span>Soul Agents</span>
               <svg
                 className="w-5 h-5"
                 fill="none"
