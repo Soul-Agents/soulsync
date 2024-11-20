@@ -72,7 +72,7 @@ export default function HeroSection() {
                 <img
                   src="/placeholder-avatar2.png"
                   alt="Community"
-                  className="relative w-48 h-48 rounded-full border-2 border-electric-purple"
+                  className="relative w-24 h-24 sm:w-48 sm:h-48 rounded-full border-2 border-electric-purple"
                 />
               </a>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-electric-purple/30">
@@ -80,8 +80,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="w-16 h-16 rounded-full bg-black/40 border border-white/20 flex items-center justify-center">
-              <span className="text-2xl">⚡️</span>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-black/40 border border-white/20 flex items-center justify-center">
+              <span className="text-xl sm:text-2xl">⚡️</span>
             </div>
 
             <div className="relative">
@@ -95,7 +95,7 @@ export default function HeroSection() {
                 <img
                   src="/trading-ai-avatar.png"
                   alt="Trading"
-                  className="relative w-48 h-48 rounded-full border-2 border-neon-pink"
+                  className="relative w-24 h-24 sm:w-48 sm:h-48 rounded-full border-2 border-neon-pink"
                 />
               </a>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-neon-pink/30">
@@ -121,14 +121,14 @@ export default function HeroSection() {
           </div>
           <div className="animate-fade-in-delay-2">
             <a
-              href="/deck"
+              href="https://forms.gle/zxe1hgrbL8rbTELL7"
               target="_blank"
               rel="noopener noreferrer"
               className="button-gradient inline-flex items-center gap-2 px-8 py-6 text-lg font-bold text-white 
                        hover:opacity-90 transition-all transform hover:scale-105 
                        shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
             >
-              <span>Soul Agents</span>
+              <span>Get Started</span>
               <svg
                 className="w-5 h-5"
                 fill="none"
