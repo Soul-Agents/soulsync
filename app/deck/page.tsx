@@ -2011,7 +2011,6 @@ const slides: Slide[] = [
                     { text: '80% Fair Launch Pool', color: 'text-electric-purple', detail: '(800M tokens)' },
                     { text: '10% Team Allocation', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
                     { text: '10% Initial Investors', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
-                    { text: 'No team tokens at TGE', color: 'text-white/60', small: true },
                     { text: 'Linear vesting after cliff', color: 'text-white/60', small: true }
                   ].map((item, index) => (
                     <motion.li 
