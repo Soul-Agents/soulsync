@@ -529,7 +529,7 @@ const slides: Slide[] = [
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            AI-Powered <span className="gradient-text">Community Management</span> & <span className="text-neon-pink">Trading</span>
+            AI-Powered <span className="gradient-text">Social Intelligence</span> & <span className="text-neon-pink">Copy Trading</span>
           </motion.p>
           
           {/* Dual Image Layout */}
@@ -542,21 +542,28 @@ const slides: Slide[] = [
               className="relative"
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-transparent rounded-full blur opacity-50"></div>
-              <img 
-                src="/placeholder-avatar2.png"
-                alt="Community AI"
-                className="relative w-48 h-48 rounded-full border-2 border-electric-purple"
-              />
+              <a 
+                href="https://x.com/cryptobunny__" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block relative hover:scale-105 transition-transform duration-200"
+              >
+                <img 
+                  src="/placeholder-avatar2.png"
+                  alt="Community"
+                  className="relative w-48 h-48 rounded-full border-2 border-electric-purple"
+                />
+              </a>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-electric-purple/30"
               >
-                <span className="text-sm text-electric-purple">Community AI</span>
+                <span className="text-sm text-electric-purple">Community</span>
               </motion.div>
             </motion.div>
-
+  
             {/* Connecting Element */}
             <motion.div
               initial={{ scale: 0 }}
@@ -566,7 +573,7 @@ const slides: Slide[] = [
             >
               <span className="text-2xl">⚡️</span>
             </motion.div>
-
+  
             {/* Trading AI Side */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -575,22 +582,29 @@ const slides: Slide[] = [
               className="relative"
             >
               <div className="absolute -inset-0.5 bg-gradient-to-l from-neon-pink to-transparent rounded-full blur opacity-50"></div>
-              <img 
-                src="/trading-ai-avatar.png" // You'll need this image
-                alt="Trading AI"
-                className="relative w-48 h-48 rounded-full border-2 border-neon-pink"
-              />
+              <a 
+                href="https://x.com/soul_agents" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block relative hover:scale-105 transition-transform duration-200"
+              >
+                <img 
+                  src="/trading-ai-avatar.png"
+                  alt="Trading"
+                  className="relative w-48 h-48 rounded-full border-2 border-neon-pink"
+                />
+              </a>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-neon-pink/30"
               >
-                <span className="text-sm text-neon-pink">Trading AI</span>
+                <span className="text-sm text-neon-pink">Trading</span>
               </motion.div>
             </motion.div>
           </div>
-
+  
           {/* Value Proposition */}
           <motion.p 
             className="text-2xl gradient-text font-semibold mb-8"
@@ -600,26 +614,25 @@ const slides: Slide[] = [
           >
             eToro for A.I. Agent Trading
           </motion.p>
-
+  
           {/* Feature Badges */}
           <div className="flex justify-center gap-4 mb-8">
             {[
-              { text: "Multi-Chain Analysis", color: "electric-purple", delay: 0.8 },
-              { text: "Social Intelligence", color: "neon-pink", delay: 0.9 },
-              { text: "Copy Trading", color: "electric-purple", delay: 1.0 }
+              { text: "Intelligent 'Intern' Accounts", color: "neon-pink", delay: 0.8, noBorder: true },
+              { text: "Copy Trading", color: "electric-purple", delay: 0.9 },
             ].map((badge, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: badge.delay }}
-                className={`px-4 py-2 bg-black/40 backdrop-blur-sm rounded-lg border border-${badge.color}/20`}
+                className={`px-4 py-2 bg-black/40 backdrop-blur-sm rounded-lg ${!badge.noBorder ? `border border-${badge.color}/20` : ''}`}
               >
                 <span className={`text-${badge.color} text-sm font-medium`}>{badge.text}</span>
               </motion.div>
             ))}
           </div>
-
+  
           {/* Social Links */}
           <motion.div 
             className="flex justify-center gap-6"
@@ -627,14 +640,17 @@ const slides: Slide[] = [
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
           >
+            <a href="https://x.com/adag1oeth" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white flex items-center gap-2 transition-colors">
+              <span>Enquiries:</span>
+              <span className="gradient-text">@adag1oeth</span>
+            </a>
             <a href="https://x.com/soul_agents" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white flex items-center gap-2 transition-colors">
-              <span>X:</span>
+              <span>Soul X:</span>
               <span className="gradient-text">@soul_agents</span>
             </a>
-            <span className="text-white/40">•</span>
             <a href="https://t.me/soul_agents" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white flex items-center gap-2 transition-colors">
               <span>Telegram:</span>
-              <span className="gradient-text">@soul_agents</span>
+              <span className="gradient-text">t.me/soul_agents</span>
             </a>
           </motion.div>
         </div>
@@ -649,11 +665,10 @@ const slides: Slide[] = [
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Left Column - Outreach & Growth */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="glass-card p-8 hover:border-neon-pink/30 transition-all duration-300"
-            whileHover={{ scale: 1.01 }}
           >
             <h3 className="text-2xl font-bold mb-8 text-center text-neon-pink">
               Community Growth Issues
@@ -668,10 +683,10 @@ const slides: Slide[] = [
                 <h4 className="text-2xl font-semibold mb-4 gradient-text">Problems</h4>
                 <motion.ul className="space-y-3">
                   {[
-                    "$20k monthly on KOLs",
-                    "Manual outreach",
-                    "Poor organic growth",
-                    "Inconsistent messaging"
+                    "High KOL costs ($10-20k monthly)",
+                    "Time-consuming manual outreach",
+                    "Limited organic growth",
+                    "Inconsistent community engagement"
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -716,7 +731,6 @@ const slides: Slide[] = [
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="glass-card p-8 hover:border-electric-purple/30 transition-all duration-300"
-            whileHover={{ scale: 1.01 }}
           >
             <h3 className="text-2xl font-bold mb-8 text-center text-electric-purple">
               Asymmetrical Information in Trading
@@ -731,10 +745,10 @@ const slides: Slide[] = [
                 <h4 className="text-2xl font-semibold mb-4 gradient-text">Problems</h4>
                 <motion.ul className="space-y-3">
                   {[
-                    "Missed trading signals",
-                    "Complex market analysis",
-                    "Emotional decisions",
-                    "No strategy validation"
+                    "Delayed market signals",
+                    "Time-intensive analysis",
+                    "Emotional trading decisions",
+                    "Lack of strategy validation"
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -777,18 +791,14 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    title: "Live Demo",
+    title: "AI-Powered Community Engagement",
     content: (
-      <SlideLayout title="Live Demo" slideNumber={3}>
+      <SlideLayout title="AI-Powered Community Engagement" slideNumber={3}>
         <div className="space-y-8">
-          <div className="text-2xl text-electric-purple font-semibold mb-6">
-            Solution 1: AI-Powered Community Engagement
-          </div>
-
-          <div className="text-xl text-white/80 text-center mb-8">
+          <div className="text-2xl text-electric-purple font-semibold mb-6 text-center">
             Intelligent Context-Aware Responses
           </div>
-
+  
           <div className="space-y-6">
             {/* Original Tweet */}
             <Tweet 
@@ -797,7 +807,7 @@ const slides: Slide[] = [
               content="Anyone else seeing these weird patterns on $PEPE? Volume's acting strange 🤔"
               timestamp="2m"
             />
-
+  
             {/* Random Reply */}
             <Tweet 
               author="Moon Boy"
@@ -805,12 +815,12 @@ const slides: Slide[] = [
               content="To the moon! 🚀🚀🚀"
               timestamp="1m"
             />
-
+  
             {/* AI's Intelligent Response */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
+              transition={{ delay: 0.8 }}
             >
               <Tweet 
                 author="Crypto Bunny"
@@ -820,13 +830,13 @@ const slides: Slide[] = [
               />
             </motion.div>
           </div>
-
+  
           {/* Explanation */}
           <motion.div 
             className="mt-12 text-center text-white/70"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3 }}
+            transition={{ delay: 0.7 }}
           >
             <p>
               Our AI agents provide intelligent, data-driven insights by analyzing:<br/>
@@ -844,80 +854,129 @@ const slides: Slide[] = [
     title: "Strategy Marketplace",
     content: (
       <SlideLayout title="Strategy Marketplace" slideNumber={4}>
-        <div className="space-y-8">
-          <div className="text-2xl text-electric-purple font-semibold mb-6">
-            Solution 2: AI-Powered Trading Strategies
+        <div className="space-y-4 max-w-[1200px] mx-auto">
+          <div className="text-xl text-electric-purple font-bold mb-3 text-center tracking-tight">
+            Social Leaderboard for the best AI-Powered Strategies 
           </div>
-
-          <div className="glass-card p-6 mb-8">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-electric-purple">Top Performing Strategies</h3>
-              <span className="text-sm text-white/60">Last 30 days</span>
+  
+          <div className="glass-card p-4 backdrop-blur-lg border border-white/10 overflow-x-auto">
+            {/* Column Headers */}
+            <div className="grid grid-cols-[2fr_1fr_2fr_1fr_1fr_1fr_1fr_1fr_1fr] gap-2 text-white/80 text-xs mb-3 px-3 font-semibold tracking-wide border-b border-white/10 pb-2">
+              <span>Name</span>
+              <span>Risk</span>
+              <span>Strategy</span>
+              <span className="text-right pr-2">TVL</span>
+              <span className="text-right pr-2">Rev Share</span>
+              <span className="text-right pr-2">1H</span>
+              <span className="text-right pr-2">1D</span>
+              <span className="text-right pr-2">7D</span>
+              <span className="text-right pr-2">30D</span>
             </div>
-
-            <div className="space-y-4">
+  
+            <div className="space-y-1.5">
               {[
                 {
-                  name: "DeSci Gems Hunter",
-                  description: "Buy DeSci tokens <$3M mcap, verified by KOLs",
-                  returns: "+312%",
+                  handle: "@desci_hunter",
+                  strategy: "Buy DeSci tokens <$3M mcap",
                   tvl: "$1.2M",
-                  trades: 14,
-                  winRate: "86%"
+                  revShare: "$8.5K/mo",
+                  returns: { "1H": "-0.8%", "1D": "+5%", "7D": "+20%", "30D": "+312%" },
+                  risk: "High"
                 },
                 {
-                  name: "Momentum Rider",
-                  description: "Track whale accumulation + social sentiment",
-                  returns: "+156%",
+                  handle: "@momentum_ai",
+                  strategy: "Track whale accumulation",
                   tvl: "$2.8M",
-                  trades: 23,
-                  winRate: "78%"
+                  revShare: "$12.2K/mo",
+                  returns: { "1H": "+0.8%", "1D": "-2%", "7D": "+15%", "30D": "+156%" },
+                  risk: "Medium"
+                },
+                {
+                  handle: "@mev_master",
+                  strategy: "MEV opportunities & flashloans",
+                  tvl: "$890K",
+                  revShare: "$6.8K/mo",
+                  returns: { "1H": "+0.9%", "1D": "+4%", "7D": "-3%", "30D": "+145%" },
+                  risk: "High"
+                },
+                {
+                  handle: "@nft_signals",
+                  strategy: "NFT floor price momentum",
+                  tvl: "$650K",
+                  revShare: "$5.2K/mo",
+                  returns: { "1H": "-1.2%", "1D": "-3.5%", "7D": "+16%", "30D": "+128%" },
+                  risk: "Medium"
+                },
+                {
+                  handle: "@defi_yield",
+                  strategy: "Yield farming opportunities",
+                  tvl: "$1.5M",
+                  revShare: "$9.1K/mo",
+                  returns: { "1H": "+0.5%", "1D": "+2.8%", "7D": "+14%", "30D": "+120%" },
+                  risk: "Low"
                 }
               ].map((strategy, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  className="flex items-center gap-4 p-4 bg-black/20 rounded-lg"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
+                  className="grid grid-cols-[2fr_1fr_2fr_1fr_1fr_1fr_1fr_1fr_1fr] gap-2 items-center p-2.5 bg-black/40 rounded-md hover:bg-black/50 transition-all duration-200 border border-white/5"
                 >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h4 className="font-bold text-white">{strategy.name}</h4>
-                      <span className="px-2 py-1 text-xs bg-electric-purple/20 rounded-full text-electric-purple">
-                        {strategy.returns}
-                      </span>
-                    </div>
-                    <p className="text-sm text-white/70">{strategy.description}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm text-white/60">TVL: <span className="text-white">{strategy.tvl}</span></div>
-                    <div className="text-sm text-white/60">Win Rate: <span className="text-neon-pink">{strategy.winRate}</span></div>
-                  </div>
-                </motion.div>
+                  <span className="font-bold text-electric-purple text-xs tracking-wide pl-2">{strategy.handle}</span>
+                  <span className={`text-center px-2 py-0.5 rounded-full text-[10px] font-medium ${
+                    strategy.risk === "High" 
+                      ? "bg-neon-pink/10 text-neon-pink border border-neon-pink/20" 
+                      : strategy.risk === "Medium"
+                      ? "bg-electric-purple/10 text-electric-purple border border-electric-purple/20"
+                      : "bg-green-500/10 text-green-500 border border-green-500/20"
+                  }`}>
+                    {strategy.risk}
+                  </span>
+                  <span className="text-[11px] text-white/80 pl-2">{strategy.strategy}</span>
+                  <span className="text-right pr-2 font-medium text-white text-xs">{strategy.tvl}</span>
+                  <span className="text-right pr-2 font-medium text-aqua-blue text-xs glow-blue-sm">{strategy.revShare}</span>
+                  <span className={`text-right pr-2 font-medium text-xs ${
+                    strategy.returns["1H"].startsWith("+") 
+                      ? "text-neon-green glow-green-sm" 
+                      : "text-neon-pink glow-pink-sm"
+                  }`}>{strategy.returns["1H"]}</span>
+                  <span className={`text-right pr-2 font-medium text-xs ${
+                    strategy.returns["1D"].startsWith("+") 
+                      ? "text-neon-green glow-green-sm" 
+                      : "text-neon-pink glow-pink-sm"
+                  }`}>{strategy.returns["1D"]}</span>
+                  <span className={`text-right pr-2 font-medium text-xs ${
+                    strategy.returns["7D"].startsWith("+") 
+                      ? "text-neon-green glow-green-sm" 
+                      : "text-neon-pink glow-pink-sm"
+                  }`}>{strategy.returns["7D"]}</span>
+                  <motion.span 
+                    className="text-right pr-2 font-medium text-electric-purple text-xs glow-purple-md"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }}
+                  >{strategy.returns["30D"]}</motion.span>
+                </div>
               ))}
+              <div className="flex justify-center items-center p-2 bg-black/20 rounded-md text-white/30 text-lg font-bold border border-white/5">
+                ...
+              </div>
             </div>
           </div>
-
-          <motion.div 
-            className="glass-card p-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="text-center text-white/70">
-              <p className="mb-4">
-                Create custom strategies using natural language:<br/>
-                <span className="text-electric-purple">"Buy tokens under $5M mcap with increasing whale accumulation and positive sentiment from top 100 KOLs"</span>
-              </p>
-              <p className="text-sm">
-                Our AI validates and backtests strategies before deployment
-              </p>
-              <p className="text-sm mt-2 text-neon-pink">
-                Community governance oversees strategy optimization and TVL management of assets under A.I. Agents Management (with full user custody)
-              </p>
+  
+          <div className="glass-card p-4 backdrop-blur-lg border border-white/10">
+            <div className="text-center space-y-3">
+              <p className="text-sm text-white/80 font-medium">Create strategies using natural language:</p>
+              <div className="relative">
+                <p className="text-neon-pink text-sm sm:text-base font-medium px-6 py-3 bg-black/40 rounded-lg border border-neon-pink/20 shadow-neon-sm">
+                  "Buy tokens under $5M market cap, launched in the last 2 weeks, with positive sentiment and at least high trust 1 KOL shilling it"
+                </p>
+                <div className="absolute inset-0 bg-neon-pink/5 blur-xl rounded-lg"></div>
+              </div>
+              <p className="text-xs text-white/70">AI validates and backtests strategies before deployment.</p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </SlideLayout>
     ),
@@ -938,7 +997,7 @@ const slides: Slide[] = [
               {
                 icon: "/defined-logo-optimized.png",
                 title: "Trading Analytics",
-                desc: "Codex & Brian AI real-time data",
+                desc: "Codex real-time data",
                 isImage: true
               },
               {
@@ -950,12 +1009,12 @@ const slides: Slide[] = [
               {
                 icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
                 title: "Web Intelligence",
-                desc: "Real-time web search & analysis"
+                desc: "Real-time web search"
               },
               {
                 icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
                 title: "Memory Systems",
-                desc: "Vector DB & short-term memory"
+                desc: "Vector & short-term memory"
               },
               {
                 icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
@@ -982,34 +1041,6 @@ const slides: Slide[] = [
               </motion.div>
             ))}
           </div>
-  
-          {/* Deep X Analytics Section */}
-          <motion.div 
-            className="glass-card p-6 bg-black/40 border border-electric-purple/20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <h3 className="text-xl font-bold gradient-text mb-4">Deep X Analytics</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                'Advanced KOL verification system tracking past performance',
-                'Advanced NLP context based social analysis',
-                'Performance-based ranking'
-              ].map((item, index) => (
-                <motion.div 
-                  key={index}
-                  className="glass-card p-4"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + (index * 0.1) }}
-                >
-                  <p className="text-white/80">• {item}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-  
           {/* Multi-Agent System */}
           <motion.div 
             className="glass-card p-4 bg-black/40"
@@ -1307,7 +1338,33 @@ const slides: Slide[] = [
               </ul>
             </motion.div>
           </div>
-
+          {/* Deep X Analytics Section */}
+          <motion.div 
+            className="glass-card p-6 bg-black/40 border border-electric-purple/20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <h3 className="text-xl font-bold gradient-text mb-4">Deep X Analytics</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                'Advanced KOL verification system tracking past performance',
+                'Advanced NLP context based social analysis',
+                'Performance-based ranking'
+              ].map((item, index) => (
+                <motion.div 
+                  key={index}
+                  className="glass-card p-4"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + (index * 0.1) }}
+                >
+                  <p className="text-white/80">• {item}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+  
           {/* AI-First Platform Section */}
           <motion.div 
             className="glass-card p-6 bg-black/40 border border-electric-purple/20"
@@ -1373,7 +1430,7 @@ const slides: Slide[] = [
             <ul className="space-y-4 text-white/80">
               <li>• Spectral Labs - Trading agents without social features</li>
               <li>• Noks - Limited intelligence integration</li>
-              <li>• Eliza (a16z) - Ecosystem expansion opportunity</li>
+              <li>• Other AI agents - Potential collaboration opportunities</li>
               <li>• Agent Launchers (Virtuals, vvaifu) - Different focus</li>
             </ul>
           </motion.div>
@@ -1396,7 +1453,7 @@ const slides: Slide[] = [
         </div>
       </SlideLayout>
     ),
-  },
+  },  
   {
     id: 9,
     title: "Dual Revenue Streams",
@@ -1433,8 +1490,8 @@ const slides: Slide[] = [
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
-                  <p className="text-electric-purple font-bold">50 clients ($400k annual)</p>
+                  <h4 className="text-lg font-semibold mb-2">2024 Target:</h4>
+                  <p className="text-electric-purple font-bold">10 clients ($80k annual)</p>
                 </motion.div>
 
                 <motion.div
@@ -1442,8 +1499,8 @@ const slides: Slide[] = [
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2">2026 Target:</h4>
-                  <p className="text-electric-purple font-bold">150 clients ($1.2M annual)</p>
+                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
+                  <p className="text-electric-purple font-bold">50 clients ($400k annual)</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -1476,9 +1533,9 @@ const slides: Slide[] = [
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
-                  <p className="text-neon-pink font-bold">$10M monthly volume</p>
-                  <p className="text-sm text-white/60">($960k annual at 0.8% fee)</p>
+                  <h4 className="text-lg font-semibold mb-2">2024 Target:</h4>
+                  <p className="text-neon-pink font-bold">$2M monthly volume</p>
+                  <p className="text-sm text-white/60">($220k annual at 0.8% fee)</p>
                 </motion.div>
 
                 <motion.div
@@ -1486,9 +1543,9 @@ const slides: Slide[] = [
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2">2026 Target:</h4>
-                  <p className="text-neon-pink font-bold">$25M monthly volume</p>
-                  <p className="text-sm text-white/60">($2.4M annual at 0.8% fee)</p>
+                  <h4 className="text-lg font-semibold mb-2">2025 Target:</h4>
+                  <p className="text-neon-pink font-bold">$10M monthly volume</p>
+                  <p className="text-sm text-white/60">($960k annual at 0.8% fee)</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -1534,8 +1591,8 @@ const slides: Slide[] = [
             transition={{ delay: 0.7 }}
           >
             <p className="text-lg text-white/80">
-              Projected <span className="text-electric-purple font-bold">$1.36M</span> revenue in 2025, 
-              scaling to <span className="text-neon-pink font-bold">$3.6M</span> in 2026
+              Projected <span className="text-electric-purple font-bold">$300K</span> revenue in 2024, 
+              scaling to <span className="text-neon-pink font-bold">$1.36M</span> in 2025
             </p>
           </motion.div>
         </div>
@@ -1634,10 +1691,10 @@ const slides: Slide[] = [
               >
                 <img 
                   src="/placeholder-avatar2.png" 
-                  alt="Stealth" 
+                  alt="Peter Makowski" 
                   className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple/50"
                 />
-                <h3 className="text-xl font-bold gradient-text">Stealth</h3>
+                <h3 className="text-xl font-bold gradient-text">Peter Makowski</h3>
                 <p className="text-white/60">CBDO & co-founder</p>
               </motion.div>
               <motion.ul 
@@ -1662,8 +1719,8 @@ const slides: Slide[] = [
             transition={{ delay: 0.6 }}
           >
             <p>
-              <span className="text-electric-purple">Core:</span> Sebastian Ołdak (Fullstack, Web3 Dev & co-founder)<br />
-              <span className="text-neon-pink">Advisors:</span> TomWeb3 (ProtoKOLs), ExHuman
+              <span className="text-electric-purple">Core:</span> Sebastian Ołdak (Web3 Dev & co-founder)<br />
+              <span className="text-neon-pink">Advisors:</span> Tom (ProtoKOLs)
             </p>
           </motion.div>
 
@@ -1733,9 +1790,9 @@ const slides: Slide[] = [
                       Product Growth & Partnerships (40%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Integration with Brian AI for trading and Codex for market intel</li>
-                      <li>• State of art X posting agents with Eliza integration</li>
-                      <li className="text-electric-purple">• Pipeline: 2 top-tier projects and leading memecoin for AI agent setup</li>
+                      <li>• Integration with multiple AI models for trading intelligence</li>
+                      <li>• Advanced X posting agents with multi-model capabilities</li>
+                      <li className="text-electric-purple">• Pipeline: Multiple projects interested in AI agent setup</li>
                     </ul>
                   </motion.div>
                 </div>
@@ -1760,24 +1817,24 @@ const slides: Slide[] = [
                 <div className="space-y-6">
                   {[
                     {
-                      quarter: "Q4 2024",
+                      quarter: "Q4 2023",
                       items: [
-                        "Full AI launch (KPI: 10K active users)",
-                        "Basic trading features (KPI: $500K TVL)"
+                        "Initial AI launch (KPI: 1K active users)",
+                        "Basic trading features development"
                       ]
                     },
                     {
-                      quarter: "Q1 2025",
+                      quarter: "Q1 2024",
                       items: [
-                        "Strategy marketplace with multi-chain trading (KPI: 100+ verified strategies, $2M TVL)",
-                        "Community governance launch (KPI: 1000+ governance participants)"
+                        "Strategy marketplace with EVM trading (KPI: 25+ verified strategies)",
+                        "Community building (KPI: 10K+ followers)"
                       ]
                     },
                     {
-                      quarter: "Q2 2025",
+                      quarter: "Q2 2024",
                       items: [
-                        "Advanced AI features & copy-trading (KPI: Top 100 strategy leaderboard by profit/TVL/risk)",
-                        "Enterprise X agents deployment (KPI: 50+ partner projects)"
+                        "Advanced AI features & copy-trading beta",
+                        "First enterprise X agents deployment"
                       ]
                     }
                   ].map((milestone, index) => (
@@ -1919,9 +1976,9 @@ const slides: Slide[] = [
                 </div>
                 <ul className="space-y-4">
                   {[
-                    'Buy-back and burn from a share of platform fees - amount decided by DAO',
-                    '20% of fees to staking rewards (after 6 mo) - decided by DAO',
-                    'Tax reduces to 1% after 6 months'
+                    'Buy-back and burn mechanism from platform fees',
+                    'Staking rewards program (after 6 months)',
+                    'Reduced tax structure after initial period'
                   ].map((item, index) => (
                     <motion.li 
                       key={index}

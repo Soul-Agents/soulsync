@@ -277,3 +277,27 @@ html.deck-view body {
   height: 100%;
   width: 100%;
 }
+
+.glow-purple-md {
+  text-shadow: 0 0 15px rgba(149, 76, 233, 0.5);
+}
+
+.glow-purple-sm {
+  text-shadow: 0 0 10px rgba(149, 76, 233, 0.3);
+}
+
+.glow-pink-sm {
+  text-shadow: 0 0 10px rgba(255, 28, 247, 0.3);
+}
+
+.glow-green-sm {
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.glow-blue-sm {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.shadow-neon-sm {
+  box-shadow: 0 0 15px rgba(255, 28, 247, 0.1);
+}
