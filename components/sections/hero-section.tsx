@@ -60,6 +60,50 @@ export default function HeroSection() {
             Next Generation AI Agents for your community
           </p>
 
+          <div className="flex justify-center items-center gap-4 mb-12 relative animate-fade-in-delay">
+            <div className="relative">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-transparent rounded-full blur opacity-50"></div>
+              <a
+                href="https://x.com/cryptobunny__"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative hover:scale-105 transition-transform duration-200"
+              >
+                <img
+                  src="/placeholder-avatar2.png"
+                  alt="Community"
+                  className="relative w-48 h-48 rounded-full border-2 border-electric-purple"
+                />
+              </a>
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-electric-purple/30">
+                <span className="text-sm text-electric-purple">Community</span>
+              </div>
+            </div>
+
+            <div className="w-16 h-16 rounded-full bg-black/40 border border-white/20 flex items-center justify-center">
+              <span className="text-2xl">⚡️</span>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-0.5 bg-gradient-to-l from-neon-pink to-transparent rounded-full blur opacity-50"></div>
+              <a
+                href="https://x.com/soul_agents"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative hover:scale-105 transition-transform duration-200"
+              >
+                <img
+                  src="/trading-ai-avatar.png"
+                  alt="Trading"
+                  className="relative w-48 h-48 rounded-full border-2 border-neon-pink"
+                />
+              </a>
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-neon-pink/30">
+                <span className="text-sm text-neon-pink">Trading</span>
+              </div>
+            </div>
+          </div>
+
           <div className="max-w-2xl mx-auto p-6 rounded-lg bg-black/20 backdrop-blur-sm border border-white/5 mb-12 animate-fade-in-delay">
             <div className="flex flex-col items-center space-y-4">
               <div className="flex flex-wrap justify-center gap-3 text-lg text-white/80">
