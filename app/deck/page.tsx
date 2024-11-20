@@ -1708,7 +1708,6 @@ const slides: Slide[] = [
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.02 }}
             >
               <div className="flex flex-col items-center mb-4">
                 <img 
@@ -1735,7 +1734,6 @@ const slides: Slide[] = [
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
             >
               <div className="flex flex-col items-center mb-4">
                 <img 
@@ -1762,7 +1760,6 @@ const slides: Slide[] = [
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
             >
               <div className="flex flex-col items-center mb-4">
                 <img 
@@ -1804,7 +1801,8 @@ const slides: Slide[] = [
                 <h4 className="text-neon-pink font-semibold mb-2">Advisors</h4>
                 <div className="text-white/80">
                   <p className="text-sm">
-                  <span className="font-semibold">Tom</span> - Co-Founder of ProtoKOLs &nbsp;&nbsp;&nbsp; <span className="font-semibold">ExHuman</span> - thePolacy</p>
+                    <span className="font-semibold">Tom</span> - Co-Founder of ProtoKOLs &nbsp;&nbsp;&nbsp; <span className="font-semibold">ExHuman</span> - thePolacy
+                  </p>
                 </div>
               </div>
             </div>
@@ -1840,7 +1838,6 @@ const slides: Slide[] = [
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.01 }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -1878,10 +1875,11 @@ const slides: Slide[] = [
                       Growth & Operations (40%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Core team expansion (tech & product)</li>
+                      <li>• Core team expansion (tech)</li>
                       <li>• Full-time designer for brand & narrative</li>
                       <li>• Legal & compliance framework</li>
                       <li className="text-electric-purple">• Marketing & community development</li>
+                      <li>• <span className="text-neon-pink gradient-text">$SOUL token launch</span></li>
                     </ul>
                   </motion.div>
                 </div>
@@ -1894,7 +1892,6 @@ const slides: Slide[] = [
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.01 }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -1908,25 +1905,23 @@ const slides: Slide[] = [
                     {
                       quarter: "Q4 2024",
                       items: [
-                        "CryptoBunny AI viral launch (1K followers)",
-                        "First 5 enterprise clients (80% early bird)",
-                        "Core team formation (5 members)"
+                        "Crypto Bunny live",
+                        "5 enterprise clients"
                       ]
                     },
                     {
                       quarter: "H1 2025",
                       items: [
-                        "Strategy marketplace & copy trading",
-                        "25 clients @ $499-999/mo ($150K/quarter)",
-                        "$25M monthly volume ($75K trading fees)"
+                        "Marketplace & copy trading",
+                        "25 clients, $100K revenue",
+                        "$25M monthly volume"
                       ]
                     },
                     {
                       quarter: "H2 2025",
                       items: [
-                        "$SOUL token & governance launch",
-                        "50 enterprise clients ($400K annual)",
-                        "$100M volume ($960K annual trading)"
+                        "50 clients, $225K revenue",
+                        "$100M monthly volume"
                       ]
                     }
                   ].map((milestone, index) => (
@@ -1969,167 +1964,95 @@ const slides: Slide[] = [
   },
   {
     id: 12,
-    title: "$SOUL Token Economics",
+    title: "$SOUL Tokenomics",
     content: (
-      <SlideLayout title="$SOUL Token Economics" slideNumber={12}>
+      <SlideLayout title="$SOUL Tokenomics" slideNumber={12}>
         <div className="space-y-8">
+          {/* Launch Date */}
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-neon-pink">Launch Q1 2025</h2>
+          </div>
+  
           {/* Three Column Layout */}
           <div className="grid md:grid-cols-3 gap-8">
             {/* Distribution */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20, rotateX: -15 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, type: "spring" }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" 
-              }}
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold gradient-text">Distribution</h3>
-                  <motion.span 
-                    role="img" 
-                    aria-label="chart" 
-                    className="text-2xl"
-                    animate={{ 
-                      rotate: [0, -10, 10, -10, 0],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 5 }}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold gradient-text">Distribution</h3>
+                <span role="img" aria-label="chart" className="text-2xl">📊</span>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                {[
+                  { text: '80% Fair Launch Pool', color: 'text-electric-purple', detail: 'for Community' },
+                  { text: '10% Team Allocation', color: 'text-neon-pink', detail: '6-Month Vesting' },
+                  { text: '10% Initial Investors', color: 'text-neon-pink', detail: '6-Month Vesting' },
+                  { text: 'Linear Vesting After Cliff', color: 'text-white/60', small: true }
+                ].map((item, index) => (
+                  <li 
+                    key={index}
+                    className={`${item.color} ${item.small ? 'text-sm' : 'text-base'}`}
                   >
-                    📊
-                  </motion.span>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    { text: '80% Fair Launch Pool', color: 'text-electric-purple', detail: '(800M tokens)' },
-                    { text: '10% Team Allocation', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
-                    { text: '10% Initial Investors', color: 'text-neon-pink', detail: '(100M tokens, 6mo vest)' },
-                    { text: 'Linear vesting after cliff', color: 'text-white/60', small: true }
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      className={`${item.color} ${item.small ? 'text-sm' : ''}`}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + (index * 0.1) }}
-                    >
-                      • {item.text} <span className="text-white/60">{item.detail}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+                    • <span className="font-bold">{item.text}</span> <span className="text-white/60">{item.detail}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
   
             {/* Supply Details */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20, rotateX: -15 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, type: "spring" }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 0 20px rgba(236, 72, 153, 0.3)" 
-              }}
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold gradient-text">Supply Details</h3>
-                  <motion.span 
-                    role="img" 
-                    aria-label="token" 
-                    className="text-2xl"
-                    animate={{ 
-                      rotateY: [0, 360],
-                      scale: [1, 1.2, 1]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }}
-                  >
-                    🪙
-                  </motion.span>
-                </div>
-                <ul className="space-y-4 text-white/80">
-                  {[
-                    'Total Supply: 1,000,000,000 $SOUL',
-                    'Initial Tax: 5% (first 6 months)',
-                    'Fair Launch: 50% instant unlock',
-                    'Vesting: 50% linear over 6 months',
-                    'Min. Hold: 1000 $SOUL for rewards'
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 + (index * 0.1) }}
-                    >
-                      • {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold gradient-text">Supply Details</h3>
+                <span role="img" aria-label="supply" className="text-2xl">🔄</span>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                {[
+                  'Total Supply: 5,000,000,000 $SOUL',
+                  'Initial Tax: 5% (First 6 Months)',
+                  'Initial Unlock: 50% Instant',
+                  'Vesting: 50% Linear Over 6 Months',
+                  'Min. Hold: 100,000 $SOUL for Rewards'
+                ].map((item, index) => (
+                  <li key={index}>
+                    • <span className="font-bold">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
   
             {/* Revenue Share */}
             <motion.div 
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 20, rotateX: -15 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" 
-              }}
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold gradient-text">Revenue Share</h3>
-                  <motion.span 
-                    role="img" 
-                    aria-label="money" 
-                    className="text-2xl"
-                    animate={{ 
-                      y: [0, -10, 0],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  >
-                    💸
-                  </motion.span>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    '30% of fees for buy-back & burn',
-                    '20% for staking rewards (6mo lock)',
-                    'Tax reduces to 2% after 6 months',
-                    'Governance voting rights',
-                    'Platform fee discounts for holders'
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      className="text-white/80"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + (index * 0.1) }}
-                    >
-                      • {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold gradient-text">Revenue Share</h3>
+                <span role="img" aria-label="money" className="text-2xl">💸</span>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                {[
+                  '20% for Staking Rewards (6-Month Lock)',
+                  'Tax Reduces to 2% After 6 Months',
+                  'Governance Voting Rights',
+                  'Platform Fee Discounts for Holders',
+                  'DAO to Decide on Strategy Creator Fee vs. Token Buy-Back & Burn'
+                ].map((item, index) => (
+                  <li key={index}>
+                    • <span className="font-bold">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
   
@@ -2138,36 +2061,13 @@ const slides: Slide[] = [
             className="glass-card p-4 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.5, 
-              delay: 0.7,
-              type: "spring",
-              stiffness: 100 
-            }}
+            transition={{ duration: 0.5, delay: 0.7, type: "spring", stiffness: 100 }}
           >
             <p className="text-lg text-white/80">
-              Modern tokenomics focused on sustainable growth:<br />
-              <motion.span 
-                className="text-electric-purple"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Fair launch
-              </motion.span>, 
-              <motion.span 
-                className="text-neon-pink"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
-              >
-                buy-back & burn
-              </motion.span>, and 
-              <motion.span 
-                className="text-electric-purple"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1.4 }}
-              >
-                delayed staking rewards
-              </motion.span>
+              Modern Tokenomics Focused on Sustainable Growth:<br />
+              <span className="text-electric-purple font-bold">Fair Launch</span>, 
+              <span className="text-neon-pink font-bold"> Buy-Back & Burn</span>, and 
+              <span className="text-electric-purple font-bold"> Delayed Staking Rewards</span>
             </p>
           </motion.div>
         </div>
@@ -2176,110 +2076,130 @@ const slides: Slide[] = [
   },
   {
     id: 13,
-    title: "Contact",
+    title: "Contact Us",
     content: (
-      <SlideLayout title="Contact" slideNumber={13}>
+      <SlideLayout title="Contact Us" slideNumber={13}>
         <div className="space-y-12">
-          {/* Crypto Bunny Avatar */}
+          {/* Header with Call to Action */}
+          <div className="text-center">
+            <p className="text-lg text-white/80">We'd love to hear from you! Connect with us through our channels.</p>
+          </div>
+  
+          {/* Crypto Bunny Section */}
           <motion.div 
-            className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="text-center space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
             <motion.a 
               href="https://x.com/cryptobunny__" 
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group"
+              className="inline-block relative group"
               whileHover={{ scale: 1.05 }}
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-neon-pink rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
               <img 
-                src="/placeholder-avatar2.png"
+                src="/cryptobunny.png"
                 alt="Crypto Bunny"
                 className="relative w-32 h-32 rounded-full border-2 border-electric-purple"
               />
             </motion.a>
-          </motion.div>
-
+            <p className="text-white/80 italic">
+              Check out our first autonomous agent - <a 
+                href="https://x.com/cryptobunny__" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-electric-purple hover:underline"
+              >
+                @cryptobunny__
+              </a>
+              <br/>
+              <span className="text-sm text-white/60">(it's still learning...)</span>
+            </p>
+          </motion.div>  
+          {/* Contact and Links Section */}
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Left Column - Contact */}
+            {/* Contact Information */}
             <motion.div 
               className="glass-card p-8"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center justify-center gap-3 mb-8">
                 <span role="img" aria-label="contact" className="text-2xl">📱</span>
-                <h2 className="text-3xl font-bold gradient-text">Contact</h2>
+                <h2 className="text-2xl font-bold gradient-text">Contact Information</h2>
               </div>
               <ul className="space-y-4">
                 {[
-                  { platform: 'Telegram', handle: '@soul_agents' },
-                  { platform: 'X', handle: '@soul_agents' }
+                  { platform: 'Telegram', handle: '@soul_agents', url: 'https://t.me/soul_agents' },
+                  { platform: 'X', handle: '@soul_agents', url: 'https://x.com/soul_agents' },
+                  { platform: 'Enquiries', handle: '@adag1oeth', url: 'https://x.com/adag1oeth' }
                 ].map((item, index) => (
-                  <motion.li 
+                  <li 
                     key={index}
                     className="text-white/80 flex items-center gap-2"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + (index * 0.1) }}
                   >
-                    • {item.platform}: <span className="text-electric-purple">{item.handle}</span>
-                  </motion.li>
+                    • {item.platform}: 
+                    <a 
+                      href={item.url}
+                      className="text-electric-purple hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.handle}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </motion.div>
-
-            {/* Right Column - Project Links */}
+  
+            {/* Project Links */}
             <motion.div 
               className="glass-card p-8"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center justify-center gap-3 mb-8">
                 <span role="img" aria-label="links" className="text-2xl">🔗</span>
-                <h2 className="text-3xl font-bold gradient-text">Project Links</h2>
+                <h2 className="text-2xl font-bold gradient-text">Project Links</h2>
               </div>
               <ul className="space-y-4">
                 {[
-                  { platform: 'X', url: 'https://x.com/soul_agents', handle: '@soul_agents' },
-                  { platform: 'Telegram', url: 'https://t.me/soul_agents', handle: '@soul_agents' }
+                  { platform: 'Website', url: 'https://soulagents.io', handle: 'soulagents.io' },
+                  { platform: 'Whitepaper', url: 'https://soulagents.io/whitepaper', handle: 'Read our Whitepaper' },
+                  { platform: 'Blog', url: 'https://soulagents.io/blog', handle: 'Visit our Blog' }
                 ].map((item, index) => (
-                  <motion.li 
+                  <li 
                     key={index}
                     className="text-white/80 flex items-center gap-2"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + (index * 0.1) }}
                   >
-                     {item.platform}: 
-                    <motion.a 
+                    • {item.platform}: 
+                    <a 
                       href={item.url}
-                      className="gradient-text hover:opacity-80 transition-opacity"
-                      whileHover={{ scale: 1.05 }}
+                      className="text-electric-purple hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {item.handle}
-                    </motion.a>
-                  </motion.li>
+                    </a>
+                  </li>
                 ))}
               </ul>
             </motion.div>
           </div>
-
-          {/* Bottom Text */}
+  
+          {/* Community Invitation */}
           <motion.div 
             className="text-center text-white/60"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <p>Join our community to stay updated on the latest developments</p>
+            <p>Join our community to stay updated on the latest developments and engage with fellow enthusiasts!</p>
           </motion.div>
         </div>
       </SlideLayout>
