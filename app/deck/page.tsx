@@ -185,10 +185,10 @@ export default function DeckPage(): JSX.Element {
               </div>
               <div className="text-center space-y-2 mb-4">
                 <h2 className="text-2xl font-bold gradient-text">
-                  Soul Agents Pitch Deck
+                  Soul Agents
                 </h2>
                 <p className="text-white/70 text-sm">
-                  To access the deck, please contact Adam:
+                  To access, please contact Adam:
                 </p>
                 <div className="flex flex-col gap-1 text-sm">
                   <a
@@ -227,7 +227,7 @@ export default function DeckPage(): JSX.Element {
                   disabled={isLoading}
                   className="w-full button-gradient px-6 py-3 disabled:opacity-50"
                 >
-                  {isLoading ? "Authenticating..." : "View Pitch Deck"}
+                  {isLoading ? "Authenticating..." : "Authenticate"}
                 </button>
 
                 {/* New Home button */}
