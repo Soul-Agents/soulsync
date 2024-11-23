@@ -1092,6 +1092,49 @@ const slides: Slide[] = [
               </p>
             </div>
           </div>
+
+          {/* System Workflow Explanation */}
+          <div className="glass-card p-6 backdrop-blur-lg border border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-8 h-8 rounded-full bg-electric-purple/10 flex items-center justify-center">
+                  <span className="text-electric-purple font-bold">1</span>
+                </div>
+                <p className="text-sm text-white/80">
+                  Create your custom trading strategy using natural language
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-8 h-8 rounded-full bg-neon-pink/10 flex items-center justify-center">
+                  <span className="text-neon-pink font-bold">2</span>
+                </div>
+                <p className="text-sm text-white/80">
+                  AI agent executes strategy using various integrations &
+                  protocols
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-8 h-8 rounded-full bg-electric-purple/10 flex items-center justify-center">
+                  <span className="text-electric-purple font-bold">3</span>
+                </div>
+                <p className="text-sm text-white/80">
+                  Strategy performance is tracked on social leaderboard
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-8 h-8 rounded-full bg-neon-pink/10 flex items-center justify-center">
+                  <span className="text-neon-pink font-bold">4</span>
+                </div>
+                <p className="text-sm text-white/80">
+                  Copy traders follow top strategies while creators earn 50% of
+                  fees
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </SlideLayout>
     ),
@@ -1779,6 +1822,21 @@ const slides: Slide[] = [
             ))}
           </div>
         </motion.div>
+        <motion.div
+          className="mt-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-xl">
+            <span className="text-white/80">Building the</span>{" "}
+            <span className="gradient-text font-bold">
+              First True Web3 Social Trading Platform
+            </span>{" "}
+            <span className="text-white/80">powered by</span>{" "}
+            <span className="text-neon-pink font-bold">AI Agents</span>
+          </p>
+        </motion.div>
       </SlideLayout>
     ),
   },
@@ -2080,22 +2138,34 @@ const slides: Slide[] = [
             >
               <div className="flex flex-col items-center mb-4">
                 <img
-                  src="/placeholder-avatar2.png"
+                  src="/sebastian.png"
                   alt="Stealth"
                   className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple/50"
                 />
-                <h3 className="text-xl font-bold gradient-text">Stealth</h3>
-                <p className="text-white/60">CBDO & Co-Founder</p>
+                <h3 className="text-xl font-bold gradient-text">
+                  Sebastian Ołdak
+                </h3>
+                <p className="text-white/60">Web3 Dev & Co-Founder</p>
               </div>
               <div className="bg-black/20 rounded-lg p-4 flex-grow">
                 <ul className="space-y-2 text-sm text-white/80">
-                  <li>• Leading Web3 Startup CBDO</li>
-                  <li>• Co-Founder at exited Crypto Startup</li>
                   <li>
-                    • Ex-Many Leading Web3 Companies and Founder of Own Web3
-                    Marketing Agency
+                    • Fullstack and Web3 Developer with devops, backend and
+                    frontend experience
                   </li>
-                  <li>• Avid Attendee of Conferences</li>
+                  <li>• 0xKYC Core Developer</li>
+                  <li>
+                    • Ex-Software Engineer for{" "}
+                    <a
+                      href="https://uniqly.io"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-electric-purple hover:underline"
+                    >
+                      Uniqly.io
+                    </a>
+                  </li>
+                  <li>• 3 Times Polish Champion in Judo</li>
                 </ul>
               </div>
             </motion.div>
@@ -2115,8 +2185,8 @@ const slides: Slide[] = [
                 </h4>
                 <div className="text-white/80">
                   <p className="text-sm">
-                    <span className="font-semibold">Sebastian Ołdak</span> -
-                    Web3 Dev & Co-Founder
+                    <span className="font-semibold">Stealth</span> - Ex-CBDO at
+                    top Web3 companies
                   </p>
                 </div>
               </div>
@@ -2474,44 +2544,74 @@ const slides: Slide[] = [
             </p>
           </div>
 
-          {/* Crypto Bunny Section */}
-          <motion.div
-            className="text-center space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.a
-              href="https://x.com/cryptobunny__"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block relative group"
-              whileHover={{ scale: 1.05 }}
+          {/* Crypto Bunny and Video Section Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Crypto Bunny Section */}
+            <motion.div
+              className="text-center space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-neon-pink rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
-              <img
-                src="/cryptobunny.png"
-                alt="Crypto Bunny"
-                className="relative w-32 h-32 rounded-full border-2 border-electric-purple"
-              />
-            </motion.a>
-            <p className="text-white/80 italic">
-              Check out our first autonomous agent -{" "}
-              <a
+              <motion.a
                 href="https://x.com/cryptobunny__"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-electric-purple hover:underline"
+                className="inline-block relative group"
+                whileHover={{ scale: 1.05 }}
               >
-                @cryptobunny__
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-neon-pink rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+                <img
+                  src="/cryptobunny.png"
+                  alt="Crypto Bunny"
+                  className="relative w-32 h-32 rounded-full border-2 border-electric-purple"
+                />
+              </motion.a>
+              <p className="text-white/80 italic">
+                Check out our first autonomous agent -{" "}
+                <a
+                  href="https://x.com/cryptobunny__"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-electric-purple hover:underline"
+                >
+                  @cryptobunny__
+                </a>
+                <br />
+                <span className="text-sm text-white/60">
+                  (it's still learning...)
+                </span>
+              </p>
+            </motion.div>
+
+            {/* Video Section */}
+            <motion.div
+              className="text-center space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <a
+                href="https://www.youtube.com/watch?v=jhwTQF3O6BY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block relative group"
+              >
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple/20 to-neon-pink/20 rounded-2xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+                <div className="relative glass-card p-8 rounded-2xl border-2 border-electric-purple/20 hover:border-electric-purple/40 transition-colors duration-300">
+                  <span className="text-4xl animate-pulse mb-4 block">🎥</span>
+                  <h4 className="text-lg font-bold gradient-text mb-2">
+                    Watch Our Story
+                  </h4>
+                  <p className="text-white/80 text-sm">
+                    Learn how we're building the future of AI-powered trading
+                  </p>
+                </div>
               </a>
-              <br />
-              <span className="text-sm text-white/60">
-                (it's still learning...)
-              </span>
-            </p>
-          </motion.div>
-          {/* Contact and Links Section */}
+            </motion.div>
+          </div>
+
+          {/* Contact and Links Section - Updated Link Colors */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
             <motion.div
@@ -2550,10 +2650,10 @@ const slides: Slide[] = [
                     key={index}
                     className="text-white/80 flex items-center gap-2"
                   >
-                    • {item.platform}:
+                    • {item.platform}:{" "}
                     <a
                       href={item.url}
-                      className="text-electric-purple hover:underline"
+                      className="gradient-text hover:opacity-80 transition-opacity"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -2601,10 +2701,10 @@ const slides: Slide[] = [
                     key={index}
                     className="text-white/80 flex items-center gap-2"
                   >
-                    • {item.platform}:
+                    • {item.platform}:{" "}
                     <a
                       href={item.url}
-                      className="text-electric-purple hover:underline"
+                      className="gradient-text hover:opacity-80 transition-opacity"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
