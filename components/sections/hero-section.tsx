@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
+import Link from "next/link";
 
 export default function HeroSection() {
   useEffect(() => {
@@ -120,15 +121,13 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="animate-fade-in-delay-2">
-            <a
-              href="https://forms.gle/zxe1hgrbL8rbTELL7"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/deck"
               className="button-gradient inline-flex items-center gap-2 px-8 py-6 text-lg font-bold text-white 
                        hover:opacity-90 transition-all transform hover:scale-105 
                        shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
             >
-              <span>Get Started</span>
+              <span>Get Access</span>
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -142,7 +141,7 @@ export default function HeroSection() {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
