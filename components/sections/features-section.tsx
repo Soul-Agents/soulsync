@@ -46,7 +46,7 @@ const features = [
     ],
   },
   {
-    title: "Trading Integration (Soon)",
+    title: "Trading Integration",
     description:
       "Autonomous trading capabilities powered by AI and community insights (Q1 2025)",
     benefits: [

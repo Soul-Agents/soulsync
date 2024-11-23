@@ -125,15 +125,49 @@ export default function DeckPage(): JSX.Element {
 
   const toggleFullscreen = async () => {
     try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
+      const element = document.documentElement;
+      const doc = document as Document & {
+        webkitFullscreenElement?: Element;
+        webkitRequestFullscreen?: () => Promise<void>;
+        webkitExitFullscreen?: () => Promise<void>;
+        msRequestFullscreen?: () => Promise<void>;
+        msExitFullscreen?: () => Promise<void>;
+      };
+
+      if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
+        // Request fullscreen with fallbacks for different browsers
+        if (element.requestFullscreen) {
+          await element.requestFullscreen();
+        } else if (doc.webkitRequestFullscreen) {
+          // Safari
+          await doc.webkitRequestFullscreen();
+        } else if ((element as any).webkitEnterFullscreen) {
+          // iOS Safari
+          await (element as any).webkitEnterFullscreen();
+        } else if (doc.msRequestFullscreen) {
+          // IE11
+          await doc.msRequestFullscreen();
+        }
         setIsFullscreen(true);
       } else {
-        await document.exitFullscreen();
+        // Exit fullscreen with fallbacks
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (doc.webkitExitFullscreen) {
+          // Safari
+          await doc.webkitExitFullscreen();
+        } else if (doc.msExitFullscreen) {
+          // IE11
+          await doc.msExitFullscreen();
+        }
         setIsFullscreen(false);
       }
     } catch (err) {
       console.error("Fullscreen error:", err);
+      // Show a message to the user on mobile
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        alert("Fullscreen mode is not supported on this device");
+      }
     }
   };
 
@@ -170,9 +204,7 @@ export default function DeckPage(): JSX.Element {
     <div className="min-h-screen flex flex-col">
       {/* Mobile Notice */}
       <div className="md:hidden fixed top-0 left-0 right-0 bg-black/90 p-2 z-50 text-center">
-        <p className="text-white/80 text-xs">
-          ⚠️ Best viewed on desktop. Scroll to view full content.
-        </p>
+        <p className="text-white/80 text-xs">⚠️ Best viewed on desktop.</p>
       </div>
 
       {/* Authentication Section */}
