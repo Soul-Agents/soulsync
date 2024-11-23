@@ -20,6 +20,13 @@ interface TweetProps {
   timestamp: string;
 }
 
+// Add this helper function at the top of your component
+const isMobile = () => {
+  return /iPhone|iPad|iPod|Android/i.test(
+    typeof navigator !== "undefined" ? navigator.userAgent : "",
+  );
+};
+
 export default function DeckPage(): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -279,17 +286,19 @@ export default function DeckPage(): JSX.Element {
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
           {/* Fullscreen Toggle Button */}
-          <button
-            onClick={toggleFullscreen}
-            className="fixed top-4 right-4 z-50 p-2 rounded-full bg-black/80 text-white/80 hover:text-white transition-colors backdrop-blur-sm"
-            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-          >
-            {isFullscreen ? (
-              <Minimize2 className="w-5 h-5" />
-            ) : (
-              <Maximize2 className="w-5 h-5" />
-            )}
-          </button>
+          {!isMobile() && (
+            <button
+              onClick={toggleFullscreen}
+              className="fixed top-4 right-4 z-50 p-2 rounded-full bg-black/80 text-white/80 hover:text-white transition-colors backdrop-blur-sm"
+              aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            >
+              {isFullscreen ? (
+                <Minimize2 className="w-5 h-5" />
+              ) : (
+                <Maximize2 className="w-5 h-5" />
+              )}
+            </button>
+          )}
 
           {/* Navigation Controls */}
           <div className="fixed top-1/2 -translate-y-1/2 left-2 md:left-8 z-40">
