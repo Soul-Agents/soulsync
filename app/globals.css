@@ -291,6 +291,46 @@
       animation: border-rotate 4s linear infinite;
     }
   }
+
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    /* Only add styles that aren't already covered by existing responsive classes */
+    .glass-card {
+      @apply py-4 px-4; /* Smaller padding on mobile */
+    }
+
+    /* Adjust base font sizes for better mobile readability */
+    html {
+      font-size: 15px; /* Slightly smaller base font size on mobile */
+    }
+
+    /* Adjust input/textarea padding for mobile */
+    input,
+    textarea {
+      @apply px-3 py-2;
+    }
+
+    /* Adjust animation distances for mobile */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px); /* Reduced float distance on mobile */
+      }
+    }
+
+    /* Adjust grid pattern for mobile */
+    .bg-grid-pattern {
+      background-size: 20px 20px; /* Smaller grid pattern on mobile */
+    }
+  }
+
+  /* Add a utility class for responsive text that works across all devices */
+  .responsive-text {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    line-height: 1.5;
+  }
 }
 
 /* Deck-specific styles */
