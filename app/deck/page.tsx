@@ -1193,7 +1193,7 @@ const slides: Slide[] = [
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               {
-                icon: "/defined-logo-optimized.png",
+                icon: "/codex.png",
                 title: "Trading Analytics",
                 desc: "Codex real-time data",
                 isImage: true,
