@@ -301,7 +301,15 @@ export default function DeckPage(): JSX.Element {
 
           {/* Scrollable Content Wrapper - Mobile-specific changes */}
           <div
-            className="flex-1 md:h-screen h-[100dvh] overflow-y-auto md:overflow-hidden overscroll-contain touch-pan-y"
+            className="flex-1 overflow-hidden touch-none select-none"
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: "top center",
+              minHeight: "100vh",
+              // Add better mobile handling
+              maxHeight: isAuthenticated ? "100vh" : "auto",
+              overflowY: isAuthenticated ? "hidden" : "auto",
+            }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
