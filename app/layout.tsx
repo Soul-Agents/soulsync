@@ -13,8 +13,8 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  minimumScale: 0.5,
+  maximumScale: 2,
+  minimumScale: 1,
   userScalable: true,
   themeColor: "#000033",
 };
@@ -49,12 +49,6 @@ export const metadata: Metadata = {
     icon: "/placeholder-avatar2.png",
     apple: "/placeholder-avatar2.png",
     shortcut: "/placeholder-avatar2.png",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
   },
 };
 
