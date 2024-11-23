@@ -50,6 +50,12 @@ export const metadata: Metadata = {
     apple: "/placeholder-avatar2.png",
     shortcut: "/placeholder-avatar2.png",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({

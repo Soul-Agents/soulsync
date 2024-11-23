@@ -1,16 +1,25 @@
 import { useState, useEffect } from "react";
 
-export function useResponsiveScale() {
+export const useResponsiveScale = () => {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
     const calculateScale = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-
       const widthScale = width / 1280;
-      const heightScale = height / 720;
-      return Math.max(Math.min(widthScale, heightScale, 1), 0.6);
+      const heightScale = height / 800;
+
+      console.log(
+        "Width:",
+        width,
+        "Height:",
+        height,
+        "Scale:",
+        Math.min(widthScale, heightScale, 1),
+      );
+
+      return Math.min(widthScale, heightScale, 1);
     };
 
     const handleResize = () => {
@@ -23,4 +32,4 @@ export function useResponsiveScale() {
   }, []);
 
   return scale;
-}
+};
