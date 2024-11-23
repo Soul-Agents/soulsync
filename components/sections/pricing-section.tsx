@@ -57,13 +57,11 @@ export default function PricingSection() {
       period: "",
       description: "Trade using our AI Agents",
       features: [
-        "Create trading strategies based on X and Dexscreener",
-        "Set up your strategy and fund your wallet",
+        "Create trading strategies based on X and Codex",
         "KOL mention detection and analysis",
         "Automatic trade execution",
-        "Accrue rewards",
-        "Track your bot's performance on the leaderboard",
-        "Get rev share from others copy-trading you",
+        "Strategy marketplace with a leaderboard",
+        "Copy-trade or get rev share from others copy-trading you",
       ],
       buttonText: "Join Waitlist",
       buttonClass: "button-gradient-secondary",
@@ -130,7 +128,7 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-12 text-center text-white/60">
-          <p>* All prices are per single AI agent</p>
+          <p>All prices are per single AI agent</p>
         </div>
       </div>
     </section>

@@ -192,21 +192,21 @@ export default function DeckPage(): JSX.Element {
                 </p>
                 <div className="flex flex-col gap-1 text-sm">
                   <a
+                    href="https://x.com/adag1oeth"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 hover:text-white flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <span>X:</span>
+                    <span className="gradient-text">@adag1oeth</span>
+                  </a>
+                  <a
                     href="https://t.me/soul_agents"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white/60 hover:text-white flex items-center justify-center gap-2 transition-colors"
                   >
                     <span>Telegram:</span>
-                    <span className="gradient-text">@soul_agents</span>
-                  </a>
-                  <a
-                    href="https://x.com/soul_agents"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/60 hover:text-white flex items-center justify-center gap-2 transition-colors"
-                  >
-                    <span>X:</span>
                     <span className="gradient-text">@soul_agents</span>
                   </a>
                 </div>
@@ -2282,7 +2282,7 @@ const slides: Slide[] = [
                       Growth & Operations (40%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Core team expansion (tech)</li>
+                      <li>• Core team expansion (Tech)</li>
                       <li>• Full-time designer for brand & narrative</li>
                       <li>• Legal & compliance framework</li>
                       <li className="text-electric-purple">
