@@ -285,6 +285,7 @@ export default function DeckPage(): JSX.Element {
       {/* Main Deck Content */}
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
+          
           {/* Home Button */}
           <a
             href="/"
@@ -337,6 +338,13 @@ export default function DeckPage(): JSX.Element {
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
+
+          {/* Desktop Zoom Notice */}
+          {!isMobile() && (
+            <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 text-xs text-white/50">
+              Use Zoom In/Out to Adjust to Your Screen
+            </div>
+          )}
 
           {/* Progress Bar */}
           <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-0.5 px-2 md:px-2 md:bottom-6 md:gap-1 z-40 pointer-events-none">
@@ -778,9 +786,6 @@ const slides: Slide[] = [
               <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-neon-pink">
                 Web3 Marketing Challenges
               </h3>
-              <p className="text-xs text-white/70 mb-4 italic">
-                Hinkal and Twyne early commitments to using our A.I. Agents
-              </p>
             </div>
 
             <div className="mb-4 md:mb-8 scale-90">
@@ -1133,16 +1138,14 @@ const slides: Slide[] = [
             </div>
           </div>
 
-          <div className="glass-card p-4 backdrop-blur-lg border border-white/10">
-            <div className="text-center space-y-3">
-              <p className="text-sm text-white/80 font-medium">
+          <div className="glass-card p-2 backdrop-blur-lg border border-white/10">
+            <div className="text-center space-y-2">
+              <p className="text-xs text-white/80 font-medium">
                 Create strategies using natural language:
               </p>
               <div className="relative">
-                <p className="text-neon-pink text-sm sm:text-base font-medium px-6 py-3 bg-black/40 rounded-lg border border-neon-pink/20 shadow-neon-sm">
-                  "Buy tokens under $5M market cap, launched in the last 2
-                  weeks, with positive sentiment and at least high trust 1 KOL
-                  shilling it"
+                <p className="text-neon-pink text-xs sm:text-sm font-medium px-4 py-2 bg-black/40 rounded-lg border border-neon-pink/20 shadow-neon-sm">
+                  "Buy tokens under $5M market cap, launched in the last 2 weeks, with positive sentiment and at least high trust 1 KOL shilling it"
                 </p>
                 <div className="absolute inset-0 bg-neon-pink/5 blur-xl rounded-lg"></div>
               </div>
@@ -1153,43 +1156,41 @@ const slides: Slide[] = [
           </div>
 
           {/* System Workflow Explanation */}
-          <div className="glass-card p-6 backdrop-blur-lg border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
-                <div className="w-8 h-8 rounded-full bg-electric-purple/10 flex items-center justify-center">
-                  <span className="text-electric-purple font-bold">1</span>
+          <div className="glass-card p-3 backdrop-blur-lg border border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+              <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-6 h-6 rounded-full bg-electric-purple/10 flex items-center justify-center">
+                  <span className="text-electric-purple font-bold text-sm">1</span>
                 </div>
-                <p className="text-sm text-white/80">
+                <p className="text-xs text-white/80">
                   Create your custom trading strategy using natural language
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
-                <div className="w-8 h-8 rounded-full bg-neon-pink/10 flex items-center justify-center">
-                  <span className="text-neon-pink font-bold">2</span>
+              <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-6 h-6 rounded-full bg-neon-pink/10 flex items-center justify-center">
+                  <span className="text-neon-pink font-bold text-sm">2</span>
                 </div>
-                <p className="text-sm text-white/80">
-                  AI agent executes strategy using various integrations &
-                  protocols
+                <p className="text-xs text-white/80">
+                  AI agent executes strategy using various integrations & protocols
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
-                <div className="w-8 h-8 rounded-full bg-electric-purple/10 flex items-center justify-center">
-                  <span className="text-electric-purple font-bold">3</span>
+              <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-6 h-6 rounded-full bg-electric-purple/10 flex items-center justify-center">
+                  <span className="text-electric-purple font-bold text-sm">3</span>
                 </div>
-                <p className="text-sm text-white/80">
+                <p className="text-xs text-white/80">
                   Strategy performance is tracked on social leaderboard
                 </p>
               </div>
 
-              <div className="flex flex-col items-center text-center space-y-3 p-4 bg-black/30 rounded-lg border border-white/5">
-                <div className="w-8 h-8 rounded-full bg-neon-pink/10 flex items-center justify-center">
-                  <span className="text-neon-pink font-bold">4</span>
+              <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
+                <div className="w-6 h-6 rounded-full bg-neon-pink/10 flex items-center justify-center">
+                  <span className="text-neon-pink font-bold text-sm">4</span>
                 </div>
-                <p className="text-sm text-white/80">
-                  Copy traders follow top strategies while creators earn 50% of
-                  fees
+                <p className="text-xs text-white/80">
+                  Copy traders follow top strategies while creators earn 50% of fees
                 </p>
               </div>
             </div>
@@ -1270,13 +1271,13 @@ const slides: Slide[] = [
 
           {/* Multi-Agent System */}
           <motion.div
-            className="glass-card py-8 px-8 bg-black/40 w-full border border-electric-purple/20 backdrop-blur-sm hover:bg-black/50 hover:border-electric-purple/40 hover:scale-[1.02] hover:shadow-xl transition-all duration-500 ease-out shadow-lg shadow-electric-purple/20 group"
+            className="glass-card py-4 px-4 bg-black/40 w-full border border-electric-purple/20 backdrop-blur-sm hover:bg-black/50 hover:border-electric-purple/40 hover:scale-[1.01] hover:shadow-xl transition-all duration-500 ease-out shadow-lg shadow-electric-purple/20 group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
-            whileHover={{ y: -5 }}
+            whileHover={{ y: -2 }}
           >
-            <div className="flex flex-col items-center justify-center gap-6 relative">
+            <div className="flex flex-col items-center justify-center gap-3 relative">
               <motion.div
                 animate={{
                   rotate: 360,
@@ -1286,7 +1287,7 @@ const slides: Slide[] = [
                   rotate: { duration: 8, repeat: Infinity, ease: "linear" },
                   scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
                 }}
-                className="w-12 h-12 relative z-10"
+                className="w-8 h-8 relative z-10"
               >
                 <div className="absolute inset-0 bg-electric-purple/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
                 <svg
@@ -1302,84 +1303,73 @@ const slides: Slide[] = [
                   />
                 </svg>
               </motion.div>
-              <h4 className="text-2xl font-bold gradient-text bg-clip-text text-transparent bg-gradient-to-r from-electric-purple via-[#ff00ff] to-electric-purple group-hover:from-[#ff00ff] group-hover:via-electric-purple group-hover:to-[#ff00ff] transition-all duration-300">
+              <h4 className="text-xl font-bold gradient-text bg-clip-text text-transparent bg-gradient-to-r from-electric-purple via-[#ff00ff] to-electric-purple group-hover:from-[#ff00ff] group-hover:via-electric-purple group-hover:to-[#ff00ff] transition-all duration-300">
                 Multi-Agent Processing System
               </h4>
             </div>
           </motion.div>
 
           {/* Applications Section */}
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-2">
             {/* Marketing Service */}
             <motion.div
-              className="glass-card p-4"
+              className="glass-card p-3"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <h3 className="text-lg font-semibold gradient-text">
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-base font-semibold mb-2 md:mb-4 gradient-text">
                   Autonomous Marketing
                 </h3>
-                <span className="px-2 py-1 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
+                <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
                   $499-999/mo
                 </span>
               </div>
-              <ul className="space-y-2 text-sm text-white/80">
+              <ul className="space-y-1 text-xs text-white/80">
                 <li>• AI-powered brand growth and community engagement</li>
                 <li>• Intelligent post creation and interaction</li>
-                <li>
-                  • Multi-platform support (X, Telegram, Discord, Farcaster)
-                </li>
+                <li>• Multi-platform support (X, Telegram, Discord, Farcaster)</li>
                 <li>• Community management via AI chatbots</li>
-                <li className="text-electric-purple">
-                  • Social intelligence from human interactions
-                </li>
-                <li className="text-electric-purple">
-                  • Adaptive learning from community feedback
-                </li>
+                <li className="text-electric-purple">• Social intelligence from human interactions</li>
+                <li className="text-electric-purple">• Adaptive learning from community feedback</li>
               </ul>
             </motion.div>
 
             {/* Trading Platform */}
             <motion.div
-              className="glass-card p-4"
+              className="glass-card p-3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <h3 className="text-lg font-semibold gradient-text">
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-base font-semibold gradient-text">
                   AI Strategy Trading
                 </h3>
-                <span className="px-2 py-1 text-xs bg-black/40 rounded-full text-neon-pink border border-neon-pink/30">
+                <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-neon-pink border border-neon-pink/30">
                   1% fee split
                 </span>
               </div>
-              <ul className="space-y-2 text-sm text-white/80">
+              <ul className="space-y-1 text-xs text-white/80">
                 <li>• Prompt-based strategy deployment</li>
                 <li>• Long-term investment focus</li>
                 <li>• Data-driven decision making</li>
                 <li>• Powered by Brian AI integration</li>
-                <li className="text-neon-pink">
-                  • Copy-trading with performance leaderboard
-                </li>
-                <li className="text-neon-pink">
-                  • Strategy marketplace & revenue sharing
-                </li>
+                <li className="text-neon-pink">• Copy-trading with performance leaderboard</li>
+                <li className="text-neon-pink">• Strategy marketplace & revenue sharing</li>
               </ul>
             </motion.div>
           </div>
 
           <motion.div
-            className="text-center"
+            className="text-center mt-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
-            <p className="text-sm text-white/60">
-              Join the community of strategy creators and traders on our
-              performance-based marketplace
+            <p className="text-xs text-white/60">
+              Join the community of strategy creators and traders on our performance-based marketplace
             </p>
           </motion.div>
         </div>
