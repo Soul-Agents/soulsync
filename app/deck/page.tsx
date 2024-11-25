@@ -609,6 +609,22 @@ const slides: Slide[] = [
     title: "Soul Agents",
     content: (
       <SlideLayout title="Soul Agents" slideNumber={1}>
+        {/* Add this hint at the top */}
+        <motion.div 
+          className="absolute top-1/2 right-24 text-white/60 flex items-center gap-2 text-sm"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.5 }}
+        >
+          <span>Navigate slides</span>
+          <motion.div
+            animate={{ x: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </motion.div>
+        </motion.div>
+
         <div className="text-center space-y-4 sm:space-y-8">
           {/* Main Tagline */}
           <motion.p
