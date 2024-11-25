@@ -10,16 +10,17 @@ export const useResponsiveScale = () => {
       const isMobile = width <= 768;
 
       if (isMobile) {
-        // On mobile, use a more generous scaling factor
-        const widthScale = width / 375; // Base width for mobile
-        const heightScale = height / 667; // Base height for mobile
-        return Math.min(widthScale, heightScale, 1.5); // Allow slightly larger scale on mobile
+        // Mobile scaling
+        const widthScale = width / 375;
+        const heightScale = height / 667;
+        return Math.min(widthScale, heightScale, 1.2);
       }
 
-      // Desktop scaling remains the same
+      // Much more aggressive desktop scaling
       const widthScale = width / 1280;
       const heightScale = height / 800;
-      return Math.min(widthScale, heightScale, 1);
+      // Using a more aggressive scaling factor of 0.89 as the maximum
+      return Math.min(widthScale, heightScale, 0.89);
     };
 
     const handleResize = () => {
