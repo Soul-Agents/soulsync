@@ -285,6 +285,16 @@ export default function DeckPage(): JSX.Element {
       {/* Main Deck Content */}
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
+          {/* Home Button */}
+          <a
+            href="/"
+            className="fixed top-4 left-4 z-50 p-2 rounded-full bg-black/80 text-white/80 hover:text-white transition-colors backdrop-blur-sm flex items-center gap-2"
+            aria-label="Back to Home"
+          >
+            <ChevronLeft className="w-5 h-5" />
+            <span className="text-sm">Home</span>
+          </a>
+
           {/* Fullscreen Toggle Button */}
           {!isMobile() && (
             <button
