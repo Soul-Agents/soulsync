@@ -1807,8 +1807,8 @@ const slides: Slide[] = [
             </h3>
             <ul className="space-y-4 text-white/80">
               <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> Trading Agents:
-                Spectral, Noks
+                <span className="text-electric-purple">•</span> Trading Agents (Synergy):
+                Spectral, Noks (Could be used for Soul Agents), Brian AI, Mimic
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-electric-purple">•</span> Community Tools:
