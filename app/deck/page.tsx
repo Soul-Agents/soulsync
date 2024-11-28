@@ -2487,15 +2487,10 @@ const slides: Slide[] = [
                     color: "text-neon-pink",
                     detail: "6-Month Vesting",
                   },
-                  {
-                    text: "Linear Vesting After Cliff",
-                    color: "text-white/60",
-                    small: true,
-                  },
                 ].map((item, index) => (
                   <li
                     key={index}
-                    className={`${item.color} ${item.small ? "text-sm" : "text-base"}`}
+                    className={`${item.color} text-base`}
                   >
                     • <span className="font-bold">{item.text}</span>{" "}
                     <span className="text-white/60">{item.detail}</span>
