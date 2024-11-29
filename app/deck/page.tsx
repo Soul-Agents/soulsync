@@ -1,6 +1,6 @@
 "use client";
 import { SlideLayout } from "@/components/layouts/SlideLayout";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useReducer, Reducer } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -27,8 +27,56 @@ const isMobile = () => {
   );
 };
 
-export default function DeckPage(): JSX.Element {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+// Define the state type
+type DeckState = {
+  currentSlide: number;
+  slides: Slide[]; // Using your existing Slide interface
+};
+
+// Define action types
+type DeckAction =
+  | { type: "NEXT_SLIDE" }
+  | { type: "PREV_SLIDE" }
+  | { type: "GO_TO_SLIDE"; payload: number }
+  | { type: "SET_SLIDES"; payload: DeckState["slides"] };
+
+// Reducer function
+const deckReducer: Reducer<DeckState, DeckAction> = (state, action) => {
+  switch (action.type) {
+    case "NEXT_SLIDE":
+      return {
+        ...state,
+        currentSlide: Math.min(state.currentSlide + 1, state.slides.length - 1),
+      };
+    case "PREV_SLIDE":
+      return {
+        ...state,
+        currentSlide: Math.max(state.currentSlide - 1, 0),
+      };
+    case "GO_TO_SLIDE":
+      return {
+        ...state,
+        currentSlide: action.payload,
+      };
+    case "SET_SLIDES":
+      return {
+        ...state,
+        slides: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default function DeckPage() {
+  const [state, dispatch] = useReducer<Reducer<DeckState, DeckAction>>(
+    deckReducer,
+    {
+      currentSlide: 0,
+      slides,
+    },
+  );
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
@@ -39,16 +87,12 @@ export default function DeckPage(): JSX.Element {
   const scale = useResponsiveScale();
 
   const nextSlide = useCallback((): void => {
-    if (currentSlide < slides.length - 1) {
-      setCurrentSlide((prev) => Math.min(prev + 1, slides.length - 1));
-    }
-  }, [currentSlide]);
+    dispatch({ type: "NEXT_SLIDE" });
+  }, [state.currentSlide]);
 
   const prevSlide = useCallback((): void => {
-    if (currentSlide > 0) {
-      setCurrentSlide((prev) => Math.max(prev - 1, 0));
-    }
-  }, [currentSlide]);
+    dispatch({ type: "PREV_SLIDE" });
+  }, [state.currentSlide]);
 
   useEffect(() => {
     // Add class to prevent scrolling
@@ -83,7 +127,7 @@ export default function DeckPage(): JSX.Element {
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [currentSlide, isAuthenticated, nextSlide, prevSlide]);
+  }, [state.currentSlide, isAuthenticated, nextSlide, prevSlide]);
 
   useEffect(() => {
     if (typeof scale === "number" && !isNaN(scale)) {
@@ -139,6 +183,7 @@ export default function DeckPage(): JSX.Element {
         webkitExitFullscreen?: () => Promise<void>;
         msRequestFullscreen?: () => Promise<void>;
         msExitFullscreen?: () => Promise<void>;
+        webkitEnterFullscreen?: () => Promise<void>; // Add this to the doc type
       };
 
       if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
@@ -148,9 +193,9 @@ export default function DeckPage(): JSX.Element {
         } else if (doc.webkitRequestFullscreen) {
           // Safari
           await doc.webkitRequestFullscreen();
-        } else if ((element as any).webkitEnterFullscreen) {
+        } else if (doc.webkitEnterFullscreen) {
           // iOS Safari
-          await (element as any).webkitEnterFullscreen();
+          await doc.webkitEnterFullscreen();
         } else if (doc.msRequestFullscreen) {
           // IE11
           await doc.msRequestFullscreen();
@@ -285,7 +330,6 @@ export default function DeckPage(): JSX.Element {
       {/* Main Deck Content */}
       {isAuthenticated && (
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-electric-purple/5 to-black">
-          
           {/* Home Button */}
           <a
             href="/"
@@ -315,10 +359,10 @@ export default function DeckPage(): JSX.Element {
           <div className="fixed top-1/2 -translate-y-1/2 left-2 md:left-8 z-40">
             <button
               onClick={prevSlide}
-              disabled={currentSlide === 0}
+              disabled={state.currentSlide === 0}
               aria-label="Previous slide"
               className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
-                currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
+                state.currentSlide === 0 ? "opacity-0 pointer-events-none" : ""
               }`}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -327,10 +371,10 @@ export default function DeckPage(): JSX.Element {
           <div className="fixed top-1/2 -translate-y-1/2 right-2 md:right-8 z-40">
             <button
               onClick={nextSlide}
-              disabled={currentSlide === slides.length - 1}
+              disabled={state.currentSlide === state.slides.length - 1}
               aria-label="Next slide"
               className={`p-2 rounded-full bg-black/80 text-white/80 hover:text-white disabled:opacity-50 transition-opacity backdrop-blur-sm ${
-                currentSlide === slides.length - 1
+                state.currentSlide === state.slides.length - 1
                   ? "opacity-0 pointer-events-none"
                   : ""
               }`}
@@ -348,11 +392,13 @@ export default function DeckPage(): JSX.Element {
 
           {/* Progress Bar */}
           <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-0.5 px-2 md:px-2 md:bottom-6 md:gap-1 z-40 pointer-events-none">
-            {slides.map((_, index) => (
+            {state.slides.map((_, index) => (
               <div
                 key={index}
                 className={`h-1 w-4 md:w-12 rounded-full transition-colors ${
-                  index === currentSlide ? "bg-electric-purple" : "bg-white/20"
+                  index === state.currentSlide
+                    ? "bg-electric-purple"
+                    : "bg-white/20"
                 }`}
               />
             ))}
@@ -375,7 +421,7 @@ export default function DeckPage(): JSX.Element {
           >
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentSlide}
+                key={state.currentSlide}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -390,10 +436,10 @@ export default function DeckPage(): JSX.Element {
                     ["--deck-scale" as string]: "var(--current-scale, 1)",
                   }}
                 >
-                  {slides[currentSlide]?.content ?? (
+                  {state.slides[state.currentSlide]?.content ?? (
                     <div className="text-center text-white/60">
                       <p>No content available</p>
-                      <p className="text-sm">Slide {currentSlide + 1}</p>
+                      <p className="text-sm">Slide {state.currentSlide + 1}</p>
                     </div>
                   )}
                 </div>
@@ -407,6 +453,13 @@ export default function DeckPage(): JSX.Element {
 }
 
 // Tweet component with proper typing
+interface TweetProps {
+  author: string;
+  handle: string;
+  content: string;
+  timestamp: string;
+}
+
 const Tweet: React.FC<TweetProps> = ({
   author,
   handle,
@@ -602,7 +655,7 @@ const TradingDashboard: React.FC<ChartProps> = ({ className = "" }) => {
   );
 };
 
-// 2. Then define interfaces and slides
+// Define the slides array once
 const slides: Slide[] = [
   {
     id: 1,
@@ -610,7 +663,7 @@ const slides: Slide[] = [
     content: (
       <SlideLayout title="Soul Agents" slideNumber={1}>
         {/* Add this hint at the top */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 right-24 text-white/60 flex items-center gap-2 text-sm"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -1161,7 +1214,9 @@ const slides: Slide[] = [
               </p>
               <div className="relative">
                 <p className="text-neon-pink text-xs sm:text-sm font-medium px-4 py-2 bg-black/40 rounded-lg border border-neon-pink/20 shadow-neon-sm">
-                  "Buy tokens under $5M market cap, launched in the last 2 weeks, with positive sentiment and at least high trust 1 KOL shilling it"
+                  "Buy tokens under $5M market cap, launched in the last 2
+                  weeks, with positive sentiment and at least high trust 1 KOL
+                  shilling it"
                 </p>
                 <div className="absolute inset-0 bg-neon-pink/5 blur-xl rounded-lg"></div>
               </div>
@@ -1176,7 +1231,9 @@ const slides: Slide[] = [
             <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
               <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
                 <div className="w-6 h-6 rounded-full bg-electric-purple/10 flex items-center justify-center">
-                  <span className="text-electric-purple font-bold text-sm">1</span>
+                  <span className="text-electric-purple font-bold text-sm">
+                    1
+                  </span>
                 </div>
                 <p className="text-xs text-white/80">
                   Create your custom trading strategy using natural language
@@ -1188,13 +1245,16 @@ const slides: Slide[] = [
                   <span className="text-neon-pink font-bold text-sm">2</span>
                 </div>
                 <p className="text-xs text-white/80">
-                  AI agent executes strategy using various integrations & protocols
+                  AI agent executes strategy using various integrations &
+                  protocols
                 </p>
               </div>
 
               <div className="flex flex-col items-center text-center space-y-2 p-2 bg-black/30 rounded-lg border border-white/5">
                 <div className="w-6 h-6 rounded-full bg-electric-purple/10 flex items-center justify-center">
-                  <span className="text-electric-purple font-bold text-sm">3</span>
+                  <span className="text-electric-purple font-bold text-sm">
+                    3
+                  </span>
                 </div>
                 <p className="text-xs text-white/80">
                   Strategy performance is tracked on social leaderboard
@@ -1206,7 +1266,8 @@ const slides: Slide[] = [
                   <span className="text-neon-pink font-bold text-sm">4</span>
                 </div>
                 <p className="text-xs text-white/80">
-                  Copy traders follow top strategies while creators earn 50% of fees
+                  Copy traders follow top strategies while creators earn 50% of
+                  fees
                 </p>
               </div>
             </div>
@@ -1345,10 +1406,16 @@ const slides: Slide[] = [
               <ul className="space-y-1 text-xs text-white/80">
                 <li>• AI-powered brand growth and community engagement</li>
                 <li>• Intelligent post creation and interaction</li>
-                <li>• Multi-platform support (X, Telegram, Discord, Farcaster)</li>
+                <li>
+                  • Multi-platform support (X, Telegram, Discord, Farcaster)
+                </li>
                 <li>• Community management via AI chatbots</li>
-                <li className="text-electric-purple">• Social intelligence from human interactions</li>
-                <li className="text-electric-purple">• Adaptive learning from community feedback</li>
+                <li className="text-electric-purple">
+                  • Social intelligence from human interactions
+                </li>
+                <li className="text-electric-purple">
+                  • Adaptive learning from community feedback
+                </li>
               </ul>
             </motion.div>
 
@@ -1372,8 +1439,12 @@ const slides: Slide[] = [
                 <li>• Long-term investment focus</li>
                 <li>• Data-driven decision making</li>
                 <li>• Powered by Brian AI integration</li>
-                <li className="text-neon-pink">• Copy-trading with performance leaderboard</li>
-                <li className="text-neon-pink">• Strategy marketplace & revenue sharing</li>
+                <li className="text-neon-pink">
+                  • Copy-trading with performance leaderboard
+                </li>
+                <li className="text-neon-pink">
+                  • Strategy marketplace & revenue sharing
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -1385,7 +1456,8 @@ const slides: Slide[] = [
             transition={{ delay: 1 }}
           >
             <p className="text-xs text-white/60">
-              Join the community of strategy creators and traders on our performance-based marketplace
+              Join the community of strategy creators and traders on our
+              performance-based marketplace
             </p>
           </motion.div>
         </div>
@@ -1489,7 +1561,6 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
                 >
                   <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
                     Market Size:
@@ -1503,7 +1574,6 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
                 >
                   <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
                     Target Market:
@@ -1524,7 +1594,6 @@ const slides: Slide[] = [
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
                 >
                   <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
                     Current Solutions:
@@ -1807,8 +1876,8 @@ const slides: Slide[] = [
             </h3>
             <ul className="space-y-4 text-white/80">
               <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> Trading Agents (Synergy):
-                Spectral, Noks, Brian AI, Mimic
+                <span className="text-electric-purple">•</span> Trading Agents
+                (Synergy): Spectral, Noks, Brian AI, Mimic
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-electric-purple">•</span> Community Tools:
@@ -2208,7 +2277,7 @@ const slides: Slide[] = [
                   className="w-24 h-24 rounded-full mb-4 border-2 border-electric-purple/50"
                 />
                 <h3 className="text-xl font-bold gradient-text">
-                  Sebastian Ołdak
+                  Sebastian Oldak
                 </h3>
                 <p className="text-white/60">Web3 Dev & Co-Founder</p>
               </div>
@@ -2488,10 +2557,7 @@ const slides: Slide[] = [
                     detail: "6-Month Vesting",
                   },
                 ].map((item, index) => (
-                  <li
-                    key={index}
-                    className={`${item.color} text-base`}
-                  >
+                  <li key={index} className={`${item.color} text-base`}>
                     • <span className="font-bold">{item.text}</span>{" "}
                     <span className="text-white/60">{item.detail}</span>
                   </li>
