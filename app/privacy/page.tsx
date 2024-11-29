@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Soul AI Agents",
-  description: "Privacy Policy and data handling practices for Soul AI Agents",
+  title: "Privacy Policy - Soul Agents",
+  description: "Privacy Policy and data handling practices for Soul Agents",
 };
 
 export default function Privacy() {
@@ -28,249 +28,302 @@ export default function Privacy() {
 
             <div className="bg-blue-900/20 border border-blue-500/50 p-6 rounded-xl mb-12">
               <p className="text-white/90 text-center mb-0">
-                At Soul AI Agents, we are committed to protecting your privacy
-                and ensuring the security of your personal information. This
-                Privacy Policy outlines our practices for collecting, using, and
-                safeguarding your data.
+                At Soul Agents, we prioritize your privacy and data security.
+                This Privacy Policy explains how we collect, use, and protect
+                your information. By using our protocol, you agree to the data
+                practices described here.
               </p>
             </div>
 
             <div className="space-y-12">
               <section>
                 <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">1.</span> Introduction
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6">
-                  <p className="text-white/80">
-                    Soul AI Agents ("we," "our," or "us") is committed to
-                    protecting your privacy. This Privacy Policy explains how we
-                    collect, use, disclose, and safeguard your information when
-                    you use our services. By using our platform, you agree to
-                    the collection and use of information in accordance with
-                    this policy.
-                  </p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">2.</span> Information We
+                  <span className="text-primary">1.</span> Information We
                   Collect
                 </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-6">
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      1.1 Account Information
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Email address and account credentials</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          Connected wallet addresses and transaction history
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          X (formerly Twitter) credentials for social
+                          verification
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Profile information and preferences</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      1.2 Trading Data
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Trading preferences and patterns</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>AI interaction history</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Protocol usage statistics</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          On-chain activity related to connected wallets
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      1.3 Technical Data
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>IP address and device information</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Browser type and settings</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Access timestamps and logs</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-900/20 border border-blue-500/50 p-4 rounded-lg mt-4">
+                    <p className="text-white/90 mb-0">
+                      Note: We collect and process wallet addresses and social
+                      media credentials solely for the purpose of providing our
+                      services, preventing fraud, and ensuring protocol
+                      security. This information is handled in accordance with
+                      our security standards and data protection practices.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">2.</span> How We Use Your
+                  Information
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      2.1 Service Improvement
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          Enhance AI trading insights and recommendations
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          Improve protocol functionality and user experience
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Develop new features and services</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      2.2 Security & Compliance
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Protect against unauthorized access</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Detect and prevent fraud</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Comply with legal obligations</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">3.</span> Data Protection
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      3.1 Security Measures
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>End-to-end encryption for sensitive data</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Regular security audits and monitoring</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Secure access controls and authentication</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      3.2 Data Retention
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Data kept only as long as necessary</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Regular data review and cleanup</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Secure data disposal procedures</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">4.</span> Your Rights
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      4.1 Data Access & Control
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Request access to your personal data</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Correct or update your information</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Delete your account and associated data</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      4.2 Communication Preferences
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Opt-out of marketing communications</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Choose notification preferences</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Manage data sharing settings</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">5.</span> Third-Party Services
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      5.1 Data Sharing
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>Essential service providers and partners</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-400">•</span>
+                        <span>
+                          Legal and regulatory authorities when required
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      5.2 Third-Party Links
+                    </h3>
+                    <p className="text-white/80">
+                      Our protocol may contain links to third-party websites. We
+                      are not responsible for their privacy practices. We
+                      encourage you to read their privacy policies.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">6.</span> Updates to Privacy
+                  Policy
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6">
                   <p className="text-white/80">
-                    We collect various types of information to provide and
-                    improve our services:
+                    We may update this Privacy Policy periodically to reflect
+                    changes in our practices or legal requirements. We will
+                    notify you of any material changes via email or platform
+                    notifications. Continued use of our services after such
+                    changes constitutes acceptance of the updated policy.
                   </p>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div className="space-y-3">
-                      <h3 className="text-lg font-medium text-white/90">
-                        Account Information
-                      </h3>
-                      <ul className="list-none space-y-2">
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Name and email address</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Account credentials</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Communication preferences</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <h3 className="text-lg font-medium text-white/90">
-                        Usage Data
-                      </h3>
-                      <ul className="list-none space-y-2">
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>AI interaction history</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Trading preferences and patterns</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Platform activity logs</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">3.</span> Data Usage
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6">
-                  <p className="text-white/80 mb-4">
-                    We utilize collected data for the following purposes:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Training and improving our AI models for better trading
-                        insights
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Monitoring and optimizing network performance across
-                        blockchain networks
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Enhancing trading suggestions and platform functionality
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Maintaining platform security and preventing
-                        unauthorized access
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">4.</span> Third-Party
-                  Integration
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6">
-                  <p className="text-white/80 mb-4">
-                    Our platform integrates with various third-party services:
-                  </p>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div className="space-y-3">
-                      <h3 className="text-lg font-medium text-white/90">
-                        Blockchain Networks
-                      </h3>
-                      <ul className="list-none space-y-2">
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Arbitrum Network</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Base Network</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Ethereum Network</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-3">
-                      <h3 className="text-lg font-medium text-white/90">
-                        Services
-                      </h3>
-                      <ul className="list-none space-y-2">
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>AI Processing Services</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Network Monitoring</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-blue-400">•</span>
-                          <span>Authentication Systems</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">5.</span> Data Security
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6">
-                  <p className="text-white/80 mb-4">
-                    We implement robust security measures to protect your data:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        End-to-end encryption for all chat data and sensitive
-                        information
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Continuous monitoring of network connections and access
-                        patterns
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Secure password-protected access with additional
-                        authentication layers
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Regular security audits and vulnerability assessments
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">6.</span> User Rights
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6">
-                  <p className="text-white/80 mb-4">
-                    As a user of our platform, you have the following rights:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Request deletion of your chat history and personal data
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Opt-out of non-essential data collection and processing
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Access and export your stored data in a portable format
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-blue-400">•</span>
-                      <span>
-                        Update or correct your personal information at any time
-                      </span>
-                    </li>
-                  </ul>
                 </div>
               </section>
 
@@ -279,10 +332,10 @@ export default function Privacy() {
                   Contact Us
                 </h2>
                 <p className="text-center text-white/80 max-w-2xl mx-auto">
-                  If you have any questions about this Privacy Policy or our
-                  data practices, please contact our privacy team. We are
-                  committed to addressing your concerns and ensuring your data
-                  is protected.
+                  If you have any questions about our Privacy Policy or how we
+                  handle your data, please contact our privacy team. We are
+                  committed to addressing your privacy concerns promptly and
+                  transparently.
                 </p>
               </section>
             </div>
