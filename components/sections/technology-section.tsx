@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Code2 } from "lucide-react";
 
 export default function TechnologySection() {

@@ -1,10 +1,19 @@
-export function rateLimit({ interval }: { interval: number }) {
+type RateLimitConfig = {
+  interval: number;
+  limit: number;
+  tokenBucket?: {
+    tokens: number;
+    lastRefill: number;
+  };
+};
+
+export const rateLimit = (config: RateLimitConfig) => {
   const tokens = new Map();
 
   return {
     check: async (limit: number, token: string) => {
       const now = Date.now();
-      const windowStart = now - interval;
+      const windowStart = now - config.interval;
 
       const tokenCount = tokens.get(token) || [];
       const validTokens = tokenCount.filter(
@@ -12,8 +21,8 @@ export function rateLimit({ interval }: { interval: number }) {
       );
 
       if (validTokens.length >= limit) {
-        const error: any = new Error("Rate limit exceeded");
-        error.status = 429;
+        const error = new Error("Rate limit exceeded");
+        (error as RateLimitError).status = 429;
         throw error;
       }
 
@@ -23,4 +32,8 @@ export function rateLimit({ interval }: { interval: number }) {
       return true;
     },
   };
+};
+
+interface RateLimitError extends Error {
+  status?: number;
 }

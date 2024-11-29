@@ -8,7 +8,8 @@
     "start": "next start",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "list-files": "node scripts/list-files.js"
+    "list-files": "node scripts/list-files.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
@@ -31,16 +32,23 @@
     "zustand": "^5.0.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@next/eslint-plugin-next": "^15.0.3",
     "@types/canvas-confetti": "^1.6.4",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.12.0",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.14",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.16.0"
   },
   "engines": {
     "node": "18.18.0"

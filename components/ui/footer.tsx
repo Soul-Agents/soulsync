@@ -13,14 +13,17 @@ export function Footer() {
     main: [
       { label: "Blog", href: "/blog" },
       { label: "Whitepaper", href: "/whitepaper" },
+      { label: "Trading", href: "https://chat.soulagents.io" },
     ],
     legal: [
       { label: "Terms of Service", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
+      { label: "Risk Disclosure", href: "/disclosure" },
     ],
     social: [
       { label: "X (Twitter)", href: "https://x.com/soul_agents" },
       { label: "Telegram", href: "https://t.me/soul_agents" },
+      { label: "Bunny Chat", href: "https://t.me/cryptobunnyagent" },
     ],
   };
 
