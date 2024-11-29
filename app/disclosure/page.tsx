@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Risk Disclosure - Soul AI Agents",
-  description: "Risk Disclosure and important warnings for Soul AI Agents",
+  title: "Risk Disclosure - Soul Agents",
+  description: "Risk Disclosure and important warnings for Soul Agents",
 };
 
 export default function Disclosure() {
@@ -26,292 +26,295 @@ export default function Disclosure() {
               </p>
             </div>
 
-            <div className="bg-red-900/20 border border-red-500 p-6 rounded-xl mb-12">
+            <div className="bg-red-900/20 border border-red-500/50 p-6 rounded-xl mb-12">
               <h2 className="text-2xl font-bold text-red-400 mb-4 text-center uppercase tracking-wider">
-                Maximum Risk Zone - Critical Information
+                High Risk Trading Environment
               </h2>
               <p className="text-white/90 text-center mb-0">
-                This document outlines significant risks associated with using
-                Soul AI Agents' trading platform. Please read carefully before
-                engaging with our services.
+                Cryptocurrency trading involves substantial risk of loss. Soul
+                Agents' AI-powered insights, while advanced, cannot guarantee
+                profits. Please read this disclosure carefully before trading.
               </p>
             </div>
 
             <div className="space-y-12">
               <section>
                 <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">1.</span> AI Trading Risks
+                  <span className="text-primary">1.</span> Trading Risks
                 </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <p className="text-white/80 mb-4">
-                    The use of artificial intelligence in trading comes with
-                    inherent risks and limitations that all users must
-                    understand:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        AI predictions may be inaccurate or fail to account for
-                        unexpected market events
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Market conditions can change rapidly, potentially
-                        rendering AI analysis outdated
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Technical issues may affect AI performance or cause
-                        delays in analysis
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Past AI success does not guarantee future results or
-                        performance
-                      </span>
-                    </li>
-                  </ul>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      1.1 Market Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          High volatility can lead to substantial losses
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Market conditions can change rapidly and unpredictably
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Past performance does not indicate future results
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      1.2 Technical Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Network congestion may affect trade execution
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Smart contract vulnerabilities could impact
+                          transactions
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          System downtime can occur during maintenance
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </section>
 
               <section>
                 <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">2.</span> Network Risks
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <p className="text-white/80 mb-4">
-                    Our platform operates across multiple blockchain networks,
-                    each presenting unique risks:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Multiple network dependencies (Arbitrum, Base, Ethereum)
-                        may cause operational complexities
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Network outages or congestion can significantly impact
-                        trading operations
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Blockchain congestion may result in delayed transaction
-                        execution
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Smart contract vulnerabilities could pose risks to user
-                        assets
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">3.</span> Financial Risks
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <p className="text-white/80 mb-4">
-                    Cryptocurrency trading involves substantial financial risks:
-                  </p>
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Users may experience partial or total loss of invested
-                        capital
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Cryptocurrency markets are known for extreme volatility
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Leverage trading can magnify both gains and losses
-                        significantly
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        No trading strategy or AI system can guarantee profits
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">4.</span> Platform Risks
-                </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Service interruptions may occur during maintenance or
-                        updates
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Chat system may experience limitations or delays
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Rate limiting could affect platform accessibility
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Security depends on proper credential management
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">5.</span> GIGABRAIN AI
+                  <span className="text-primary">2.</span> AI Technology
                   Limitations
                 </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        AI outputs should not be considered as financial advice
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Our technology is experimental and continuously evolving
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        AI systems may contain inherent biases affecting
-                        analysis
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>Response times may vary based on system load</span>
-                    </li>
-                  </ul>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      2.1 Analysis Limitations
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          AI predictions are based on historical data and may
+                          not reflect future events
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Market anomalies may not be accurately predicted
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          AI models have inherent biases and limitations
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      2.2 Performance Variations
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Response times may vary under high load</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Analysis quality depends on data availability
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Model updates may change trading suggestions
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </section>
 
               <section>
                 <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
-                  <span className="text-primary">6.</span> Legal Compliance
+                  <span className="text-primary">3.</span> Network Risks
                 </h2>
-                <div className="bg-white/5 rounded-xl p-6 space-y-3">
-                  <ul className="list-none space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Users are responsible for compliance with local
-                        regulations
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Platform does not handle or advise on tax obligations
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>No regulatory guarantees are provided</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        Service availability may be restricted in certain
-                        jurisdictions
-                      </span>
-                    </li>
-                  </ul>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      3.1 Blockchain Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Network congestion can delay transactions</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>High gas fees during peak periods</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Network forks or upgrades may affect operations
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      3.2 Security Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Smart contract exploits are possible</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Network attacks could disrupt services</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Wallet security depends on user practices</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </section>
 
-              <section className="bg-gray-900/50 p-8 rounded-xl border border-white/10">
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">4.</span> Financial Risks
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      4.1 Investment Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Potential for complete loss of invested capital
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Leverage trading can magnify losses</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Market manipulation risks</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      4.2 Regulatory Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Changing regulations may affect trading</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Tax implications vary by jurisdiction</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Compliance requirements may change</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-white/90 flex items-center gap-2">
+                  <span className="text-primary">5.</span> Protocol Risks
+                </h2>
+                <div className="bg-white/5 rounded-xl p-6 space-y-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      5.1 Operational Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>System maintenance may cause downtime</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Technical issues could affect functionality</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Third-party service dependencies</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-medium text-white/90">
+                      5.2 User Risks
+                    </h3>
+                    <ul className="list-none space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>
+                          Interface misunderstandings can lead to errors
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Account security depends on user practices</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-red-400">•</span>
+                        <span>Data input errors can affect analysis</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section className="bg-red-900/20 p-8 rounded-xl border border-red-500/50">
                 <h2 className="text-2xl font-semibold mb-6 text-center text-white">
-                  Platform Usage Agreement
+                  Acknowledgment
                 </h2>
-                <div className="space-y-4">
-                  <p className="text-center text-white/80">
-                    By using this platform, you explicitly acknowledge and agree
-                    that:
-                  </p>
-                  <ul className="list-none space-y-3 max-w-2xl mx-auto">
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        You accept all risks associated with cryptocurrency
-                        trading
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        You understand the limitations of AI-powered trading
-                        systems
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        You take full responsibility for any potential losses
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-red-400">•</span>
-                      <span>
-                        You verify your compliance with all applicable laws
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-            </div>
-
-            <div className="mt-12 text-center">
-              <div className="inline-block border border-white/10 rounded-lg px-6 py-3 bg-white/5">
-                <p className="text-lg font-semibold mb-0">
-                  STAY SAFE • TRADE SMART • RESPECT THE TECH
+                <p className="text-center text-white/90 max-w-2xl mx-auto">
+                  By using Soul Agents, you acknowledge that you understand and
+                  accept all risks outlined in this disclosure. You agree to
+                  trade responsibly and not risk more than you can afford to
+                  lose.
                 </p>
-              </div>
+              </section>
             </div>
           </div>
         </div>
