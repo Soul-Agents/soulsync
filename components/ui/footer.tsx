@@ -34,7 +34,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
-            <h3 className="gradient-text font-semibold mb-4">Soul AI Agents</h3>
+            <h3 className="gradient-text font-semibold mb-4">Soul Agents</h3>
             <ul className="space-y-2">
               {sections.main.map((link) => (
                 <li key={link.href}>
@@ -80,7 +80,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 text-center md:text-left">
           <div className="text-white/60 text-sm">
-            © {currentYear} Soul AI Agents. All rights reserved.
+            © {currentYear} Soul Agents. All rights reserved.
           </div>
         </div>
       </div>
