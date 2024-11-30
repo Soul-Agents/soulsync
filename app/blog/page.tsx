@@ -16,6 +16,43 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "Soul Agents Integrates Brian AI for Enhanced Trading Intelligence",
+    description:
+      "Soul Agents expands its AI ecosystem by integrating Brian AI's trading capabilities, enhanced by our proprietary GIGABRAIN technology for next-level market analysis and trading.",
+    date: "Nov 30, 2024",
+    author: "Adam",
+    readTime: "3 min read",
+    category: "Integration Updates",
+    content: `
+      Soul Agents has successfully integrated Brian AI's trading capabilities into our ecosystem!
+
+      The Integration Benefits:
+      By combining Brian AI's robust trading infrastructure with our GIGABRAIN technology, we're creating a powerful new tool that offers:
+      • Token balance & price checks on Arbitrum, Base and Etehereum
+      • Direct swap and cross-chain swap execution capabilities with ETH/USDC and other tokens
+      • Natural language command processing
+      • Enhanced market analysis through our proprietary systems (soon to be connected)
+
+      Our proprietary GIGABRAIN technology will enrich Brian AI's capabilities with:
+      • Advanced Twitter analysis via @cryptobunny__ and other agents
+      • Comprehensive social sentiment tracking
+      • RAG-based memory system for deeper market understanding
+      • Real-time market sentiment correlation
+
+      Roadmap Ahead:
+      This integration is just the beginning. Our development pipeline includes:
+      • Expanded trading capabilities across multiple chains
+      • Advanced KOL analytics integration
+      • Cross-chain support (Base & more)
+      • Enhanced market strategy recommendations
+
+      Experience It Today:
+      Visit https://chat.soulagents.io to try out our enhanced trading capabilities. The integration of Brian AI represents a major step forward in our mission to revolutionize AI-driven trading in the Web3 space.
+
+      This collaboration demonstrates our commitment to bringing the best technologies together, enhanced by our proprietary solutions, to create unprecedented value for our users. Stay tuned as we continue to expand and enhance these capabilities in the coming weeks.
+    `,
+  },
+  {
     title: "Crypto Bunny Takes Flight: Our First AI Agent Goes Live",
     description:
       "Crypto Bunny has officially launched on X, marking the beginning of our journey to revolutionize AI-driven community engagement in Web3.",
