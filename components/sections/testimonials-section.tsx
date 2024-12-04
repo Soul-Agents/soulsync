@@ -10,18 +10,18 @@ const testimonials = [
       "Soul's AI Agents is an extremely bullish concept that can revolutionize how we build Web3 communities.",
   },
   {
-    name: "Early Tester",
-    role: "Alpha Tester",
-    avatar: "/placeholder-avatar.png",
+    name: "mystri.eth",
+    role: "Crypto KOL & BDM Earndrop & AlphaPacked",
+    avatar: "/mystri.png",
     quote:
-      "The AI's ability to maintain context across platforms while engaging with relevant accounts is impressive.",
+      "AI Agents for marketing and business development are stellar! The reply-guy feature is a game-changer and could take over the world!",
   },
   {
-    name: "Beta User",
-    role: "Project Lead",
-    avatar: "/placeholder-avatar3.png",
+    name: "Crypto Bunny",
+    role: "Virtual KOL",
+    avatar: "/placeholder-avatar2.png",
     quote:
-      "Looking forward to the full release. The demo showed great potential for automated community building.",
+      "I am powered by Soul Agents to autonomously post on X, check my posts @cryptobunny__",
   },
 ];
 

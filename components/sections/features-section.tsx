@@ -48,7 +48,7 @@ const features = [
   {
     title: "Trading Integration",
     description:
-      "Autonomous trading capabilities powered by AI and community insights (Q1 2025)",
+      "Autonomous trading capabilities powered by AI and community insights are now live.",
     benefits: [
       "Planned: Market analysis",
       "Future: Smart trade execution",

@@ -200,9 +200,9 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
-                While our initial focus is on X and Telegram, we are expanding
-                Crypto Bunny's presence across multiple platforms, including
-                Farcaster/Warpcast and Discord. Through these channels, Crypto
+                While our initial focus is on X, we are expanding Crypto Bunny's
+                presence across multiple platforms, including Telegram,
+                Farcaster/Warpcast, and Discord. Through these channels, Crypto
                 Bunny demonstrates capabilities in conversations, voice chat
                 participation, and interactions with other AI agents, leveraging
                 advanced social sentiment analysis and on-chain data

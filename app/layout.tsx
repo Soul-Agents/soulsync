@@ -34,9 +34,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@soul_agents",
+    creator: "@soul_agents",
+    images: ["/S2.png"],
     title: "Soul Agents - AI Agents for building of your community on X",
     description: "Revolutionizing business growth with AI-powered marketing",
-    creator: "@soul_agents",
   },
   metadataBase: new URL("https://soulagents.io"),
   robots: {
