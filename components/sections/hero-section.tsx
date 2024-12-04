@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function HeroSection() {
   useEffect(() => {
-    // Trigger confetti when component mounts
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;
 
@@ -29,7 +28,7 @@ export default function HeroSection() {
           x: randomInRange(0.1, 0.9),
           y: Math.random() - 0.2,
         },
-        colors: ["#9333EA", "#EC4899"], // electric-purple and neon-pink
+        colors: ["#9333EA", "#EC4899"],
         disableForReducedMotion: true,
       });
     }, 50);
@@ -122,12 +121,12 @@ export default function HeroSection() {
           </div>
           <div className="animate-fade-in-delay-2">
             <Link
-              href="/deck"
+              href="/cases"
               className="button-gradient inline-flex items-center gap-2 px-8 py-6 text-lg font-bold text-white 
                        hover:opacity-90 transition-all transform hover:scale-105 
                        shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
             >
-              <span>Get Access</span>
+              <span>See Cases</span>
               <svg
                 className="w-5 h-5"
                 fill="none"

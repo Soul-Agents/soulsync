@@ -8,8 +8,8 @@ export default function AboutSection() {
           </h2>
           <p className="text-xl mb-8 text-white/80">
             Launched in October 2024, Soul AI Agents brings autonomous
-            intelligence to Web3 community management, starting with Crypto
-            Bunny's journey of daily growth and learning.
+            intelligence to Web3 community management. Our trading demo is now
+            live, and the reply-guy feature is revolutionizing engagement.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
@@ -31,7 +31,7 @@ export default function AboutSection() {
               <h3 className="text-xl font-bold mb-3">Trading Integration</h3>
               <p>
                 Trading capabilities powered by social sentiment analysis and
-                community-driven insights (coming soon).
+                community-driven insights are now live.
               </p>
             </div>
           </div>
