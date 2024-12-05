@@ -139,6 +139,143 @@ export default function WhitepaperPage() {
             </div>
           </motion.section>
 
+          {/* AI Agent Rules */}
+          <motion.section
+            className="glass-card p-8 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center break-words">
+              <span className="text-xl md:text-2xl mr-3 flex-shrink-0">📜</span>
+              <span className="gradient-text break-words">
+                The 10 Rules of A.I. Agents
+              </span>
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Heart of Service */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-neon-pink">
+                  Heart of Service
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Share genuine value</li>
+                  <li>• Prevent harm</li>
+                  <li>• Build up others</li>
+                </ul>
+              </div>
+
+              {/* Technical Truth */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-electric-purple">
+                  Technical Truth
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Verify all data</li>
+                  <li>• Ensure accuracy</li>
+                  <li>• Enable validation</li>
+                </ul>
+              </div>
+
+              {/* Humble Learning */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-neon-pink">
+                  Humble Learning
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Stay teachable</li>
+                  <li>• Learn together</li>
+                  <li>• Grow community</li>
+                </ul>
+              </div>
+
+              {/* Authentic Connection */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-electric-purple">
+                  Authentic Connection
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Foster genuine interactions</li>
+                  <li>• Build real bridges</li>
+                  <li>• Cultivate trust</li>
+                </ul>
+              </div>
+
+              {/* Mindful Impact */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-neon-pink">
+                  Mindful Impact
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Consider broader effects</li>
+                  <li>• Shape space positively</li>
+                  <li>• Elevate discourse</li>
+                </ul>
+              </div>
+
+              {/* Clear Communication */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-electric-purple">
+                  Clear Communication
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Ensure understanding</li>
+                  <li>• Remove jargon</li>
+                  <li>• Clarify complexity</li>
+                </ul>
+              </div>
+
+              {/* Community Focus */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-neon-pink">
+                  Community Focus
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Unite people</li>
+                  <li>• Grow together</li>
+                  <li>• Serve all</li>
+                </ul>
+              </div>
+
+              {/* Technical Excellence */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-electric-purple">
+                  Technical Excellence
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Provide best solutions</li>
+                  <li>• Test thoroughly</li>
+                  <li>• Continuous improvement</li>
+                </ul>
+              </div>
+
+              {/* Ethical Alignment */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-neon-pink">
+                  Ethical Alignment
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Uphold values</li>
+                  <li>• Protect others</li>
+                  <li>• Choose right path</li>
+                </ul>
+              </div>
+
+              {/* Sustainable Growth */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-electric-purple">
+                  Sustainable Growth
+                </h3>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Build long-term</li>
+                  <li>• Create foundations</li>
+                  <li>• Add lasting value</li>
+                </ul>
+              </div>
+            </div>
+          </motion.section>
+
           {/* Crypto Bunny */}
           <motion.section
             id="crypto-bunny"

@@ -131,7 +131,7 @@ export default function Cases() {
                   Soul Agents
                 </h2>
                 <p className="text-base sm:text-lg mb-4">
-                  Soul Agents autonomously manage community engagement on X,
+                  Soul Agents autonomously manages community engagement on X,
                   leveraging AI to interact with followers and influencers.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-sm">
@@ -204,7 +204,7 @@ export default function Cases() {
           animate={{ opacity: 1 }}
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 gradient-text">
-            Why Choose Soul AI Agents?
+            Why Choose Soul Agents?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
             <div className="glass-card p-6 hover:shadow-[0_0_30px_rgba(147,51,234,0.3)] transition-all duration-300">
@@ -215,8 +215,7 @@ export default function Cases() {
                 Proven Results
               </h3>
               <p className="text-white/70">
-                Join hundreds of successful accounts seeing real growth and
-                engagement
+                Join other successful accounts seeing real growth and engagement
               </p>
             </div>
             <div className="glass-card p-6 hover:shadow-[0_0_30px_rgba(147,51,234,0.3)] transition-all duration-300">
