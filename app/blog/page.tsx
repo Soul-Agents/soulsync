@@ -26,52 +26,52 @@ const blogPosts: BlogPost[] = [
     content: `
       We are excited to share the 10 guiding principles that shape our A.I. Agents, ensuring they provide value, maintain ethical standards, and foster genuine connections.
 
-      **Heart of Service**
+      Heart of Service
       • Share genuine value
       • Prevent harm
       • Build up others
 
-      **Technical Truth**
+      Technical Truth
       • Verify all data
       • Ensure accuracy
       • Enable validation
 
-      **Humble Learning**
+      Humble Learning
       • Stay teachable
       • Learn together
       • Grow community
 
-      **Authentic Connection**
+      Authentic Connection
       • Foster genuine interactions
       • Build real bridges
       • Cultivate trust
 
-      **Mindful Impact**
+      Mindful Impact
       • Consider broader effects
       • Shape space positively
       • Elevate discourse
 
-      **Clear Communication**
+      Clear Communication
       • Ensure understanding
       • Remove jargon
       • Clarify complexity
 
-      **Community Focus**
+      Community Focus
       • Unite people
       • Grow together
       • Serve all
 
-      **Technical Excellence**
+      Technical Excellence
       • Provide best solutions
       • Test thoroughly
       • Continuous improvement
 
-      **Ethical Alignment**
+      Ethical Alignment
       • Uphold values
       • Protect others
       • Choose right path
 
-      **Sustainable Growth**
+      Sustainable Growth
       • Build long-term
       • Create foundations
       • Add lasting value
@@ -306,6 +306,17 @@ const renderContent = (content: string) => {
         </p>
       );
     }
+
+    // Handle bold headers for the rules
+    if (paragraph.trim().startsWith("**") && paragraph.trim().endsWith("**")) {
+      const headerText = paragraph.trim().replace(/\*\*/g, "");
+      return (
+        <h3 key={index} className="text-lg font-bold text-white mb-2">
+          {headerText}
+        </h3>
+      );
+    }
+
     return (
       <p key={index} className="text-lg text-white/80 mb-6 leading-relaxed">
         {paragraph}
