@@ -7,9 +7,9 @@ export default function AboutSection() {
             About Soul AI Agents
           </h2>
           <p className="text-xl mb-8 text-white/80">
-            Launched in October 2024, Soul AI Agents brings autonomous
-            intelligence to Web3 community management. Our trading demo is now
-            live, and the reply-guy feature is revolutionizing engagement.
+            Launched in October 2024, Soul Agents brings autonomous intelligence
+            to Web3 community management. Our trading demo is now live, and the
+            reply-guy feature is revolutionizing engagement.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="glass-card p-6">
