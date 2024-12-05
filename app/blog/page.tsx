@@ -16,6 +16,70 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "The 10 Rules of A.I. Agents and Our Live Accounts",
+    description:
+      "Discover the guiding principles of our A.I. Agents and learn about the two accounts that are already live.",
+    date: "Dec 5, 2024",
+    author: "Adam",
+    readTime: "4 min read",
+    category: "Guidelines & Updates",
+    content: `
+      We are excited to share the 10 guiding principles that shape our A.I. Agents, ensuring they provide value, maintain ethical standards, and foster genuine connections.
+
+      **Heart of Service**
+      • Share genuine value
+      • Prevent harm
+      • Build up others
+
+      **Technical Truth**
+      • Verify all data
+      • Ensure accuracy
+      • Enable validation
+
+      **Humble Learning**
+      • Stay teachable
+      • Learn together
+      • Grow community
+
+      **Authentic Connection**
+      • Foster genuine interactions
+      • Build real bridges
+      • Cultivate trust
+
+      **Mindful Impact**
+      • Consider broader effects
+      • Shape space positively
+      • Elevate discourse
+
+      **Clear Communication**
+      • Ensure understanding
+      • Remove jargon
+      • Clarify complexity
+
+      **Community Focus**
+      • Unite people
+      • Grow together
+      • Serve all
+
+      **Technical Excellence**
+      • Provide best solutions
+      • Test thoroughly
+      • Continuous improvement
+
+      **Ethical Alignment**
+      • Uphold values
+      • Protect others
+      • Choose right path
+
+      **Sustainable Growth**
+      • Build long-term
+      • Create foundations
+      • Add lasting value
+
+      In addition to these principles, we are thrilled to announce that two of our A.I. accounts are already live, actively engaging with communities and demonstrating the power of our technology. Stay tuned for more updates as we continue to expand and enhance our A.I. ecosystem.
+    `,
+  },
+  {
     title: "Soul Agents Integrates Brian AI for Enhanced Trading Intelligence",
     description:
       "Soul Agents expands its AI ecosystem by integrating Brian AI's trading capabilities, enhanced by our proprietary GIGABRAIN technology for next-level market analysis and trading.",
@@ -211,70 +275,6 @@ const blogPosts: BlogPost[] = [
       By focusing on these core principles, we've created AI agents that can effectively engage with high-value audiences while maintaining authentic and meaningful interactions.
 
       The key to our success lies in our sophisticated natural language processing capabilities combined with advanced context understanding, allowing our AI agents to participate in conversations naturally and meaningfully.
-    `,
-  },
-  {
-    title: "The 10 Rules of A.I. Agents and Our Live Accounts",
-    description:
-      "Discover the guiding principles of our A.I. Agents and learn about the two accounts that are already live.",
-    date: "Dec 5, 2024",
-    author: "Adam",
-    readTime: "4 min read",
-    category: "Guidelines & Updates",
-    content: `
-      We are excited to share the 10 guiding principles that shape our A.I. Agents, ensuring they provide value, maintain ethical standards, and foster genuine connections.
-
-      **Heart of Service**
-      • Share genuine value
-      • Prevent harm
-      • Build up others
-
-      **Technical Truth**
-      • Verify all data
-      • Ensure accuracy
-      • Enable validation
-
-      **Humble Learning**
-      • Stay teachable
-      • Learn together
-      • Grow community
-
-      **Authentic Connection**
-      • Foster genuine interactions
-      • Build real bridges
-      • Cultivate trust
-
-      **Mindful Impact**
-      • Consider broader effects
-      • Shape space positively
-      • Elevate discourse
-
-      **Clear Communication**
-      • Ensure understanding
-      • Remove jargon
-      • Clarify complexity
-
-      **Community Focus**
-      • Unite people
-      • Grow together
-      • Serve all
-
-      **Technical Excellence**
-      • Provide best solutions
-      • Test thoroughly
-      • Continuous improvement
-
-      **Ethical Alignment**
-      • Uphold values
-      • Protect others
-      • Choose right path
-
-      **Sustainable Growth**
-      • Build long-term
-      • Create foundations
-      • Add lasting value
-
-      In addition to these principles, we are thrilled to announce that two of our A.I. accounts are already live, actively engaging with communities and demonstrating the power of our technology. Stay tuned for more updates as we continue to expand and enhance our A.I. ecosystem.
     `,
   },
 ];
