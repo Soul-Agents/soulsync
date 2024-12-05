@@ -22,7 +22,7 @@ export default function TechnologySection() {
           {/* AI Framework Card */}
           <div className="glass-card p-8 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-neon-pink/20 animate-fade-in-up">
             <div className="flex items-start mb-4 group">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
+              <div className="p-3 rounded-full bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="ml-4">
@@ -57,7 +57,7 @@ export default function TechnologySection() {
             style={{ animationDelay: "200ms" }}
           >
             <div className="flex items-start mb-4 group">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
+              <div className="p-3 rounded-full bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="ml-4">
@@ -92,7 +92,7 @@ export default function TechnologySection() {
             style={{ animationDelay: "400ms" }}
           >
             <div className="flex items-start mb-4 group">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
+              <div className="p-3 rounded-full bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="ml-4">
@@ -127,7 +127,7 @@ export default function TechnologySection() {
             style={{ animationDelay: "600ms" }}
           >
             <div className="flex items-start mb-4 group">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
+              <div className="p-3 rounded-full bg-gradient-to-br from-neon-pink/20 to-electric-purple/20 group-hover:from-neon-pink/30 group-hover:to-electric-purple/30 transition-all duration-300">
                 <Code2 className="h-6 w-6 text-neon-pink group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="ml-4">
@@ -145,7 +145,7 @@ export default function TechnologySection() {
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-neon-pink" />
-                    <span>EVM Integration: Live</span>
+                    <span>Live: EVM Integration (Check Footer)</span>
                   </li>
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-electric-purple" />

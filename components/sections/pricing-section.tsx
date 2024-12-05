@@ -8,7 +8,7 @@ export default function PricingSection() {
       period: "/month",
       description: "Single X Account AI Agent",
       features: [
-        "Up to 500 interactions per month",
+        "Up to 1,000 interactions per month",
         "X (Twitter) platform integration",
         "AI-powered targeting by relevance",
         "Connect with influencers across 'Crypto Twitter'",
@@ -25,7 +25,7 @@ export default function PricingSection() {
       description: "X + Telegram Integrated Intelligence",
       features: [
         "Everything in Starter plan",
-        "Up to 1,000 interactions per month",
+        "Up to 3,000 interactions per month",
         "X and Telegram platform integration",
         "Cross-platform intelligence sharing",
         "Build your following on X and Telegram",
