@@ -31,12 +31,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://soulagents.io",
+    images: [
+      {
+        url: "/soul-agents.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Soul Agents Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@soul_agents",
     creator: "@soul_agents",
-    images: ["/S2.png"],
+    images: ["/soul-agents.jpg"],
     title: "Soul Agents - AI Agents for building of your community on X",
     description: "Revolutionizing business growth with AI-powered marketing",
   },
