@@ -38,7 +38,7 @@ export default function AboutSection() {
 
           {/* Hackathon Achievement */}
           <div className="mt-12 glass-card p-6">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col md:flex-row justify-between items-center">
               {/* Achievement Info */}
               <div className="flex items-center justify-center flex-[2]">
                 <div className="flex items-center justify-center">
@@ -72,11 +72,11 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              {/* Vertical Divider */}
-              <div className="h-16 w-px bg-white/10 mx-4" />
+              {/* Vertical Divider - Hidden on mobile */}
+              <div className="hidden md:block h-16 w-px bg-white/10 mx-4" />
 
               {/* More Info Link */}
-              <div className="flex items-center justify-center flex-1">
+              <div className="flex items-center justify-center flex-1 mt-4 md:mt-0">
                 <a
                   href="/deck"
                   className="text-white/60 hover:text-white transition-colors group flex flex-col items-center"
