@@ -38,28 +38,54 @@ export default function AboutSection() {
 
           {/* Hackathon Achievement */}
           <div className="mt-12 glass-card p-6">
-            <div className="flex flex-col items-center space-y-3">
-              <span className="text-2xl">🏆</span>
-              <h3 className="text-xl font-bold gradient-text">
-                3rd Place in Brian AI Hackathon
-              </h3>
-              <div className="flex items-center gap-3 text-white/60">
+            <div className="flex justify-between items-center">
+              {/* Achievement Info */}
+              <div className="flex items-center justify-center flex-[2]">
+                <div className="flex items-center justify-center">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-lg">🏆</span>
+                    <div>
+                      <h3 className="text-lg font-bold gradient-text">
+                        3rd Place in Brian AI Hackathon
+                      </h3>
+                      <div className="flex items-center gap-3 text-white/60 mt-1">
+                        <a
+                          href="https://chat.soulagents.io"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-electric-purple hover:underline text-sm"
+                        >
+                          chat.soulagents.io
+                        </a>
+                        <span>•</span>
+                        <a
+                          href="https://x.com/BrianknowsAI/status/1865067091759427955"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neon-pink hover:underline text-sm"
+                        >
+                          View →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Vertical Divider */}
+              <div className="h-16 w-px bg-white/10 mx-4" />
+
+              {/* More Info Link */}
+              <div className="flex items-center justify-center flex-1">
                 <a
-                  href="https://chat.soulagents.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-electric-purple hover:underline"
+                  href="/deck"
+                  className="text-white/60 hover:text-white transition-colors group flex flex-col items-center"
                 >
-                  chat.soulagents.io
-                </a>
-                <span>•</span>
-                <a
-                  href="https://x.com/BrianknowsAI/status/1865067091759427955"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-neon-pink hover:underline"
-                >
-                  View →
+                  <span className="text-xs">Get access to</span>
+                  <span className="text-neon-pink font-bold text-lg">
+                    more information
+                  </span>
+                  <span className="text-white/40">→</span>
                 </a>
               </div>
             </div>
