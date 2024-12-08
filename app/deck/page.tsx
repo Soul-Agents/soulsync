@@ -2572,7 +2572,7 @@ const slides: Slide[] = [
                   </span>{" "}
                   raised from <span className="text-neon-pink">mystri.eth</span>{" "}
                   <span className="text-white/60">
-                    (Crypto KOL & BDM Earndro & AlphaPacked)
+                    (Crypto KOL & BDM Earndrop & AlphaPacked)
                   </span>
                 </p>
               </div>
