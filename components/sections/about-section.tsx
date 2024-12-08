@@ -35,6 +35,35 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
+
+          {/* Hackathon Achievement */}
+          <div className="mt-12 glass-card p-6">
+            <div className="flex flex-col items-center space-y-3">
+              <span className="text-2xl">🏆</span>
+              <h3 className="text-xl font-bold gradient-text">
+                3rd Place in Brian AI Hackathon
+              </h3>
+              <div className="flex items-center gap-3 text-white/60">
+                <a
+                  href="https://chat.soulagents.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-electric-purple hover:underline"
+                >
+                  chat.soulagents.io
+                </a>
+                <span>•</span>
+                <a
+                  href="https://x.com/BrianknowsAI/status/1865067091759427955"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neon-pink hover:underline"
+                >
+                  View →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

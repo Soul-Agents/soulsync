@@ -2623,7 +2623,7 @@ const slides: Slide[] = [
 
           {/* Bottom Text */}
           <motion.div
-            className="glass-card p-4 text-center"
+            className="glass-card p-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -2633,20 +2633,52 @@ const slides: Slide[] = [
               stiffness: 100,
             }}
           >
-            <p className="text-lg text-white/80">
-              Modern Tokenomics Focused on Sustainable Growth:
-              <br />
-              <span className="text-electric-purple font-bold">
-                Fair Launch
-              </span>
-              ,
-              <span className="text-neon-pink font-bold"> Buy-Back & Burn</span>
-              , and
-              <span className="text-electric-purple font-bold">
-                {" "}
-                Delayed Staking Rewards
-              </span>
-            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="text-center">
+                <p className="text-lg text-white/80">
+                  Modern Tokenomics Focused on:
+                  <br />
+                  <span className="text-electric-purple font-bold">
+                    Fair Launch
+                  </span>
+                  ,
+                  <span className="text-neon-pink font-bold">
+                    {" "}
+                    Buy-Back & Burn
+                  </span>
+                  ,
+                  <span className="text-electric-purple font-bold">
+                    {" "}
+                    Delayed Rewards
+                  </span>
+                </p>
+              </div>
+              <div className="text-center border-l border-white/10">
+                <p className="text-white/80">
+                  🏆 3rd Place in Brian AI Hackathon
+                  <br />
+                  <span className="text-sm text-white/60">
+                    <a
+                      href="https://chat.soulagents.io"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-electric-purple hover:underline text-base"
+                    >
+                      chat.soulagents.io
+                    </a>
+                    {" • "}
+                    <a
+                      href="https://x.com/BrianknowsAI/status/1865067091759427955"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-neon-pink hover:underline text-base"
+                    >
+                      View →
+                    </a>
+                  </span>
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </SlideLayout>

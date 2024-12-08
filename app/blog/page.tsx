@@ -16,6 +16,58 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    title: "Soul Agents Wins 3rd Place in Brian AI Hackathon! 🏆",
+    description:
+      "Our AI trading assistant powered by Brian AI secured 3rd place in the prestigious hackathon. Learn about our vision for the future of autonomous trading.",
+    date: "Dec 8, 2024",
+    author: "Adam",
+    readTime: "5 min read",
+    category: "Achievements",
+    content: `
+      We're thrilled to announce that Soul Agents Chat won 3rd place in the Brian AI Hackathon! This achievement marks a significant milestone in our journey to revolutionize trading through AI-powered autonomous agents.
+
+      🔥 What We Built
+
+      Soul Agents Chat is a Web3 native agent capable of autonomous trading and direct blockchain interaction. Our solution combines Brian AI's powerful capabilities with our GIGABRAIN system to create a next-level crypto trading experience.
+
+      Key Features:
+      • Autonomous Trading with Direct Blockchain Interaction
+      • Natural Language Trading Commands
+      • Protocol Integration with DeFi and Smart Contracts
+      • Brian Agent Integration with ENS Support
+
+      🧠 GIGABRAIN Integration
+
+      Our multi-agent system leverages GIGABRAIN, our Langchain-based solution that:
+      • Reads, posts, and replies to tweets autonomously
+      • Maintains long-term and short-term memory
+      • Uses RAG-based Vector DB for enhanced decision making
+
+      🚀 What's Next
+
+      We're actively working on:
+      • Enhanced Market Analysis
+      • Automated Trade Execution
+      • Risk Management Systems
+      • Social Sentiment Integration
+
+      🌐 Try It Out
+
+      Experience the future of trading at chat.soulagents.io
+
+      Example Commands:
+      • "Swap 1 USDC on Arbitrum to ETH on Arbitrum"
+      • "Check wallet balance (0x...) on Arbitrum"
+      • "Show me the price of ETH"
+
+      Follow our journey:
+      • Twitter: @cryptobunny__
+      • Updates: @soul_agents
+
+      We're just getting started, and we can't wait to show you what's next! Stay tuned for more updates as we continue to push the boundaries of what's possible with AI-powered trading.
+    `,
+  },
+  {
     title: "The 10 Rules of A.I. Agents and Our Live Accounts",
     description:
       "Discover the guiding principles of our A.I. Agents and learn about the two accounts that are already live.",
