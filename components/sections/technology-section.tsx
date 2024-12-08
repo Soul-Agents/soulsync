@@ -97,7 +97,7 @@ export default function TechnologySection() {
               </div>
               <div className="ml-4">
                 <h3 className="text-xl font-bold gradient-text mb-2">
-                  Telegram Integration (Coming Soon)
+                  Telegram Integration (Soon)
                 </h3>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center space-x-2 hover:text-white transition-colors">
