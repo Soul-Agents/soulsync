@@ -569,91 +569,91 @@ const GrowthChart: React.FC<ChartProps> = ({ className = "" }) => {
   );
 };
 
-const TradingDashboard: React.FC<ChartProps> = ({ className = "" }) => {
-  // Calculate points for the connecting line
-  const linePoints = [...Array(8)].map((_, i) => ({
-    x: 37.5 * i + 20,
-    y: 50 + Math.sin(i * 1.5) * 15,
-  }));
+// const TradingDashboard: React.FC<ChartProps> = ({ className = "" }) => {
+//   // Calculate points for the connecting line
+//   const linePoints = [...Array(8)].map((_, i) => ({
+//     x: 37.5 * i + 20,
+//     y: 50 + Math.sin(i * 1.5) * 15,
+//   }));
 
-  // Create SVG path from points
-  const linePath = `M ${linePoints.map((p) => `${p.x} ${p.y}`).join(" L ")}`;
+//   // Create SVG path from points
+//   const linePath = `M ${linePoints.map((p) => `${p.x} ${p.y}`).join(" L ")}`;
 
-  return (
-    <motion.div
-      className={`w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden ${className}`}
-    >
-      <div className="h-full flex items-center justify-center">
-        <svg
-          className="w-full h-full"
-          viewBox="0 0 300 100"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Grid lines */}
-          {[...Array(4)].map((_, i) => (
-            <motion.line
-              key={`grid-${i}`}
-              x1="0"
-              y1={25 * i + 25}
-              x2="300"
-              y2={25 * i + 25}
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="1"
-            />
-          ))}
+//   return (
+//     <motion.div
+//       className={`w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden ${className}`}
+//     >
+//       <div className="h-full flex items-center justify-center">
+//         <svg
+//           className="w-full h-full"
+//           viewBox="0 0 300 100"
+//           preserveAspectRatio="xMidYMid meet"
+//         >
+//           {/* Grid lines */}
+//           {[...Array(4)].map((_, i) => (
+//             <motion.line
+//               key={`grid-${i}`}
+//               x1="0"
+//               y1={25 * i + 25}
+//               x2="300"
+//               y2={25 * i + 25}
+//               stroke="rgba(255,255,255,0.1)"
+//               strokeWidth="1"
+//             />
+//           ))}
 
-          {/* Connecting line */}
-          <motion.path
-            d={linePath}
-            fill="none"
-            stroke="url(#gradientLine)"
-            strokeWidth="2"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.5 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
+//           {/* Connecting line */}
+//           <motion.path
+//             d={linePath}
+//             fill="none"
+//             stroke="url(#gradientLine)"
+//             strokeWidth="2"
+//             initial={{ pathLength: 0, opacity: 0 }}
+//             animate={{ pathLength: 1, opacity: 0.5 }}
+//             transition={{ duration: 1.5, delay: 0.5 }}
+//           />
 
-          {/* Gradient for the line */}
-          <defs>
-            <linearGradient id="gradientLine" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="50%" stopColor="#a855f7" />
-              <stop offset="100%" stopColor="#ffffff" />
-            </linearGradient>
-          </defs>
+//           {/* Gradient for the line */}
+//           <defs>
+//             <linearGradient id="gradientLine" x1="0" y1="0" x2="1" y2="0">
+//               <stop offset="0%" stopColor="#ffffff" />
+//               <stop offset="50%" stopColor="#a855f7" />
+//               <stop offset="100%" stopColor="#ffffff" />
+//             </linearGradient>
+//           </defs>
 
-          {/* Candlesticks */}
-          {[...Array(8)].map((_, i) => (
-            <motion.g
-              key={`candle-${i}`}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              {/* Wick */}
-              <line
-                x1={37.5 * i + 20}
-                y1={30 + Math.sin(i * 1.5) * 15}
-                x2={37.5 * i + 20}
-                y2={70 + Math.sin(i * 1.5) * 15}
-                stroke={i % 2 ? "#22c55e" : "#ef4444"}
-                strokeWidth="2"
-              />
-              {/* Body */}
-              <rect
-                x={37.5 * i + 15}
-                y={40 + Math.sin(i * 1.5) * 15}
-                width="10"
-                height="20"
-                fill={i % 2 ? "#22c55e" : "#ef4444"}
-              />
-            </motion.g>
-          ))}
-        </svg>
-      </div>
-    </motion.div>
-  );
-};
+//           {/* Candlesticks */}
+//           {[...Array(8)].map((_, i) => (
+//             <motion.g
+//               key={`candle-${i}`}
+//               initial={{ opacity: 0, scale: 0.8 }}
+//               animate={{ opacity: 1, scale: 1 }}
+//               transition={{ delay: i * 0.1 }}
+//             >
+//               {/* Wick */}
+//               <line
+//                 x1={37.5 * i + 20}
+//                 y1={30 + Math.sin(i * 1.5) * 15}
+//                 x2={37.5 * i + 20}
+//                 y2={70 + Math.sin(i * 1.5) * 15}
+//                 stroke={i % 2 ? "#22c55e" : "#ef4444"}
+//                 strokeWidth="2"
+//               />
+//               {/* Body */}
+//               <rect
+//                 x={37.5 * i + 15}
+//                 y={40 + Math.sin(i * 1.5) * 15}
+//                 width="10"
+//                 height="20"
+//                 fill={i % 2 ? "#22c55e" : "#ef4444"}
+//               />
+//             </motion.g>
+//           ))}
+//         </svg>
+//       </div>
+//     </motion.div>
+//   );
+// };
 
 // Define the slides array once
 const slides: Slide[] = [
@@ -687,8 +687,7 @@ const slides: Slide[] = [
             transition={{ duration: 0.5 }}
           >
             AI-Powered{" "}
-            <span className="gradient-text">Social Intelligence</span> &{" "}
-            <span className="text-neon-pink">Copy Trading</span>
+            <span className="gradient-text">Social Interactions on X</span> & beyond
           </motion.p>
 
           {/* Dual Image Layout */}
@@ -771,19 +770,19 @@ const slides: Slide[] = [
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            eToro for A.I. Agent Trading
+            Multi-Agentic System for Social Interactions
           </motion.p>
 
           {/* Feature Badges */}
           <div className="flex justify-center gap-4 mb-8">
             {[
               {
-                text: "Intelligent 'Intern' Accounts",
+                text: "Web3 Brand Content Generation",
                 color: "neon-pink",
                 delay: 0.8,
                 noBorder: true,
               },
-              { text: "Copy Trading", color: "electric-purple", delay: 0.9 },
+              { text: "Automated Community Engagement", color: "electric-purple", delay: 0.9 },
             ].map((badge, index) => (
               <motion.div
                 key={index}
@@ -838,71 +837,51 @@ const slides: Slide[] = [
       </SlideLayout>
     ),
   },
+// ... existing code ...
   {
     id: 2,
-    title: "Two Problems, One Solution",
+    title: "Marketing Challenges in Web3",
     content: (
-      <SlideLayout title="Two Problems, One Solution" slideNumber={2}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-          {/* Left Column - Outreach & Growth */}
+      <SlideLayout title="Marketing Challenges in Web3" slideNumber={2}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Column - Current Problems */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-4 md:p-8 hover:border-neon-pink/30 transition-all duration-300"
+            className="glass-card p-6 md:p-8 hover:border-electric-purple/30 transition-all duration-300"
           >
             <div className="flex flex-col items-center">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-neon-pink">
-                Web3 Marketing Challenges
+              <h3 className="text-xl md:text-2xl font-bold mb-6 text-center gradient-text">
+                Current Marketing Landscape
               </h3>
             </div>
 
-            <div className="mb-4 md:mb-8 scale-90">
+            <div className="mb-6 md:mb-8 scale-90">
               <GrowthChart />
             </div>
 
-            <div className="space-y-4 md:space-y-8">
+            <div className="space-y-6">
               <div>
-                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
-                  Problems
+                <h4 className="text-lg font-semibold mb-4 text-electric-purple">
+                  Key Challenges
                 </h4>
-                <motion.ul className="space-y-2">
+                <motion.ul className="space-y-3">
                   {[
                     "High KOL costs ($10-20k monthly)",
-                    "Time-consuming manual outreach",
-                    "Limited organic growth",
-                    "Inconsistent community engagement",
+                    "Manual outreach is time-intensive",
+                    "Limited organic community growth",
+                    "Poor engagement metrics",
+                    "Inconsistent brand messaging",
+                    "Difficulty measuring ROI",
+                    "Lack of 24/7 community engagement"
                   ].map((text, index) => (
                     <motion.li
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
-                    >
-                      {text}
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-
-              <div>
-                <h4 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 gradient-text">
-                  Users
-                </h4>
-                <motion.ul className="space-y-2">
-                  {[
-                    "Web3 Projects",
-                    "Marketing Teams",
-                    "Community Managers",
-                    "Brand Developers",
-                  ].map((text, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-sm md:text-base pl-2 md:pl-4 border-l-2 border-neon-pink/30"
+                      className="text-white/90 text-sm md:text-base pl-4 border-l-2 border-electric-purple/30"
                     >
                       {text}
                     </motion.li>
@@ -912,39 +891,37 @@ const slides: Slide[] = [
             </div>
           </motion.div>
 
-          {/* Right column remains similar but with matching adjustments */}
+          {/* Right Column - Solution Overview */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-4 md:p-8 hover:border-electric-purple/30 transition-all duration-300"
+            className="glass-card p-6 md:p-8 hover:border-neon-pink/30 transition-all duration-300"
           >
-            <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-8 text-center text-electric-purple">
-              Asymmetrical Information in Trading
+            <h3 className="text-xl md:text-2xl font-bold mb-6 text-center gradient-text">
+              AI-Powered Solution
             </h3>
 
-            <div className="mb-4 md:mb-8 scale-90">
-              <TradingDashboard />
-            </div>
-
-            <div className="space-y-4 md:space-y-8">
+            <div className="space-y-6">
               <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
-                  Problems
+                <h4 className="text-lg font-semibold mb-4 text-neon-pink">
+                  Key Benefits
                 </h4>
                 <motion.ul className="space-y-3">
                   {[
-                    "Delayed market signals",
-                    "Time-intensive analysis",
-                    "Emotional trading decisions",
-                    "Lack of strategy validation",
+                    "Automated community engagement 24/7",
+                    "Data-driven content optimization",
+                    "Multi-platform presence management",
+                    "Real-time analytics and reporting",
+                    "Scalable growth strategies",
+                    "Significant cost reduction"
                   ].map((text, index) => (
                     <motion.li
                       key={index}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-electric-purple/30"
+                      className="text-white/90 text-sm md:text-base pl-4 border-l-2 border-neon-pink/30"
                     >
                       {text}
                     </motion.li>
@@ -952,27 +929,41 @@ const slides: Slide[] = [
                 </motion.ul>
               </div>
 
-              <div>
-                <h4 className="text-2xl font-semibold mb-4 gradient-text">
-                  Users
+              <div className="mt-8">
+                <h4 className="text-lg font-semibold mb-4 text-neon-pink">
+                  Target Users
                 </h4>
-                <motion.ul className="space-y-3">
+                <div className="grid grid-cols-2 gap-4">
                   {[
-                    "Retail Traders",
-                    "Strategy Creators",
-                    "Investment DAOs",
-                  ].map((text, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                      className="text-white/90 text-base sm:text-lg pl-3 sm:pl-4 border-l-2 border-electric-purple/30"
+                    {
+                      title: "Projects",
+                      items: ["Web3 Projects", "DeFi Protocols", "NFT Projects"]
+                    },
+                    {
+                      title: "User Personas",
+                      items: ["Marketing Teams", "Community Managers", "Brand Developers"]
+                    }
+                  ].map((group, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + idx * 0.2 }}
+                      className="glass-card p-4 bg-black/20"
                     >
-                      {text}
-                    </motion.li>
+                      <h5 className="text-sm font-semibold mb-2 text-white/80">
+                        {group.title}
+                      </h5>
+                      <ul className="space-y-1">
+                        {group.items.map((item, index) => (
+                          <li key={index} className="text-white/70 text-sm">
+                            • {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
                   ))}
-                </motion.ul>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -980,6 +971,7 @@ const slides: Slide[] = [
       </SlideLayout>
     ),
   },
+  // ... existing code ...
   {
     id: 3,
     title: "AI-Powered Community Engagement",
@@ -1044,12 +1036,886 @@ const slides: Slide[] = [
   },
   {
     id: 4,
-    title: "Strategy Marketplace",
+    title: "Multi-Agent Intelligence Network",
     content: (
-      <SlideLayout title="Strategy Marketplace" slideNumber={4}>
+      <SlideLayout title="Multi-Agent Intelligence Network" slideNumber={4}>
+        <div className="space-y-8">
+          <div className="text-xl text-white/80 font-bold text-center mb-8">
+            Comprehensive Market Intelligence
+          </div>
+
+          {/* Data Sources Section */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              {
+                icon: "/codex.png",
+                title: "Trading Analytics",
+                desc: "Codex real-time data",
+                isImage: true,
+              },
+              {
+                icon: "/x-logo.png",
+                title: "Social Intelligence",
+                desc: "X/Twitter sentiment & news",
+                isImage: true,
+              },
+              {
+                icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+                title: "Web Intelligence",
+                desc: "Real-time web search",
+              },
+              {
+                icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+                title: "Memory Systems",
+                desc: "Vector & short-term memory",
+              },
+              {
+                icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+                title: "KOL Signals",
+                desc: "Historical shill analysis",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="glass-card p-4 flex flex-col items-center text-center h-full"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                {item.isImage ? (
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="w-12 h-12 mb-3 opacity-80"
+                  />
+                ) : (
+                  <svg
+                    className="w-12 h-12 mb-3 text-electric-purple"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeWidth={2} d={item.icon} />
+                  </svg>
+                )}
+                <h4 className="text-base font-semibold mb-2">{item.title}</h4>
+                <p className="text-sm text-white/70">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Multi-Agent System */}
+          <motion.div
+            className="glass-card py-4 px-4 bg-black/40 w-full border border-electric-purple/20 backdrop-blur-sm hover:bg-black/50 hover:border-electric-purple/40 hover:scale-[1.01] hover:shadow-xl transition-all duration-500 ease-out shadow-lg shadow-electric-purple/20 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+            whileHover={{ y: -2 }}
+          >
+            <div className="flex flex-col items-center justify-center gap-3 relative">
+              <motion.div
+                animate={{
+                  rotate: 360,
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                }}
+                className="w-8 h-8 relative z-10"
+              >
+                <div className="absolute inset-0 bg-electric-purple/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
+                <svg
+                  className="text-electric-purple w-full h-full group-hover:text-[#ff00ff] transition-colors duration-300"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeWidth={2}
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  />
+                </svg>
+              </motion.div>
+              <h4 className="text-xl font-bold gradient-text bg-clip-text text-transparent bg-gradient-to-r from-electric-purple via-[#ff00ff] to-electric-purple group-hover:from-[#ff00ff] group-hover:via-electric-purple group-hover:to-[#ff00ff] transition-all duration-300">
+                Multi-Agent Processing System
+              </h4>
+            </div>
+          </motion.div>
+
+          {/* Applications Section */}
+          <div className="grid md:grid-cols-1 gap-2">
+            {/* Marketing Service - Now Full Width */}
+            <motion.div
+              className="glass-card p-6" // Increased padding
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="flex items-center gap-2 mb-4"> {/* Increased margin */}
+                <h3 className="text-xl font-semibold gradient-text"> {/* Increased text size */}
+                  Autonomous Marketing
+                </h3>
+                <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
+                  $499-999+/mo
+                </span>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4"> {/* Two-column layout */}
+                <ul className="space-y-2 text-sm text-white/80"> {/* Increased text size and spacing */}
+                  <li className="flex items-start gap-2">
+                    <span className="text-electric-purple">•</span>
+                    <span>AI-powered brand growth and community engagement</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-electric-purple">•</span>
+                    <span>Intelligent post and reply creation and interaction</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-electric-purple">•</span>
+                    <span>Multi-platform support (X, Telegram, Discord, Farcaster)</span>
+                  </li>
+                </ul>
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-electric-purple">•</span>
+                    <span>Professional X API integration with high throughput</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-electric-purple">•</span>
+                    <span>Data driven analytics to constantly improve engagement</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="text-center mt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            <p className="text-sm text-white/60">
+              Revolutionizing Web3 marketing with AI-powered automation and intelligence
+            </p>
+          </motion.div>
+        </div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 5,
+    title: "Marketing Market Opportunity",
+    content: (
+      <SlideLayout title="Marketing Market Opportunity" slideNumber={5}>
+        <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {/* Primary Market */}
+            <motion.div
+              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-electric-purple/20 border border-electric-purple/20"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-electric-purple to-blue-500">
+                Web3 Marketing
+              </h3>
+
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
+                >
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
+                    Market Size:
+                  </h4>
+                  <p className="text-3xl font-bold text-electric-purple">
+                    $10B+ Annual Revenue
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="hover:translate-x-2 transition-transform duration-300"
+                >
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
+                    Target Market:
+                  </h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> 250K+ Web3 Communities
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> 50K+ Active Projects
+                    </li>
+
+                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
+                    Go To Market:
+                  </h4>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> Incentivised Growth Campaign (Engage to Earn) 
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-electric-purple">•</span> Growth via KOLs 
+                    </li>
+                  </ul>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Current Solutions */}
+            <motion.div
+              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-neon-pink/20 border border-neon-pink/20"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-neon-pink to-purple-500">
+                Current Market Solutions
+              </h3>
+
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
+                    Traditional Agencies:
+                  </h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> High Costs ($10-20K monthly)
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Manual Processes
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Limited Scalability
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
+                    Current Tools:
+                  </h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Basic Automation Tools
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> Limited AI Integration
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-neon-pink">•</span> No Multi-Platform Solution
+                    </li>
+                  </ul>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Market Size Analysis */}
+          <motion.div
+            className="mt-12 grid grid-cols-3 gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">SOM</h4>
+              <p className="text-2xl font-bold gradient-text">$500M+</p>
+              <p className="text-sm text-white/60 mt-1">
+                Initial Focus: Top Web3 Projects
+              </p>
+            </div>
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">SAM</h4>
+              <p className="text-2xl font-bold gradient-text">$5B+</p>
+              <p className="text-sm text-white/60 mt-1">
+                Web3 Marketing Spend
+              </p>
+            </div>
+            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
+              <h4 className="text-sm font-semibold text-white/60 mb-2">TAM</h4>
+              <p className="text-2xl font-bold gradient-text">$300B+</p>
+              <p className="text-sm text-white/60 mt-1">
+                Global Digital Marketing
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Bottom Text */}
+          <motion.p
+            className="text-center text-lg font-medium text-white/80 hover:text-white transition-colors duration-300 mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, type: "spring" }}
+          >
+            Revolutionizing Web3 marketing through AI-powered automation and intelligence
+          </motion.p>
+        </div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 6,
+    title: "Why Soul Agents Wins",
+    content: (
+      <SlideLayout title="Why Soul Agents Wins" slideNumber={6}>
+        <div className="space-y-8">
+          {/* Three Key Advantages */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* AI-Powered Marketing */}
+            <motion.div
+              className="glass-card p-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">
+                  AI-Powered Marketing
+                </h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">
+                  01
+                </div>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  • Automated Content Generation
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  • Multi-Platform Engagement
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  • Sentiment Analysis
+                </motion.li>
+              </ul>
+            </motion.div>
+
+            {/* Community Growth */}
+            <motion.div
+              className="glass-card p-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">
+                  Community Growth
+                </h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">
+                  02
+                </div>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  • 24/7 Community Management
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  • Incentivised Community Growth
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  • Engage to Earn (Incentivised Growth)
+                </motion.li>
+              </ul>
+            </motion.div>
+
+            {/* Data Intelligence */}
+            <motion.div
+              className="glass-card p-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-bold gradient-text">
+                  Data Intelligence
+                </h3>
+                <div className="text-2xl text-electric-purple/80 font-semibold">
+                  03
+                </div>
+              </div>
+              <ul className="space-y-4 text-white/80">
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  • Engagement Analytics
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  • Performance Optimization
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  • Integration of APIs (Deep Research, Trading Data etc.)
+                </motion.li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Upcoming Partnerships Section */}
+          <motion.div
+            className="glass-card p-8 bg-black/40 border border-electric-purple/20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold gradient-text">
+                Upcoming Strategic Partnerships
+              </h3>
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-electric-purple to-neon-pink blur-sm opacity-50" />
+                  <div className="h-0.5 w-32 bg-gradient-to-r from-electric-purple to-neon-pink relative" />
+                </div>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* LiftData.ai Partnership */}
+              <motion.div
+                className="glass-card p-6 border border-electric-purple/20"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <h4 className="text-lg font-bold text-electric-purple mb-3">
+                  LiftData.ai - First Use Case
+                </h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Replying on X timeline to reach relevant audience</li>
+                  <li>• Customization of the Agent's Tone of Voice</li>
+                  <li>• Optimization of Engagement Rate</li>
+                </ul>
+              </motion.div>
+
+              {/* NFT Project Partnership */}
+              <motion.div
+                className="glass-card p-6 border border-neon-pink/20"
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <h4 className="text-lg font-bold text-neon-pink mb-3">
+                  Major NFT Project in the Pipeline
+                </h4>
+                <ul className="space-y-2 text-white/80">
+                  <li>• Tone of Voice Customization</li>
+                  <li>• X Engagement Automation</li>
+                  <li>• First AI Agent in Polish</li>
+                </ul>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Bottom Text */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            <p className="text-lg text-white/80">
+              Building the future of{" "}
+              <span className="text-electric-purple">
+                AI-powered marketing automation
+              </span>{" "}
+              with{" "}
+              <span className="text-neon-pink">
+                industry-leading partnerships
+              </span>
+            </p>
+          </motion.div>
+        </div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 7,
+    title: "Market Positioning",
+    content: (
+      <SlideLayout title="Market Positioning" slideNumber={7}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Competition Analysis */}
+          <motion.div
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">
+              Market Landscape
+            </h3>
+            <ul className="space-y-4 text-white/80">
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Trading Agents
+                (Synergy): Spectral, Noks, Brian AI, Mimic
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Community Tools:
+                Connect X and Telegram (Engage to Earn)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> AI
+                Infrastructure: ai16z Eliza, Virtuals
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-electric-purple">•</span> Early Adoption:
+                AI Data, NFT and Web3 Projects
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Our Advantages */}
+          <motion.div
+            className="glass-card p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-bold mb-6 gradient-text">
+              Soul Agents Advantage
+            </h3>
+            <ul className="space-y-4 text-white/80">
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Unified Social Interactions across X, Telegram, etc.
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Advanced AI with
+                Cross-Platform Memory
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Self-Improving Content and Customized Agent Templates
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-neon-pink">•</span> Plug and Play X integration with a Marketing Dashboard
+              </li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Bottom Section: Key Differentiators */}
+        <motion.div
+          className="glass-card p-8 bg-black/40 border border-electric-purple/20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <h3 className="text-xl font-bold gradient-text mb-6">
+            Key Differentiators
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              "Connect X and Set Up Your Agent in Minutes (Coming Soon)",
+              "Analytics from X API, Telegram API and Discord",
+              "Ability to Customize Tone of Voice (Initially Manual, Later AI)",
+              "Additional AI Agents for Telegram, Discord, etc.",
+              "Integrations with Trading Data and KOL Analytics Software (e.g. Twitterscore)",
+              "Creation of GIGABRAIN - AI Agent for Quality Verification and Additional Context",
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="glass-card p-4"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
+                <p className="text-white/80">• {item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div
+          className="mt-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-xl">
+            <span className="text-white/80">Building the</span>{" "}
+            <span className="gradient-text font-bold">
+              First True Web3 Social Engagement Service
+            </span>{" "}
+            <span className="text-white/80">powered by</span>{" "}
+            <span className="text-neon-pink font-bold">AI Agents</span>
+          </p>
+        </motion.div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 8,
+    title: "Dual Revenue Streams",
+    content: (
+      <SlideLayout title="Dual Revenue Streams" slideNumber={8}>
+        <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Marketing Service */}
+            <motion.div
+              className="glass-card p-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-xl font-bold mb-4 gradient-text">
+                Marketing Service
+              </h3>
+              <div className="space-y-4">
+                <motion.div className="glass-card p-3 bg-black/20">
+                  <h4 className="text-base font-semibold mb-2 text-electric-purple/90">
+                    Core Services:
+                  </h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex justify-between items-center">
+                      <span>• Basic Plan</span>
+                      <span className="text-electric-purple font-bold">
+                        $499/mo
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Pro Plan</span>
+                      <span className="text-electric-purple font-bold">
+                        $999/mo
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Early Discounts</span>
+                      <span className="text-electric-purple font-bold">
+                        Up to 80%
+                      </span>
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">
+                      2025 Target:
+                    </h4>
+                    <p className="text-lg text-electric-purple font-bold">
+                      50 clients
+                    </p>
+                    <p className="text-xs text-white/60">($400k annual)</p>
+                  </motion.div>
+
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">
+                      2026 Target:
+                    </h4>
+                    <p className="text-lg text-electric-purple font-bold">
+                      150 clients
+                    </p>
+                    <p className="text-xs text-white/60">($1.2M annual)</p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Trading Platform */}
+            <motion.div
+              className="glass-card p-6"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-xl font-bold mb-4 gradient-text">
+                Trading Platform (Future Plans)
+              </h3>
+              <div className="space-y-4">
+                <motion.div className="glass-card p-3 bg-black/20">
+                  <h4 className="text-base font-semibold mb-2 text-neon-pink/90">
+                    Revenue Model:
+                  </h4>
+                  <ul className="space-y-2 text-white/90">
+                    <li className="flex justify-between items-center">
+                      <span>• Trading Fee</span>
+                      <span className="text-neon-pink font-bold">1%</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• Creator Share</span>
+                      <span className="text-neon-pink font-bold">50%</span>
+                    </li>
+                    <li className="flex justify-between items-center">
+                      <span>• $SOUL Governance</span>
+                      <span className="text-neon-pink font-bold">Q2 2025</span>
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">
+                      2025 Target:
+                    </h4>
+                    <p className="text-lg text-neon-pink font-bold">
+                      $10M monthly volume
+                    </p>
+                    <p className="text-xs text-white/60">($960k annual)</p>
+                  </motion.div>
+
+                  <motion.div className="glass-card p-3 bg-black/20">
+                    <h4 className="text-sm font-semibold text-white/80">
+                      2026 Target:
+                    </h4>
+                    <p className="text-lg text-neon-pink font-bold">
+                      $25M monthly volume
+                    </p>
+                    <p className="text-xs text-white/60">($2.4M annual)</p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Chart and Projection */}
+          <div className="space-y-4">
+            <motion.div
+              className="glass-card p-6 bg-black/20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {/* Revenue Growth Chart */}
+              <div className="relative h-24 w-full flex items-end justify-between gap-1 mb-4">
+                {/* Bars with Quarterly Revenue */}
+                {[
+                  { month: "Q4 24", height: "h-4", value: "30K", emoji: "🙂" },
+                  { month: "Q1 25", height: "h-8", value: "120K", emoji: "😊" },
+                  {
+                    month: "Q2 25",
+                    height: "h-12",
+                    value: "280K",
+                    emoji: "😄",
+                  },
+                  {
+                    month: "Q3 25",
+                    height: "h-16",
+                    value: "420K",
+                    emoji: "🤩",
+                  },
+                  {
+                    month: "Q4 25",
+                    height: "h-20",
+                    value: "540K",
+                    emoji: "🚀",
+                  },
+                  {
+                    month: "Q1 26",
+                    height: "h-24",
+                    value: "700K",
+                    emoji: "💫",
+                  },
+                  {
+                    month: "Q2 26",
+                    height: "h-28",
+                    value: "800K",
+                    emoji: "✨",
+                  },
+                  {
+                    month: "Q3 26",
+                    height: "h-30",
+                    value: "950K",
+                    emoji: "🌟",
+                  },
+                  {
+                    month: "Q4 26",
+                    height: "h-32",
+                    value: "1.1M",
+                    emoji: "💎",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center flex-1"
+                  >
+                    <motion.div
+                      className="text-xl mb-2"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                    >
+                      {item.emoji}
+                    </motion.div>
+                    <motion.div
+                      className={`w-full ${item.height} rounded-t bg-gradient-to-t from-electric-purple to-neon-pink opacity-60`}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                    />
+                    <p className="text-xs text-white/60 mt-1">{item.month}</p>
+                    <p className="text-xs text-white/90 font-bold">
+                      ${item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Projection Text */}
+              <p className="text-lg text-white/90 text-center">
+                Projected{" "}
+                <span className="text-electric-purple font-bold">$1.36M</span>{" "}
+                annual revenue in 2025, scaling to{" "}
+                <span className="text-neon-pink font-bold">$3.6M</span> annual
+                revenue in 2026
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 9,
+    title: "AI Agents Executed Trading",
+    content: (
+      <SlideLayout title="AI Agents Execute Trading Strategies (Vision)" slideNumber={9}>
         <div className="space-y-4 max-w-[1200px] mx-auto">
           <div className="text-xl text-electric-purple font-bold mb-3 text-center tracking-tight">
-            Social Leaderboard for the best AI-Powered Strategies
+            Users Could Create Trading Strategies and Execute Them via AI Agents
           </div>
 
           <div className="glass-card p-4 backdrop-blur-lg border border-white/10 overflow-x-auto">
@@ -1277,925 +2143,6 @@ const slides: Slide[] = [
     ),
   },
   {
-    id: 5,
-    title: "Multi-Agent Intelligence Network",
-    content: (
-      <SlideLayout title="Multi-Agent Intelligence Network" slideNumber={5}>
-        <div className="space-y-8">
-          <div className="text-xl text-white/80 font-bold text-center mb-8">
-            Comprehensive Market Intelligence
-          </div>
-
-          {/* Data Sources Section */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {[
-              {
-                icon: "/codex.png",
-                title: "Trading Analytics",
-                desc: "Codex real-time data",
-                isImage: true,
-              },
-              {
-                icon: "/x-logo.png",
-                title: "Social Intelligence",
-                desc: "X/Twitter sentiment & news",
-                isImage: true,
-              },
-              {
-                icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
-                title: "Web Intelligence",
-                desc: "Real-time web search",
-              },
-              {
-                icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-                title: "Memory Systems",
-                desc: "Vector & short-term memory",
-              },
-              {
-                icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-                title: "KOL Signals",
-                desc: "Historical shill analysis",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="glass-card p-4 flex flex-col items-center text-center h-full"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                {item.isImage ? (
-                  <img
-                    src={item.icon}
-                    alt={item.title}
-                    className="w-12 h-12 mb-3 opacity-80"
-                  />
-                ) : (
-                  <svg
-                    className="w-12 h-12 mb-3 text-electric-purple"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeWidth={2} d={item.icon} />
-                  </svg>
-                )}
-                <h4 className="text-base font-semibold mb-2">{item.title}</h4>
-                <p className="text-sm text-white/70">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Multi-Agent System */}
-          <motion.div
-            className="glass-card py-4 px-4 bg-black/40 w-full border border-electric-purple/20 backdrop-blur-sm hover:bg-black/50 hover:border-electric-purple/40 hover:scale-[1.01] hover:shadow-xl transition-all duration-500 ease-out shadow-lg shadow-electric-purple/20 group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
-            whileHover={{ y: -2 }}
-          >
-            <div className="flex flex-col items-center justify-center gap-3 relative">
-              <motion.div
-                animate={{
-                  rotate: 360,
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                }}
-                className="w-8 h-8 relative z-10"
-              >
-                <div className="absolute inset-0 bg-electric-purple/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <svg
-                  className="text-electric-purple w-full h-full group-hover:text-[#ff00ff] transition-colors duration-300"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeWidth={2}
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                  />
-                </svg>
-              </motion.div>
-              <h4 className="text-xl font-bold gradient-text bg-clip-text text-transparent bg-gradient-to-r from-electric-purple via-[#ff00ff] to-electric-purple group-hover:from-[#ff00ff] group-hover:via-electric-purple group-hover:to-[#ff00ff] transition-all duration-300">
-                Multi-Agent Processing System
-              </h4>
-            </div>
-          </motion.div>
-
-          {/* Applications Section */}
-          <div className="grid md:grid-cols-2 gap-2">
-            {/* Marketing Service */}
-            <motion.div
-              className="glass-card p-3"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-base font-semibold mb-2 md:mb-4 gradient-text">
-                  Autonomous Marketing
-                </h3>
-                <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
-                  $499-999/mo
-                </span>
-              </div>
-              <ul className="space-y-1 text-xs text-white/80">
-                <li>• AI-powered brand growth and community engagement</li>
-                <li>• Intelligent post creation and interaction</li>
-                <li>
-                  • Multi-platform support (X, Telegram, Discord, Farcaster)
-                </li>
-                <li>• Community management via AI chatbots</li>
-                <li className="text-electric-purple">
-                  • Social intelligence from human interactions
-                </li>
-                <li className="text-electric-purple">
-                  • Adaptive learning from community feedback
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Trading Platform */}
-            <motion.div
-              className="glass-card p-3"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-base font-semibold gradient-text">
-                  AI Strategy Trading
-                </h3>
-                <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-neon-pink border border-neon-pink/30">
-                  1% fee split
-                </span>
-              </div>
-              <ul className="space-y-1 text-xs text-white/80">
-                <li>• Prompt-based strategy deployment</li>
-                <li>• Long-term investment focus</li>
-                <li>• Data-driven decision making</li>
-                <li>• Powered by Brian AI integration</li>
-                <li className="text-neon-pink">
-                  • Copy-trading with performance leaderboard
-                </li>
-                <li className="text-neon-pink">
-                  • Strategy marketplace & revenue sharing
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="text-center mt-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <p className="text-xs text-white/60">
-              Join the community of strategy creators and traders on our
-              performance-based marketplace
-            </p>
-          </motion.div>
-        </div>
-      </SlideLayout>
-    ),
-  },
-  {
-    id: 6,
-    title: "Two Strategic Markets",
-    content: (
-      <SlideLayout title="Two Strategic Markets" slideNumber={6}>
-        <div className="space-y-8">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {/* Community Management Market */}
-            <motion.div
-              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-electric-purple/20 border border-electric-purple/20"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-electric-purple to-blue-500">
-                Web3 Community Growth
-              </h3>
-
-              <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
-                    Market Size:
-                  </h4>
-                  <p className="text-3xl font-bold text-electric-purple">
-                    $10B+ Annual Revenue
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
-                    Target Market:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> 500K+ Web3
-                      Communities
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> 50K+
-                      Active Projects
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="hover:translate-x-2 transition-transform duration-300"
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
-                    Current Solutions:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> Manual
-                      Management
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span>{" "}
-                      Traditional Agencies
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> Basic
-                      Automation
-                    </li>
-                  </ul>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Trading Market */}
-            <motion.div
-              className="glass-card p-8 hover:bg-black/50 transition-all duration-300 hover:shadow-lg hover:shadow-neon-pink/20 border border-neon-pink/20"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text bg-gradient-to-r from-neon-pink to-purple-500">
-                Crypto Trading
-              </h3>
-
-              <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
-                    Market Size:
-                  </h4>
-                  <p className="text-3xl font-bold text-neon-pink">
-                    $20B+ Annual Volume
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
-                    Target Market:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> 10M+ Active
-                      Traders
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> 100K+ Strategy
-                      Creators
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-neon-pink/80">
-                    Current Solutions:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Basic Trading
-                      Bots & First A.I. Agents
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Copy Trading
-                      Platforms
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Signal Groups
-                    </li>
-                  </ul>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Market Size Analysis */}
-          <motion.div
-            className="mt-12 grid grid-cols-3 gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
-              <h4 className="text-sm font-semibold text-white/60 mb-2">SOM</h4>
-              <p className="text-2xl font-bold gradient-text">$500M+</p>
-              <p className="text-sm text-white/60 mt-1">
-                Serviceable Obtainable Market
-              </p>
-            </div>
-            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
-              <h4 className="text-sm font-semibold text-white/60 mb-2">SAM</h4>
-              <p className="text-2xl font-bold gradient-text">$5B+</p>
-              <p className="text-sm text-white/60 mt-1">
-                Serviceable Available Market
-              </p>
-            </div>
-            <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
-              <h4 className="text-sm font-semibold text-white/60 mb-2">TAM</h4>
-              <p className="text-2xl font-bold gradient-text">$30B+</p>
-              <p className="text-sm text-white/60 mt-1">
-                Total Available Market
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Bottom Text */}
-          <motion.p
-            className="text-center text-lg font-medium text-white/80 hover:text-white transition-colors duration-300 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, type: "spring" }}
-          >
-            Capturing value through AI innovation in both markets
-          </motion.p>
-        </div>
-      </SlideLayout>
-    ),
-  },
-  {
-    id: 7,
-    title: "Why Soul Agents Wins",
-    content: (
-      <SlideLayout title="Why Soul Agents Wins" slideNumber={7}>
-        <div className="space-y-8">
-          {/* Three Key Advantages */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Trading Intelligence */}
-            <motion.div
-              className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="flex justify-between items-start mb-6">
-                <h3 className="text-xl font-bold gradient-text">
-                  Trading Intelligence
-                </h3>
-                <div className="text-2xl text-electric-purple/80 font-semibold">
-                  01
-                </div>
-              </div>
-              <ul className="space-y-4 text-white/80">
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  • Multi-Chain Data Analysis
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  • Predictive Analytics
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  • Risk Management
-                </motion.li>
-              </ul>
-            </motion.div>
-
-            {/* Community Management */}
-            <motion.div
-              className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="flex justify-between items-start mb-6">
-                <h3 className="text-xl font-bold gradient-text">
-                  Community Management
-                </h3>
-                <div className="text-2xl text-electric-purple/80 font-semibold">
-                  02
-                </div>
-              </div>
-              <ul className="space-y-4 text-white/80">
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  • Automated Engagement
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  • Content Generation
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  • KOL Analytics with AI Backtesting
-                </motion.li>
-              </ul>
-            </motion.div>
-
-            {/* Revenue Model */}
-            <motion.div
-              className="glass-card p-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="flex justify-between items-start mb-6">
-                <h3 className="text-xl font-bold gradient-text">
-                  Revenue Model
-                </h3>
-                <div className="text-2xl text-electric-purple/80 font-semibold">
-                  03
-                </div>
-              </div>
-              <ul className="space-y-4 text-white/80">
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  • Trading Fees with Fee Share
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  • Agent Subscriptions
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  • Strategy Marketplace
-                </motion.li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* AI-First Platform Section */}
-          <motion.div
-            className="glass-card p-8 bg-black/40 border border-electric-purple/20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold gradient-text">
-                AI-First Platform & Deep Analytics
-              </h3>
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-electric-purple to-neon-pink blur-sm opacity-50" />{" "}
-                  {/* Glow effect */}
-                  <div className="h-0.5 w-32 bg-gradient-to-r from-electric-purple to-neon-pink relative" />{" "}
-                  {/* Single line, slightly longer */}
-                </div>
-                <div className="text-2xl text-electric-purple/80 font-semibold">
-                  04
-                </div>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                "Multi-Chain Intelligence Network",
-                "RAG-Powered Agent Workflow",
-                "Advanced KOL Performance Tracking",
-                "Unified Memory Across Platforms",
-                "Context-Based Social Analysis",
-                "Pre-Production Security Audit",
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="glass-card p-4"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                >
-                  <p className="text-white/80">• {item}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Bottom Text */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-          >
-            <p className="text-lg text-white/80">
-              Building the most sophisticated AI trading ecosystem:
-              <br />
-              <span className="text-electric-purple">
-                Think Intelligent AI Agents
-              </span>{" "}
-              with
-              <span className="text-neon-pink">
-                {" "}
-                Leaderboard-Driven Trading Strategies
-              </span>{" "}
-              and Copy-Trading
-            </p>
-          </motion.div>
-        </div>
-      </SlideLayout>
-    ),
-  },
-  {
-    id: 8,
-    title: "Market Positioning",
-    content: (
-      <SlideLayout title="Market Positioning" slideNumber={8}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Competition Analysis */}
-          <motion.div
-            className="glass-card p-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-xl font-bold mb-6 gradient-text">
-              Market Landscape
-            </h3>
-            <ul className="space-y-4 text-white/80">
-              <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> Trading Agents
-                (Synergy): Spectral, Noks, Brian AI, Mimic
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> Community Tools:
-                AI Agent Layer, Basic Automation
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> AI
-                Infrastructure: ai16z Eliza, Virtuals
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-electric-purple">•</span> Early Adoption:
-                DeFi & Privacy Protocols, Leading Solana Meme
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Our Advantages */}
-          <motion.div
-            className="glass-card p-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h3 className="text-xl font-bold mb-6 gradient-text">
-              Soul Agents Advantage
-            </h3>
-            <ul className="space-y-4 text-white/80">
-              <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Unified Trading &
-                Social Platform
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Advanced AI with
-                Cross-Platform Memory
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Performance-Based
-                Strategy Marketplace
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Customizable Agent
-                Templates
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-
-        {/* Bottom Section: Key Differentiators */}
-        <motion.div
-          className="glass-card p-8 bg-black/40 border border-electric-purple/20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <h3 className="text-xl font-bold gradient-text mb-6">
-            Key Differentiators
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              "End-to-End Integration",
-              "Multi-Chain Intelligence",
-              "Community-Driven Growth",
-              "Verified Performance Data",
-              "Automated Risk Management",
-              "Rapid Agent Deployment",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="glass-card p-4"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-              >
-                <p className="text-white/80">• {item}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-        <motion.div
-          className="mt-8 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-        >
-          <p className="text-xl">
-            <span className="text-white/80">Building the</span>{" "}
-            <span className="gradient-text font-bold">
-              First True Web3 Social Trading Platform
-            </span>{" "}
-            <span className="text-white/80">powered by</span>{" "}
-            <span className="text-neon-pink font-bold">AI Agents</span>
-          </p>
-        </motion.div>
-      </SlideLayout>
-    ),
-  },
-  {
-    id: 9,
-    title: "Dual Revenue Streams",
-    content: (
-      <SlideLayout title="Dual Revenue Streams" slideNumber={9}>
-        <div className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Marketing Service */}
-            <motion.div
-              className="glass-card p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-xl font-bold mb-4 gradient-text">
-                Marketing Service
-              </h3>
-              <div className="space-y-4">
-                <motion.div className="glass-card p-3 bg-black/20">
-                  <h4 className="text-base font-semibold mb-2 text-electric-purple/90">
-                    Core Services:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex justify-between items-center">
-                      <span>• Basic Plan</span>
-                      <span className="text-electric-purple font-bold">
-                        $499/mo
-                      </span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>• Pro Plan</span>
-                      <span className="text-electric-purple font-bold">
-                        $999/mo
-                      </span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>• Early Discounts</span>
-                      <span className="text-electric-purple font-bold">
-                        Up to 80%
-                      </span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <motion.div className="glass-card p-3 bg-black/20">
-                    <h4 className="text-sm font-semibold text-white/80">
-                      2025 Target:
-                    </h4>
-                    <p className="text-lg text-electric-purple font-bold">
-                      50 clients
-                    </p>
-                    <p className="text-xs text-white/60">($400k annual)</p>
-                  </motion.div>
-
-                  <motion.div className="glass-card p-3 bg-black/20">
-                    <h4 className="text-sm font-semibold text-white/80">
-                      2026 Target:
-                    </h4>
-                    <p className="text-lg text-electric-purple font-bold">
-                      150 clients
-                    </p>
-                    <p className="text-xs text-white/60">($1.2M annual)</p>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Trading Platform */}
-            <motion.div
-              className="glass-card p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-xl font-bold mb-4 gradient-text">
-                Trading Platform
-              </h3>
-              <div className="space-y-4">
-                <motion.div className="glass-card p-3 bg-black/20">
-                  <h4 className="text-base font-semibold mb-2 text-neon-pink/90">
-                    Revenue Model:
-                  </h4>
-                  <ul className="space-y-2 text-white/90">
-                    <li className="flex justify-between items-center">
-                      <span>• Trading Fee</span>
-                      <span className="text-neon-pink font-bold">1%</span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>• Creator Share</span>
-                      <span className="text-neon-pink font-bold">50%</span>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>• $SOUL Governance</span>
-                      <span className="text-neon-pink font-bold">Q2 2025</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <motion.div className="glass-card p-3 bg-black/20">
-                    <h4 className="text-sm font-semibold text-white/80">
-                      2025 Target:
-                    </h4>
-                    <p className="text-lg text-neon-pink font-bold">
-                      $10M monthly volume
-                    </p>
-                    <p className="text-xs text-white/60">($960k annual)</p>
-                  </motion.div>
-
-                  <motion.div className="glass-card p-3 bg-black/20">
-                    <h4 className="text-sm font-semibold text-white/80">
-                      2026 Target:
-                    </h4>
-                    <p className="text-lg text-neon-pink font-bold">
-                      $25M monthly volume
-                    </p>
-                    <p className="text-xs text-white/60">($2.4M annual)</p>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Bottom Chart and Projection */}
-          <div className="space-y-4">
-            <motion.div
-              className="glass-card p-6 bg-black/20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              {/* Revenue Growth Chart */}
-              <div className="relative h-24 w-full flex items-end justify-between gap-1 mb-4">
-                {/* Bars with Quarterly Revenue */}
-                {[
-                  { month: "Q4 24", height: "h-4", value: "30K", emoji: "🙂" },
-                  { month: "Q1 25", height: "h-8", value: "120K", emoji: "😊" },
-                  {
-                    month: "Q2 25",
-                    height: "h-12",
-                    value: "280K",
-                    emoji: "😄",
-                  },
-                  {
-                    month: "Q3 25",
-                    height: "h-16",
-                    value: "420K",
-                    emoji: "🤩",
-                  },
-                  {
-                    month: "Q4 25",
-                    height: "h-20",
-                    value: "540K",
-                    emoji: "🚀",
-                  },
-                  {
-                    month: "Q1 26",
-                    height: "h-24",
-                    value: "700K",
-                    emoji: "💫",
-                  },
-                  {
-                    month: "Q2 26",
-                    height: "h-28",
-                    value: "800K",
-                    emoji: "✨",
-                  },
-                  {
-                    month: "Q3 26",
-                    height: "h-30",
-                    value: "950K",
-                    emoji: "🌟",
-                  },
-                  {
-                    month: "Q4 26",
-                    height: "h-32",
-                    value: "1.1M",
-                    emoji: "💎",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center flex-1"
-                  >
-                    <motion.div
-                      className="text-xl mb-2"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                    >
-                      {item.emoji}
-                    </motion.div>
-                    <motion.div
-                      className={`w-full ${item.height} rounded-t bg-gradient-to-t from-electric-purple to-neon-pink opacity-60`}
-                      initial={{ height: 0 }}
-                      animate={{ height: "auto" }}
-                      transition={{ delay: 0.8 + index * 0.1 }}
-                    />
-                    <p className="text-xs text-white/60 mt-1">{item.month}</p>
-                    <p className="text-xs text-white/90 font-bold">
-                      ${item.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Projection Text */}
-              <p className="text-lg text-white/90 text-center">
-                Projected{" "}
-                <span className="text-electric-purple font-bold">$1.36M</span>{" "}
-                annual revenue in 2025, scaling to{" "}
-                <span className="text-neon-pink font-bold">$3.6M</span> annual
-                revenue in 2026
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </SlideLayout>
-    ),
-  },
-  {
     id: 10,
     title: "Meet the Team",
     content: (
@@ -2388,14 +2335,11 @@ const slides: Slide[] = [
                       Tech Development (60%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Natural language strategy creation</li>
-                      <li>• Multi-chain data analysis & backtesting</li>
-                      <li>• Social intelligence with sentiment analysis</li>
-                      <li>• AI-powered risk management system</li>
-                      <li>
-                        • Cross-platform integrations (Discord, X, TG and
-                        Farcaster)
-                      </li>
+                      <li>• Connect X and Create Your Agent in Minutes</li>
+                      <li>• Add Telegram Integration (2 Main Channels)</li>
+                      <li>• Add Improved Agentic System for Content Improvement</li>
+                      <li>• Measure Metrics and Show it to Clients</li>
+                      <li>• Automated Strategy Improvement</li>
                     </ul>
                   </motion.div>
 
@@ -2408,12 +2352,10 @@ const slides: Slide[] = [
                       Growth & Operations (40%)
                     </h4>
                     <ul className="space-y-2 text-white/80">
-                      <li>• Core team expansion (Tech)</li>
-                      <li>• Full-time designer for brand & narrative</li>
+                      <li>• Core team goes full-time (Tech)</li>
+                      <li>• Designer for brand & narrative</li>
                       <li>• Legal & compliance framework</li>
-                      <li className="text-electric-purple">
-                        • Marketing & community development
-                      </li>
+                      <li>• Marketing & influencer campaigns</li>
                       <li>
                         •{" "}
                         <span className="text-neon-pink gradient-text">
@@ -2446,21 +2388,23 @@ const slides: Slide[] = [
                   {[
                     {
                       quarter: "Q4 2024",
-                      items: ["Crypto Bunny live", "5 enterprise clients"],
+                      items: ["Crypto Bunny live", "First paying clients"],
                     },
                     {
                       quarter: "H1 2025",
                       items: [
-                        "Marketplace & copy trading",
-                        "25 clients, $100K revenue",
-                        "$25M monthly volume",
+                        "Create your own agent as a Service",
+                        "10 clients, $20K revenue",
+                        "Potential $SOUL launch",
                       ],
                     },
                     {
                       quarter: "H2 2025",
                       items: [
-                        "50 clients, $225K revenue",
-                        "$100M monthly volume",
+                        "25 clients, $125K revenue",
+                        "All platforms integrated",
+                        "Fully Featured Marketing Dashboard",
+                        "Your AI CMO with Additional Features",
                       ],
                     },
                   ].map((milestone, index) => (
@@ -2494,7 +2438,7 @@ const slides: Slide[] = [
           >
             <p className="text-lg text-white/80">
               Building the most sophisticated{" "}
-              <span className="text-electric-purple">AI trading ecosystem</span>{" "}
+              <span className="text-electric-purple">AI interaction service</span>{" "}
               with
               <br />
               <span className="text-neon-pink">
@@ -2625,11 +2569,11 @@ const slides: Slide[] = [
               </div>
               <ul className="space-y-4 text-white/80">
                 {[
-                  "20% for Staking Rewards (6-Month Lock)",
                   "Tax Reduces to 2% After 6 Months",
                   "Governance Voting Rights",
-                  "Platform Fee Discounts for Holders",
-                  "DAO to Decide on Strategy Creator Fee vs. Token Buy-Back & Burn",
+                  "Service Discounts for Holders",
+                  "DAO to Decide on Buy Back & Burn",
+                  "Revenue Share for Strategy Creators",
                 ].map((item, index) => (
                   <li key={index}>
                     • <span className="font-bold">{item}</span>
