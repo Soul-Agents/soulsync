@@ -49,7 +49,7 @@ export function Navbar() {
                 </span>
               </Link>
               <Link
-                href="https://x.com/cryptobunny__"
+                href="https://x.com/cryptobunnyai"
                 target="_blank"
                 className="flex"
               >

@@ -64,7 +64,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-transparent rounded-full blur opacity-50"></div>
               <a
-                href="https://x.com/cryptobunny__"
+                href="https://x.com/cryptobunnyai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block relative hover:scale-105 transition-transform duration-200"
