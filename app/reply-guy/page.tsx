@@ -106,7 +106,7 @@ export default function ReplyGuy() {
               href="/cryptobunny"
               className="px-8 py-4 bg-electric-purple/20 text-electric-purple border border-electric-purple/30 rounded-xl hover:bg-electric-purple/30 transition-all duration-300 font-semibold"
             >
-              See Crypto Bunny Demo
+              See Crypto Bunny AI
             </Link>
           </motion.div>
 
