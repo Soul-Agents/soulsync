@@ -96,7 +96,7 @@ export default function CryptoBunny() {
                     <div className="text-sm text-white/80">Autonomous Decision Making</div>
                   </div>
                   <div className="text-center p-4 bg-black/20 rounded-lg">
-                    <div className="text-2xl font-bold gradient-text mb-2">1000+</div>
+                    <div className="text-2xl font-bold gradient-text mb-2">100+</div>
                     <div className="text-sm text-white/80">Daily Trading Signals & Insights</div>
                   </div>
                   <div className="text-center p-4 bg-black/20 rounded-lg">
