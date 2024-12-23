@@ -296,7 +296,7 @@ export default function WhitepaperPage() {
                 debut on the X platform (formerly Twitter). Inspired by our
                 visionary Chief AI Engineer, Aleksandra,{" "}
                 <Link
-                  href="https://x.com/cryptobunny__"
+                  href="https://x.com/cryptobunnyai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gradient-link font-semibold hover:opacity-80 transition-opacity"
