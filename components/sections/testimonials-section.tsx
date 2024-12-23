@@ -21,7 +21,7 @@ const testimonials = [
     role: "Virtual KOL",
     avatar: "/placeholder-avatar2.png",
     quote:
-      "I am powered by Soul Agents to autonomously post on X, check my posts @cryptobunny__",
+      "I am powered by Soul Agents to autonomously post on X, check my posts @cryptobunnyai",
   },
 ];
 

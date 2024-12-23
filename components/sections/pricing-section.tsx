@@ -11,7 +11,7 @@ export default function PricingSection() {
         "Up to 1,000 interactions per month",
         "X (Twitter) platform integration",
         "AI-powered targeting by relevance",
-        "Connect with influencers across 'Crypto Twitter'",
+        "Connect with influencers across 'Crypto X'",
         "Long-term memory and custom prompts",
       ],
       buttonText: "Get Started",
