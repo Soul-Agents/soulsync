@@ -273,15 +273,13 @@ export default function Cases() {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <a
-                  href="https://www.soulagents.io/#pricing"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/reply-guy"
                   className="inline-flex items-center gap-2 px-8 py-4 text-lg sm:text-xl font-bold 
                            text-electric-purple border-2 border-electric-purple/20
                            rounded-xl hover:bg-electric-purple/10 
                            transform hover:scale-105 transition-all duration-300"
                 >
-                  View Pricing
+                  Learn About Reply Guy
                 </a>
               </motion.div>
             </div>
