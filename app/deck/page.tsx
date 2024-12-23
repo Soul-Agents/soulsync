@@ -687,7 +687,8 @@ const slides: Slide[] = [
             transition={{ duration: 0.5 }}
           >
             AI-Powered{" "}
-            <span className="gradient-text">Social Interactions on X</span> & beyond
+            <span className="gradient-text">Social Interactions on X</span> &
+            beyond
           </motion.p>
 
           {/* Dual Image Layout */}
@@ -782,7 +783,11 @@ const slides: Slide[] = [
                 delay: 0.8,
                 noBorder: true,
               },
-              { text: "Automated Community Engagement", color: "electric-purple", delay: 0.9 },
+              {
+                text: "Automated Community Engagement",
+                color: "electric-purple",
+                delay: 0.9,
+              },
             ].map((badge, index) => (
               <motion.div
                 key={index}
@@ -837,7 +842,7 @@ const slides: Slide[] = [
       </SlideLayout>
     ),
   },
-// ... existing code ...
+  // ... existing code ...
   {
     id: 2,
     title: "Marketing Challenges in Web3",
@@ -874,7 +879,7 @@ const slides: Slide[] = [
                     "Poor engagement metrics",
                     "Inconsistent brand messaging",
                     "Difficulty measuring ROI",
-                    "Lack of 24/7 community engagement"
+                    "Lack of 24/7 community engagement",
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -914,7 +919,7 @@ const slides: Slide[] = [
                     "Multi-platform presence management",
                     "Real-time analytics and reporting",
                     "Scalable growth strategies",
-                    "Significant cost reduction"
+                    "Significant cost reduction",
                   ].map((text, index) => (
                     <motion.li
                       key={index}
@@ -937,12 +942,20 @@ const slides: Slide[] = [
                   {[
                     {
                       title: "Projects",
-                      items: ["Web3 Projects", "DeFi Protocols", "NFT Projects"]
+                      items: [
+                        "Web3 Projects",
+                        "DeFi Protocols",
+                        "NFT Projects",
+                      ],
                     },
                     {
                       title: "User Personas",
-                      items: ["Marketing Teams", "Community Managers", "Brand Developers"]
-                    }
+                      items: [
+                        "Marketing Teams",
+                        "Community Managers",
+                        "Brand Developers",
+                      ],
+                    },
                   ].map((group, idx) => (
                     <motion.div
                       key={idx}
@@ -1153,37 +1166,55 @@ const slides: Slide[] = [
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <div className="flex items-center gap-2 mb-4"> {/* Increased margin */}
-                <h3 className="text-xl font-semibold gradient-text"> {/* Increased text size */}
+              <div className="flex items-center gap-2 mb-4">
+                {" "}
+                {/* Increased margin */}
+                <h3 className="text-xl font-semibold gradient-text">
+                  {" "}
+                  {/* Increased text size */}
                   Autonomous Marketing
                 </h3>
                 <span className="px-2 py-0.5 text-xs bg-black/40 rounded-full text-electric-purple border border-electric-purple/30">
                   $499-999+/mo
                 </span>
               </div>
-              <div className="grid md:grid-cols-2 gap-4"> {/* Two-column layout */}
-                <ul className="space-y-2 text-sm text-white/80"> {/* Increased text size and spacing */}
+              <div className="grid md:grid-cols-2 gap-4">
+                {" "}
+                {/* Two-column layout */}
+                <ul className="space-y-2 text-sm text-white/80">
+                  {" "}
+                  {/* Increased text size and spacing */}
                   <li className="flex items-start gap-2">
                     <span className="text-electric-purple">•</span>
-                    <span>AI-powered brand growth and community engagement</span>
+                    <span>
+                      AI-powered brand growth and community engagement
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-electric-purple">•</span>
-                    <span>Intelligent post and reply creation and interaction</span>
+                    <span>
+                      Intelligent post and reply creation and interaction
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-electric-purple">•</span>
-                    <span>Multi-platform support (X, Telegram, Discord, Farcaster)</span>
+                    <span>
+                      Multi-platform support (X, Telegram, Discord, Farcaster)
+                    </span>
                   </li>
                 </ul>
                 <ul className="space-y-2 text-sm text-white/80">
                   <li className="flex items-start gap-2">
                     <span className="text-electric-purple">•</span>
-                    <span>Professional X API integration with high throughput</span>
+                    <span>
+                      Professional X API integration with high throughput
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-electric-purple">•</span>
-                    <span>Data driven analytics to constantly improve engagement</span>
+                    <span>
+                      Data driven analytics to constantly improve engagement
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -1197,7 +1228,8 @@ const slides: Slide[] = [
             transition={{ delay: 1 }}
           >
             <p className="text-sm text-white/60">
-              Revolutionizing Web3 marketing with AI-powered automation and intelligence
+              Revolutionizing Web3 marketing with AI-powered automation and
+              intelligence
             </p>
           </motion.div>
         </div>
@@ -1248,20 +1280,24 @@ const slides: Slide[] = [
                   </h4>
                   <ul className="space-y-2 text-white/90">
                     <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> 250K+ Web3 Communities
+                      <span className="text-electric-purple">•</span> 250K+ Web3
+                      Communities
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> 50K+ Active Projects
+                      <span className="text-electric-purple">•</span> 50K+
+                      Active Projects
                     </li>
 
-                  <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
-                    Go To Market:
-                  </h4>
+                    <h4 className="text-lg font-semibold mb-2 text-electric-purple/80">
+                      Go To Market:
+                    </h4>
                     <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> Incentivised Growth Campaign (Engage to Earn) 
+                      <span className="text-electric-purple">•</span>{" "}
+                      Incentivised Growth Campaign (Engage to Earn)
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-electric-purple">•</span> Growth via KOLs 
+                      <span className="text-electric-purple">•</span> Growth via
+                      KOLs
                     </li>
                   </ul>
                 </motion.div>
@@ -1290,13 +1326,15 @@ const slides: Slide[] = [
                   </h4>
                   <ul className="space-y-2 text-white/90">
                     <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> High Costs ($10-20K monthly)
+                      <span className="text-neon-pink">•</span> High Costs
+                      ($10-20K monthly)
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="text-neon-pink">•</span> Manual Processes
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Limited Scalability
+                      <span className="text-neon-pink">•</span> Limited
+                      Scalability
                     </li>
                   </ul>
                 </motion.div>
@@ -1311,13 +1349,16 @@ const slides: Slide[] = [
                   </h4>
                   <ul className="space-y-2 text-white/90">
                     <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Basic Automation Tools
+                      <span className="text-neon-pink">•</span> Basic Automation
+                      Tools
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> Limited AI Integration
+                      <span className="text-neon-pink">•</span> Limited AI
+                      Integration
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-neon-pink">•</span> No Multi-Platform Solution
+                      <span className="text-neon-pink">•</span> No
+                      Multi-Platform Solution
                     </li>
                   </ul>
                 </motion.div>
@@ -1342,9 +1383,7 @@ const slides: Slide[] = [
             <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
               <h4 className="text-sm font-semibold text-white/60 mb-2">SAM</h4>
               <p className="text-2xl font-bold gradient-text">$5B+</p>
-              <p className="text-sm text-white/60 mt-1">
-                Web3 Marketing Spend
-              </p>
+              <p className="text-sm text-white/60 mt-1">Web3 Marketing Spend</p>
             </div>
             <div className="glass-card p-4 text-center hover:bg-black/50 transition-all duration-300 border border-white/10">
               <h4 className="text-sm font-semibold text-white/60 mb-2">TAM</h4>
@@ -1362,7 +1401,8 @@ const slides: Slide[] = [
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, type: "spring" }}
           >
-            Revolutionizing Web3 marketing through AI-powered automation and intelligence
+            Revolutionizing Web3 marketing through AI-powered automation and
+            intelligence
           </motion.p>
         </div>
       </SlideLayout>
@@ -1622,17 +1662,20 @@ const slides: Slide[] = [
             </h3>
             <ul className="space-y-4 text-white/80">
               <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Unified Social Interactions across X, Telegram, etc.
+                <span className="text-neon-pink">•</span> Unified Social
+                Interactions across X, Telegram, etc.
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-neon-pink">•</span> Advanced AI with
                 Cross-Platform Memory
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Self-Improving Content and Customized Agent Templates
+                <span className="text-neon-pink">•</span> Self-Improving Content
+                and Customized Agent Templates
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-neon-pink">•</span> Plug and Play X integration with a Marketing Dashboard
+                <span className="text-neon-pink">•</span> Plug and Play X
+                integration with a Marketing Dashboard
               </li>
             </ul>
           </motion.div>
@@ -1912,7 +1955,10 @@ const slides: Slide[] = [
     id: 9,
     title: "AI Agents Executed Trading",
     content: (
-      <SlideLayout title="AI Agents Execute Trading Strategies (Vision)" slideNumber={9}>
+      <SlideLayout
+        title="AI Agents Execute Trading Strategies (Vision)"
+        slideNumber={9}
+      >
         <div className="space-y-4 max-w-[1200px] mx-auto">
           <div className="text-xl text-electric-purple font-bold mb-3 text-center tracking-tight">
             Users Could Create Trading Strategies and Execute Them via AI Agents
@@ -2337,7 +2383,9 @@ const slides: Slide[] = [
                     <ul className="space-y-2 text-white/80">
                       <li>• Connect X and Create Your Agent in Minutes</li>
                       <li>• Add Telegram Integration (2 Main Channels)</li>
-                      <li>• Add Improved Agentic System for Content Improvement</li>
+                      <li>
+                        • Add Improved Agentic System for Content Improvement
+                      </li>
                       <li>• Measure Metrics and Show it to Clients</li>
                       <li>• Automated Strategy Improvement</li>
                     </ul>
@@ -2438,7 +2486,9 @@ const slides: Slide[] = [
           >
             <p className="text-lg text-white/80">
               Building the most sophisticated{" "}
-              <span className="text-electric-purple">AI interaction service</span>{" "}
+              <span className="text-electric-purple">
+                AI interaction service
+              </span>{" "}
               with
               <br />
               <span className="text-neon-pink">

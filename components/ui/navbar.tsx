@@ -49,12 +49,12 @@ export function Navbar() {
                 </span>
               </Link>
               <Link
-                href="https://x.com/cryptobunnyai"
+                href="https://x.com/soul_agents"
                 target="_blank"
                 className="flex"
               >
                 <Image
-                  src="/placeholder-avatar4.png"
+                  src="/soul-agents-transparent.png"
                   alt="Soul AI Agents"
                   width={32}
                   height={32}
