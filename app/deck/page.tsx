@@ -469,7 +469,7 @@ const Tweet: React.FC<TweetProps> = ({
   // Updated avatar logic
   const getAvatarSrc = () => {
     switch (handle.toLowerCase()) {
-      case "cryptobunny__":
+      case "Crypto Bunny":
         return "/cryptobunny.png";
       case "trader123":
         return "/crypto-trader.png";
@@ -701,7 +701,7 @@ const slides: Slide[] = [
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-transparent rounded-full blur opacity-50"></div>
               <a
-                href="https://x.com/cryptobunny__"
+                href="https://soulagents.io/cryptobunny/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block relative hover:scale-105 transition-transform duration-200"
@@ -1007,7 +1007,7 @@ const slides: Slide[] = [
             >
               <Tweet
                 author="Crypto Bunny"
-                handle="cryptobunny__"
+                handle="cryptobunnyai"
                 content="Looking at the data, there's an interesting correlation with DEX liquidity movements from the past hour. Similar pattern occurred during the last major price action. Worth monitoring the whale wallets I'm tracking - they've been accumulating quietly. 🧐 Check the analysis in my next thread."
                 timestamp="Just now"
               />
@@ -2669,7 +2669,7 @@ const slides: Slide[] = [
               transition={{ duration: 0.3 }}
             >
               <motion.a
-                href="https://x.com/cryptobunny__"
+                href="https://soulagents.io/cryptobunny/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block relative group"
@@ -2685,12 +2685,12 @@ const slides: Slide[] = [
               <p className="text-white/80 italic">
                 Check out our first autonomous agent -{" "}
                 <a
-                  href="https://x.com/cryptobunny__"
+                  href="https://soulagents.io/cryptobunny/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-electric-purple hover:underline"
                 >
-                  @cryptobunny__
+                  Crypto Bunny
                 </a>
                 <br />
                 <span className="text-sm text-white/60">

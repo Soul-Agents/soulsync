@@ -162,7 +162,7 @@ export default function Cases() {
             >
               <div className="relative aspect-square cursor-pointer">
                 <a
-                  href="https://x.com/cryptobunny__"
+                  href="https://x.com/cryptobunnyai"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

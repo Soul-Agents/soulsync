@@ -61,7 +61,7 @@ const blogPosts: BlogPost[] = [
       • "Show me the price of ETH"
 
       Follow our journey:
-      • Twitter: @cryptobunny__
+      • Twitter: @cryptobunnyai
       • Updates: @soul_agents
 
       We're just getting started, and we can't wait to show you what's next! Stay tuned for more updates as we continue to push the boundaries of what's possible with AI-powered trading.
@@ -150,7 +150,7 @@ const blogPosts: BlogPost[] = [
       • Enhanced market analysis through our proprietary systems (soon to be connected)
 
       Our proprietary GIGABRAIN technology will enrich Brian AI's capabilities with:
-      • Advanced Twitter analysis via @cryptobunny__ and other agents
+      • Advanced Twitter analysis via @cryptobunnyai and other agents
       • Comprehensive social sentiment tracking
       • RAG-based memory system for deeper market understanding
       • Real-time market sentiment correlation
@@ -177,7 +177,7 @@ const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     category: "Launch Updates",
     content: `
-      Today marks a significant milestone for Soul Agents – Crypto Bunny (@cryptobunny__) has officially gone live on X! While she's starting with basic autonomous tweeting capabilities, this launch represents just the beginning of her journey.
+      Today marks a significant milestone for Soul Agents – Crypto Bunny (@cryptobunnyai) has officially gone live on X! While she's starting with basic autonomous tweeting capabilities, this launch represents just the beginning of her journey.
 
       What Crypto Bunny Can Do Today:
       • Autonomous tweeting about market trends
@@ -202,7 +202,7 @@ const blogPosts: BlogPost[] = [
       While today's launch focuses on autonomous tweeting, we're already working on expanding Crypto Bunny's capabilities. Each day will bring new improvements and features as she learns and grows alongside our community.
 
       Join Us:
-      We invite you to be part of this journey! Follow <Link href="https://x.com/cryptobunny__" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">@cryptobunny__</Link> on X to watch her evolution and interact with one of the first truly autonomous AI agents in the Web3 space.
+      We invite you to be part of this journey! Follow <Link href="https://x.com/cryptobunnyai" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">@cryptobunnyai</Link> on X to watch her evolution and interact with one of the first truly autonomous AI agents in the Web3 space.
 
       Thank you to everyone who has supported us on this journey. This is just the beginning – stay tuned for daily improvements and exciting updates!
     `,
@@ -242,7 +242,7 @@ const blogPosts: BlogPost[] = [
 
       Why Soul Agents? Because We're Different:
       • Think of us as your community's secret weapon. Our AI agents aren't just smart; they've got personality, wit, and the ability to make your community members feel heard and valued.
-      • Meet <Link href="https://x.com/cryptobunny__" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">Crypto Bunny</Link>! She just posted her first "Hello World!" tweet on X last night 🐰. While she's currently mastering social interactions in her own environment, we're working on expanding her capabilities to include trading features.
+      • Meet <Link href="https://x.com/cryptobunnyai" target="_blank" rel="noopener noreferrer" className="gradient-link font-semibold hover:opacity-80 transition-opacity">Crypto Bunny</Link>! She just posted her first "Hello World!" tweet on X last night 🐰. While she's currently mastering social interactions in her own environment, we're working on expanding her capabilities to include trading features.
       • Our agents remember conversations and context, making every interaction personal and meaningful.
 
       The Soul Difference:
@@ -342,7 +342,7 @@ const renderContent = (content: string) => {
             <>
               Meet{" "}
               <Link
-                href="https://x.com/cryptobunny__"
+                href="https://x.com/cryptobunnyai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gradient-link font-semibold hover:opacity-80 transition-opacity"
