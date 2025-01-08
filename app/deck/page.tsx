@@ -514,147 +514,6 @@ interface Slide {
   content: React.ReactNode;
 }
 
-// 1. First define all helper components
-
-interface ChartProps {
-  className?: string;
-}
-
-const GrowthChart: React.FC<ChartProps> = ({ className = "" }) => {
-  return (
-    <motion.div
-      className={`w-full h-32 bg-black/20 rounded-lg p-4 ${className}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <svg className="w-full h-full" viewBox="0 0 300 100">
-        {/* Grid lines */}
-        {[...Array(5)].map((_, i) => (
-          <motion.line
-            key={i}
-            x1="0"
-            y1={20 * i}
-            x2="300"
-            y2={20 * i}
-            stroke="rgba(255,255,255,0.1)"
-            strokeDasharray="4 4"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1, delay: i * 0.1 }}
-          />
-        ))}
-
-        {/* Animated growth line */}
-        <motion.path
-          d="M0 100 L60 80 L120 85 L180 60 L240 30 L300 10"
-          fill="none"
-          stroke="url(#gradientPink)"
-          strokeWidth="3"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
-        />
-
-        {/* Gradient definition */}
-        <defs>
-          <linearGradient id="gradientPink" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="rgba(255,105,180,0.3)" />
-            <stop offset="50%" stopColor="rgba(255,105,180,0.7)" />
-            <stop offset="100%" stopColor="rgba(255,20,147,0.9)" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </motion.div>
-  );
-};
-
-// const TradingDashboard: React.FC<ChartProps> = ({ className = "" }) => {
-//   // Calculate points for the connecting line
-//   const linePoints = [...Array(8)].map((_, i) => ({
-//     x: 37.5 * i + 20,
-//     y: 50 + Math.sin(i * 1.5) * 15,
-//   }));
-
-//   // Create SVG path from points
-//   const linePath = `M ${linePoints.map((p) => `${p.x} ${p.y}`).join(" L ")}`;
-
-//   return (
-//     <motion.div
-//       className={`w-full h-32 bg-black/20 rounded-lg p-4 overflow-hidden ${className}`}
-//     >
-//       <div className="h-full flex items-center justify-center">
-//         <svg
-//           className="w-full h-full"
-//           viewBox="0 0 300 100"
-//           preserveAspectRatio="xMidYMid meet"
-//         >
-//           {/* Grid lines */}
-//           {[...Array(4)].map((_, i) => (
-//             <motion.line
-//               key={`grid-${i}`}
-//               x1="0"
-//               y1={25 * i + 25}
-//               x2="300"
-//               y2={25 * i + 25}
-//               stroke="rgba(255,255,255,0.1)"
-//               strokeWidth="1"
-//             />
-//           ))}
-
-//           {/* Connecting line */}
-//           <motion.path
-//             d={linePath}
-//             fill="none"
-//             stroke="url(#gradientLine)"
-//             strokeWidth="2"
-//             initial={{ pathLength: 0, opacity: 0 }}
-//             animate={{ pathLength: 1, opacity: 0.5 }}
-//             transition={{ duration: 1.5, delay: 0.5 }}
-//           />
-
-//           {/* Gradient for the line */}
-//           <defs>
-//             <linearGradient id="gradientLine" x1="0" y1="0" x2="1" y2="0">
-//               <stop offset="0%" stopColor="#ffffff" />
-//               <stop offset="50%" stopColor="#a855f7" />
-//               <stop offset="100%" stopColor="#ffffff" />
-//             </linearGradient>
-//           </defs>
-
-//           {/* Candlesticks */}
-//           {[...Array(8)].map((_, i) => (
-//             <motion.g
-//               key={`candle-${i}`}
-//               initial={{ opacity: 0, scale: 0.8 }}
-//               animate={{ opacity: 1, scale: 1 }}
-//               transition={{ delay: i * 0.1 }}
-//             >
-//               {/* Wick */}
-//               <line
-//                 x1={37.5 * i + 20}
-//                 y1={30 + Math.sin(i * 1.5) * 15}
-//                 x2={37.5 * i + 20}
-//                 y2={70 + Math.sin(i * 1.5) * 15}
-//                 stroke={i % 2 ? "#22c55e" : "#ef4444"}
-//                 strokeWidth="2"
-//               />
-//               {/* Body */}
-//               <rect
-//                 x={37.5 * i + 15}
-//                 y={40 + Math.sin(i * 1.5) * 15}
-//                 width="10"
-//                 height="20"
-//                 fill={i % 2 ? "#22c55e" : "#ef4444"}
-//               />
-//             </motion.g>
-//           ))}
-//         </svg>
-//       </div>
-//     </motion.div>
-//   );
-// };
-
 // Define the slides array once
 const slides: Slide[] = [
   {
@@ -708,8 +567,8 @@ const slides: Slide[] = [
                 className="block relative hover:scale-105 transition-transform duration-200"
               >
                 <img
-                  src="/placeholder-avatar2.png"
-                  alt="Community"
+                  src="/cryptobunny.png"
+                  alt="AI Influencer"
                   className="relative w-48 h-48 rounded-full border-2 border-electric-purple"
                 />
               </a>
@@ -719,7 +578,7 @@ const slides: Slide[] = [
                 transition={{ delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-electric-purple/30"
               >
-                <span className="text-sm text-electric-purple">Community</span>
+                <span className="text-sm text-electric-purple">Influencer</span>
               </motion.div>
             </motion.div>
 
@@ -748,8 +607,8 @@ const slides: Slide[] = [
                 className="block relative hover:scale-105 transition-transform duration-200"
               >
                 <img
-                  src="/trading-ai-avatar.png"
-                  alt="Trading"
+                  src="/hot-guy.png"
+                  alt="AI Infrastructure"
                   className="relative w-48 h-48 rounded-full border-2 border-neon-pink"
                 />
               </a>
@@ -759,26 +618,36 @@ const slides: Slide[] = [
                 transition={{ delay: 0.6 }}
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-neon-pink/30"
               >
-                <span className="text-sm text-neon-pink">Trading</span>
+                <span className="text-sm text-neon-pink">Infrastructure</span>
               </motion.div>
             </motion.div>
           </div>
 
           {/* Value Proposition */}
           <motion.p
-            className="text-2xl gradient-text font-semibold mb-8"
+            className="text-2xl gradient-text font-semibold"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            Multi-Agentic System for Social Interactions
+            No Code Infrastructure for Social Engagement
+          </motion.p>
+
+          {/* Industry Leaders Text */}
+          <motion.p
+            className="text-lg text-white/70"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            Trusted by industry leaders
           </motion.p>
 
           {/* Feature Badges */}
           <div className="flex justify-center gap-4 mb-8">
             {[
               {
-                text: "Web3 Brand Content Generation",
+                text: "Web3-Native Content Generation",
                 color: "neon-pink",
                 delay: 0.8,
                 noBorder: true,
@@ -803,198 +672,259 @@ const slides: Slide[] = [
             ))}
           </div>
 
-          {/* Social Links */}
+          {/* Used By Section */}
           <motion.div
-            className="flex justify-center gap-6"
+            className="mt-12 pt-8 border-t border-white/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
+            transition={{ delay: 1.3 }}
           >
-            <a
-              href="https://x.com/adag1oeth"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/70 hover:text-white flex items-center gap-2 transition-colors"
-            >
-              <span>Enquiries:</span>
-              <span className="gradient-text">@adag1oeth</span>
-            </a>
-            <a
-              href="https://x.com/soul_agents"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/70 hover:text-white flex items-center gap-2 transition-colors"
-            >
-              <span>X:</span>
-              <span className="gradient-text">@soul_agents</span>
-            </a>
-            <a
-              href="https://t.me/soul_agents"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/70 hover:text-white flex items-center gap-2 transition-colors"
-            >
-              <span>Telegram:</span>
-              <span className="gradient-text">t.me/soul_agents</span>
-            </a>
+            <h4 className="text-white/60 text-sm mb-6">Selected partners:</h4>
+            <div className="flex justify-center items-center gap-12">
+              {[
+                { 
+                  src: "/LIFT.jpg", 
+                  alt: "Lift AI",
+                  href: "https://x.com/LiftDataAI"
+                },
+                { 
+                  src: "/CIDO.png", 
+                  alt: "CIDO",
+                  href: "https://x.com/cido_ai"
+                },
+                { 
+                  src: "/SKALE.png", 
+                  alt: "SKALE",
+                  href: "https://x.com/SkaleNetwork",
+                  pending: true 
+                }
+              ].map((logo, index) => (
+                <motion.div
+                  key={index}
+                  className="relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4 + index * 0.1 }}
+                >
+                  <a
+                    href={logo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:opacity-80 transition-opacity"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`h-12 w-12 object-contain ${logo.pending ? 'opacity-50' : ''}`}
+                    />
+                  </a>
+                  {logo.pending && (
+                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/80 rounded text-xs text-white/60">
+                      pending
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </SlideLayout>
     ),
   },
-  // ... existing code ...
   {
     id: 2,
-    title: "Marketing Challenges in Web3",
+    title: "The Problem with X Engagement",
     content: (
-      <SlideLayout title="Marketing Challenges in Web3" slideNumber={2}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Column - Current Problems */}
+      <SlideLayout title="Scaling Community Engagement is Broken" slideNumber={2}>
+        <div className="max-w-4xl mx-auto">
+          {/* Main Problem Statement */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="glass-card p-6 md:p-8 hover:border-electric-purple/30 transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
           >
-            <div className="flex flex-col items-center">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 text-center gradient-text">
-                Current Marketing Landscape
-              </h3>
-            </div>
-
-            <div className="mb-6 md:mb-8 scale-90">
-              <GrowthChart />
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <h4 className="text-lg font-semibold mb-4 text-electric-purple">
-                  Key Challenges
-                </h4>
-                <motion.ul className="space-y-3">
+            <h3 className="text-2xl md:text-3xl text-white/90 font-bold mb-4">
+              Everyone knows they should engage on X, but...
+            </h3>
+            <p className="text-xl text-white/70">
+              Current solutions don't scale and are prohibitively expensive
+            </p>
+          </motion.div>
+  
+          {/* Key Problems */}
+          <div className="glass-card p-8">
+            <motion.ul className="space-y-6">
+              {[
+                {
+                  title: "Manual Engagement Doesn't Scale",
+                  desc: "One person can't monitor and respond 24/7 - it's physically impossible",
+                  icon: "⏰"
+                },
+                {
+                  title: "Hiring Interns is Expensive",
+                  desc: "Entry level community managers cost $3-5k/month each",
+                  icon: "💰"
+                },
+                {
+                  title: "Quality is Inconsistent",
+                  desc: "Different people = different voice, knowledge, and response quality",
+                  icon: "📉"
+                },
+                {
+                  title: "Can't Scale Beyond a Point",
+                  desc: "What happens when you need 10+ people? 20? 50? It's unsustainable",
+                  icon: "🔄"
+                }
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  className="flex items-center gap-6 hover:bg-white/5 p-4 rounded-lg transition-colors"
+                >
+                  <span className="text-3xl">{item.icon}</span>
+                  <div>
+                    <h4 className="text-xl font-semibold gradient-text">{item.title}</h4>
+                    <p className="text-white/70 text-lg">{item.desc}</p>
+                  </div>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </div>
+      </SlideLayout>
+    ),
+  },
+  {
+    id: 3,
+    title: "The Solution",
+    content: (
+      <SlideLayout title="No-Code AI Marketing Infrastructure" slideNumber={3}>
+        <div className="max-w-4xl mx-auto">
+          {/* Main Solution Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-2xl md:text-3xl text-white/90 font-bold mb-4">
+              Complete Marketing Infrastructure for X
+            </h3>
+            <p className="text-xl text-white/70">
+              Plan, deploy and manage AI agents through an intuitive dashboard
+            </p>
+          </motion.div>
+  
+          {/* Pricing Tiers */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Basic Plan */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="glass-card p-8 hover:border-electric-purple/30 transition-all duration-300"
+            >
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold text-electric-purple mb-2">Basic Plan</h3>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-3xl font-bold text-white">$199</span>
+                    <span className="text-white/60">/ month</span>
+                    <span className="text-sm text-electric-purple ml-2">Early bird: $100</span>
+                  </div>
+                </div>
+  
+                <motion.ul className="space-y-4 mb-8">
                   {[
-                    "High KOL costs ($10-20k monthly)",
-                    "Manual outreach is time-intensive",
-                    "Limited organic community growth",
-                    "Poor engagement metrics",
-                    "Inconsistent brand messaging",
-                    "Difficulty measuring ROI",
-                    "Lack of 24/7 community engagement",
-                  ].map((text, index) => (
+                    "Custom AI Agent Setup",
+                    "Basic Knowledge Base Integration",
+                    "Tone of Voice Configuration",
+                    "Basic Analytics Dashboard",
+                    "5,000 Monthly Interactions",
+                  ].map((feature, index) => (
                     <motion.li
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-sm md:text-base pl-4 border-l-2 border-electric-purple/30"
+                      className="flex items-center gap-3"
                     >
-                      {text}
+                      <span className="text-electric-purple">✓</span>
+                      <span className="text-white/80">{feature}</span>
                     </motion.li>
                   ))}
                 </motion.ul>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Solution Overview */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="glass-card p-6 md:p-8 hover:border-neon-pink/30 transition-all duration-300"
-          >
-            <h3 className="text-xl md:text-2xl font-bold mb-6 text-center gradient-text">
-              AI-Powered Solution
-            </h3>
-
-            <div className="space-y-6">
-              <div>
-                <h4 className="text-lg font-semibold mb-4 text-neon-pink">
-                  Key Benefits
-                </h4>
-                <motion.ul className="space-y-3">
+            </motion.div>
+  
+            {/* Pro Plan */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="glass-card p-8 border-neon-pink/30 transition-all duration-300 relative overflow-hidden"
+            >
+              <div className="absolute top-3 right-3 px-3 py-1 bg-neon-pink/20 rounded-full">
+                <span className="text-neon-pink text-sm font-medium">Popular</span>
+              </div>
+  
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold text-neon-pink mb-2">Pro Plan</h3>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-3xl font-bold text-white">$999</span>
+                    <span className="text-white/60">/ month</span>
+                  </div>
+                </div>
+  
+                <motion.ul className="space-y-4 mb-8">
                   {[
-                    "Automated community engagement 24/7",
-                    "Data-driven content optimization",
-                    "Multi-platform presence management",
-                    "Real-time analytics and reporting",
-                    "Scalable growth strategies",
-                    "Significant cost reduction",
-                  ].map((text, index) => (
+                    "Everything in Basic +",
+                    "Extended Knowledge Base",
+                    "Advanced Analytics & Reporting",
+                    "Priority Support",
+                    "Custom Integrations",
+                    "Unlimited Monthly Interactions",
+                    "Multi-Agent Management",
+                  ].map((feature, index) => (
                     <motion.li
                       key={index}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                      className="text-white/90 text-sm md:text-base pl-4 border-l-2 border-neon-pink/30"
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="flex items-center gap-3"
                     >
-                      {text}
+                      <span className="text-neon-pink">✓</span>
+                      <span className="text-white/80">{feature}</span>
                     </motion.li>
                   ))}
                 </motion.ul>
               </div>
-
-              <div className="mt-8">
-                <h4 className="text-lg font-semibold mb-4 text-neon-pink">
-                  Target Users
-                </h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    {
-                      title: "Projects",
-                      items: [
-                        "Web3 Projects",
-                        "DeFi Protocols",
-                        "NFT Projects",
-                      ],
-                    },
-                    {
-                      title: "User Personas",
-                      items: [
-                        "Marketing Teams",
-                        "Community Managers",
-                        "Brand Developers",
-                      ],
-                    },
-                  ].map((group, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 + idx * 0.2 }}
-                      className="glass-card p-4 bg-black/20"
-                    >
-                      <h5 className="text-sm font-semibold mb-2 text-white/80">
-                        {group.title}
-                      </h5>
-                      <ul className="space-y-1">
-                        {group.items.map((item, index) => (
-                          <li key={index} className="text-white/70 text-sm">
-                            • {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            </motion.div>
+          </div>
+  
+          {/* Bottom CTA */}
+          <motion.div
+            className="text-center mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            <p className="text-white/60">
+              Early adopter discounts available for a limited time
+            </p>
           </motion.div>
         </div>
       </SlideLayout>
     ),
   },
-  // ... existing code ...
   {
     id: 3,
     title: "AI-Powered Community Engagement",
     content: (
-      <SlideLayout title="AI-Powered Community Engagement" slideNumber={3}>
+      <SlideLayout title="Our Agent using Advanced Tools for X Engagement" slideNumber={3}>
         <div className="space-y-8">
-          <div className="text-2xl text-electric-purple font-semibold mb-6 text-center">
-            Intelligent Context-Aware Responses
-          </div>
-
           <div className="space-y-6">
             {/* Original Tweet */}
             <Tweet
@@ -1059,23 +989,26 @@ const slides: Slide[] = [
               />
             </motion.div>
           </div>
-
-          {/* Explanation */}
-          <motion.div
-            className="mt-12 text-center text-white/70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            <p>
-              Our AI agents provide intelligent, data-driven insights by
-              analyzing:
-              <br />
-              <span className="text-electric-purple">On-chain data</span> •
-              <span className="text-neon-pink"> Market sentiment</span> •
-              <span className="text-electric-purple"> Historical patterns</span>
-            </p>
-          </motion.div>
+          <div className="space-y-4">
+              {[
+                { text: "Our agent searched X in search of relevant news", isElectric: true },
+                { text: "Found a relevant tweet, read the comment and searched the web for additional information", isElectric: false },
+                { text: "Read a Medium article, searched for additional context in Pinecone and then wrote a reply", isElectric: true }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8 + index * 0.2 }}
+                  className="flex items-center justify-center gap-3"
+                >
+                  <div className={item.isElectric ? "h-2 w-2 rounded-full bg-electric-purple" : "h-2 w-2 rounded-full bg-neon-pink"} />
+                  <span className={item.isElectric ? "text-electric-purple text-lg font-medium" : "text-neon-pink text-lg font-medium"}>
+                    {item.text}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
         </div>
       </SlideLayout>
     ),
