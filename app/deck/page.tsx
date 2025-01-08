@@ -521,7 +521,7 @@ const slides: Slide[] = [
     title: "Soul Agents",
     content: (
       <SlideLayout title="Soul Agents" slideNumber={1}>
-        {/* Add this hint at the top */}
+        {/* Navigation Hint */}
         <motion.div
           className="absolute top-1/2 right-24 text-white/60 flex items-center gap-2 text-sm"
           initial={{ opacity: 0, x: -20 }}
@@ -536,8 +536,8 @@ const slides: Slide[] = [
             <ChevronRight className="w-5 h-5" />
           </motion.div>
         </motion.div>
-
-        <div className="text-center space-y-4 sm:space-y-8">
+  
+        <div className="text-center space-y-8">
           {/* Main Tagline */}
           <motion.p
             className="text-2xl text-white/80 font-semibold"
@@ -549,7 +549,7 @@ const slides: Slide[] = [
             <span className="gradient-text">Social Interactions on X</span> &
             beyond
           </motion.p>
-
+  
           {/* Dual Image Layout */}
           <div className="flex justify-center items-center gap-4 mb-8 relative">
             {/* Community AI Side */}
@@ -581,7 +581,7 @@ const slides: Slide[] = [
                 <span className="text-sm text-electric-purple">Influencer</span>
               </motion.div>
             </motion.div>
-
+  
             {/* Connecting Element */}
             <motion.div
               initial={{ scale: 0 }}
@@ -591,8 +591,8 @@ const slides: Slide[] = [
             >
               <span className="text-2xl">⚡️</span>
             </motion.div>
-
-            {/* Trading AI Side */}
+  
+            {/* Infrastructure AI Side */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -622,29 +622,30 @@ const slides: Slide[] = [
               </motion.div>
             </motion.div>
           </div>
-
-          {/* Value Proposition */}
-          <motion.p
-            className="text-2xl gradient-text font-semibold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            No Code Infrastructure for Social Engagement
-          </motion.p>
-
-          {/* Industry Leaders Text */}
-          <motion.p
-            className="text-lg text-white/70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            Trusted by industry leaders
-          </motion.p>
-
+  
+          {/* Value Proposition & Industry Leaders Group */}
+          <div className="space-y-2 mb-12">
+            <motion.p
+              className="text-2xl gradient-text font-semibold"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              No Code Infrastructure for Social Engagement
+            </motion.p>
+  
+            <motion.p
+              className="text-lg text-white/70"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              Trusted by industry leaders
+            </motion.p>
+          </div>
+  
           {/* Feature Badges */}
-          <div className="flex justify-center gap-4 mb-8">
+          <div className="flex justify-center gap-6">
             {[
               {
                 text: "Web3-Native Content Generation",
@@ -671,15 +672,15 @@ const slides: Slide[] = [
               </motion.div>
             ))}
           </div>
-
+  
           {/* Used By Section */}
           <motion.div
-            className="mt-12 pt-8 border-t border-white/10"
+            className="mt-16 pt-8 border-t border-white/10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.3 }}
           >
-            <h4 className="text-white/60 text-sm mb-6">Selected partners:</h4>
+            <h4 className="text-white/60 text-sm mb-8">Selected partners</h4>
             <div className="flex justify-center items-center gap-12">
               {[
                 { 
@@ -817,7 +818,7 @@ const slides: Slide[] = [
           </motion.div>
   
           {/* Pricing Tiers */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {/* Basic Plan */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -829,9 +830,8 @@ const slides: Slide[] = [
                 <div>
                   <h3 className="text-2xl font-bold text-electric-purple mb-2">Basic Plan</h3>
                   <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-3xl font-bold text-white">$199</span>
+                    <span className="text-3xl font-bold text-white">$199+</span>
                     <span className="text-white/60">/ month</span>
-                    <span className="text-sm text-electric-purple ml-2">Early bird: $100</span>
                   </div>
                 </div>
   
@@ -840,8 +840,9 @@ const slides: Slide[] = [
                     "Custom AI Agent Setup",
                     "Basic Knowledge Base Integration",
                     "Tone of Voice Configuration",
-                    "Basic Analytics Dashboard",
-                    "5,000 Monthly Interactions",
+                    "Basic Dashboard (coming soon)",
+                    "500+ Monthly Interactions",
+                    "Upgrade to 1.5k+ Interactions (+$200)",
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -860,8 +861,8 @@ const slides: Slide[] = [
   
             {/* Pro Plan */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
               className="glass-card p-8 border-neon-pink/30 transition-all duration-300 relative overflow-hidden"
             >
@@ -873,7 +874,7 @@ const slides: Slide[] = [
                 <div>
                   <h3 className="text-2xl font-bold text-neon-pink mb-2">Pro Plan</h3>
                   <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-3xl font-bold text-white">$999</span>
+                    <span className="text-3xl font-bold text-white">$499+</span>
                     <span className="text-white/60">/ month</span>
                   </div>
                 </div>
@@ -881,12 +882,12 @@ const slides: Slide[] = [
                 <motion.ul className="space-y-4 mb-8">
                   {[
                     "Everything in Basic +",
-                    "Extended Knowledge Base",
-                    "Advanced Analytics & Reporting",
+                    "Extended Knowledge Base (Vector DB)",
+                    "Advanced Analytics ('Virtual CMO')",
                     "Priority Support",
-                    "Custom Integrations",
-                    "Unlimited Monthly Interactions",
-                    "Multi-Agent Management",
+                    "Onchain Integration",
+                    "2k+ Monthly Interactions",
+                    "Upgrade to 5k+ Interactions (+$500)",
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -896,6 +897,48 @@ const slides: Slide[] = [
                       className="flex items-center gap-3"
                     >
                       <span className="text-neon-pink">✓</span>
+                      <span className="text-white/80">{feature}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
+
+            {/* Enterprise Plan */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              className="glass-card p-8 hover:border-white/30 transition-all duration-300 relative overflow-hidden"
+            >
+              <div className="flex flex-col h-full">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Enterprise</h3>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-3xl font-bold text-white">$4999+</span>
+                    <span className="text-white/60">/ month</span>
+                  </div>
+                </div>
+  
+                <motion.ul className="space-y-4 mb-8">
+                  {[
+                    "Everything in Pro +",
+                    "Custom Integrations",
+                    "Account Manager",
+                    "White Label Solution",
+                    "Up to 10 Agents (+10)",
+                    "SLA & Premium Support",
+                    "20k+ Monthly Interactions",
+                    "Upgrade to 50k+ Interactions (+$5000)",
+                  ].map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.7 + index * 0.1 }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="text-white">✓</span>
                       <span className="text-white/80">{feature}</span>
                     </motion.li>
                   ))}
