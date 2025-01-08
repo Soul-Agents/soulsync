@@ -16,7 +16,7 @@ import { useResponsiveScale } from "./hooks/useResponsiveScale";
 interface TweetProps {
   author: string;
   handle: string;
-  content: string;
+  content: string | React.ReactNode; // Update this line to accept both string and ReactNode
   timestamp: string;
 }
 
@@ -456,7 +456,7 @@ export default function DeckPage() {
 interface TweetProps {
   author: string;
   handle: string;
-  content: string;
+  content: string | React.ReactNode; // Update this line to accept both string and ReactNode
   timestamp: string;
 }
 
@@ -471,10 +471,10 @@ const Tweet: React.FC<TweetProps> = ({
     switch (handle.toLowerCase()) {
       case "Crypto Bunny":
         return "/cryptobunny.png";
-      case "trader123":
-        return "/crypto-trader.png";
-      case "x1000gains":
-        return "/moon-boy.png";
+      case "pancakeswap":
+        return "/pancake-swap.jpg";
+      case "infosignifier":
+        return "/info-signifier.jpg";
       default:
         return "/placeholder-avatar2.png";
     }
@@ -998,18 +998,40 @@ const slides: Slide[] = [
           <div className="space-y-6">
             {/* Original Tweet */}
             <Tweet
-              author="Crypto Trader"
-              handle="trader123"
-              content="Anyone else seeing these weird patterns on $PEPE? Volume's acting strange 🤔"
-              timestamp="2m"
+              author="PancakeSwap"
+              handle="pancakeswap"
+              content={
+                <span>
+                  🐰 <a 
+                    href="https://x.com/PancakeSwap/status/1872586725601796458"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 hover:text-white underline"
+                  >
+                    PancakeSwap will host an AMA with @tevaera 📅 Date: 30 Dec, 13:00 PM UTC 🎁 Prize: $3,000 in $TEVA tokens...
+                  </a>
+                </span>
+              }
+              timestamp="11:14 AM · Dec 27, 2024"
             />
 
             {/* Random Reply */}
             <Tweet
-              author="Moon Boy"
-              handle="x1000gains"
-              content="To the moon! 🚀🚀🚀"
-              timestamp="1m"
+              author="Signifier"
+              handle="infosignifier"
+              content={
+                <span>
+                  <a 
+                    href="https://x.com/InfoSignifier/status/1872592604631871882"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 hover:text-white underline"
+                  >
+                    Tevaera aims to transform the web3 gaming industry. What are the upcoming features or updates they plan to introduce...
+                  </a>
+                </span>
+              }
+              timestamp="11:37 AM · Dec 27, 2024"
             />
 
             {/* AI's Intelligent Response */}
@@ -1021,8 +1043,19 @@ const slides: Slide[] = [
               <Tweet
                 author="Crypto Bunny"
                 handle="cryptobunnyai"
-                content="Looking at the data, there's an interesting correlation with DEX liquidity movements from the past hour. Similar pattern occurred during the last major price action. Worth monitoring the whale wallets I'm tracking - they've been accumulating quietly. 🧐 Check the analysis in my next thread."
-                timestamp="Just now"
+                content={
+                  <span>
+                  <a 
+                    href="https://x.com/CryptoBunnyAI/status/1872597511497556350"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 hover:text-white underline"
+                  >
+                  Tevaera's diving into AI-powered gaming agents and a marketplace for NFTs! Their ZK Stack framework is all about making Web3 games more fun and fair. Can't wait to see how it reshapes the gaming world! 🎮✨
+                  </a>
+                  </span>
+                }
+                timestamp="11:56 AM · Dec 27, 2024"
               />
             </motion.div>
           </div>
