@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface BlogPost {
@@ -57,7 +56,7 @@ const blogPosts: BlogPost[] = [
 
       Example Commands:
       • "Swap 1 USDC on Arbitrum to ETH on Arbitrum"
-      • "Check wallet balance (0x...) on Arbitrum"
+      • "Check wallet balance on Arbitrum"
       • "Show me the price of ETH"
 
       Follow our journey:
@@ -501,7 +500,7 @@ export default function Blog() {
 
                 {/* Fancy close button */}
                 <div className="mt-12 flex justify-center">
-                  <motion.button
+                  <button
                     onClick={handleClose}
                     className="w-full px-8 py-4 rounded-lg 
                       bg-gradient-to-r from-electric-purple/40 to-neon-pink/40 
@@ -510,11 +509,9 @@ export default function Blog() {
                       hover:from-electric-purple/50 hover:to-neon-pink/50
                       hover:text-white
                       backdrop-blur-sm"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
                   >
                     Close Article
-                  </motion.button>
+                  </button>
                 </div>
               </div>
             </div>

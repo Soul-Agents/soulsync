@@ -78,8 +78,8 @@ export default function ReplyGuy() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Create your own autonomous AI agent for brand engagement, customer service, 
-            and trading automation. Just like Crypto Bunny, but customized for your needs.
+            Create your own autonomous AI agent for X (Twitter) engagement, community management, 
+            and brand interaction. Customized with your voice and knowledge base to represent your project authentically.
           </motion.p>
 
           {/* CTA Buttons */}

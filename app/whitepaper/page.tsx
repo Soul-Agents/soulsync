@@ -122,19 +122,18 @@ export default function WhitepaperPage() {
             </h2>
             <div className="prose prose-invert max-w-none space-y-6 overflow-hidden">
               <p className="text-lg leading-relaxed break-words">
-                In the rapidly evolving world of cryptocurrency and
-                decentralized technologies, artificial intelligence (AI) holds
-                the key to transforming how communities engage and interact.
-                Soul AI Agents stands at this intersection, merging soulful AI
-                with crypto trading to create an optimistic and impactful
-                future.
+                In the rapidly evolving landscape of cryptocurrency and
+                decentralized technologies, artificial intelligence (AI) is revolutionizing 
+                community engagement and interaction. Soul AI Agents operates at this 
+                intersection, combining sophisticated AI with crypto analytics to create 
+                meaningful connections and valuable insights.
               </p>
               <br></br>
               <p className="text-lg leading-relaxed break-words">
-                Established in October 2024, Soul is dedicated to crafting AI
-                agents that not only engage but also resonate deeply with users,
-                fostering meaningful and authentic interactions through natural
-                language strategy creation and multi-chain data analysis.
+                Founded in 2023, Soul specializes in developing AI agents that engage 
+                authentically with users, creating personalized experiences through 
+                natural language processing and multi-chain data analysis for both 
+                community management and market insights.
               </p>
             </div>
           </motion.section>

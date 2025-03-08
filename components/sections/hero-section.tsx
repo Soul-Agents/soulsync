@@ -48,7 +48,7 @@ export default function HeroSection() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-8 animate-fade-in">
             <span className="px-3 sm:px-4 py-2 bg-electric-purple/10 rounded-full border border-electric-purple/20 text-electric-purple text-xs sm:text-sm font-medium whitespace-nowrap">
-              Revolutionizing Community Engagement
+              AI-Powered Community Management
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 animate-fade-in-delay">
-            Next Generation AI Agents for your community
+            Autonomous AI agents that engage with your community on X (Twitter) while maintaining your authentic voice and brand identity
           </p>
 
           <div className="flex justify-center items-center gap-4 mb-12 relative animate-fade-in-delay">
