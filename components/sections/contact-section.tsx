@@ -77,16 +77,6 @@ export default function ContactSection() {
                   and Telegram channels!
                 </span>
               </p>
-              <a
-                href="https://forms.gle/zxe1hgrbL8rbTELL7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-gradient inline-block px-8 py-4 rounded-xl font-bold text-white
-                         hover:opacity-90 transition-all duration-300 transform hover:scale-105
-                         shadow-lg shadow-electric-purple/20 hover:shadow-electric-purple/40"
-              >
-                Get Started
-              </a>
             </div>
           </div>
         </div>

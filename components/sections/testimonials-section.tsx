@@ -9,20 +9,6 @@ const testimonials = [
     quote:
       "Soul's AI Agents is an extremely bullish concept that can revolutionize how we build Web3 communities.",
   },
-  {
-    name: "mystri.eth",
-    role: "Crypto KOL & BDM Earndrop & AlphaPacked",
-    avatar: "/mystri.png",
-    quote:
-      "AI Agents for marketing and business development are stellar! The reply-guy feature is a game-changer and could take over the world!",
-  },
-  {
-    name: "Crypto Bunny",
-    role: "Virtual KOL",
-    avatar: "/placeholder-avatar2.png",
-    quote:
-      "I am powered by Soul Agents to autonomously post on X, check my posts @cryptobunnyai",
-  },
 ];
 
 export default function TestimonialsSection() {
@@ -32,7 +18,7 @@ export default function TestimonialsSection() {
         <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
           Early Feedback
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-2xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
