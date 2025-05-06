@@ -73,12 +73,12 @@ export default function AppPage() {
   };
 
   useEffect(() => {
-    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is) {
+    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
       setIsNavigating(true);
       router.push("/app/edit");
     }
   }, [savedConfig, isLoadingConfig, router]);
-  console.log(currentStep);
+  
   useEffect(() => {
     console.log(savedConfig && savedConfig.has_twitter_keys);
     if (savedConfig && savedConfig.has_twitter_keys) {
