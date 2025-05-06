@@ -3,13 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { usePrivy } from "@privy-io/react-auth";
 
 export function Navbar() {
   const pathname = usePathname();
-
+  const { authenticated , logout ,login } = usePrivy();
   // Hide navbar on deck page
   if (pathname === "/deck") return null;
 
+  const handleLogin = () => {
+    if (authenticated) {
+      logout();
+    } else {
+      login();
+    }
+  };
   return (
     <nav className="fixed w-full z-50 top-0">
       <div className="backdrop-blur-lg bg-black/20 border-b border-white/10">
@@ -41,8 +49,8 @@ export function Navbar() {
             <div className="flex items-center">
               {/* Privy Plugin Placeholder */}
               <div className="flex items-center justify-center">
-                <button className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all">
-                  Connect Wallet/X
+                <button onClick={handleLogin} className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all">
+                  {authenticated ? "Logout" : "Login"}
                 </button>
               </div>
             </div>
