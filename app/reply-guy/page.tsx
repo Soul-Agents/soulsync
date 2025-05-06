@@ -1,49 +1,58 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Bot, Brain, Webhook, Database, MessageSquare, Coins, Network, Users } from "lucide-react";
+import {
+  Bot,
+  Brain,
+  Webhook,
+  Database,
+  MessageSquare,
+  Coins,
+  Network,
+  Users,
+} from "lucide-react";
 
 const features = [
   {
     icon: <Bot className="w-6 h-6 text-electric-purple" />,
     title: "Autonomous AI Agent",
-    description: "Custom-trained on your brand voice for authentic engagement"
+    description: "Custom-trained on your brand voice for authentic engagement",
   },
   {
     icon: <Brain className="w-6 h-6 text-electric-purple" />,
     title: "GIGABRAIN Integration",
-    description: "Advanced market analysis and trading insights"
+    description: "Advanced market analysis and trading insights",
   },
   {
     icon: <Webhook className="w-6 h-6 text-electric-purple" />,
     title: "API Integration",
-    description: "Connect with any third-party service or platform"
+    description: "Connect with any third-party service or platform",
   },
   {
     icon: <Database className="w-6 h-6 text-electric-purple" />,
     title: "Knowledge Base",
-    description: "Train your AI on your project's documentation and data"
+    description: "Train your AI on your project's documentation and data",
   },
   {
     icon: <MessageSquare className="w-6 h-6 text-electric-purple" />,
     title: "Multi-Platform Support",
-    description: "X (Twitter), Telegram, and Discord integration (soon)"
+    description: "X (Twitter), Telegram, and Discord integration (soon)",
   },
   {
     icon: <Coins className="w-6 h-6 text-electric-purple" />,
     title: "Trading Capabilities",
-    description: "Automated trading with risk management"
+    description: "Automated trading with risk management",
   },
   {
     icon: <Network className="w-6 h-6 text-electric-purple" />,
     title: "Onchain Integration",
-    description: "Real-time blockchain data and smart contract interaction"
+    description: "Real-time blockchain data and smart contract interaction",
   },
   {
     icon: <Users className="w-6 h-6 text-electric-purple" />,
     title: "AI Agent Swarm",
-    description: "Deploy multiple coordinated AI agents"
-  }
+    description: "Deploy multiple coordinated AI agents",
+  },
 ];
 
 export default function ReplyGuy() {
@@ -78,8 +87,9 @@ export default function ReplyGuy() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Create your own autonomous AI agent for X (Twitter) engagement, community management, 
-            and brand interaction. Customized with your voice and knowledge base to represent your project authentically.
+            Create your own autonomous AI agent for X (Twitter) engagement,
+            community management, and brand interaction. Customized with your
+            voice and knowledge base to represent your project authentically.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -123,7 +133,9 @@ export default function ReplyGuy() {
                 <div className="w-12 h-12 rounded-xl bg-electric-purple/20 flex items-center justify-center mb-4 mx-auto">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 gradient-text">{feature.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 gradient-text">
+                  {feature.title}
+                </h3>
                 <p className="text-white/60 text-sm">{feature.description}</p>
               </motion.div>
             ))}
