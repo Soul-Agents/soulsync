@@ -42,12 +42,12 @@ const WalletStep = () => {
     queryFn: () => getPaymentStatus(privyUser?.id || ""),
   });
 
-  // useEffect(() => {
-  //   if (paymentStatus?.data?.is_paid) {
-  //     setPaymentComplete(true);
-  //     setTransactionHash(paymentStatus?.data?.tx_hash || "");
-  //   }
-  // }, [paymentStatus]);
+  useEffect(() => {
+    if (paymentStatus?.data?.is_paid) {
+      setPaymentComplete(true);
+      setTransactionHash(paymentStatus?.data?.tx_hash || "");
+    }
+  }, [paymentStatus]);
   const hasConnectedWallet = wallets.length > 0;
   const {
     mutate: processPayment,
