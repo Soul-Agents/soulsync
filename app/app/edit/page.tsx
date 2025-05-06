@@ -230,7 +230,6 @@ export default function EditAgentConfig() {
     retry: false,
     throwOnError: false,
   });
-
   // Show loading state if not ready or loading config
   if (!ready || isLoadingConfig || !agentConfig) {
     return (
@@ -276,7 +275,7 @@ export default function EditAgentConfig() {
                 <div>
                   <p className="text-white/70 text-sm">Transaction Hash</p>
                   <p className="text-white break-all">
-                    {paymentStatus.data?.tx_hash}
+                    {paymentStatus.data?.tx_hash || "None"}
                   </p>
                 </div>
               </div>
@@ -315,10 +314,11 @@ export default function EditAgentConfig() {
                   <p className="text-white/70 text-sm">Subscription Status</p>
                   <div className="flex items-center gap-2">
                     <span
-                      className={`inline-block w-2 h-2 rounded-full ${paymentStatus.data?.is_active ? "bg-green-500" : "bg-red-500"}`}
+                      className={`inline-block w-2 h-2 rounded-full ${paymentStatus.data?.is_active && paymentStatus.data?.is_paid ? "bg-green-500" : "bg-red-500"}`}
                     ></span>
                     <p className="text-white">
-                      {paymentStatus.data?.is_active
+                      {paymentStatus.data?.is_active &&
+                      paymentStatus.data?.is_paid
                         ? `Active (${daysRemaining(paymentStatus.data)} days remaining)`
                         : "Inactive"}
                     </p>

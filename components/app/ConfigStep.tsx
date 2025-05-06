@@ -14,7 +14,7 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import { AgentConfigFormState } from "../../app/lib/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAgentConfig, testResponse } from "../../app/lib/api";
-
+import { usePrivy } from "@privy-io/react-auth";
 // Motion components
 const MotionButton = motion.button;
 const MotionSpan = motion.span;
@@ -48,6 +48,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
   testTweet,
   setTestTweet,
 }) => {
+  const { user } = usePrivy();
   const [activeField, setActiveField] = useState<string | null>(null);
   const [isContinuing, setIsContinuing] = useState<boolean>(false);
   const queryClient = useQueryClient();
@@ -286,7 +287,7 @@ Best Practices:
                       </label>
                       <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white">
                         <User className="w-5 h-5 text-electric-purple" />
-                        <span>{agentConfig?.username}</span>
+                        <span>{user?.twitter?.username}</span>
                       </div>
                     </div>
 
@@ -295,11 +296,14 @@ Best Practices:
                       <label className="text-white/80 text-sm">
                         Model Selection
                       </label>
-                      <select
+                      <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white">
+                        <span>GPT-4o</span>
+                      </div>
+                      {/* <select
                         className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white
                                appearance-none cursor-pointer hover:bg-white/10 transition-colors
                                focus:outline-none focus:ring-2 focus:ring-electric-purple/50"
-                        value={agentConfig?.model || "grok"}
+                        value={agentConfig?.model || "gpt4o"}
                         onChange={(e) =>
                           updateAgentConfigField("model", e.target.value)
                         }
@@ -310,17 +314,16 @@ Best Practices:
                           backgroundSize: "1.5em 1.5em",
                           paddingRight: "2.5rem",
                         }}
-                      >
-                        <option value="grok" className="text-black">
+                      > */}
+                      {/* <option value="grok" className="text-black">
                           Grok (Recommended)
-                        </option>
-                        <option value="gpt4o" className="text-black">
-                          GPT-4o
-                        </option>
-                        <option value="gemini" className="text-black">
+                        </option> */}
+                      {/* <option value="gpt4o" className="text-black"> */}
+                      {/* </option> */}
+                      {/* <option value="gemini" className="text-black">
                           Gemini
-                        </option>
-                      </select>
+                        </option> */}
+                      {/* </select> */}
                     </div>
 
                     {/* Core Personality */}

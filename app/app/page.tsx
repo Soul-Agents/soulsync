@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getAgentConfig } from "../lib/api";
 import { Navbar } from "../../components/ui/navbar";
 import { AgentConfigFormState } from "../lib/types";
@@ -39,7 +39,7 @@ export default function AppPage() {
     styleRules: "",
     contentRestrictions: "",
     knowledgeBase: "",
-    model: "grok",
+    model: "gpt4o",
     exampleTweets: [
       "Our AI agents are processing real-time data right now 🔥 Current metrics show 90% efficiency gains ⚡",
       "Fascinating use case! This matches perfectly with our current infrastructure capabilities...",
@@ -73,7 +73,7 @@ export default function AppPage() {
   };
 
   useEffect(() => {
-    if (!isLoadingConfig && savedConfig?.is_active) {
+    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is) {
       setIsNavigating(true);
       router.push("/app/edit");
     }

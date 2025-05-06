@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -11,13 +11,12 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
-import { useMutation } from "@tanstack/react-query";
-import { makePayment } from "../../app/lib/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { makePayment, getPaymentStatus } from "../../app/lib/api";
 
 import { createWalletClient, custom, erc20Abi, Hex, parseUnits } from "viem";
-import { sepolia } from "viem/chains";
-import router from "next/router";
-
+import { base } from "viem/chains";
+import Link from "next/link";
 interface PaymentParams {
   clientId: string;
   amount: string;
@@ -31,12 +30,24 @@ interface PaymentResponse {
 
 const WalletStep = () => {
   const { login, authenticated, connectWallet, user: privyUser } = usePrivy();
-  const { wallets, ready } = useWallets();
+  const { wallets } = useWallets();
+
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [error, setError] = useState<string>("");
   const [txHash, setTransactionHash] = useState<string>("");
+  console.log(wallets);
+  const { data: paymentStatus } = useQuery({
+    queryKey: ["paymentStatus"],
+    queryFn: () => getPaymentStatus(privyUser?.id || ""),
+  });
 
+  // useEffect(() => {
+  //   if (paymentStatus?.data?.is_paid) {
+  //     setPaymentComplete(true);
+  //     setTransactionHash(paymentStatus?.data?.tx_hash || "");
+  //   }
+  // }, [paymentStatus]);
   const hasConnectedWallet = wallets.length > 0;
   const {
     mutate: processPayment,
@@ -47,7 +58,7 @@ const WalletStep = () => {
     onSuccess: (data) => {
       console.log("DATA", data);
       console.log("txHash", txHash);
-      console.log("DATA SUCCESS", data.s);
+      console.log("DATA SUCCESS", data);
       if (data.success) {
         setTransactionHash(txHash || "");
         setPaymentComplete(true);
@@ -89,7 +100,7 @@ const WalletStep = () => {
         throw new Error("Wallet provider not available");
       }
 
-      if (!user?.id) {
+      if (!privyUser?.id) {
         throw new Error("User ID not available");
       }
       // const address = wallets[0]?.address;
@@ -100,18 +111,21 @@ const WalletStep = () => {
       // });
 
       // const USDT_CONTRACT = "0x7169D38820dfd117C3FA1f22a697dBA58d90BA06"; // sepolia usdt
-      const ethContract = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
-      const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
-      // const amount = parseUnits("100", 6); // 100 USDT with 6 decimals
-      const amount = parseUnits("0.01", 18); // 0.01 ETH with 18 decimals
+      // const ethContract = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
+      // const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
+
+      const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca"; // seba wallet
+      const usdcContract = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"; // base usdc
+      const amount = parseUnits("1", 6); // 1 USDT with 6 decimals
+      // const amount = parseUnits("0.01", 18); // 0.01 ETH with 18 decimals
 
       const walletClient = createWalletClient({
         account: wallets[0]?.address as Hex,
-        chain: sepolia,
+        chain: base,
         transport: custom(provider),
       });
       const txHash = await walletClient.writeContract({
-        address: ethContract,
+        address: usdcContract,
         abi: erc20Abi,
         functionName: "transfer",
         args: [toAddress, amount],
@@ -121,7 +135,7 @@ const WalletStep = () => {
 
       processPayment({
         clientId: privyUser?.id || "",
-        amount: "0.01", // ETH amount
+        amount: "1", // USDC amount
         txHash: txHash,
       });
     } catch (error: any) {
@@ -171,8 +185,8 @@ const WalletStep = () => {
                   <div className="mb-6 text-white/80 space-y-4">
                     <p className="text-lg font-semibold">Final Step: Payment</p>
                     <p>
-                      Your AI agent is almost ready! Connect your wallet and
-                      complete the payment to activate your agent.
+                      Your AI agent is almost ready! Connect your wallet (Base
+                      network) and complete the payment to activate your agent.
                     </p>
 
                     <div className="mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
@@ -201,7 +215,8 @@ const WalletStep = () => {
                         ) : (
                           <div className="text-center mb-4 flex flex-col items-center">
                             <p className="text-white/70 mb-4">
-                              Connect your wallet to proceed with payment
+                              Connect to Base Network to proceed with payment in
+                              USDC token
                             </p>
                             <motion.button
                               whileHover={{ scale: 1.05 }}
@@ -227,7 +242,7 @@ const WalletStep = () => {
                                 Complete Payment
                               </h3>
                               <p className="text-white/70 mb-4 text-center">
-                                One-time payment of 0.01 ETH for your agent
+                                One-time payment of 1 USDC for your agent
                                 subscription
                               </p>
 
@@ -237,7 +252,7 @@ const WalletStep = () => {
                                     Agent Subscription
                                   </span>
                                   <span className="text-white font-medium">
-                                    0.01 ETH
+                                    1 USDC
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm">
@@ -245,7 +260,7 @@ const WalletStep = () => {
                                     Network Fee (est.)
                                   </span>
                                   <span className="text-white/50">
-                                    ~0.001 ETH
+                                    ~0.001 USDC
                                   </span>
                                 </div>
                               </div>
@@ -357,12 +372,12 @@ const WalletStep = () => {
                       </h3>
                       <p className="text-white/70 text-sm">
                         <span className="text-white/50">Amount:</span>{" "}
-                        <span className="text-electric-purple">0.01 ETH</span>
+                        <span className="text-electric-purple">1 USDC </span>
                       </p>
                       <p className="text-white/70 text-sm mt-1">
                         <span className="text-white/50">Transaction:</span>{" "}
                         <a
-                          href={`https://etherscan.io/tx/${txHash}`}
+                          href={`https://basescan.org/tx/${txHash}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-electric-purple hover:underline font-mono"
@@ -377,18 +392,17 @@ const WalletStep = () => {
                       </p>
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                    <Link
+                      href="/app/edit"
                       className="relative z-10 w-full py-5 px-6 rounded-xl bg-electric-purple text-white
                              border border-electric-purple/50 hover:bg-electric-purple/90
                              transition-all duration-300 ease-in-out overflow-hidden
                              flex items-center justify-center gap-2 font-medium"
-                      onClick={() => router.push("/app/edit")}
+                      // onClick={() => router.push("/app/edit")}
                     >
                       Continue to Dashboard
                       <ArrowRight className="w-5 h-5" />
-                    </motion.button>
+                    </Link>
                   </div>
                 </motion.div>
               )}
