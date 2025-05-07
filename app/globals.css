@@ -243,6 +243,19 @@
     animation: gradient-x 15s ease infinite;
   }
 
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
   /* Glow Effects */
   .glow-purple-md {
     text-shadow: 0 0 15px rgba(149, 76, 233, 0.5);

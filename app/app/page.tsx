@@ -71,14 +71,14 @@ export default function AppPage() {
       setIsChangingStep(false);
     }, 500);
   };
-
+  console.log(savedConfig);
   useEffect(() => {
     if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
       setIsNavigating(true);
       router.push("/app/edit");
     }
   }, [savedConfig, isLoadingConfig, router]);
-  
+
   useEffect(() => {
     console.log(savedConfig && savedConfig.has_twitter_keys);
     if (savedConfig && savedConfig.has_twitter_keys) {
