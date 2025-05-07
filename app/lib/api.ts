@@ -101,10 +101,11 @@ type TestResponse = {
   agent_config: AgentConfig;
 }
 
-export async function testResponse(clientId: string, agentName: string, question: string): Promise<TestResponse> {
+export async function testResponse(clientId: string, question: string, config: AgentConfigFormState): Promise<TestResponse> {
   try {
-      const response = await api.post(`/test-agent/${clientId}/${agentName}`, {
-      question
+      const response = await api.post(`agent/test/${clientId}`, {
+      question,
+      config
     });
     return response.data;
   } catch (error) {

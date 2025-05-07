@@ -67,7 +67,7 @@ export default function EditAgentConfig() {
     retry: false,
     throwOnError: false,
   });
-
+  console.log(savedConfig);
   // Redirect if no user or no agent config
   useEffect(() => {
     if (ready && !authenticated) {
@@ -197,17 +197,13 @@ export default function EditAgentConfig() {
 
   // Handler for testing agent response
   const handleTestAgentResponse = async () => {
-    if (!user?.twitter?.username) return;
+    if (!agentConfig || !user?.id) return;
 
     setTestingResponse(true);
     setTestResponseText("");
 
     try {
-      const response = await testAgentResponse(
-        user.twitter.username,
-        user.twitter.username,
-        testTweet
-      );
+      const response = await testAgentResponse(user.id, testTweet, agentConfig);
 
       if (response && response.result) {
         setTestResponseText(response.result);
