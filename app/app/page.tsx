@@ -72,12 +72,12 @@ export default function AppPage() {
     }, 500);
   };
 
-  // useEffect(() => {
-  //   if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
-  //     setIsNavigating(true);
-  //     router.push("/app/edit");
-  //   }
-  // }, [savedConfig, isLoadingConfig, router]);
+  useEffect(() => {
+    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
+      setIsNavigating(true);
+      router.push("/app/edit");
+    }
+  }, [savedConfig, isLoadingConfig, router]);
 
   useEffect(() => {
     console.log(savedConfig && savedConfig.has_twitter_keys);
