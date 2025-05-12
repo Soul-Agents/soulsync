@@ -28,12 +28,13 @@ import {
   Hash,
   Clock,
 } from "lucide-react";
+import FollowAccountsInput from "../../components/FollowAccountsInput";
 
 // Component styling constants
 const inputClasses =
   "bg-black/50 border border-electric-purple/20 rounded-lg p-4 text-white w-full mb-4 placeholder-white/30 focus:outline-none focus:border-electric-purple/50";
 const labelClasses = "block text-white mb-2 font-medium";
-const buttonClasses =
+export const buttonClasses =
   "px-6 py-3 bg-gradient-to-r from-electric-purple to-neon-pink rounded-xl text-white hover:shadow-[0_0_30px_rgba(147,51,234,0.3)] transition-all duration-300 hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100";
 const secondaryButtonClasses =
   "px-6 py-3 bg-electric-purple/20 text-electric-purple border border-electric-purple/30 rounded-xl hover:bg-electric-purple/30 transition-all duration-300 font-semibold flex items-center justify-center gap-2";
@@ -281,7 +282,7 @@ export default function EditAgentConfig() {
                 <div>
                   <p className="text-white/70 text-sm">Amount</p>
                   <p className="text-white">
-                    {paymentStatus.data?.payment_amount} USDT
+                    {paymentStatus.data?.payment_amount} USDC
                   </p>
                 </div>
               </div>
@@ -471,7 +472,17 @@ export default function EditAgentConfig() {
             </button>
           </div>
         </section>
-
+        <section className={sectionClasses}>
+          <h2 className="text-2xl font-semibold gradient-text mb-4">
+            Follow Accounts
+          </h2>
+          <FollowAccountsInput
+            followAccounts={agentConfig.followAccounts}
+            onUpdateFollowAccounts={(accounts) =>
+              updateAgentConfigField("followAccounts", accounts)
+            }
+          />
+        </section>
         <section className={sectionClasses}>
           <h2 className="text-2xl font-semibold gradient-text mb-4">
             Test Your Agent

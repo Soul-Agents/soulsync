@@ -17,6 +17,7 @@ import { makePayment, getPaymentStatus } from "../../app/lib/api";
 import { createWalletClient, custom, erc20Abi, Hex, parseUnits } from "viem";
 import { base } from "viem/chains";
 import Link from "next/link";
+
 interface PaymentParams {
   clientId: string;
   amount: string;
@@ -242,8 +243,8 @@ const WalletStep = () => {
                                 Complete Payment
                               </h3>
                               <p className="text-white/70 mb-4 text-center">
-                                One-time payment of 1 USDC for your agent
-                                subscription
+                                Pay 1 USDC for your agent subscription (valid
+                                for 30 days)
                               </p>
 
                               <div className="bg-white/5 rounded-lg p-4 mb-6 w-full">
@@ -358,12 +359,9 @@ const WalletStep = () => {
 
                     <div className="space-y-2">
                       <h2 className="text-2xl font-bold text-white">
-                        Payment Successful!
+                        Your Agent is Live!
                       </h2>
-                      <p className="text-white/70">
-                        Your payment has been processed successfully. Your AI
-                        agent is now being deployed.
-                      </p>
+                      <p className="text-white/70">Payment successful</p>
                     </div>
 
                     <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-left">
@@ -398,7 +396,6 @@ const WalletStep = () => {
                              border border-electric-purple/50 hover:bg-electric-purple/90
                              transition-all duration-300 ease-in-out overflow-hidden
                              flex items-center justify-center gap-2 font-medium"
-                      // onClick={() => router.push("/app/edit")}
                     >
                       Continue to Dashboard
                       <ArrowRight className="w-5 h-5" />

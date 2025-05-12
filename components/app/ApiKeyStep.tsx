@@ -106,29 +106,53 @@ const ApiKeyStep: React.FC<ApiKeyStepProps> = ({ setCurrentStep }) => {
                   functionality of your agent.
                 </p>
 
-                {/* Explainer Video Link */}
+                {/* App Permissions Box */}
                 <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10 flex items-center gap-3">
-                  <Play className="text-electric-purple w-8 h-8 flex-shrink-0" />
+                  <KeyRound className="text-electric-purple w-8 h-8 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-white">Need help?</h4>
+                    <h4 className="font-medium text-white">App settings</h4>
                     <p className="text-sm text-white/70">
-                      Watch our explainer video on how to get and use your X API
-                      keys.
+                      In your X Developer Portal, ensure your app has{" "}
+                      <span className="text-electric-purple font-medium">
+                        Read and Write
+                      </span>{" "}
+                      permissions enabled to agent work properly.
                     </p>
+                    <p className="text-sm text-white/70">
+                      In the Type Of App section, select{" "}
+                      <span className="text-electric-purple font-medium">
+                        Web App, Automated App or Bot
+                      </span>
+                      .
+                    </p>
+                  </div>
+                </div>
+                {/* Callback URL Information Box */}
+                <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10 flex items-center gap-3">
+                  <AlertCircle className="text-electric-purple w-8 h-8 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-white">
+                      Important: Callback URL Required
+                    </h4>
+                    <p className="text-sm text-white/70">
+                      You must add the following callback URL in your X/Twitter
+                      Developer Portal settings (User authentication settings):
+                    </p>
+                    <code className="block mt-2 p-2 bg-white/10 rounded text-sm text-electric-purple break-all">
+                      https://cryptobunny-production.up.railway.app/auth/callback
+                    </code>
                     <a
-                      href="#"
-                      className="text-electric-purple text-sm flex items-center gap-1 mt-1 hover:underline"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        alert("Explainer video will be added soon!");
-                      }}
+                      href="https://developer.twitter.com/en/portal/projects-and-apps"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-electric-purple text-sm flex items-center gap-1 mt-2 hover:underline"
                     >
-                      Watch video <ExternalLink className="w-3 h-3" />
+                      Configure in Twitter Developer Portal{" "}
+                      <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
               </div>
-
               <div className="space-y-6 mt-6">
                 {/* API Key Input */}
                 <div className="space-y-2">
@@ -191,7 +215,7 @@ const ApiKeyStep: React.FC<ApiKeyStepProps> = ({ setCurrentStep }) => {
                     rel="noopener noreferrer"
                     className="text-electric-purple hover:underline"
                   >
-                    Don't have API keys? Learn how to get them →
+                    Don't have API keys? Get them here →
                   </a>
                 </div>
               </div>

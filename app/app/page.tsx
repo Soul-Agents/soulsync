@@ -71,13 +71,13 @@ export default function AppPage() {
       setIsChangingStep(false);
     }, 500);
   };
-  console.log(savedConfig);
-  useEffect(() => {
-    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
-      setIsNavigating(true);
-      router.push("/app/edit");
-    }
-  }, [savedConfig, isLoadingConfig, router]);
+
+  // useEffect(() => {
+  //   if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
+  //     setIsNavigating(true);
+  //     router.push("/app/edit");
+  //   }
+  // }, [savedConfig, isLoadingConfig, router]);
 
   useEffect(() => {
     console.log(savedConfig && savedConfig.has_twitter_keys);
@@ -99,7 +99,7 @@ export default function AppPage() {
         styleRules: savedConfig.style_rules,
         contentRestrictions: savedConfig.content_restrictions,
         knowledgeBase: savedConfig.knowledge_base,
-        model: savedConfig.model_config["model"] || "grok",
+        model: savedConfig.model_config["model"] || "gpt4o",
         exampleTweets: savedConfig.example_tweets,
         followAccounts: [
           ...savedConfig.ai_and_agents,
@@ -163,26 +163,8 @@ export default function AppPage() {
           )}
 
           {currentStep === 3 && (
-            <ConnectStep
-              user={user}
-              connectionComplete={connectionComplete}
-              setConnectionComplete={setConnectionComplete}
-              isConnecting={isConnecting}
-              setIsConnecting={setIsConnecting}
-              setCurrentStep={handleStepChange}
-            />
+            <ConnectStep user={user} setCurrentStep={handleStepChange} />
           )}
-
-          {/* {currentStep === 4 && (
-            <WalletStep user={user} setCurrentStep={handleStepChange} />
-          )} */}
-
-          {/* {currentStep === 5 && (
-            <SuccessStep
-              agentConfig={agentConfig}
-              setCurrentStep={handleStepChange}
-            />
-          )} */}
         </>
       )}
     </>

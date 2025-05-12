@@ -16,6 +16,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAgentConfig, testResponse } from "../../app/lib/api";
 import { usePrivy } from "@privy-io/react-auth";
 import { tooltips } from "../data";
+import FollowAccountsInput from "../../app/components/FollowAccountsInput";
 // Motion components
 const MotionButton = motion.button;
 const MotionSpan = motion.span;
@@ -42,6 +43,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
   const { user } = usePrivy();
   const [activeField, setActiveField] = useState<string | null>(null);
   const [isContinuing, setIsContinuing] = useState<boolean>(false);
+  const [followAccountInput, setFollowAccountInput] = useState<string>("");
   const queryClient = useQueryClient();
 
   // API mutations
@@ -494,62 +496,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
-                        Follow Accounts
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-white/60">
-                            {agentConfig && agentConfig.followAccounts
-                              ? `${agentConfig.followAccounts.length} account${agentConfig.followAccounts.length > 1 ? "s" : ""} added`
-                              : "No accounts added yet"}
-                          </span>
-                          <Tooltip.Root>
-                            <Tooltip.Trigger asChild>
-                              <MotionSpan
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                              >
-                                ℹ️
-                              </MotionSpan>
-                            </Tooltip.Trigger>
-                            <Tooltip.Portal>
-                              <Tooltip.Content
-                                className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                         text-white text-sm leading-relaxed shadow-xl"
-                                sideOffset={5}
-                              >
-                                <pre className="whitespace-pre-wrap font-sans">
-                                  {tooltips.followAccounts}
-                                </pre>
-                                <Tooltip.Arrow className="fill-dark-navy" />
-                              </Tooltip.Content>
-                            </Tooltip.Portal>
-                          </Tooltip.Root>
-                        </div>
-                      </label>
-                      <div className="space-y-2">
-                        <MotionSpan
-                          whileHover={{ scale: 1.01 }}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                        >
-                          <textarea
-                            className="w-full bg-transparent border border-white/10 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-electric-purple/50 resize-none"
-                            value={agentConfig?.followAccounts.join(", ") || ""}
-                            onChange={(e) => {
-                              const accounts = e.target.value
-                                .split(/[,\s]+/)
-                                .map((account) => account.trim())
-                                .filter((account) => account.length > 0);
-                              updateAgentConfigField(
-                                "followAccounts",
-                                accounts
-                              );
-                            }}
-                            rows={4}
-                            placeholder="Enter accounts to follow (separated by commas or spaces)"
-                          />
-                        </MotionSpan>
-                      </div>
+                      <FollowAccountsInput
+                        followAccounts={agentConfig.followAccounts}
+                        onUpdateFollowAccounts={(accounts) =>
+                          updateAgentConfigField("followAccounts", accounts)
+                        }
+                        tooltipContent={tooltips.followAccounts}
+                      />
                     </MotionSection>
 
                     {/* Action Buttons */}
@@ -587,7 +540,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                         </span>
                       </MotionButton>
 
-                      <MotionButton
+                      {/* <MotionButton
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
                         disabled={isSaving || isContinuing}
@@ -615,7 +568,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                             </>
                           )}
                         </span>
-                      </MotionButton>
+                      </MotionButton> */}
                     </div>
                   </div>
 
