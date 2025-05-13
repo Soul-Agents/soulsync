@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AgentConfig, AgentConfigFormState, ApiResponse, PaymentStatus } from './types';
+import { getAccessToken } from '@privy-io/react-auth';
 
 // Create axios instance with base URL
 export const api = axios.create({
@@ -7,6 +8,20 @@ export const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+});
+
+// Add request interceptor to attach auth token
+api.interceptors.request.use(async (config) => {
+  try {
+    const token = await getAccessToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  } catch (error) {
+    console.error('Error getting auth token:', error);
+    return config;
+  }
 });
 
 // API endpoints
@@ -31,8 +46,7 @@ export async function createAgentConfig(config: AgentConfigFormState): Promise<A
   try {
     console.log("CONFIG", config);
     const response = await api.post(`/agent/config`, {
-      client_id: config.username, // Using username as client_id for now
-      agent_name: config.username,
+      client_id: config.client_id,
       user_name: config.username,
       user_personality: config.personality,
       style_rules: config.styleRules,
@@ -55,10 +69,6 @@ export async function createAgentConfig(config: AgentConfigFormState): Promise<A
       traders_and_analysts: [],
     });
 
-    //   ai_and_agents: config.followAccounts.filter(a => a.toLowerCase().includes('ai') || a.toLowerCase().includes('bot')),
-    //   web3_builders: config.followAccounts.filter(a => a.toLowerCase().includes('web3') || a.toLowerCase().includes('crypto')),
-    //   defi_experts: config.followAccounts.filter(a => a.toLowerCase().includes('defi')),
-    //   thought_leaders: config.followAccounts.filter(a => !a.toLowerCase().includes('ai') && !a.toLowerCase().includes('web3')),
 
     return response.data;
   } catch (error) {
@@ -103,7 +113,7 @@ type TestResponse = {
 
 export async function testResponse(clientId: string, question: string, config: AgentConfigFormState): Promise<TestResponse> {
   try {
-      const response = await api.post(`agent/test/${clientId}`, {
+    const response = await api.post(`agent/test/${clientId}`, {
       question,
       config
     });
@@ -111,7 +121,6 @@ export async function testResponse(clientId: string, question: string, config: A
   } catch (error) {
     console.error('Error testing response:', error);
     throw error;
-   
   }
 }
 
