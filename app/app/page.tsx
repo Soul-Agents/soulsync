@@ -15,8 +15,6 @@ import ConnectStep from "@/components/app/ConnectStep";
 export default function AppPage() {
   // Step tracking: 1 = config, 2 = API key, 3 = connect to X, 4 = wallet & payment, 5 = success
   const [currentStep, setCurrentStep] = useState<number>(1);
-  const [isConnecting, setIsConnecting] = useState<boolean>(false);
-  const [connectionComplete, setConnectionComplete] = useState<boolean>(false);
 
   const [isNavigating, setIsNavigating] = useState<boolean>(false);
   const [isChangingStep, setIsChangingStep] = useState<boolean>(false);
@@ -33,7 +31,7 @@ export default function AppPage() {
     }
   }, [ready, user, router]);
   // Default empty configuration
-  const defaultConfig: AgentConfigFormState = {
+  const defaultConfig: Omit<AgentConfigFormState, "client_id"> = {
     username: "",
     personality: "",
     styleRules: "",
@@ -94,6 +92,7 @@ export default function AppPage() {
     if (savedConfig) {
       // Convert backend config to form state
       const formState: AgentConfigFormState = {
+        client_id: savedConfig.client_id,
         username: savedConfig.user_name,
         personality: savedConfig.user_personality,
         styleRules: savedConfig.style_rules,
@@ -115,6 +114,7 @@ export default function AppPage() {
       setAgentConfig({
         ...defaultConfig,
         username: user?.id || "",
+        client_id: user?.id || "",
       });
     }
   }, [savedConfig, isLoadingConfig, user?.id]);

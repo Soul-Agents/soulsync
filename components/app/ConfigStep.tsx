@@ -43,7 +43,6 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
   const { user } = usePrivy();
   const [activeField, setActiveField] = useState<string | null>(null);
   const [isContinuing, setIsContinuing] = useState<boolean>(false);
-  const [followAccountInput, setFollowAccountInput] = useState<string>("");
   const queryClient = useQueryClient();
 
   // API mutations
@@ -74,8 +73,11 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
     if (andContinue) {
       setIsContinuing(true);
     }
-
-    saveConfig(agentConfig, {
+    const configToPass = {
+      ...agentConfig,
+      client_id: user?.id || "",
+    };
+    saveConfig(configToPass, {
       onSuccess: (response) => {
         if (response.success) {
           if (!andContinue) {
