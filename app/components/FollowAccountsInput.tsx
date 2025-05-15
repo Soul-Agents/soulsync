@@ -98,7 +98,7 @@ export default function FollowAccountsInput({
                 className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 
                        border border-white/10 rounded-lg group transition-colors"
               >
-                <span className="text-white/80">@{account}</span>
+                <span className="text-white/80">{account}</span>
                 <button
                   onClick={() => {
                     const newAccounts = [...followAccounts];
