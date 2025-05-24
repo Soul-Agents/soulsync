@@ -204,6 +204,21 @@ export async function verifyTwitterApiKey(
     };
   }
 }
+export async function deleteTwitterApiKey(
+  userId: string
+): Promise<ApiResponse<any>> {
+  try {
+    const response = await api.delete(`/auth/api-keys/${userId}`);
+    
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting Twitter API key:', error);
+    return {
+      success: false,
+      error: 'Failed to delete Twitter API key'
+    };
+  }
+}
 
 // Make payment for agent subscription
 export async function makePayment({

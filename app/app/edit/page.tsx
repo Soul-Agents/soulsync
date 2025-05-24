@@ -14,6 +14,7 @@ import {
   checkApiLimits,
   toggleAgent,
   storeTwitterApiKey,
+  deleteTwitterApiKey,
 } from "../../lib/api";
 import {
   AgentConfig,
@@ -332,8 +333,8 @@ export default function EditAgentConfig() {
         client_id: user.id,
         has_twitter_keys: false,
       });
-
-      if (response.success) {
+      const deleteKeys = await deleteTwitterApiKey(user.id);
+      if (response.success && deleteKeys.success) {
         queryClient.invalidateQueries({ queryKey: ["agentConfig"] });
       } else {
         console.error("Failed to delete API keys:", response.error);
