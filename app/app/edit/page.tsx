@@ -11,6 +11,9 @@ import {
   updateAgentConfig,
   testResponse as testAgentResponse,
   getPaymentStatus,
+  checkApiLimits,
+  toggleAgent,
+  storeTwitterApiKey,
 } from "../../lib/api";
 import {
   AgentConfig,
@@ -27,6 +30,9 @@ import {
   Calendar,
   Hash,
   Clock,
+  Power,
+  AlertTriangle,
+  Activity,
 } from "lucide-react";
 import FollowAccountsInput from "../../components/FollowAccountsInput";
 
@@ -59,6 +65,13 @@ export default function EditAgentConfig() {
   const [testResponseText, setTestResponseText] = useState<string>("");
   const [isNavigating, setIsNavigating] = useState<boolean>(false);
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<"config" | "status">("config");
+  const [isTogglingAgent, setIsTogglingAgent] = useState<boolean>(false);
+  const [apiKeyInput, setApiKeyInput] = useState<string>("");
+  const [apiSecretInput, setApiSecretInput] = useState<string>("");
+  const [isUpdatingKeys, setIsUpdatingKeys] = useState<boolean>(false);
+  const [isDeletingKeys, setIsDeletingKeys] = useState<boolean>(false);
+  const [apiKeyError, setApiKeyError] = useState<string | null>(null);
 
   // Fetch agent configuration
   const { data: savedConfig, isLoading: isLoadingConfig } = useQuery({
@@ -97,6 +110,7 @@ export default function EditAgentConfig() {
     if (savedConfig) {
       // Convert backend config to form state
       const formState: AgentConfigFormState = {
+        client_id: savedConfig.client_id,
         username: savedConfig.user_name,
         personality: savedConfig.user_personality,
         styleRules: savedConfig.style_rules,
@@ -227,8 +241,116 @@ export default function EditAgentConfig() {
     retry: false,
     throwOnError: false,
   });
+
+  // Fetch API limits
+  const { data: apiLimits, isLoading: isLoadingApiLimits } = useQuery({
+    queryKey: ["api limits", user?.id],
+    queryFn: () => checkApiLimits(user?.id!),
+    enabled: !!user?.id,
+    retry: false,
+  });
+
+  // Handler for starting/stopping the agent
+  const handleAgentToggle = async () => {
+    if (!user?.id) return;
+    setIsTogglingAgent(true);
+
+    // Store the previous config for rollback
+    const previousConfig = queryClient.getQueryData(["agentConfig", user.id]);
+
+    // Optimistically update the UI
+
+    try {
+      const response = await toggleAgent(user.id);
+      queryClient.setQueryData(
+        ["agentConfig", user.id],
+        (old: AgentConfig) => ({
+          ...old,
+          is_active: !old.is_active,
+        })
+      );
+      if (!response.success) {
+        // If the request failed, rollback to previous state
+        queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+        console.error("Failed to toggle agent:", response.error);
+      }
+    } catch (error) {
+      // If there was an error, rollback to previous state
+      queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+      console.error("Error toggling agent:", error);
+    } finally {
+      setIsTogglingAgent(false);
+    }
+  };
+
+  // Handler for updating API keys
+  const handleUpdateApiKeys = async () => {
+    if (!user?.id) return;
+    setIsUpdatingKeys(true);
+    setApiKeyError(null);
+
+    // Store the previous config for rollback
+    const previousConfig = queryClient.getQueryData(["agentConfig", user.id]);
+
+    try {
+      const response = await storeTwitterApiKey(
+        user.id,
+        apiKeyInput,
+        apiSecretInput
+      );
+
+      if (response.data) {
+        // Clear the input fields after successful update
+        setApiKeyInput("");
+        setApiSecretInput("");
+        queryClient.invalidateQueries({ queryKey: ["agentConfig"] });
+      } else {
+        setApiKeyError(response.error || "Failed to update API keys");
+        // Rollback to previous state
+        queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+      }
+    } catch (error) {
+      console.error("Error updating API keys:", error);
+      setApiKeyError("An unexpected error occurred. Please try again.");
+      // Rollback to previous state
+      queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+    } finally {
+      setIsUpdatingKeys(false);
+    }
+  };
+
+  // Handler for deleting API keys
+  const handleDeleteApiKeys = async () => {
+    if (!user?.id) return;
+    setIsDeletingKeys(true);
+
+    // Store the previous config for rollback
+    const previousConfig = queryClient.getQueryData(["agentConfig", user.id]);
+
+    try {
+      const response = await updateAgentConfig({
+        client_id: user.id,
+        has_twitter_keys: false,
+      });
+
+      if (response.success) {
+        queryClient.invalidateQueries({ queryKey: ["agentConfig"] });
+      } else {
+        console.error("Failed to delete API keys:", response.error);
+        // Rollback to previous state
+        queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+      }
+    } catch (error) {
+      console.error("Error deleting API keys:", error);
+      // Rollback to previous state
+      queryClient.setQueryData(["agentConfig", user.id], previousConfig);
+    } finally {
+      setIsDeletingKeys(false);
+    }
+  };
+
   // Show loading state if not ready or loading config
-  if (!ready || isLoadingConfig || !agentConfig) {
+  if (!ready || isLoadingConfig || !agentConfig || isLoadingApiLimits) {
     return (
       <main className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
@@ -353,204 +475,570 @@ export default function EditAgentConfig() {
           Agent Configuration
         </motion.h1>
 
-        <section className={sectionClasses}>
-          <h2 className="text-2xl font-semibold gradient-text mb-4">
-            Personality & Style
-          </h2>
-
-          <div className="mb-4">
-            <label htmlFor="personality" className={labelClasses}>
-              Agent Personality
-            </label>
-            <textarea
-              id="personality"
-              rows={4}
-              className={inputClasses}
-              placeholder="Describe your agent's personality, tone, and character..."
-              value={agentConfig.personality}
-              onChange={(e) =>
-                updateAgentConfigField("personality", e.target.value)
-              }
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="styleRules" className={labelClasses}>
-              Style Rules
-            </label>
-            <textarea
-              id="styleRules"
-              rows={3}
-              className={inputClasses}
-              placeholder="Define communication style, writing rules, formatting..."
-              value={agentConfig.styleRules}
-              onChange={(e) =>
-                updateAgentConfigField("styleRules", e.target.value)
-              }
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="contentRestrictions" className={labelClasses}>
-              Content Restrictions
-            </label>
-            <textarea
-              id="contentRestrictions"
-              rows={3}
-              className={inputClasses}
-              placeholder="Topics to avoid, prohibited content, ethical guardrails..."
-              value={agentConfig.contentRestrictions}
-              onChange={(e) =>
-                updateAgentConfigField("contentRestrictions", e.target.value)
-              }
-            />
-          </div>
-        </section>
-
-        <section className={sectionClasses}>
-          <h2 className="text-2xl font-semibold gradient-text mb-4">
-            Knowledge & Examples
-          </h2>
-
-          <div className="mb-4">
-            <label htmlFor="knowledgeBase" className={labelClasses}>
-              Knowledge Base
-            </label>
-            <textarea
-              id="knowledgeBase"
-              rows={4}
-              className={inputClasses}
-              placeholder="Technical information, project details, facts the agent should know..."
-              value={agentConfig.knowledgeBase}
-              onChange={(e) =>
-                updateAgentConfigField("knowledgeBase", e.target.value)
-              }
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="exampleTweets" className={labelClasses}>
-              Example Tweets
-            </label>
-            {agentConfig.exampleTweets.map((tweet, index) => (
-              <div key={index} className="flex mb-2 gap-2">
-                <textarea
-                  rows={2}
-                  className={`${inputClasses} mb-0`}
-                  value={tweet}
-                  onChange={(e) => {
-                    const newTweets = [...agentConfig.exampleTweets];
-                    newTweets[index] = e.target.value;
-                    updateAgentConfigField("exampleTweets", newTweets);
-                  }}
-                />
-                <button
-                  type="button"
-                  className="bg-red-500/20 text-red-400 p-2 h-12 rounded-lg"
-                  onClick={() => {
-                    const newTweets = agentConfig.exampleTweets.filter(
-                      (_, i) => i !== index
-                    );
-                    updateAgentConfigField("exampleTweets", newTweets);
-                  }}
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            ))}
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="glass-card p-1.5 rounded-xl flex gap-2 border border-electric-purple/20">
             <button
-              type="button"
-              className={`${secondaryButtonClasses} mt-2 w-full`}
-              onClick={() => {
-                updateAgentConfigField("exampleTweets", [
-                  ...agentConfig.exampleTweets,
-                  "",
-                ]);
-              }}
+              onClick={() => setActiveTab("config")}
+              className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 focus:outline-none
+                ${
+                  activeTab === "config"
+                    ? "bg-electric-purple/20 text-electric-purple"
+                    : "text-white/60 hover:text-white hover:bg-white/5"
+                }`}
             >
-              Add Example Tweet
+              <Save className="w-4 h-4" />
+              Configuration
+            </button>
+            <button
+              onClick={() => setActiveTab("status")}
+              className={`px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 focus:outline-none
+                ${
+                  activeTab === "status"
+                    ? "bg-electric-purple/20 text-electric-purple"
+                    : "text-white/60 hover:text-white hover:bg-white/5"
+                }`}
+            >
+              <Activity className="w-4 h-4" />
+              Status & Payments
             </button>
           </div>
-        </section>
-        <section className={sectionClasses}>
-          <h2 className="text-2xl font-semibold gradient-text mb-4">
-            Follow Accounts
-          </h2>
-          <FollowAccountsInput
-            followAccounts={agentConfig.followAccounts}
-            onUpdateFollowAccounts={(accounts) =>
-              updateAgentConfigField("followAccounts", accounts)
-            }
-          />
-        </section>
-        <section className={sectionClasses}>
-          <h2 className="text-2xl font-semibold gradient-text mb-4">
-            Test Your Agent
-          </h2>
+        </div>
 
-          <div className="mb-4">
-            <label htmlFor="testTweet" className={labelClasses}>
-              Test Tweet
-            </label>
-            <textarea
-              id="testTweet"
-              rows={2}
-              className={inputClasses}
-              placeholder="Enter a sample tweet to test your agent's response..."
-              value={testTweet}
-              onChange={(e) => setTestTweet(e.target.value)}
-            />
-          </div>
+        {activeTab === "config" ? (
+          <>
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Personality & Style
+              </h2>
 
-          <button
-            type="button"
-            className={`${secondaryButtonClasses} w-full`}
-            onClick={handleTestAgentResponse}
-            disabled={testingResponse}
-          >
-            {testingResponse ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" /> Testing Response...
-              </>
-            ) : (
-              <>
-                <Play className="w-5 h-5" /> Test Agent Response
-              </>
-            )}
-          </button>
+              <div className="mb-4">
+                <label htmlFor="personality" className={labelClasses}>
+                  Agent Personality
+                </label>
+                <textarea
+                  id="personality"
+                  rows={4}
+                  className={inputClasses}
+                  placeholder="Describe your agent's personality, tone, and character..."
+                  value={agentConfig.personality}
+                  onChange={(e) =>
+                    updateAgentConfigField("personality", e.target.value)
+                  }
+                />
+              </div>
 
-          {testResponseText && (
-            <div className="mt-4 p-4 bg-electric-purple/10 border border-electric-purple/20 rounded-lg">
-              <h3 className="text-white font-medium mb-2">Agent Response:</h3>
-              <p className="text-white/80">{testResponseText}</p>
-            </div>
-          )}
-        </section>
+              <div className="mb-4">
+                <label htmlFor="styleRules" className={labelClasses}>
+                  Style Rules
+                </label>
+                <textarea
+                  id="styleRules"
+                  rows={3}
+                  className={inputClasses}
+                  placeholder="Define communication style, writing rules, formatting..."
+                  value={agentConfig.styleRules}
+                  onChange={(e) =>
+                    updateAgentConfigField("styleRules", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="contentRestrictions" className={labelClasses}>
+                  Content Restrictions
+                </label>
+                <textarea
+                  id="contentRestrictions"
+                  rows={3}
+                  className={inputClasses}
+                  placeholder="Topics to avoid, prohibited content, ethical guardrails..."
+                  value={agentConfig.contentRestrictions}
+                  onChange={(e) =>
+                    updateAgentConfigField(
+                      "contentRestrictions",
+                      e.target.value
+                    )
+                  }
+                />
+              </div>
+            </section>
+
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Knowledge & Examples
+              </h2>
+
+              <div className="mb-4">
+                <label htmlFor="knowledgeBase" className={labelClasses}>
+                  Knowledge Base
+                </label>
+                <textarea
+                  id="knowledgeBase"
+                  rows={4}
+                  className={inputClasses}
+                  placeholder="Technical information, project details, facts the agent should know..."
+                  value={agentConfig.knowledgeBase}
+                  onChange={(e) =>
+                    updateAgentConfigField("knowledgeBase", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="exampleTweets" className={labelClasses}>
+                  Example Tweets
+                </label>
+                {agentConfig.exampleTweets.map((tweet, index) => (
+                  <div key={index} className="flex mb-2 gap-2">
+                    <textarea
+                      rows={2}
+                      className={`${inputClasses} mb-0`}
+                      value={tweet}
+                      onChange={(e) => {
+                        const newTweets = [...agentConfig.exampleTweets];
+                        newTweets[index] = e.target.value;
+                        updateAgentConfigField("exampleTweets", newTweets);
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="bg-red-500/20 text-red-400 p-2 h-12 rounded-lg"
+                      onClick={() => {
+                        const newTweets = agentConfig.exampleTweets.filter(
+                          (_, i) => i !== index
+                        );
+                        updateAgentConfigField("exampleTweets", newTweets);
+                      }}
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  className={`${secondaryButtonClasses} mt-2 w-full`}
+                  onClick={() => {
+                    updateAgentConfigField("exampleTweets", [
+                      ...agentConfig.exampleTweets,
+                      "",
+                    ]);
+                  }}
+                >
+                  Add Example Tweet
+                </button>
+              </div>
+            </section>
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Follow Accounts
+              </h2>
+              <FollowAccountsInput
+                followAccounts={agentConfig.followAccounts}
+                onUpdateFollowAccounts={(accounts) =>
+                  updateAgentConfigField("followAccounts", accounts)
+                }
+              />
+            </section>
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Test Your Agent
+              </h2>
+
+              <div className="mb-4">
+                <label htmlFor="testTweet" className={labelClasses}>
+                  Test Tweet
+                </label>
+                <textarea
+                  id="testTweet"
+                  rows={2}
+                  className={inputClasses}
+                  placeholder="Enter a sample tweet to test your agent's response..."
+                  value={testTweet}
+                  onChange={(e) => setTestTweet(e.target.value)}
+                />
+              </div>
+
+              <button
+                type="button"
+                className={`${secondaryButtonClasses} w-full`}
+                onClick={handleTestAgentResponse}
+                disabled={testingResponse}
+              >
+                {testingResponse ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" /> Testing
+                    Response...
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-5 h-5" /> Test Agent Response
+                  </>
+                )}
+              </button>
+
+              {testResponseText && (
+                <div className="mt-4 p-4 bg-electric-purple/10 border border-electric-purple/20 rounded-lg">
+                  <h3 className="text-white font-medium mb-2">
+                    Agent Response:
+                  </h3>
+                  <p className="text-white/80">{testResponseText}</p>
+                </div>
+              )}
+            </section>
+          </>
+        ) : (
+          <>
+            <p className="text-white/80 text-sm my-4 text-center">
+              Soul Agents work fully only with Basic X API since free X API only
+              allows us to fetch only 100 X posts per month
+            </p>
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Agent Status
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Agent Info */}
+                <div className="bg-white/5 rounded-xl p-6 border border-electric-purple/20">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-white text-lg font-medium">
+                        Agent Details
+                      </h3>
+                      <p className="text-white/60 text-sm">
+                        Configuration and Status
+                      </p>
+                    </div>
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2
+                      ${
+                        savedConfig?.is_active
+                          ? "bg-green-500/20 text-green-400"
+                          : savedConfig?.is_active === false
+                            ? "bg-yellow-500/20 text-yellow-400"
+                            : "bg-red-500/20 text-red-400"
+                      }`}
+                    >
+                      {savedConfig?.is_active && apiLimits?.data ? (
+                        <>
+                          <Activity className="w-4 h-4" /> Live
+                        </>
+                      ) : savedConfig?.is_active === true &&
+                        apiLimits?.data?.project_usage &&
+                        apiLimits?.data?.project_usage > 90 ? (
+                        <>
+                          <AlertTriangle className="w-4 h-4" /> Alert
+                        </>
+                      ) : (
+                        <>
+                          <Power className="w-4 h-4" /> Stopped
+                        </>
+                      )}
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-white/60 text-sm">Agent Name</p>
+                      <p className="text-white">{agentConfig.username}</p>
+                    </div>
+                    <div>
+                      <p className="text-white/60 text-sm">Owner</p>
+                      <p className="text-white">
+                        {user?.twitter?.username || "Not connected"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleAgentToggle}
+                    disabled={isTogglingAgent}
+                    className={`mt-6 w-full py-3 px-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-300
+                      ${
+                        savedConfig?.is_active === false
+                          ? "bg-green-500/20 text-green-400 hover:bg-green-500/30"
+                          : "bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                      } ${isTogglingAgent ? "opacity-50 cursor-not-allowed" : ""}`}
+                  >
+                    {isTogglingAgent ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        {savedConfig?.is_active === false
+                          ? "Starting..."
+                          : "Stopping..."}
+                      </>
+                    ) : (
+                      <>
+                        <Power className="w-5 h-5" />
+                        {savedConfig?.is_active === false
+                          ? "Start Agent"
+                          : "Stop Agent"}
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* API Status */}
+                <div className="bg-white/5 rounded-xl p-6 border border-electric-purple/20">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-white text-lg font-medium">
+                        API Status
+                      </h3>
+                      <p className="text-white/60 text-sm">
+                        X API Configuration
+                      </p>
+                    </div>
+                    {apiLimits?.data && (
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2
+                        ${
+                          apiLimits.data.project_usage < 90
+                            ? "bg-green-500/20 text-green-400"
+                            : apiLimits.data.project_usage > 90
+                              ? "bg-yellow-500/20 text-yellow-400"
+                              : "bg-red-500/20 text-red-400"
+                        }`}
+                      >
+                        {apiLimits.data.project_usage < 90 ? (
+                          <>
+                            <Check className="w-4 h-4" /> Live
+                          </>
+                        ) : apiLimits.data.project_usage > 90 ? (
+                          <>
+                            <AlertTriangle className="w-4 h-4" /> Config
+                          </>
+                        ) : (
+                          <>
+                            <X className="w-4 h-4" /> Error
+                          </>
+                        )}
+                      </span>
+                    )}
+                  </div>
+
+                  {apiLimits?.data?.project_cap &&
+                    apiLimits?.data?.project_cap === 100 && (
+                      <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                        <p className="text-yellow-400 text-sm">
+                          Your agent is live, and posting up to 3 replies per
+                          day. For additional replies, please upgrade to X API
+                          Basic or contact us.
+                        </p>
+                      </div>
+                    )}
+                  <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <p className="text-yellow-400 text-sm">
+                      Your agent is live, and posting up to 3 replies per day.
+                      For additional replies, please upgrade to X API Basic or
+                      contact us.
+                    </p>
+                  </div>
+
+                  <div className="mt-4 space-y-2">
+                    <div>
+                      <p className="text-white/60 text-sm">API Type</p>
+                      <p className="text-white capitalize">
+                        {apiLimits?.data?.project_cap === 100
+                          ? "Free"
+                          : "Basic"}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-white/60 text-sm">Status</p>
+                      <p className="text-white capitalize">
+                        {apiLimits?.data?.project_usage &&
+                        apiLimits?.data?.project_usage < 90
+                          ? "Live"
+                          : apiLimits?.data?.project_usage &&
+                              apiLimits?.data?.project_usage > 90
+                            ? "Config"
+                            : "Error"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                Payment Information
+              </h2>
+              <div className="bg-white/5 rounded-xl p-6 border border-electric-purple/20">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-white text-lg font-medium">
+                      Subscription Status
+                    </h3>
+                    <p className="text-white/60 text-sm">Payment and Billing</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-white/60 text-sm">Payment Amount</p>
+                    <p className="text-white">
+                      {paymentStatus?.data?.payment_amount || 0} USDC
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-sm">Last Payment</p>
+                    <p className="text-white">
+                      {paymentStatus?.data?.payment_date
+                        ? new Date(
+                            paymentStatus.data.payment_date
+                          ).toLocaleDateString()
+                        : "No payment recorded"}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-sm">Transaction Hash</p>
+                    <p className="text-white break-all">
+                      {paymentStatus?.data?.tx_hash || "N/A"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClasses}>
+              <h2 className="text-2xl font-semibold gradient-text mb-4">
+                API Keys
+              </h2>
+              <div className="bg-white/5 rounded-xl p-6 border border-electric-purple/20">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-white text-lg font-medium">
+                      X API Configuration
+                    </h3>
+                    <p className="text-white/60 text-sm">
+                      Manage your API keys
+                    </p>
+                  </div>
+                  {savedConfig?.has_twitter_keys && (
+                    <span className="px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2 bg-green-500/20 text-green-400">
+                      <Check className="w-4 h-4" /> Keys Configured
+                    </span>
+                  )}
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="apiKey" className={labelClasses}>
+                      API Key
+                    </label>
+                    <input
+                      type="password"
+                      id="apiKey"
+                      className={inputClasses}
+                      placeholder={
+                        savedConfig?.has_twitter_keys
+                          ? "***************************"
+                          : "Enter your X API key"
+                      }
+                      value={apiKeyInput}
+                      onChange={(e) => setApiKeyInput(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="apiSecret" className={labelClasses}>
+                      API Secret
+                    </label>
+                    <input
+                      type="password"
+                      id="apiSecret"
+                      className={inputClasses}
+                      placeholder={
+                        savedConfig?.has_twitter_keys
+                          ? "***************************"
+                          : "Enter your X API secret key"
+                      }
+                      value={apiSecretInput}
+                      onChange={(e) => setApiSecretInput(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-4 mt-6">
+                  <button
+                    onClick={handleUpdateApiKeys}
+                    disabled={
+                      isUpdatingKeys || (!apiKeyInput && !apiSecretInput)
+                    }
+                    className={`${buttonClasses} flex-1`}
+                  >
+                    {isUpdatingKeys ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Updating...
+                      </>
+                    ) : (
+                      <>
+                        <Save className="w-5 h-5" />
+                        {savedConfig?.has_twitter_keys
+                          ? "Update Keys"
+                          : "Add Keys"}
+                      </>
+                    )}
+                  </button>
+                  {savedConfig?.has_twitter_keys && (
+                    <button
+                      onClick={handleDeleteApiKeys}
+                      disabled={isDeletingKeys}
+                      className={`${secondaryButtonClasses} flex-1 !bg-red-500/20 !text-red-400 !border-red-500/30 hover:!bg-red-500/30`}
+                    >
+                      {isDeletingKeys ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Deleting...
+                        </>
+                      ) : (
+                        <>
+                          <X className="w-5 h-5" />
+                          Delete Keys
+                        </>
+                      )}
+                    </button>
+                  )}
+                </div>
+
+                {apiKeyError && (
+                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                    {apiKeyError}
+                  </div>
+                )}
+              </div>
+            </section>
+          </>
+        )}
 
         <div className="flex flex-col gap-4 mt-8">
           <div className="flex gap-4">
-            <button
-              type="button"
-              className={buttonClasses}
-              onClick={saveAgentConfig}
-              disabled={isSaving}
-            >
-              {isSaving ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" /> Saving...
-                </>
-              ) : saveSuccess ? (
-                <>
-                  <Check className="w-5 h-5" /> Saved!
-                </>
-              ) : (
-                <>
-                  <Save className="w-5 h-5" /> Save Configuration
-                </>
-              )}
-            </button>
+            {activeTab === "config" && (
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={saveAgentConfig}
+                disabled={isSaving}
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" /> Saving...
+                  </>
+                ) : saveSuccess ? (
+                  <>
+                    <Check className="w-5 h-5" /> Saved!
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-5 h-5" /> Save Configuration
+                  </>
+                )}
+              </button>
+            )}
 
-            <button
+            {/* <button
               type="button"
               className={secondaryButtonClasses}
               onClick={() => setShowPaymentModal(true)}
@@ -565,7 +1053,7 @@ export default function EditAgentConfig() {
                   <CreditCard className="w-5 h-5" /> Payment status
                 </>
               )}
-            </button>
+            </button> */}
           </div>
 
           {saveError && (
