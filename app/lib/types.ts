@@ -27,6 +27,7 @@ export interface AgentConfig {
   is_paid: boolean;
   example_tweets: string[];
   has_twitter_keys: boolean;
+
 }
 
 // Form state interface - subset of AgentConfig used in the form
@@ -57,4 +58,12 @@ export interface PaymentStatus {
   payment_id: string;
   is_active: boolean;
   tx_hash: string;
+}
+
+// API subscription check interface
+export interface ApiLimitStatus {
+  project_usage:number
+  project_cap:number
+  cap_reset_day:number
+  project_id:number
 }

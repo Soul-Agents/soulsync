@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AgentConfig, AgentConfigFormState, ApiResponse, PaymentStatus } from './types';
+import { AgentConfig, AgentConfigFormState, ApiResponse, PaymentStatus, ApiLimitStatus } from './types';
 import { getAccessToken } from '@privy-io/react-auth';
 
 // Create axios instance with base URL
@@ -239,3 +239,33 @@ export async function getPaymentStatus(clientId:string): Promise<ApiResponse<Pay
     throw new Error("Error getting payment status");
   }
 } 
+
+// Check X API limits
+export async function checkApiLimits(clientId: string): Promise<ApiResponse<ApiLimitStatus>> {
+  try {
+    const response = await api.get(`/agent/twitter/limits/${clientId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error checking API subscription:', error);
+    return {
+      success: false,
+      error: 'Failed to check API subscription status'
+    };
+  }
+}
+
+// Toggle agent
+export async function toggleAgent(clientId: string): Promise<ApiResponse<{ status: string }>> {
+  try {
+    const response = await api.put(`/agent/toggle/${clientId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error toggling agent:', error);
+    return {
+      success: false,
+      error: 'Failed to toggle agent'
+    };
+  }
+}
+
+
