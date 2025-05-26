@@ -5,6 +5,7 @@ export interface ModelConfig {
 export interface AgentConfig {
   client_id: string;
   user_id: string;
+  agent_name: string;
   user_name: string;
   user_personality: string;
   style_rules: string;
