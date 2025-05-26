@@ -73,6 +73,8 @@ export default function EditAgentConfig() {
   const [isUpdatingKeys, setIsUpdatingKeys] = useState<boolean>(false);
   const [isDeletingKeys, setIsDeletingKeys] = useState<boolean>(false);
   const [apiKeyError, setApiKeyError] = useState<string | null>(null);
+  const [showDeleteKeysModal, setShowDeleteKeysModal] =
+    useState<boolean>(false);
 
   // Fetch agent configuration
   const { data: savedConfig, isLoading: isLoadingConfig } = useQuery({
@@ -249,6 +251,12 @@ export default function EditAgentConfig() {
     queryFn: () => checkApiLimits(user?.id!),
     enabled: !!user?.id,
     retry: false,
+    // Refresh every 6 hours
+    staleTime: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
+    gcTime: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchInterval: 6 * 60 * 60 * 1000, // Refetch every 6 hours
   });
 
   // Handler for starting/stopping the agent
@@ -453,6 +461,63 @@ export default function EditAgentConfig() {
             >
               Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Delete API Keys Confirmation Modal */}
+      {showDeleteKeysModal && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="w-full max-w-md glass-card p-6 rounded-xl border border-electric-purple/30 shadow-lg">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-semibold gradient-text">
+                Delete API Keys
+              </h2>
+              <button
+                onClick={() => setShowDeleteKeysModal(false)}
+                className="text-white/70 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="mb-6">
+              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <AlertTriangle className="w-6 h-6 text-red-400 mb-2" />
+                <p className="text-red-400">
+                  Deleting API keys will stop agent from working
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={() => {
+                  handleDeleteApiKeys();
+                  setShowDeleteKeysModal(false);
+                }}
+                disabled={isDeletingKeys}
+                className="flex-1 px-6 py-3 bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl hover:bg-red-500/30 transition-all duration-300 font-semibold flex items-center justify-center gap-2"
+              >
+                {isDeletingKeys ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  <>
+                    <X className="w-5 h-5" />
+                    Delete Keys
+                  </>
+                )}
+              </button>
+              <button
+                onClick={() => setShowDeleteKeysModal(false)}
+                className={`${secondaryButtonClasses} flex-1`}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -720,7 +785,16 @@ export default function EditAgentConfig() {
                             : "bg-red-500/20 text-red-400"
                       }`}
                     >
-                      {savedConfig?.is_active && apiLimits?.data ? (
+                      {savedConfig?.is_active ? (
+                        <>
+                          <Activity className="w-4 h-4" /> Live
+                        </>
+                      ) : (
+                        <>
+                          <Power className="w-4 h-4" /> Stopped
+                        </>
+                      )}
+                      {/* {savedConfig?.is_active && apiLimits?.data ? (
                         <>
                           <Activity className="w-4 h-4" /> Live
                         </>
@@ -734,15 +808,15 @@ export default function EditAgentConfig() {
                         <>
                           <Power className="w-4 h-4" /> Stopped
                         </>
-                      )}
+                      )} */}
                     </span>
                   </div>
 
                   <div className="space-y-4">
-                    <div>
+                    {/* <div>
                       <p className="text-white/60 text-sm">Agent Name</p>
-                      <p className="text-white">{agentConfig.username}</p>
-                    </div>
+                      <p className="text-white">{}</p>
+                    </div> */}
                     <div>
                       <p className="text-white/60 text-sm">Owner</p>
                       <p className="text-white">
@@ -790,7 +864,7 @@ export default function EditAgentConfig() {
                         X API Configuration
                       </p>
                     </div>
-                    {apiLimits?.data && (
+                    {/* {apiLimits?.data && (
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2
                         ${
@@ -815,7 +889,7 @@ export default function EditAgentConfig() {
                           </>
                         )}
                       </span>
-                    )}
+                    )} */}
                   </div>
 
                   {apiLimits?.data?.project_cap &&
@@ -846,7 +920,7 @@ export default function EditAgentConfig() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-white/60 text-sm">Status</p>
+                      {/* <p className="text-white/60 text-sm">Status</p>
                       <p className="text-white capitalize">
                         {apiLimits?.data?.project_usage &&
                         apiLimits?.data?.project_usage < 90
@@ -855,7 +929,7 @@ export default function EditAgentConfig() {
                               apiLimits?.data?.project_usage > 90
                             ? "Config"
                             : "Error"}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
@@ -985,7 +1059,7 @@ export default function EditAgentConfig() {
                   </button>
                   {savedConfig?.has_twitter_keys && (
                     <button
-                      onClick={handleDeleteApiKeys}
+                      onClick={() => setShowDeleteKeysModal(true)}
                       disabled={isDeletingKeys}
                       className={`${secondaryButtonClasses} flex-1 !bg-red-500/20 !text-red-400 !border-red-500/30 hover:!bg-red-500/30`}
                     >

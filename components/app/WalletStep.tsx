@@ -117,7 +117,7 @@ const WalletStep = () => {
 
       const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca"; // seba wallet
       const usdcContract = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"; // base usdc
-      const amount = parseUnits("1", 6); // 1 USDT with 6 decimals
+      const amount = parseUnits("19", 6); // 19 USDT with 6 decimals
       // const amount = parseUnits("0.01", 18); // 0.01 ETH with 18 decimals
 
       const walletClient = createWalletClient({
@@ -136,7 +136,7 @@ const WalletStep = () => {
 
       processPayment({
         clientId: privyUser?.id || "",
-        amount: "1", // USDC amount
+        amount: "19", // USDC amount
         txHash: txHash,
       });
     } catch (error: any) {
@@ -243,7 +243,7 @@ const WalletStep = () => {
                                 Complete Payment
                               </h3>
                               <p className="text-white/70 mb-4 text-center">
-                                Pay 1 USDC for your agent subscription (valid
+                                Pay 19 USDC for your agent subscription (valid
                                 for 30 days)
                               </p>
 
@@ -253,7 +253,7 @@ const WalletStep = () => {
                                     Agent Subscription
                                   </span>
                                   <span className="text-white font-medium">
-                                    1 USDC
+                                    19 USDC
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm">
