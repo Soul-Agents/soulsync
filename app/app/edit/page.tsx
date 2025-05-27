@@ -909,29 +909,25 @@ export default function EditAgentConfig() {
                       contact us.
                     </p>
                   </div>
-
-                  <div className="mt-4 space-y-2">
-                    <div>
-                      <p className="text-white/60 text-sm">API Type</p>
-                      <p className="text-white capitalize">
-                        {apiLimits?.data?.project_cap === 100
-                          ? "Free"
-                          : "Basic"}
-                      </p>
+                  {apiLimits?.data?.limits && (
+                    <div className="mt-4 space-y-2">
+                      <div>
+                        <p className="text-white/60 text-sm">API Type</p>
+                        <p className="text-white capitalize">
+                          {apiLimits?.data?.limits?.project_cap === 100
+                            ? "Free"
+                            : "Basic"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-white/60 text-sm">Fetched Tweets</p>
+                        <p className="text-white capitalize">
+                          {apiLimits?.data?.limits?.project_usage}/
+                          {apiLimits?.data?.limits?.project_cap}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      {/* <p className="text-white/60 text-sm">Status</p>
-                      <p className="text-white capitalize">
-                        {apiLimits?.data?.project_usage &&
-                        apiLimits?.data?.project_usage < 90
-                          ? "Live"
-                          : apiLimits?.data?.project_usage &&
-                              apiLimits?.data?.project_usage > 90
-                            ? "Config"
-                            : "Error"}
-                      </p> */}
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </section>

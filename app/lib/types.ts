@@ -63,8 +63,10 @@ export interface PaymentStatus {
 
 // API subscription check interface
 export interface ApiLimitStatus {
-  project_usage:number
-  project_cap:number
-  cap_reset_day:number
-  project_id:number
+  limits: {
+    project_usage:number
+    project_cap:number
+    cap_reset_day:number
+    project_id:number
+  }
 }
