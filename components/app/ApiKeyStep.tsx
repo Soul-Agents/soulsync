@@ -7,7 +7,6 @@ import {
   AlertCircle,
   ArrowRight,
   ExternalLink,
-  Play,
   KeyRound,
 } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";

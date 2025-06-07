@@ -259,6 +259,7 @@ export default function EditAgentConfig() {
     refetchInterval: 6 * 60 * 60 * 1000, // Refetch every 6 hours
   });
 
+  console.log("API LIMITS", apiLimits?.data?.limits);
   // Handler for starting/stopping the agent
   const handleAgentToggle = async () => {
     if (!user?.id) return;
@@ -756,7 +757,7 @@ export default function EditAgentConfig() {
         ) : (
           <>
             <p className="text-white/80 text-sm my-4 text-center">
-              Soul Agents work fully only with Basic X API since free X API only
+              Soul Agents work fully with Basic X API since free X API only
               allows us to fetch only 100 X posts per month
             </p>
             <section className={sectionClasses}>
@@ -892,8 +893,8 @@ export default function EditAgentConfig() {
                     )} */}
                   </div>
 
-                  {apiLimits?.data?.project_cap &&
-                    apiLimits?.data?.project_cap === 100 && (
+                  {apiLimits?.data?.limits?.project_cap &&
+                    apiLimits?.data?.limits?.project_cap === 100 && (
                       <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                         <p className="text-yellow-400 text-sm">
                           Your agent is live, and posting up to 3 replies per
@@ -902,13 +903,7 @@ export default function EditAgentConfig() {
                         </p>
                       </div>
                     )}
-                  <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                    <p className="text-yellow-400 text-sm">
-                      Your agent is live, and posting up to 3 replies per day.
-                      For additional replies, please upgrade to X API Basic or
-                      contact us.
-                    </p>
-                  </div>
+
                   {apiLimits?.data?.limits && (
                     <div className="mt-4 space-y-2">
                       <div>

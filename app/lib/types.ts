@@ -26,6 +26,7 @@ export interface AgentConfig {
   updated_at: string; // ISO date string
   is_active: boolean;
   is_paid: boolean;
+  is_all_setup:boolean
   example_tweets: string[];
   has_twitter_keys: boolean;
 
