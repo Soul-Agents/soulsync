@@ -71,18 +71,20 @@ export default function AppPage() {
   };
 
   useEffect(() => {
-    if (!isLoadingConfig && savedConfig?.is_active && savedConfig?.is_paid) {
+    if (!isLoadingConfig && savedConfig?.is_paid) {
       setIsNavigating(true);
       router.push("/app/edit");
     }
   }, [savedConfig, isLoadingConfig, router]);
 
   useEffect(() => {
-    console.log(savedConfig && savedConfig.has_twitter_keys);
-    if (savedConfig && savedConfig.has_twitter_keys) {
-      console.log("has twitter keys");
+    if (savedConfig && !savedConfig.is_paid && savedConfig.has_twitter_keys) {
       handleStepChange(3);
-    } else if (savedConfig && !savedConfig.is_active) {
+    } else if (
+      savedConfig &&
+      !savedConfig.is_paid &&
+      !savedConfig?.is_all_setup
+    ) {
       handleStepChange(2);
     }
   }, [savedConfig]);
