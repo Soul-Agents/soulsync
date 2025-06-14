@@ -15,11 +15,8 @@ export interface AgentConfig {
   mission: string;
   questions: string[];
   engagement_strategy: string;
-  ai_and_agents: string[];
-  web3_builders: string[];
-  defi_experts: string[];
   thought_leaders: string[];
-  traders_and_analysts: string[];
+  accounts_to_follow: string[];
   knowledge_base: string;
   model_config: ModelConfig;
   created_at: string; // ISO date string
