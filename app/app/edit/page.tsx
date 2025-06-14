@@ -34,6 +34,7 @@ import {
   Power,
   AlertTriangle,
   Activity,
+  AlertCircle,
 } from "lucide-react";
 import FollowAccountsInput from "../../components/FollowAccountsInput";
 
@@ -46,6 +47,23 @@ export const buttonClasses =
 const secondaryButtonClasses =
   "px-6 py-3 bg-electric-purple/20 text-electric-purple border border-electric-purple/30 rounded-xl hover:bg-electric-purple/30 transition-all duration-300 font-semibold flex items-center justify-center gap-2";
 const sectionClasses = "mb-8 glass-card p-6 rounded-xl relative";
+
+const ApiStatusIndicator = ({ apiLimits }: { apiLimits: any }) => {
+  const { project_usage, project_cap } = apiLimits?.data?.limits || {};
+  if (!project_usage || !project_cap) return null;
+
+  const usagePercentage = (project_usage / project_cap) * 100;
+
+  if (usagePercentage >= 100) {
+    return <AlertCircle className="w-5 h-5 text-red-500" />;
+  }
+
+  if (usagePercentage >= 90) {
+    return <AlertTriangle className="w-5 h-5 text-yellow-500" />;
+  }
+
+  return null;
+};
 
 export default function EditAgentConfig() {
   const router = useRouter();
@@ -259,7 +277,6 @@ export default function EditAgentConfig() {
     refetchInterval: 6 * 60 * 60 * 1000, // Refetch every 6 hours
   });
 
-  console.log("API LIMITS", apiLimits?.data?.limits);
   // Handler for starting/stopping the agent
   const handleAgentToggle = async () => {
     if (!user?.id) return;
@@ -795,29 +812,14 @@ export default function EditAgentConfig() {
                           <Power className="w-4 h-4" /> Stopped
                         </>
                       )}
-                      {/* {savedConfig?.is_active && apiLimits?.data ? (
-                        <>
-                          <Activity className="w-4 h-4" /> Live
-                        </>
-                      ) : savedConfig?.is_active === true &&
-                        apiLimits?.data?.project_usage &&
-                        apiLimits?.data?.project_usage > 90 ? (
-                        <>
-                          <AlertTriangle className="w-4 h-4" /> Alert
-                        </>
-                      ) : (
-                        <>
-                          <Power className="w-4 h-4" /> Stopped
-                        </>
-                      )} */}
                     </span>
                   </div>
 
                   <div className="space-y-4">
-                    {/* <div>
+                    <div>
                       <p className="text-white/60 text-sm">Agent Name</p>
-                      <p className="text-white">{}</p>
-                    </div> */}
+                      <p className="text-white">{savedConfig?.agent_name}</p>
+                    </div>
                     <div>
                       <p className="text-white/60 text-sm">Owner</p>
                       <p className="text-white">
@@ -865,36 +867,15 @@ export default function EditAgentConfig() {
                         X API Configuration
                       </p>
                     </div>
-                    {/* {apiLimits?.data && (
-                      <span
-                        className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2
-                        ${
-                          apiLimits.data.project_usage < 90
-                            ? "bg-green-500/20 text-green-400"
-                            : apiLimits.data.project_usage > 90
-                              ? "bg-yellow-500/20 text-yellow-400"
-                              : "bg-red-500/20 text-red-400"
-                        }`}
-                      >
-                        {apiLimits.data.project_usage < 90 ? (
-                          <>
-                            <Check className="w-4 h-4" /> Live
-                          </>
-                        ) : apiLimits.data.project_usage > 90 ? (
-                          <>
-                            <AlertTriangle className="w-4 h-4" /> Config
-                          </>
-                        ) : (
-                          <>
-                            <X className="w-4 h-4" /> Error
-                          </>
-                        )}
-                      </span>
-                    )} */}
+                    <div className="flex items-center gap-2">
+                      <ApiStatusIndicator apiLimits={apiLimits?.data?.limits} />
+                    </div>
                   </div>
 
                   {apiLimits?.data?.limits?.project_cap &&
-                    apiLimits?.data?.limits?.project_cap === 100 && (
+                    apiLimits?.data?.limits?.project_cap === 100 &&
+                    apiLimits?.data?.limits?.project_usage < 90 &&
+                    savedConfig?.is_active && (
                       <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                         <p className="text-yellow-400 text-sm">
                           Your agent is live, and posting up to 3 replies per
