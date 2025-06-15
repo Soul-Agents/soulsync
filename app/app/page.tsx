@@ -102,13 +102,7 @@ export default function AppPage() {
         knowledgeBase: savedConfig.knowledge_base,
         model: savedConfig.model_config["model"] || "gpt4o",
         exampleTweets: savedConfig.example_tweets,
-        followAccounts: [
-          ...savedConfig.ai_and_agents,
-          ...savedConfig.web3_builders,
-          ...savedConfig.defi_experts,
-          ...savedConfig.thought_leaders,
-          ...savedConfig.traders_and_analysts,
-        ],
+        followAccounts: savedConfig.accounts_to_follow,
       };
       setAgentConfig(formState);
     } else if (!isLoadingConfig) {

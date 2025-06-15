@@ -55,6 +55,8 @@ export async function createAgentConfig(config: AgentConfigFormState): Promise<A
       model_config: {
         model: config.model
       },
+      accounts_to_follow: config.followAccounts,
+      thought_leaders: config.followAccounts,
       example_tweets: config.exampleTweets,
       // Default values for required fields
       strategy: '',
@@ -62,11 +64,6 @@ export async function createAgentConfig(config: AgentConfigFormState): Promise<A
       mission: '',
       questions: [],
       engagement_strategy: '',
-      ai_and_agents: [],
-      web3_builders: [],
-      defi_experts: [],
-      thought_leaders: [],
-      traders_and_analysts: [],
     });
 
 

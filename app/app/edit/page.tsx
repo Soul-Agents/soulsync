@@ -35,6 +35,7 @@ import {
   AlertTriangle,
   Activity,
   AlertCircle,
+  Shield,
 } from "lucide-react";
 import FollowAccountsInput from "../../components/FollowAccountsInput";
 
@@ -142,13 +143,7 @@ export default function EditAgentConfig() {
             ? savedConfig.model_config["model"]
             : "grok",
         exampleTweets: savedConfig.example_tweets || [],
-        followAccounts: [
-          ...(savedConfig.ai_and_agents || []),
-          ...(savedConfig.web3_builders || []),
-          ...(savedConfig.defi_experts || []),
-          ...(savedConfig.thought_leaders || []),
-          ...(savedConfig.traders_and_analysts || []),
-        ],
+        followAccounts: savedConfig.accounts_to_follow || [],
       };
       setAgentConfig(formState);
     }
@@ -191,25 +186,9 @@ export default function EditAgentConfig() {
         },
         example_tweets: agentConfig.exampleTweets,
         // Process follow accounts into categories
-        ai_and_agents: agentConfig.followAccounts.filter(
-          (a) =>
-            a.toLowerCase().includes("ai") || a.toLowerCase().includes("bot")
-        ),
-        web3_builders: agentConfig.followAccounts.filter(
-          (a) =>
-            a.toLowerCase().includes("web3") ||
-            a.toLowerCase().includes("crypto")
-        ),
-        defi_experts: agentConfig.followAccounts.filter((a) =>
-          a.toLowerCase().includes("defi")
-        ),
-        thought_leaders: agentConfig.followAccounts.filter(
-          (a) =>
-            !a.toLowerCase().includes("ai") &&
-            !a.toLowerCase().includes("web3") &&
-            !a.toLowerCase().includes("defi")
-        ),
-        traders_and_analysts: [],
+        accounts_to_follow: agentConfig.followAccounts,
+
+        thought_leaders: agentConfig.followAccounts,
       };
 
       const result = await updateAgentConfig(backendConfig);
@@ -789,9 +768,6 @@ export default function EditAgentConfig() {
                       <h3 className="text-white text-lg font-medium">
                         Agent Details
                       </h3>
-                      <p className="text-white/60 text-sm">
-                        Configuration and Status
-                      </p>
                     </div>
                     <span
                       className={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2
@@ -817,11 +793,11 @@ export default function EditAgentConfig() {
 
                   <div className="space-y-4">
                     <div>
-                      <p className="text-white/60 text-sm">Agent Name</p>
+                      <p className="text-white/60 text-sm">Agent account</p>
                       <p className="text-white">{savedConfig?.agent_name}</p>
                     </div>
                     <div>
-                      <p className="text-white/60 text-sm">Owner</p>
+                      <p className="text-white/60 text-sm">Owner account</p>
                       <p className="text-white">
                         {user?.twitter?.username || "Not connected"}
                       </p>
@@ -863,9 +839,6 @@ export default function EditAgentConfig() {
                       <h3 className="text-white text-lg font-medium">
                         API Status
                       </h3>
-                      <p className="text-white/60 text-sm">
-                        X API Configuration
-                      </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <ApiStatusIndicator apiLimits={apiLimits?.data?.limits} />
@@ -902,6 +875,24 @@ export default function EditAgentConfig() {
                           {apiLimits?.data?.limits?.project_cap}
                         </p>
                       </div>
+                      {apiLimits.data.limits && (
+                        <div className="text-white/60 text-sm">
+                          <p>
+                            You are using{" "}
+                            {apiLimits?.data?.limits?.project_cap === 100
+                              ? "Free"
+                              : "Basic"}{" "}
+                            API, if this information is incorrect, please
+                            contact us{" "}
+                            <a
+                              href="https://t.me/adag1oeth"
+                              className="text-electric-purple"
+                            >
+                              https://t.me/adag1oeth
+                            </a>
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -927,6 +918,19 @@ export default function EditAgentConfig() {
                     <p className="text-white/60 text-sm">Payment Amount</p>
                     <p className="text-white">
                       {paymentStatus?.data?.payment_amount || 0} USDC
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-sm">Valid until</p>
+                    <p className="text-white">
+                      {paymentStatus?.data?.payment_date
+                        ? new Date(
+                            new Date(
+                              paymentStatus.data.payment_date
+                            ).getTime() +
+                              30 * 24 * 60 * 60 * 1000
+                          ).toLocaleDateString()
+                        : "No payment recorded"}
                     </p>
                   </div>
                   <div>
@@ -960,7 +964,7 @@ export default function EditAgentConfig() {
                       X API Configuration
                     </h3>
                     <p className="text-white/60 text-sm">
-                      Manage your API keys
+                      All keys are encrypted and stored safely.
                     </p>
                   </div>
                   {savedConfig?.has_twitter_keys && (
