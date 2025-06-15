@@ -143,7 +143,8 @@ export default function EditAgentConfig() {
             ? savedConfig.model_config["model"]
             : "grok",
         exampleTweets: savedConfig.example_tweets || [],
-        followAccounts: savedConfig.accounts_to_follow || [],
+        followAccounts:
+          savedConfig.accounts_to_follow || savedConfig.thought_leaders || [],
       };
       setAgentConfig(formState);
     }
@@ -170,7 +171,6 @@ export default function EditAgentConfig() {
     setIsSaving(true);
     setSaveSuccess(false);
     setSaveError(null);
-
     try {
       // Convert form state back to backend config for updating
       const backendConfig: Partial<AgentConfig> = {
