@@ -13,8 +13,8 @@ import {
   getPaymentStatus,
   checkApiLimits,
   toggleAgent,
-  storeTwitterApiKey,
   deleteTwitterApiKey,
+  updateTwitterApiKey,
 } from "../../lib/api";
 import {
   AgentConfig,
@@ -94,6 +94,7 @@ export default function EditAgentConfig() {
   const [apiKeyError, setApiKeyError] = useState<string | null>(null);
   const [showDeleteKeysModal, setShowDeleteKeysModal] =
     useState<boolean>(false);
+  const [apiKeySuccess, setApiKeySuccess] = useState<boolean>(false);
 
   // Fetch agent configuration
   const { data: savedConfig, isLoading: isLoadingConfig } = useQuery({
@@ -242,6 +243,23 @@ export default function EditAgentConfig() {
     throwOnError: false,
   });
 
+  const { mutateAsync: updateTwitterApiKeyMutation } = useMutation({
+    mutationFn: ({
+      userId,
+      apiKey,
+      apiSecretKey,
+    }: {
+      userId: string;
+      apiKey: string;
+      apiSecretKey: string;
+    }) => updateTwitterApiKey(userId, apiKey, apiSecretKey),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["agentConfig"] });
+    },
+    onError: (error) => {
+      console.error("Error updating Twitter API keys:", error);
+    },
+  });
   // Fetch API limits
   const { data: apiLimits, isLoading: isLoadingApiLimits } = useQuery({
     queryKey: ["api limits", user?.id],
@@ -294,22 +312,23 @@ export default function EditAgentConfig() {
     if (!user?.id) return;
     setIsUpdatingKeys(true);
     setApiKeyError(null);
+    setApiKeySuccess(false);
 
     // Store the previous config for rollback
     const previousConfig = queryClient.getQueryData(["agentConfig", user.id]);
 
     try {
-      const response = await storeTwitterApiKey(
-        user.id,
-        apiKeyInput,
-        apiSecretInput
-      );
-
-      if (response.data) {
-        // Clear the input fields after successful update
+      const response = await updateTwitterApiKeyMutation({
+        userId: user.id,
+        apiKey: apiKeyInput,
+        apiSecretKey: apiSecretInput,
+      });
+      if (response.success) {
         setApiKeyInput("");
         setApiSecretInput("");
+        setApiKeySuccess(true);
         queryClient.invalidateQueries({ queryKey: ["agentConfig"] });
+        setTimeout(() => setApiKeySuccess(false), 2500);
       } else {
         setApiKeyError(response.error || "Failed to update API keys");
         // Rollback to previous state
@@ -1057,6 +1076,13 @@ export default function EditAgentConfig() {
                 {apiKeyError && (
                   <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
                     {apiKeyError}
+                  </div>
+                )}
+
+                {apiKeySuccess && (
+                  <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm flex items-center gap-2">
+                    <Check className="w-4 h-4" />
+                    API keys updated successfully
                   </div>
                 )}
               </div>

@@ -178,6 +178,24 @@ export async function storeTwitterApiKey(
     throw error
   }
 }
+export async function updateTwitterApiKey(
+  userId: string,
+  apiKey: string,
+  apiSecretKey: string
+): Promise<ApiResponse<any>> {
+  try {
+    const response = await api.put(`/auth/update-twitter-keys`, {
+      clientId:userId,
+      apiKey,
+      apiSecretKey
+    });
+    
+    return response.data;
+  } catch (error) {
+    console.error('Error storing Twitter API key:', error);
+    throw error
+  }
+}
 
 // Verify Twitter API key
 export async function verifyTwitterApiKey(
