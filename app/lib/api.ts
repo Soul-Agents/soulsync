@@ -138,26 +138,6 @@ export async function connectTwitterAccount(
   }
 }
 
-// Get Twitter API key from API
-export async function getTwitterApiKey(
-  userId: string,
-  twitterUsername: string
-): Promise<ApiResponse<{ apiKey: string }>> {
-  try {
-    const response = await api.post(`/twitter/get-api-key`, {
-      userId,
-      twitterUsername
-    });
-    
-    return response.data;
-  } catch (error) {
-    console.error('Error getting Twitter API key:', error);
-    return {
-      success: false,
-      error: 'Failed to get Twitter API key'
-    };
-  }
-}
 
 // Store Twitter API key
 export async function storeTwitterApiKey(
