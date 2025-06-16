@@ -199,26 +199,14 @@ export async function updateTwitterApiKey(
 
 // Verify Twitter API key
 export async function verifyTwitterApiKey(
-  apiKey: string,
-  twitterUsername: string,
   userId: string
 ): Promise<ApiResponse<any>> {
-  try {
-    const response = await api.post(`/twitter/verify-api-key`, {
-      apiKey,
-      twitterUsername,
-      userId
-    });
+    const response = await api.get(`/twitter/check-connection/${userId}`);
     
     return response.data;
-  } catch (error) {
-    console.error('Error verifying Twitter API key:', error);
-    return {
-      success: false,
-      error: 'Failed to verify Twitter API key'
-    };
-  }
+ 
 }
+
 export async function deleteTwitterApiKey(
   userId: string
 ): Promise<ApiResponse<any>> {

@@ -151,11 +151,6 @@ export default function ReplyGuy() {
           background: rgba(147, 51, 234, 0.03);
         }
 
-        .glass-card:hover {
-          border-color: rgba(147, 51, 234, 0.2);
-          box-shadow: 0 5px 20px -5px rgba(147, 51, 234, 0.3);
-        }
-
         .gradient-text {
           background: linear-gradient(to right, #9333ea, #ec4899);
           -webkit-background-clip: text;

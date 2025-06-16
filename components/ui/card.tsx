@@ -12,12 +12,12 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "glass-card rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300",
-        className,
+        "glass-card rounded-xl shadow-xl transition-all duration-300",
+        className
       )}
       {...props}
     />
-  ),
+  )
 );
 Card.displayName = "Card";
 
@@ -65,7 +65,7 @@ const CardTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",
-      className,
+      className
     )}
     {...props}
   />

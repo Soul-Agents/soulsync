@@ -15,6 +15,7 @@ import {
   toggleAgent,
   deleteTwitterApiKey,
   updateTwitterApiKey,
+  verifyTwitterApiKey,
 } from "../../lib/api";
 import {
   AgentConfig,
@@ -104,7 +105,6 @@ export default function EditAgentConfig() {
     retry: false,
     throwOnError: false,
   });
-  console.log(savedConfig);
   // Redirect if no user or no agent config
   useEffect(() => {
     if (ready && !authenticated) {
@@ -373,6 +373,27 @@ export default function EditAgentConfig() {
       setIsDeletingKeys(false);
     }
   };
+
+  const {
+    mutateAsync: testConnectionMutation,
+    isPending: isTestingConnection,
+  } = useMutation({
+    mutationFn: ({ userId }: { userId: string }) => verifyTwitterApiKey(userId),
+    onSuccess: (response) => {
+      // Show success message
+
+      setApiKeySuccess(true);
+      setApiKeyError(null);
+      setTimeout(() => setApiKeySuccess(false), 3000);
+    },
+    onError: (error: any) => {
+      setApiKeyError(
+        error.response.data.recommendation || "Failed to verify API connection"
+      );
+      setApiKeySuccess(false);
+      setTimeout(() => setApiKeyError(null), 6000);
+    },
+  });
 
   // Show loading state if not ready or loading config
   if (!ready || isLoadingConfig || !agentConfig || isLoadingApiLimits) {
@@ -1072,17 +1093,44 @@ export default function EditAgentConfig() {
                     </button>
                   )}
                 </div>
-
-                {apiKeyError && (
-                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                    {apiKeyError}
+                {savedConfig?.has_twitter_keys && (
+                  <div className="flex gap-4 mt-4">
+                    <button
+                      onClick={() => {
+                        if (!user?.id || !user?.twitter?.username) return;
+                        testConnectionMutation({
+                          userId: user.id,
+                        });
+                      }}
+                      disabled={isTestingConnection}
+                      className={`${secondaryButtonClasses} flex-1 cursor-pointer disabled:cursor-not-allowed`}
+                    >
+                      {isTestingConnection ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Testing Connection...
+                        </>
+                      ) : (
+                        <>
+                          <Activity className="w-5 h-5" />
+                          Test Connection
+                        </>
+                      )}
+                    </button>
                   </div>
                 )}
 
                 {apiKeySuccess && (
-                  <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-sm flex items-center gap-2">
+                  <div className="mt-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg text-sm flex items-center gap-2 text-green-400">
                     <Check className="w-4 h-4" />
-                    API keys updated successfully
+                    Connection successful!
+                  </div>
+                )}
+
+                {apiKeyError && (
+                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-sm flex items-center gap-2 text-red-400">
+                    <AlertCircle className="w-4 h-4" />
+                    {apiKeyError}
                   </div>
                 )}
               </div>
