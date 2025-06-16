@@ -16,6 +16,7 @@ import {
   deleteTwitterApiKey,
   updateTwitterApiKey,
   verifyTwitterApiKey,
+  connectTwitterAccount,
 } from "../../lib/api";
 import {
   AgentConfig,
@@ -243,6 +244,19 @@ export default function EditAgentConfig() {
     throwOnError: false,
   });
 
+  const { mutateAsync: connectTwitterMutation } = useMutation({
+    mutationFn: connectTwitterAccount,
+  });
+
+  const authorizeApp = async () => {
+    try {
+      console.log("CONNECTING TO TWITTER");
+      const connectResult = await connectTwitterMutation(user?.id!);
+      console.log("CONNECT RESULT", connectResult);
+    } catch (error) {
+      console.error("Error connecting to Twitter:", error);
+    }
+  };
   const { mutateAsync: updateTwitterApiKeyMutation } = useMutation({
     mutationFn: ({
       userId,
@@ -1131,6 +1145,13 @@ export default function EditAgentConfig() {
                   <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-sm flex items-center gap-2 text-red-400">
                     <AlertCircle className="w-4 h-4" />
                     {apiKeyError}
+                  </div>
+                )}
+                {savedConfig?.has_twitter_keys && (
+                  <div className="flex gap-4 mt-4">
+                    <button onClick={authorizeApp} className={buttonClasses}>
+                      Authorize App
+                    </button>
                   </div>
                 )}
               </div>
