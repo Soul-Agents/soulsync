@@ -117,17 +117,15 @@ export default function EditAgentConfig() {
     }
   }, [ready, authenticated, savedConfig, isLoadingConfig, router]);
 
-  const daysRemaining = (paymentStatus: PaymentStatus) => {
-    if (!paymentStatus.payment_date) return 0;
+  const daysRemaining = (validUntil: string) => {
+    if (!validUntil) return 0;
 
-    const paymentDate = new Date(paymentStatus.payment_date);
-    const expirationDate = new Date(paymentDate);
-    expirationDate.setDate(paymentDate.getDate() + 30);
-
-    const today = new Date();
-    const timeDiff = expirationDate.getTime() - today.getTime();
-    const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-    return Math.max(0, daysRemaining);
+    const date = new Date(validUntil);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
   };
   // Update local state when savedConfig changes
   useEffect(() => {
@@ -428,90 +426,6 @@ export default function EditAgentConfig() {
           <div className="text-center">
             <div className="w-16 h-16 border-4 border-electric-purple/30 border-t-electric-purple rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-white/70">Navigating, please wait...</p>
-          </div>
-        </div>
-      )}
-
-      {/* Payment Status Modal */}
-      {showPaymentModal && paymentStatus && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="w-full max-w-md glass-card p-6 rounded-xl border border-electric-purple/30 shadow-lg">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-semibold gradient-text">
-                Payment Status
-              </h2>
-              <button
-                onClick={() => setShowPaymentModal(false)}
-                className="text-white/70 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Hash className="w-5 h-5 text-electric-purple mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white/70 text-sm">Transaction Hash</p>
-                  <p className="text-white break-all">
-                    {paymentStatus.data?.tx_hash || "None"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <CreditCard className="w-5 h-5 text-electric-purple mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white/70 text-sm">Amount</p>
-                  <p className="text-white">
-                    {paymentStatus.data?.payment_amount} USDC
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-electric-purple mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white/70 text-sm">Payment Date</p>
-                  <p className="text-white">
-                    {paymentStatus.data?.payment_date
-                      ? new Date(
-                          paymentStatus.data?.payment_date
-                        ).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : "N/A"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-electric-purple mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white/70 text-sm">Subscription Status</p>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`inline-block w-2 h-2 rounded-full ${paymentStatus.data?.is_active && paymentStatus.data?.is_paid ? "bg-green-500" : "bg-red-500"}`}
-                    ></span>
-                    <p className="text-white">
-                      {paymentStatus.data?.is_active &&
-                      paymentStatus.data?.is_paid
-                        ? `Active (${daysRemaining(paymentStatus.data)} days remaining)`
-                        : "Inactive"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setShowPaymentModal(false)}
-              className={`${buttonClasses} w-full mt-6`}
-            >
-              Close
-            </button>
           </div>
         </div>
       )}
@@ -977,13 +891,8 @@ export default function EditAgentConfig() {
                   <div>
                     <p className="text-white/60 text-sm">Valid until</p>
                     <p className="text-white">
-                      {paymentStatus?.data?.payment_date
-                        ? new Date(
-                            new Date(
-                              paymentStatus.data.payment_date
-                            ).getTime() +
-                              30 * 24 * 60 * 60 * 1000
-                          ).toLocaleDateString()
+                      {paymentStatus?.data?.valid_until
+                        ? daysRemaining(paymentStatus.data.valid_until)
                         : "No payment recorded"}
                     </p>
                   </div>

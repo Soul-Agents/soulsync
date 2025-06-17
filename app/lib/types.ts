@@ -57,6 +57,7 @@ export interface PaymentStatus {
   payment_id: string;
   is_active: boolean;
   tx_hash: string;
+  valid_until: string;
 }
 
 // API subscription check interface
