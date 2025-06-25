@@ -3,51 +3,6 @@
 import { useRouter } from "next/navigation";
 import { usePrivy, useLoginWithOAuth } from "@privy-io/react-auth";
 
-const features = [
-  {
-    title: "Basic Engagement",
-    description:
-      "AI-powered responses to help maintain community connections",
-    benefits: [
-      "Simple language understanding",
-      "Basic context awareness",
-      "Automated follows",
-      "Community interaction",
-    ],
-  },
-  {
-    title: "Automated Responses",
-    description:
-      "Automated monitoring and response capabilities for your X account",
-    benefits: [
-      "Scheduled engagement",
-      "Response to mentions",
-      "Basic community interaction",
-      "Configurable response patterns",
-    ],
-  },
-  {
-    title: "Network Building",
-    description: "Connect with relevant accounts in your industry",
-    benefits: [
-      "Target specific accounts",
-      "Basic relationship building",
-      "Visibility improvement",
-      "Community presence",
-    ],
-  },
-  {
-    title: "X Platform Focus",
-    description: "Focused on X (Twitter) platform engagement",
-    benefits: [
-      "Replies to targeted accounts",
-      "Engagement with relevant content",
-      "Basic sentiment understanding",
-      "Improved visibility",
-    ],
-  },
-];
-
 export default function FeaturesSection() {
   const { user } = usePrivy();
   const router = useRouter();
@@ -63,7 +18,7 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="how-it-works" className="py-20 relative overflow-hidden">
+    <section id="how-it-works" className="pt-24 pb-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-purple/5 to-transparent" />
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -80,7 +35,8 @@ export default function FeaturesSection() {
             <div>
               <div className="font-semibold text-white mb-1">Set up your agent</div>
               <div className="text-white/80">
-                Pick your vibe. Customize tone, style, and who your agent talks to.
+                Pick your vibe. Customize tone, style, and who your agent talks to.<br />
+                <span className="font-bold text-white">No code. No friction.</span>
               </div>
             </div>
           </li>
@@ -89,10 +45,8 @@ export default function FeaturesSection() {
             <div>
               <div className="font-semibold text-white mb-1">Add your X API key</div>
               <div className="text-white/80">
-                We guide you step by step. No dev skills needed. Free tier is enough.
-                <div className="text-xs text-white/50 mt-2 italic">
-                  Note: Free tier supports 3 replies/day. For more, use an X Basic key.
-                </div>
+                We guide you step by step. Free tier is enough.<br />
+                <span className="font-bold text-white">Free tier = 3 replies/day. For more, use a Basic API key.</span>
               </div>
             </div>
           </li>
@@ -101,7 +55,10 @@ export default function FeaturesSection() {
             <div>
               <div className="font-semibold text-white mb-1">Go live</div>
               <div className="text-white/80">
-                Your agent starts posting replies. You get more reach every day.
+                Your agent starts posting replies. You get more reach every day.<br />
+                <span className="font-bold text-white">
+                  Growth compounds. You stay in control. Agents operate in stealth.
+                </span>
               </div>
             </div>
           </li>

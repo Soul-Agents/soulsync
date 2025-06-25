@@ -55,6 +55,12 @@ export function Navbar() {
               >
                 Pricing
               </Link>
+              <Link
+                href="/contact"
+                className="text-white/80 hover:text-white transition-colors mr-6"
+              >
+                Contact Us
+              </Link>
               {/* Privy Plugin Placeholder */}
               <div className="flex items-center justify-center">
                 <button onClick={handleLogin} className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all">
