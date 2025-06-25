@@ -39,6 +39,7 @@ export interface AgentConfigFormState {
   model: string;
   exampleTweets: string[];
   followAccounts: string[];
+  questions: string[];
   client_id: string;
 }
 
