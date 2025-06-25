@@ -53,13 +53,19 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-electric-purple hover:text-neon-pink underline transition-colors"
               >
-                <span role="img" aria-label="bronze medal">🥉</span>
+                <span role="img" aria-label="bronze medal">
+                  🥉
+                </span>
                 3rd Place – Brian AI Hackathon (2024)
               </a>
             </div>
             <div className="mt-6 flex justify-center">
               <span className="text-white/60 text-sm text-center font-medium">
-                <span role="img" aria-label="heart">❤️</span> Made with love by the Soul Agents team — crypto-native builders designing the future of autonomous identity.
+                <span role="img" aria-label="heart">
+                  ❤️
+                </span>{" "}
+                Made with love by the Soul Agents team - crypto-native builders
+                designing the future of autonomous identity.
               </span>
             </div>
           </div>

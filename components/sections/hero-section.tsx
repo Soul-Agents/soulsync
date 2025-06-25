@@ -71,7 +71,8 @@ export default function HeroSection() {
               </h1>
 
               <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 mb-4 animate-fade-in-delay">
-                Let your brand grow while you sleep.<br />
+                Let your brand grow while you sleep.
+                <br />
                 Built for founders, creators, and crypto teams.
               </p>
 
@@ -85,14 +86,18 @@ export default function HeroSection() {
                       handleLogin();
                     }
                   }}
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-neon-pink to-electric-purple text-lg font-bold text-white shadow-lg hover:opacity-90 transition-all duration-300 mb-6 w-full max-w-xs"
+                  className="inline-flex rounded-lg items-center justify-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-neon-pink to-electric-purple text-lg font-bold text-white shadow-lg hover:opacity-90 transition-all duration-300 mb-6 w-full max-w-xs"
                 >
-                  Start now for $19 →
+                  Create your Agent →
                 </button>
                 <p className="text-xs text-white/50 text-center lg:text-left">
-                  Limited-time offer. $19/month.<br />
+                  Limited-time offer. $19/month.
+                  <br />
                   No X API key? We guide you{" "}
-                  <Link href="/how-it-works" className="underline hover:text-white transition-colors">
+                  <Link
+                    href="/how-it-works"
+                    className="underline hover:text-white transition-colors"
+                  >
                     step-by-step
                   </Link>
                   .
@@ -118,11 +123,15 @@ export default function HeroSection() {
                   />
                   <div className="text-left">
                     <div className="font-semibold text-white">Tom</div>
-                    <div className="text-xs text-white/60">ProtoKOLs founder</div>
+                    <div className="text-xs text-white/60">
+                      ProtoKOLs founder
+                    </div>
                   </div>
                 </div>
                 <div className="italic text-white/80 text-left">
-                  “Soul Agents hits a deep need for founders: scaling voice and presence without burning time. The direction is exactly right.”
+                  “Soul Agents hits a deep need for founders: scaling voice and
+                  presence without burning time. The direction is exactly
+                  right.”
                 </div>
               </div>
               <div className="glass-card p-6 mt-4 text-white/90 text-base text-left flex flex-col gap-2 shadow-lg">
@@ -153,7 +162,8 @@ export default function HeroSection() {
               Posting is easy. Scaling human presence isn't.
             </div>
             <div className="text-white/80 mb-2">
-              Soul Agents reply in your voice, daily — without the time sink, burnout, or cringe.
+              Soul Agents reply in your voice, daily — without the time sink,
+              burnout, or cringe.
             </div>
             <div className="text-white/60 italic">
               Stealth growth for founders who don't want to be online 24/7.

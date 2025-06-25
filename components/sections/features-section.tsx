@@ -31,33 +31,52 @@ export default function FeaturesSection() {
         </div>
         <ol className="max-w-xl mx-auto space-y-10 text-left">
           <li className="flex items-start gap-4">
-            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">1.</span>
+            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">
+              1.
+            </span>
             <div>
-              <div className="font-semibold text-white mb-1">Set up your agent</div>
+              <div className="font-semibold text-white mb-1">
+                Set up your agent
+              </div>
               <div className="text-white/80">
-                Pick your vibe. Customize tone, style, and who your agent talks to.<br />
-                <span className="font-bold text-white">No code. No friction.</span>
+                Pick your vibe. Customize tone, style, and who your agent talks
+                to.
+                <br />
+                <span className="font-bold text-white">
+                  No code. No friction.
+                </span>
               </div>
             </div>
           </li>
           <li className="flex items-start gap-4">
-            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">2.</span>
+            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">
+              2.
+            </span>
             <div>
-              <div className="font-semibold text-white mb-1">Add your X API key</div>
+              <div className="font-semibold text-white mb-1">
+                Add your X API key
+              </div>
               <div className="text-white/80">
-                We guide you step by step. Free tier is enough.<br />
-                <span className="font-bold text-white">Free tier = 3 replies/day. For more, use a Basic API key.</span>
+                We guide you step by step. Free tier is enough.
+                <br />
+                <span className="font-bold text-white">
+                  Free tier = 3 replies/day. For more, use a Basic API key.
+                </span>
               </div>
             </div>
           </li>
           <li className="flex items-start gap-4">
-            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">3.</span>
+            <span className="text-2xl font-bold text-electric-purple flex-shrink-0">
+              3.
+            </span>
             <div>
               <div className="font-semibold text-white mb-1">Go live</div>
               <div className="text-white/80">
-                Your agent starts posting replies. You get more reach every day.<br />
+                Your agent starts posting replies. You get more reach every day.
+                <br />
                 <span className="font-bold text-white">
-                  Growth compounds. You stay in control. Agents operate in stealth.
+                  Growth compounds. You stay in control. Agents operate in
+                  stealth.
                 </span>
               </div>
             </div>
@@ -73,7 +92,7 @@ export default function FeaturesSection() {
                 handleLogin();
               }
             }}
-            className="inline-flex items-center justify-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-neon-pink to-electric-purple text-lg font-bold text-white shadow-lg hover:opacity-90 transition-all duration-300 w-full max-w-xs"
+            className="inline-flex items-center  rounded-lg justify-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-neon-pink to-electric-purple text-lg font-bold text-white shadow-lg hover:opacity-90 transition-all duration-300 w-full max-w-xs"
           >
             Try now for $19 →
           </button>
