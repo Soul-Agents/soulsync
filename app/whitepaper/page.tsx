@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Menu, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { usePrivy, useLoginWithOAuth } from "@privy-io/react-auth";
+import { useRouter } from "next/navigation";
 
 const sections = [
   { id: "introduction", label: "Introduction", icon: "🔥" },
@@ -20,6 +22,13 @@ const sections = [
 
 export default function WhitepaperPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user } = usePrivy();
+  const { initOAuth } = useLoginWithOAuth({ onComplete: () => {} });
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    await initOAuth({ provider: "twitter" });
+  };
 
   return (
     <main className="pt-32 min-h-screen bg-gradient-to-b from-dark-navy via-deep-space to-cosmic-purple">
@@ -789,22 +798,15 @@ export default function WhitepaperPage() {
 
               {/* Buttons with new layout */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                <a
-                  href="https://forms.gle/zxe1hgrbL8rbTELL7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-gradient px-6 py-3 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all text-center flex-1"
+                <button
+                  className="button-gradient px-6 py-3 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all text-center w-full sm:w-auto"
+                  onClick={() => {
+                    if (user) router.push("/app");
+                    else handleLogin();
+                  }}
                 >
-                  Get Started
-                </a>
-                <a
-                  href="https://forms.gle/fGffRz2P45Q2ZH2K8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-gradient-secondary px-6 py-3 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all text-center flex-1"
-                >
-                  Join Waitlist
-                </a>
+                  Start now for $19/month →
+                </button>
               </div>
             </div>
 

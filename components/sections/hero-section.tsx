@@ -1,9 +1,25 @@
 "use client";
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
+import { useRouter } from "next/navigation";
+import { usePrivy, useLoginWithOAuth } from "@privy-io/react-auth";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroSection() {
+  const { user } = usePrivy();
+  const router = useRouter();
+
+  const { initOAuth } = useLoginWithOAuth({
+    onComplete: () => {
+      console.log("Login complete");
+    },
+  });
+
+  const handleLogin = async () => {
+    await initOAuth({ provider: "twitter" });
+  };
+
   useEffect(() => {
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;
@@ -37,113 +53,124 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center justify-center relative pt-24 sm:pt-16"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-purple/10 to-transparent animate-pulse" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+    <>
+      <section
+        id="hero"
+        className="min-h-screen flex items-center justify-center relative pt-24 sm:pt-16"
+      >
+        {/* Microtagline */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-purple/10 to-transparent animate-pulse" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
 
-      <div className="container mx-auto px-4 py-16 relative">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in">
-            <span className="px-3 sm:px-4 py-2 bg-electric-purple/10 rounded-full border border-electric-purple/20 text-electric-purple text-xs sm:text-sm font-medium whitespace-nowrap">
-              AI-Powered Community Management
-            </span>
-          </div>
+        <div className="container mx-auto px-4 py-16 relative">
+          <div className="max-w-4xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12">
+            {/* Left: Main content */}
+            <div className="flex-1 text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl font-bold mb-4 animate-fade-in">
+                Autonomous X Agent. Human tone. Real signal. 20+ replies/day.
+              </h1>
 
-          <h1 className="text-6xl sm:text-7xl font-bold mb-6 gradient-text tracking-tight leading-tight animate-fade-in">
-            Soul Agents
-          </h1>
-
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 animate-fade-in-delay">
-            Autonomous AI agents that engage with your community on X (Twitter) while maintaining your authentic voice and brand identity
-          </p>
-
-          <div className="flex justify-center items-center gap-4 mb-12 relative animate-fade-in-delay">
-            <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-electric-purple to-transparent rounded-full blur opacity-50"></div>
-              <a
-                href="https://x.com/cryptobunnyai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative hover:scale-105 transition-transform duration-200"
-              >
-                <img
-                  src="/placeholder-avatar2.png"
-                  alt="Community"
-                  className="relative w-24 h-24 sm:w-48 sm:h-48 rounded-full border-2 border-electric-purple"
-                />
-              </a>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-electric-purple/30">
-                <span className="text-sm text-electric-purple">Community</span>
-              </div>
-            </div>
-
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-black/40 border border-white/20 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl">⚡️</span>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-l from-neon-pink to-transparent rounded-full blur opacity-50"></div>
-              <a
-                href="https://x.com/soul_agents"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative hover:scale-105 transition-transform duration-200"
-              >
-                <img
-                  src="/trading-ai-avatar.png"
-                  alt="Trading"
-                  className="relative w-24 h-24 sm:w-48 sm:h-48 rounded-full border-2 border-neon-pink"
-                />
-              </a>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 rounded-full border border-neon-pink/30">
-                <span className="text-sm text-neon-pink">Trading</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-2xl mx-auto p-6 rounded-lg bg-black/20 backdrop-blur-sm border border-white/5 mb-12 animate-fade-in-delay">
-            <div className="flex flex-col items-center space-y-4">
-              <div className="flex flex-wrap justify-center gap-3 text-lg text-white/80">
-                <span>Automate interactions</span>
-                <span className="text-white/40 hidden sm:inline">•</span>
-                <span>Build presence</span>
-                <span className="text-white/40 hidden sm:inline">•</span>
-                <span>Connect with key players</span>
-              </div>
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-              <p className="text-sm uppercase tracking-wider text-white/60">
-                Trusted by Web3 Leaders
+              <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 mb-4 animate-fade-in-delay">
+                Let your brand grow while you sleep.
+                <br />
+                Built for founders, creators, and crypto teams.
               </p>
+
+              <div className="flex flex-col items-center lg:items-start justify-center mb-8 animate-fade-in-delay">
+                <button
+                  aria-label="Start your trial for $19"
+                  onClick={() => {
+                    if (user) {
+                      router.push("/app");
+                    } else {
+                      handleLogin();
+                    }
+                  }}
+                  className="inline-flex rounded-lg items-center justify-center gap-3 px-8 py-5 rounded-xl bg-gradient-to-r from-neon-pink to-electric-purple text-lg font-bold text-white shadow-lg hover:opacity-90 transition-all duration-300 mb-6 w-full max-w-xs"
+                >
+                  Create your Agent →
+                </button>
+                <p className="text-xs text-white/50 text-center lg:text-left">
+                  Limited-time offer. $19/month.
+                  <br />
+                  No X API key? We guide you{" "}
+                  <Link
+                    href="/how-it-works"
+                    className="underline hover:text-white transition-colors"
+                  >
+                    step-by-step
+                  </Link>
+                  .
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center lg:items-start mt-2">
+                <span className="text-sm text-white/60 mb-1">
+                  Trusted by early teams including Lift AI Data
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="animate-fade-in-delay-2">
-            <Link
-              href="/cases"
-              className="button-gradient inline-flex items-center gap-2 px-8 py-6 text-lg font-bold text-white 
-                       hover:opacity-90 transition-all transform hover:scale-105 
-                       shadow-lg shadow-neon-pink/20 hover:shadow-electric-purple/30"
-            >
-              <span>See Cases</span>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+            {/* Right: Testimonial + Why Automate */}
+            <div className="flex-1 w-full max-w-md">
+              <div className="glass-card p-6 mb-4 animate-fade-in">
+                <div className="flex items-center gap-4 mb-3">
+                  <Image
+                    src="/PROTOKOLS_ICON_WHITE.svg"
+                    alt="ProtoKOLs"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                  <div className="text-left">
+                    <div className="font-semibold text-white">Tom</div>
+                    <div className="text-xs text-white/60">
+                      ProtoKOLs founder
+                    </div>
+                  </div>
+                </div>
+                <div className="italic text-white/80 text-left">
+                  “Soul Agents hits a deep need for founders: scaling voice and
+                  presence without burning time. The direction is exactly
+                  right.”
+                </div>
+              </div>
+              <div className="glass-card p-6 mt-4 text-white/90 text-base text-left flex flex-col gap-2 shadow-lg">
+                <div className="font-semibold text-lg text-electric-purple mb-2">
+                  Why automate?
+                </div>
+                <div>Manual posting is inefficient.</div>
+                <div>Growth on X is compounding, and speed matters.</div>
+                <div className="font-bold text-white mt-2">
+                  Soul Agents scale your voice without burning you out.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      {/* Why it matters section */}
+      <section className="w-full bg-white/5 border-t border-b border-white/10 py-12">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-electric-purple mb-4 tracking-tight">
+              Why it matters
+            </h3>
+            <div className="text-electric-purple/80 font-semibold mb-2">
+              Agents operate in stealth, sounding like you.
+            </div>
+            <div className="text-white/90 text-lg mb-2">
+              Posting is easy. Scaling human presence isn't.
+            </div>
+            <div className="text-white/80 mb-2">
+              Soul Agents reply in your voice, daily — without the time sink,
+              burnout, or cringe.
+            </div>
+            <div className="text-white/60 italic">
+              Stealth growth for founders who don't want to be online 24/7.
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
