@@ -1,6 +1,7 @@
-.env.local
 .gitattributes
 .gitignore
+.vscode/
+  settings.json
 app/
   api/
     auth/
@@ -10,9 +11,13 @@ app/
     page.tsx
   cases/
     page.tsx
+  cryptobunny/
+    page.tsx
   deck/
     hooks/
       useResponsiveScale.ts
+    page.tsx
+  disclosure/
     page.tsx
   fonts/
     GeistMonoVF.woff
@@ -23,6 +28,8 @@ app/
   page.tsx
   privacy/
     page.tsx
+  reply-guy/
+    page.tsx
   terms/
     page.tsx
   whitepaper/
@@ -30,12 +37,14 @@ app/
 components/
   layouts/
     MainLayout.tsx
+    SlideLayout.tsx
   sections/
     about-section.tsx
     contact-section.tsx
     features-section.tsx
     hero-section.tsx
     pricing-section.tsx
+    teaser-hero.tsx
     technology-section.tsx
     testimonials-section.tsx
     whitepaper-section.tsx
@@ -47,6 +56,7 @@ components/
     input.tsx
     navbar.tsx
     textarea.tsx
+eslint.config.mjs
 lib/
   rate-limit.ts
   utils.ts
@@ -57,19 +67,35 @@ package-lock.json
 package.json
 postcss.config.mjs
 public/
+  adam.png
   brian-ai-logo.png
+  CIDO.jpg
+  CIDO.png
+  codex.png
   crypto-trader.png
   crypto-trader2.png
   cryptobunny.png
   crypto_bunny.webp
   defined-logo-optimized.png
+  hot-guy.png
+  info-signifier.jpg
+  LIFT.jpg
   manifest.json
   moon-boy.png
+  mystri.png
+  ola.png
+  pancake-swap.jpg
   placeholder-avatar.png
   placeholder-avatar2.png
   placeholder-avatar3.png
   placeholder-avatar4.png
   PROTOKOLS_ICON_WHITE.svg
+  S2.jpg
+  sebastian.png
+  SKALE.png
+  soul-agents-transparent.png
+  soul-agents.jpg
+  trading-ai-avatar.png
   x-logo.png
 README.md
 scripts/

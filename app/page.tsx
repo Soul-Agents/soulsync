@@ -1,25 +1,29 @@
 "use client";
 
 import HeroSection from "@/components/sections/hero-section";
-import AboutSection from "@/components/sections/about-section";
 import FeaturesSection from "@/components/sections/features-section";
-import TechnologySection from "@/components/sections/technology-section";
 import PricingSection from "@/components/sections/pricing-section";
-import TestimonialsSection from "@/components/sections/testimonials-section";
-import WhitepaperSection from "@/components/sections/whitepaper-section";
 import ContactSection from "@/components/sections/contact-section";
+import { usePrivy } from "@privy-io/react-auth";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function HomePage() {
+  const router = useRouter();
+  const { user } = usePrivy();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/app");
+    }
+  }, [user, router]);
+
   return (
-    <>
+    <div>
       <HeroSection />
-      <AboutSection />
       <FeaturesSection />
-      <TechnologySection />
       <PricingSection />
-      <TestimonialsSection />
-      <WhitepaperSection />
       <ContactSection />
-    </>
+    </div>
   );
 }
