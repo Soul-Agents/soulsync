@@ -2,6 +2,8 @@ import { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { MainLayout } from "@/components/layouts/MainLayout";
+import { PrivyAuthProvider } from "@/components/providers/privy-provider";
+import { QueryProvider } from "./providers/QueryProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -71,7 +73,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-dark-navy min-h-screen antialiased`}
       >
-        <MainLayout>{children}</MainLayout>
+        <QueryProvider>
+          <PrivyAuthProvider>
+            <MainLayout>{children}</MainLayout>
+          </PrivyAuthProvider>
+        </QueryProvider>
       </body>
     </html>
   );

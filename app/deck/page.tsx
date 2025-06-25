@@ -69,12 +69,12 @@ const deckReducer: Reducer<DeckState, DeckAction> = (state, action) => {
 };
 
 export default function DeckPage() {
-  const [state, dispatch] = useReducer<Reducer<DeckState, DeckAction>>(
+  const [state, dispatch] = useReducer(
     deckReducer,
     {
       currentSlide: 0,
       slides,
-    },
+    }
   );
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -420,30 +420,31 @@ export default function DeckPage() {
             onTouchEnd={handleTouchEnd}
           >
             <AnimatePresence mode="wait">
-              <motion.div
-                key={state.currentSlide}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="min-h-full w-full flex flex-col pt-16 md:pt-0 pb-20 md:pb-0 px-4 md:p-4"
-              >
-                <div
-                  className="w-full max-w-7xl mx-auto"
-                  style={{
-                    transform: "scale(var(--deck-scale))",
-                    transformOrigin: "top center",
-                    ["--deck-scale" as string]: "var(--current-scale, 1)",
-                  }}
+              <div className="min-h-full w-full flex flex-col pt-16 md:pt-0 pb-20 md:pb-0 px-4 md:p-4">
+                <motion.div
+                  key={state.currentSlide}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {state.slides[state.currentSlide]?.content ?? (
-                    <div className="text-center text-white/60">
-                      <p>No content available</p>
-                      <p className="text-sm">Slide {state.currentSlide + 1}</p>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
+                  <div
+                    className="w-full max-w-7xl mx-auto"
+                    style={{
+                      transform: "scale(var(--deck-scale))",
+                      transformOrigin: "top center",
+                      ["--deck-scale" as string]: "var(--current-scale, 1)",
+                    }}
+                  >
+                    {state.slides[state.currentSlide]?.content ?? (
+                      <div className="text-center text-white/60">
+                        <p>No content available</p>
+                        <p className="text-sm">Slide {state.currentSlide + 1}</p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              </div>
             </AnimatePresence>
           </div>
         </div>
