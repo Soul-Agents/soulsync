@@ -6,6 +6,7 @@ interface TooltipContent {
     knowledgeBase: string;
     exampleTweets: string;
     followAccounts: string;
+    questions: string;
   }
 
 export  const tooltips: TooltipContent = {
@@ -135,4 +136,29 @@ Best Practices:
 • Choose accounts that post relevant technical content
 • Avoid accounts with controversial or off-topic content
 • Aim for 5-10 quality accounts for optimal engagement`,
+
+    questions: `Custom Goals Guide:
+
+Purpose:
+Custom goals help shape your agent's behavior and decision-making when replying on X. They act as guiding principles that influence how your agent thinks and responds.
+
+Example Goals:
+- "Always promote web3 adoption and decentralization"
+- "Focus on technical discussions and infrastructure insights"
+- "Maintain a helpful, educational tone in all responses"
+- "Prioritize community engagement and knowledge sharing"
+- "Stay focused on current, proven technology capabilities"
+
+Best Practices:
+• Keep goals clear and specific
+• Focus on behavior and tone rather than specific topics
+• Avoid conflicting or contradictory goals
+• Aim for 1-3 meaningful goals maximum
+• Make goals actionable and measurable
+
+Tips:
+• Goals should complement your personality and style rules
+• Consider your target audience and community
+• Focus on long-term behavioral patterns
+• Keep goals aligned with your brand values`,
   };

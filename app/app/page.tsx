@@ -44,6 +44,11 @@ export default function AppPage() {
       "Here's where our architecture really shines - let me show you how this works in practice...",
     ],
     followAccounts: ["@elonmusk", "@sama", "@naval"],
+    questions: [
+      "Search for topics in web3 that genuinely intrigue you. Could be AI agents, DeFi innovations, or emerging trends. Share your discoveries and insights in your own playful style",
+      "Find the conversations that spark your curiosity - could be DeFi, AI, NFTs, or any crypto topic that catches your eye. Engage naturally with the ones that resonate with your personality",
+      "Search for the crypto discussions that intrigue you most - the ones where you can add unique value. Share your insights in your signature style.",
+    ],
   };
 
   // Initialize state with null to indicate loading state
@@ -70,24 +75,27 @@ export default function AppPage() {
     }, 500);
   };
 
-  useEffect(() => {
-    if (!isLoadingConfig && savedConfig?.is_paid) {
-      setIsNavigating(true);
-      router.push("/app/edit");
-    }
-  }, [savedConfig, isLoadingConfig, router]);
+  // useEffect(() => {
+  //   if (!isLoadingConfig && savedConfig?.is_paid) {
+  //     setIsNavigating(true);
+  //     router.push("/app/edit");
+  //   }
+  // }, [savedConfig, isLoadingConfig, router]);
 
-  useEffect(() => {
-    if (savedConfig && !savedConfig.is_paid && savedConfig.has_twitter_keys) {
-      handleStepChange(3);
-    } else if (
-      savedConfig &&
-      !savedConfig.is_paid &&
-      !savedConfig?.is_all_setup
-    ) {
-      handleStepChange(2);
-    }
-  }, [savedConfig]);
+  // useEffect(() => {
+  //   handleStepChange(1);
+  // }, []);
+  // useEffect(() => {
+  //   if (savedConfig && !savedConfig.is_paid && savedConfig.has_twitter_keys) {
+  //     handleStepChange(3);
+  //   } else if (
+  //     savedConfig &&
+  //     !savedConfig.is_paid &&
+  //     !savedConfig?.is_all_setup
+  //   ) {
+  //     handleStepChange(2);
+  //   }
+  // }, [savedConfig]);
 
   // Update agentConfig when savedConfig changes or when user info changes
   useEffect(() => {
@@ -102,7 +110,9 @@ export default function AppPage() {
         knowledgeBase: savedConfig.knowledge_base,
         model: savedConfig.model_config["model"] || "gpt4o",
         exampleTweets: savedConfig.example_tweets,
-        followAccounts: savedConfig.accounts_to_follow,
+        followAccounts:
+          savedConfig.accounts_to_follow || savedConfig.thought_leaders || [],
+        questions: savedConfig.questions || [],
       };
       setAgentConfig(formState);
     } else if (!isLoadingConfig) {

@@ -58,11 +58,11 @@ export async function createAgentConfig(config: AgentConfigFormState): Promise<A
       accounts_to_follow: config.followAccounts,
       thought_leaders: config.followAccounts,
       example_tweets: config.exampleTweets,
+      questions: config.questions || [],
       // Default values for required fields
       strategy: '',
       remember: '',
       mission: '',
-      questions: [],
       engagement_strategy: '',
     });
 

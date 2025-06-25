@@ -16,7 +16,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAgentConfig, testResponse } from "../../app/lib/api";
 import { usePrivy } from "@privy-io/react-auth";
 import { tooltips } from "../data";
-import FollowAccountsInput from "../../app/components/FollowAccountsInput";
+import FollowAccountsInput from "./FollowAccountsInput";
+import QuestionsInput from "./QuestionsInput";
 // Motion components
 const MotionButton = motion.button;
 const MotionSpan = motion.span;
@@ -103,6 +104,32 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
     });
   };
 
+  // Function to apply template configuration
+  const applyTemplate = () => {
+    const templateConfig = {
+      personality:
+        "Neutral, high-signal, and to the point. Thinks before replying. Adds value through insight, clarity, or correction — never noise. Responds like a thoughtful builder or engineer, not a marketer.",
+      styleRules:
+        "- One reply = one idea.\n- Short sentences. No fluff. - Don't ever use hashtags, no hashtags!!\n- No emojis, hashtags, or cashtags.\n- Never repeat the original tweet.\n- If unsure — stay silent.\n- Replies should stand alone and make sense without context.",
+      contentRestrictions:
+        "- No price talk, predictions, or investment advice.\n- No announcements, leaks, or internal strategy.\n- Avoid hype words: moon, game-changer, bullish, alpha, etc.\n- Do not ask for engagement (likes, follows, retweets).\n- Never reply to personal drama, gossip, or irrelevant content.",
+      knowledgeBase:
+        "Understands foundational Web3 concepts (decentralization, ZK, L2s, DAOs, privacy, modularity), as well as AI agent frameworks and basic open-source norms.\nBelieves in credible neutrality, user sovereignty, and composable infra. Prioritizes clarity, technical literacy, and clean design principles.",
+      exampleTweets: [
+        "Most things don't need to scale. They need to survive.",
+        "If it's not verifiable, it's just marketing.",
+        "The best protocols feel obvious in hindsight.",
+      ],
+      followAccounts: [],
+    };
+
+    // Apply template to each field, but preserve existing questions/goals
+    Object.entries(templateConfig).forEach(([field, value]) => {
+      updateAgentConfigField(field as keyof AgentConfigFormState, value);
+    });
+    // Don't overwrite questions - preserve existing goals
+  };
+
   return (
     <Tooltip.Provider delayDuration={200}>
       <div className="min-h-[calc(100vh-4rem)] pt-32 pb-16 bg-gradient-to-b from-dark-navy via-deep-space to-cosmic-purple">
@@ -131,18 +158,30 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Left Column - Configuration Form */}
                   <div className="space-y-6">
-                    <motion.h2
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-3xl font-bold text-white"
-                    >
-                      Configure Your AI Agent
-                    </motion.h2>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <motion.h2
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-3xl font-bold text-white"
+                      >
+                        Configure Your AI Agent
+                      </motion.h2>
+                      <MotionButton
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={applyTemplate}
+                        className="px-4 py-2 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 w-1/3 md:w-auto"
+                      >
+                        <span className="text-sm font-medium">
+                          Use Template
+                        </span>
+                      </MotionButton>
+                    </div>
 
                     {/* X Username */}
                     <div className="space-y-2">
-                      <label className="text-white/80 text-sm">
+                      <label className="text-white/80 text-sm mb-1">
                         X Username
                       </label>
                       <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white">
@@ -153,7 +192,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
 
                     {/* Model Selection */}
                     <div className="space-y-2">
-                      <label className="text-white/80 text-sm">
+                      <label className="text-white/80 text-sm mb-1">
                         Model Selection
                       </label>
                       <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white">
@@ -192,7 +231,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
                         Core Personality
                         <Tooltip.Root>
                           <Tooltip.Trigger asChild>
@@ -219,7 +258,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       </label>
                       <div className="relative">
                         <textarea
-                          className={`w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white
+                          className={`w-full min-h-36 bg-white/5 border border-white/10 rounded-xl p-4 text-white
                                     focus:outline-none focus:ring-2 focus:ring-electric-purple/50 resize-none
                                     transition-all duration-300 ease-in-out
                                     ${activeField === "personality" ? "bg-white/10 border-electric-purple/50" : ""}
@@ -244,7 +283,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
                         Communication Style
                         <Tooltip.Root>
                           <Tooltip.Trigger asChild>
@@ -270,7 +309,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                         </Tooltip.Root>
                       </label>
                       <textarea
-                        className="w-full h-24 bg-white/5 border border-white/10 rounded-xl p-4 text-white
+                        className="w-full min-h-36 bg-white/5 border border-white/10 rounded-xl p-4 text-white
                                focus:outline-none focus:ring-2 focus:ring-electric-purple/50 resize-none"
                         placeholder="Define communication style rules..."
                         value={agentConfig?.styleRules || ""}
@@ -286,7 +325,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
                         Content Restrictions
                         <Tooltip.Root>
                           <Tooltip.Trigger asChild>
@@ -312,7 +351,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                         </Tooltip.Root>
                       </label>
                       <textarea
-                        className="w-full h-24 bg-white/5 border border-white/10 rounded-xl p-4 text-white
+                        className="w-full min-h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white
                                focus:outline-none focus:ring-2 focus:ring-electric-purple/50 resize-none"
                         placeholder="Define content restrictions..."
                         value={agentConfig?.contentRestrictions || ""}
@@ -331,7 +370,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
                         Knowledge Base
                         <Tooltip.Root>
                           <Tooltip.Trigger asChild>
@@ -359,7 +398,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       <div className="relative">
                         <Database className="absolute left-4 top-4 w-5 h-5 text-white/40" />
                         <textarea
-                          className="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white
+                          className="w-full min-h-32 bg-white/5 border border-white/10 rounded-xl p-4 pl-12 text-white
                                   focus:outline-none focus:ring-2 focus:ring-electric-purple/50 resize-none"
                           placeholder="Define knowledge base..."
                           value={agentConfig?.knowledgeBase || ""}
@@ -379,7 +418,7 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <label className="text-white/80 text-sm flex items-center justify-between">
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
                         Example Tweets
                         <div className="flex items-center gap-2">
                           <span className="text-xs text-white/60">
@@ -575,15 +614,37 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                   </div>
 
                   {/* Right Column - Test Interface */}
-                  <div className="space-y-6">
-                    <motion.h2
-                      className="text-3xl font-bold text-white"
+                  <div className="space-y-6 lg:mt-16">
+                    {/* Questions Input */}
+                    <MotionSection
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <label className="text-white/80 text-sm flex items-center justify-between mb-1">
+                        Goals
+                      </label>
+                      <p className="text-white/60 text-sm mb-4">
+                        Define 3 goals that will guide your agent's behavior
+                        when replying on X. These goals help shape how your
+                        agent thinks and responds.
+                      </p>
+                      <QuestionsInput
+                        questions={agentConfig.questions}
+                        onUpdateQuestions={(questions) =>
+                          updateAgentConfigField("questions", questions)
+                        }
+                      />
+                    </MotionSection>
+
+                    <motion.h3
+                      className="text-2xl font-bold text-white"
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
                     >
                       Test Your Agent
-                    </motion.h2>
+                    </motion.h3>
 
                     {/* Tweet Input */}
                     <div className="bg-white/5 border border-white/10 rounded-xl p-4">

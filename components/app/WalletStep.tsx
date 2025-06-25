@@ -18,18 +18,22 @@ import { createWalletClient, custom, erc20Abi, Hex, parseUnits } from "viem";
 import { base } from "viem/chains";
 import Link from "next/link";
 
-interface PaymentParams {
+export interface PaymentParams {
   clientId: string;
   amount: string;
   txHash: string;
 }
 
-interface PaymentResponse {
+export interface PaymentResponse {
   success: boolean;
   error?: string;
 }
 
-const WalletStep = () => {
+interface WalletStepProps {
+  isExtension?: boolean;
+}
+
+const WalletStep = ({ isExtension = false }: WalletStepProps) => {
   const { login, authenticated, connectWallet, user: privyUser } = usePrivy();
   const { wallets } = useWallets();
 
@@ -37,6 +41,11 @@ const WalletStep = () => {
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [error, setError] = useState<string>("");
   const [txHash, setTransactionHash] = useState<string>("");
+
+  // Determine payment amount based on whether it's an extension
+  const paymentAmount = isExtension ? "99" : "19";
+  const paymentAmountFormatted = isExtension ? "99" : "19";
+
   console.log(wallets);
   const { data: paymentStatus } = useQuery({
     queryKey: ["paymentStatus"],
@@ -49,6 +58,7 @@ const WalletStep = () => {
       setTransactionHash(paymentStatus?.data?.tx_hash || "");
     }
   }, [paymentStatus]);
+
   const hasConnectedWallet = wallets.length > 0;
   const {
     mutate: processPayment,
@@ -104,21 +114,10 @@ const WalletStep = () => {
       if (!privyUser?.id) {
         throw new Error("User ID not available");
       }
-      // const address = wallets[0]?.address;
-      // const message = "This is the message I am signing";
-      // const signature = await provider.request({
-      //   method: "personal_sign",
-      //   params: [message, address],
-      // });
-
-      // const USDT_CONTRACT = "0x7169D38820dfd117C3FA1f22a697dBA58d90BA06"; // sepolia usdt
-      // const ethContract = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
-      // const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca";
 
       const toAddress = "0x394064b14cd417ea79d1A44bD4921d8F392e02Ca"; // seba wallet
       const usdcContract = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"; // base usdc
-      const amount = parseUnits("19", 6); // 19 USDT with 6 decimals
-      // const amount = parseUnits("0.01", 18); // 0.01 ETH with 18 decimals
+      const amount = parseUnits(paymentAmount, 6); // USDC with 6 decimals
 
       const walletClient = createWalletClient({
         account: wallets[0]?.address as Hex,
@@ -136,14 +135,16 @@ const WalletStep = () => {
 
       processPayment({
         clientId: privyUser?.id || "",
-        amount: "19", // USDC amount
+        amount: paymentAmount, // USDC amount
         txHash: txHash,
       });
     } catch (error: any) {
       console.error("Payment error:", error);
       console.log("ERROR MESSAGE", error.message);
       setError("An error occurred during payment");
+    } finally {
       setIsProcessingPayment(false);
+      setPaymentComplete(true);
     }
   };
 
@@ -169,7 +170,11 @@ const WalletStep = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {paymentComplete ? "Payment Complete" : "Connect Wallet & Pay"}
+              {paymentComplete
+                ? "Payment Complete"
+                : isExtension
+                  ? "Extend Subscription"
+                  : "Connect Wallet & Pay"}
             </motion.span>
           </div>
 
@@ -184,10 +189,15 @@ const WalletStep = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <div className="mb-6 text-white/80 space-y-4">
-                    <p className="text-lg font-semibold">Final Step: Payment</p>
+                    <p className="text-lg font-semibold">
+                      {isExtension
+                        ? "Extend Your Subscription"
+                        : "Final Step: Payment"}
+                    </p>
                     <p>
-                      Your AI agent is almost ready! Connect your wallet (Base
-                      network) and complete the payment to activate your agent.
+                      {isExtension
+                        ? "Extend your AI agent subscription for another 30 days."
+                        : "Your AI agent is almost ready! Connect your wallet (Base network) and complete the payment to activate your agent."}
                     </p>
 
                     <div className="mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
@@ -243,17 +253,21 @@ const WalletStep = () => {
                                 Complete Payment
                               </h3>
                               <p className="text-white/70 mb-4 text-center">
-                                Pay 19 USDC for your agent subscription (valid
-                                for 30 days)
+                                Pay {paymentAmountFormatted} USDC for{" "}
+                                {isExtension
+                                  ? "30-day extension"
+                                  : "your agent subscription (valid for 30 days)"}
                               </p>
 
                               <div className="bg-white/5 rounded-lg p-4 mb-6 w-full">
                                 <div className="flex justify-between items-center mb-2">
                                   <span className="text-white/70">
-                                    Agent Subscription
+                                    {isExtension
+                                      ? "Subscription Extension"
+                                      : "Agent Subscription"}
                                   </span>
                                   <span className="text-white font-medium">
-                                    19 USDC
+                                    {paymentAmountFormatted} USDC
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm">
@@ -316,7 +330,9 @@ const WalletStep = () => {
                                 </>
                               ) : (
                                 <>
-                                  Complete Payment
+                                  {isExtension
+                                    ? "Extend Subscription"
+                                    : "Complete Payment"}
                                   <ArrowRight className="w-5 h-5" />
                                 </>
                               )}
@@ -331,12 +347,12 @@ const WalletStep = () => {
                                    border border-white/30 hover:bg-white/15
                                    transition-all duration-300 ease-in-out overflow-hidden
                                    flex items-center justify-center gap-2 ${isProcessingPayment ? "opacity-50 cursor-not-allowed" : ""}`}
-                            // onClick={() =>
-                            //   !isProcessingPayment && setCurrentStep(3)
-                            // }
+                            onClick={() => window.history.back()}
                           >
                             <ArrowLeft className="w-5 h-5" />
-                            Back to X Connection
+                            {isExtension
+                              ? "Back to Dashboard"
+                              : "Back to X Connection"}
                           </motion.button>
                         </>
                       )}
@@ -359,7 +375,9 @@ const WalletStep = () => {
 
                     <div className="space-y-2">
                       <h2 className="text-2xl font-bold text-white">
-                        Your Agent is Live!
+                        {isExtension
+                          ? "Subscription Extended!"
+                          : "Your Agent is Live!"}
                       </h2>
                       <p className="text-white/70">Payment successful</p>
                     </div>
@@ -370,7 +388,9 @@ const WalletStep = () => {
                       </h3>
                       <p className="text-white/70 text-sm">
                         <span className="text-white/50">Amount:</span>{" "}
-                        <span className="text-electric-purple">1 USDC </span>
+                        <span className="text-electric-purple">
+                          {paymentAmountFormatted} USDC{" "}
+                        </span>
                       </p>
                       <p className="text-white/70 text-sm mt-1">
                         <span className="text-white/50">Transaction:</span>{" "}
@@ -385,8 +405,9 @@ const WalletStep = () => {
                         </a>
                       </p>
                       <p className="text-white/70 text-sm mt-3">
-                        Your subscription is now active and will remain valid
-                        for 30 days.
+                        {isExtension
+                          ? "Your subscription has been extended for 30 additional days."
+                          : "Your subscription is now active and will remain valid for 30 days."}
                       </p>
                     </div>
 

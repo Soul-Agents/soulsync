@@ -17,29 +17,29 @@ import {
   updateTwitterApiKey,
   verifyTwitterApiKey,
   connectTwitterAccount,
+  makePayment,
 } from "../../lib/api";
-import {
-  AgentConfig,
-  AgentConfigFormState,
-  PaymentStatus,
-} from "../../lib/types";
+import { AgentConfig, AgentConfigFormState } from "../../lib/types";
 import {
   Save,
   Play,
   Check,
   X,
   Loader2,
-  CreditCard,
-  Calendar,
-  Hash,
-  Clock,
   Power,
   AlertTriangle,
   Activity,
   AlertCircle,
-  Shield,
+  Clock,
+  CreditCard,
+  Calendar,
+  ExternalLink,
+  Plus,
 } from "lucide-react";
-import FollowAccountsInput from "../../components/FollowAccountsInput";
+import FollowAccountsInput from "../../../components/app/FollowAccountsInput";
+import QuestionsInput from "../../../components/app/QuestionsInput";
+import SubscriptionStatus from "@/components/app/SubscriptionStatus";
+import WalletStep from "@/components/app/WalletStep";
 
 // Component styling constants
 const inputClasses =
@@ -49,7 +49,7 @@ export const buttonClasses =
   "px-6 py-3 bg-gradient-to-r from-electric-purple to-neon-pink rounded-xl text-white hover:shadow-[0_0_30px_rgba(147,51,234,0.3)] transition-all duration-300 hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100";
 const secondaryButtonClasses =
   "px-6 py-3 bg-electric-purple/20 text-electric-purple border border-electric-purple/30 rounded-xl hover:bg-electric-purple/30 transition-all duration-300 font-semibold flex items-center justify-center gap-2";
-const sectionClasses = "mb-8 glass-card p-6 rounded-xl relative";
+export const sectionClasses = "mb-8 glass-card p-6 rounded-xl relative";
 
 const ApiStatusIndicator = ({ apiLimits }: { apiLimits: any }) => {
   const { project_usage, project_cap } = apiLimits?.data?.limits || {};
@@ -86,7 +86,6 @@ export default function EditAgentConfig() {
   const [testingResponse, setTestingResponse] = useState<boolean>(false);
   const [testResponseText, setTestResponseText] = useState<string>("");
   const [isNavigating, setIsNavigating] = useState<boolean>(false);
-  const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<"config" | "status">("config");
   const [isTogglingAgent, setIsTogglingAgent] = useState<boolean>(false);
   const [apiKeyInput, setApiKeyInput] = useState<string>("");
@@ -106,6 +105,7 @@ export default function EditAgentConfig() {
     retry: false,
     throwOnError: false,
   });
+
   // Redirect if no user or no agent config
   useEffect(() => {
     if (ready && !authenticated) {
@@ -117,16 +117,6 @@ export default function EditAgentConfig() {
     }
   }, [ready, authenticated, savedConfig, isLoadingConfig, router]);
 
-  const daysRemaining = (validUntil: string) => {
-    if (!validUntil) return 0;
-
-    const date = new Date(validUntil);
-    return date.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  };
   // Update local state when savedConfig changes
   useEffect(() => {
     if (savedConfig) {
@@ -134,6 +124,7 @@ export default function EditAgentConfig() {
       const formState: AgentConfigFormState = {
         client_id: savedConfig.client_id,
         username: savedConfig.user_name,
+
         personality: savedConfig.user_personality,
         styleRules: savedConfig.style_rules,
         contentRestrictions: savedConfig.content_restrictions,
@@ -145,7 +136,9 @@ export default function EditAgentConfig() {
         exampleTweets: savedConfig.example_tweets || [],
         followAccounts:
           savedConfig.accounts_to_follow || savedConfig.thought_leaders || [],
+        questions: savedConfig.questions || [],
       };
+      console.log("Setting agentConfig with questions:", formState.questions);
       setAgentConfig(formState);
     }
   }, [savedConfig]);
@@ -187,8 +180,8 @@ export default function EditAgentConfig() {
         example_tweets: agentConfig.exampleTweets,
         // Process follow accounts into categories
         accounts_to_follow: agentConfig.followAccounts,
-
         thought_leaders: agentConfig.followAccounts,
+        questions: agentConfig.questions.filter((q) => q.trim() !== ""),
       };
 
       const result = await updateAgentConfig(backendConfig);
@@ -229,18 +222,6 @@ export default function EditAgentConfig() {
       setTestingResponse(false);
     }
   };
-
-  const {
-    data: paymentStatus,
-    isLoading: paymentStatusLoading,
-    isError: paymentError,
-  } = useQuery({
-    queryKey: ["paymentStatus", user?.id],
-    queryFn: () => getPaymentStatus(user?.id!),
-    enabled: !!user?.id,
-    retry: false,
-    throwOnError: false,
-  });
 
   const { mutateAsync: connectTwitterMutation } = useMutation({
     mutationFn: connectTwitterAccount,
@@ -407,8 +388,15 @@ export default function EditAgentConfig() {
     },
   });
 
+  const { isLoading: paymentStatusLoading } = useQuery({
+    queryKey: ["paymentStatus"],
+    queryFn: () => getPaymentStatus(user?.id!),
+    enabled: !!user?.id,
+    retry: false,
+    throwOnError: false,
+  });
   // Show loading state if not ready or loading config
-  if (!ready || isLoadingConfig || !agentConfig || isLoadingApiLimits) {
+  if (!ready || isLoadingConfig || !agentConfig) {
     return (
       <main className="min-h-screen bg-gradient-to-b from-black via-electric-purple/5 to-black pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
@@ -487,7 +475,7 @@ export default function EditAgentConfig() {
         </div>
       )}
 
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -538,185 +526,428 @@ export default function EditAgentConfig() {
 
         {activeTab === "config" ? (
           <>
-            <section className={sectionClasses}>
-              <h2 className="text-2xl font-semibold gradient-text mb-4">
-                Personality & Style
-              </h2>
+            {/* Desktop Layout: Two columns */}
+            <div className="hidden lg:grid lg:grid-cols-5 lg:gap-8">
+              {/* Left column: Main configuration sections */}
+              <div className="lg:col-span-3 space-y-8">
+                <section className={sectionClasses}>
+                  <h2 className="text-2xl font-semibold gradient-text mb-4">
+                    Personality & Style
+                  </h2>
 
-              <div className="mb-4">
-                <label htmlFor="personality" className={labelClasses}>
-                  Agent Personality
-                </label>
-                <textarea
-                  id="personality"
-                  rows={4}
-                  className={inputClasses}
-                  placeholder="Describe your agent's personality, tone, and character..."
-                  value={agentConfig.personality}
-                  onChange={(e) =>
-                    updateAgentConfigField("personality", e.target.value)
-                  }
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="styleRules" className={labelClasses}>
-                  Style Rules
-                </label>
-                <textarea
-                  id="styleRules"
-                  rows={3}
-                  className={inputClasses}
-                  placeholder="Define communication style, writing rules, formatting..."
-                  value={agentConfig.styleRules}
-                  onChange={(e) =>
-                    updateAgentConfigField("styleRules", e.target.value)
-                  }
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="contentRestrictions" className={labelClasses}>
-                  Content Restrictions
-                </label>
-                <textarea
-                  id="contentRestrictions"
-                  rows={3}
-                  className={inputClasses}
-                  placeholder="Topics to avoid, prohibited content, ethical guardrails..."
-                  value={agentConfig.contentRestrictions}
-                  onChange={(e) =>
-                    updateAgentConfigField(
-                      "contentRestrictions",
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
-            </section>
-
-            <section className={sectionClasses}>
-              <h2 className="text-2xl font-semibold gradient-text mb-4">
-                Knowledge & Examples
-              </h2>
-
-              <div className="mb-4">
-                <label htmlFor="knowledgeBase" className={labelClasses}>
-                  Knowledge Base
-                </label>
-                <textarea
-                  id="knowledgeBase"
-                  rows={4}
-                  className={inputClasses}
-                  placeholder="Technical information, project details, facts the agent should know..."
-                  value={agentConfig.knowledgeBase}
-                  onChange={(e) =>
-                    updateAgentConfigField("knowledgeBase", e.target.value)
-                  }
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="exampleTweets" className={labelClasses}>
-                  Example Tweets
-                </label>
-                {agentConfig.exampleTweets.map((tweet, index) => (
-                  <div key={index} className="flex mb-2 gap-2">
+                  <div className="mb-4">
+                    <label htmlFor="personality" className={labelClasses}>
+                      Agent Personality
+                    </label>
                     <textarea
-                      rows={2}
-                      className={`${inputClasses} mb-0`}
-                      value={tweet}
-                      onChange={(e) => {
-                        const newTweets = [...agentConfig.exampleTweets];
-                        newTweets[index] = e.target.value;
-                        updateAgentConfigField("exampleTweets", newTweets);
-                      }}
+                      id="personality"
+                      rows={4}
+                      className={inputClasses}
+                      placeholder="Describe your agent's personality, tone, and character..."
+                      value={agentConfig.personality}
+                      onChange={(e) =>
+                        updateAgentConfigField("personality", e.target.value)
+                      }
                     />
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="styleRules" className={labelClasses}>
+                      Style Rules
+                    </label>
+                    <textarea
+                      id="styleRules"
+                      rows={3}
+                      className={inputClasses}
+                      placeholder="Define communication style, writing rules, formatting..."
+                      value={agentConfig.styleRules}
+                      onChange={(e) =>
+                        updateAgentConfigField("styleRules", e.target.value)
+                      }
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label
+                      htmlFor="contentRestrictions"
+                      className={labelClasses}
+                    >
+                      Content Restrictions
+                    </label>
+                    <textarea
+                      id="contentRestrictions"
+                      rows={3}
+                      className={inputClasses}
+                      placeholder="Topics to avoid, prohibited content, ethical guardrails..."
+                      value={agentConfig.contentRestrictions}
+                      onChange={(e) =>
+                        updateAgentConfigField(
+                          "contentRestrictions",
+                          e.target.value
+                        )
+                      }
+                    />
+                  </div>
+                </section>
+
+                <section className={sectionClasses}>
+                  <h2 className="text-2xl font-semibold gradient-text mb-4">
+                    Knowledge & Examples
+                  </h2>
+
+                  <div className="mb-4">
+                    <label htmlFor="knowledgeBase" className={labelClasses}>
+                      Knowledge Base
+                    </label>
+                    <textarea
+                      id="knowledgeBase"
+                      rows={4}
+                      className={inputClasses}
+                      placeholder="Technical information, project details, facts the agent should know..."
+                      value={agentConfig.knowledgeBase}
+                      onChange={(e) =>
+                        updateAgentConfigField("knowledgeBase", e.target.value)
+                      }
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="exampleTweets" className={labelClasses}>
+                      Example Tweets
+                    </label>
+                    {agentConfig.exampleTweets.map((tweet, index) => (
+                      <div key={index} className="flex mb-2 gap-2">
+                        <textarea
+                          rows={2}
+                          className={`${inputClasses} mb-0`}
+                          value={tweet}
+                          onChange={(e) => {
+                            const newTweets = [...agentConfig.exampleTweets];
+                            newTweets[index] = e.target.value;
+                            updateAgentConfigField("exampleTweets", newTweets);
+                          }}
+                        />
+                        <button
+                          type="button"
+                          className="bg-red-500/20 text-red-400 p-2 h-12 rounded-lg"
+                          onClick={() => {
+                            const newTweets = agentConfig.exampleTweets.filter(
+                              (_, i) => i !== index
+                            );
+                            updateAgentConfigField("exampleTweets", newTweets);
+                          }}
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
                     <button
                       type="button"
-                      className="bg-red-500/20 text-red-400 p-2 h-12 rounded-lg"
+                      className={`${secondaryButtonClasses} mt-2 w-full`}
                       onClick={() => {
-                        const newTweets = agentConfig.exampleTweets.filter(
-                          (_, i) => i !== index
-                        );
-                        updateAgentConfigField("exampleTweets", newTweets);
+                        updateAgentConfigField("exampleTweets", [
+                          ...agentConfig.exampleTweets,
+                          "",
+                        ]);
                       }}
                     >
-                      <X className="w-4 h-4" />
+                      Add Example Tweet
                     </button>
                   </div>
-                ))}
+                </section>
+
+                <section className={sectionClasses}>
+                  <h2 className="text-2xl font-semibold gradient-text mb-4">
+                    Follow Accounts
+                  </h2>
+                  <FollowAccountsInput
+                    followAccounts={agentConfig.followAccounts}
+                    onUpdateFollowAccounts={(accounts) =>
+                      updateAgentConfigField("followAccounts", accounts)
+                    }
+                  />
+                </section>
+              </div>
+
+              {/* Right column: Test section */}
+              <div className="lg:col-span-2">
+                <section className={sectionClasses}>
+                  <h2 className="text-2xl font-semibold gradient-text mb-4">
+                    Goals
+                  </h2>
+                  <p className="text-white/60 text-sm mb-4">
+                    Define 3 goals that will guide your agent's behavior when
+                    replying on X. These goals help shape how your agent thinks
+                    and responds.
+                  </p>
+                  <QuestionsInput
+                    questions={agentConfig.questions}
+                    onUpdateQuestions={(questions) =>
+                      updateAgentConfigField("questions", questions)
+                    }
+                  />
+                </section>
+
+                <section className={sectionClasses}>
+                  <h2 className="text-2xl font-semibold gradient-text mb-4">
+                    Test Your Agent
+                  </h2>
+
+                  <div className="mb-4">
+                    <label htmlFor="testTweet" className={labelClasses}>
+                      Test Tweet
+                    </label>
+                    <textarea
+                      id="testTweet"
+                      rows={2}
+                      className={inputClasses}
+                      placeholder="Enter a sample tweet to test your agent's response..."
+                      value={testTweet}
+                      onChange={(e) => setTestTweet(e.target.value)}
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    className={`${secondaryButtonClasses} w-full`}
+                    onClick={handleTestAgentResponse}
+                    disabled={testingResponse}
+                  >
+                    {testingResponse ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" /> Testing
+                        Response...
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-5 h-5" /> Test Agent Response
+                      </>
+                    )}
+                  </button>
+
+                  {testResponseText && (
+                    <div className="mt-4 p-4 bg-electric-purple/10 border border-electric-purple/20 rounded-lg">
+                      <h3 className="text-white font-medium mb-2">
+                        Agent Response:
+                      </h3>
+                      <p className="text-white/80">{testResponseText}</p>
+                    </div>
+                  )}
+                </section>
+              </div>
+            </div>
+
+            {/* Mobile Layout: Single column */}
+            <div className="lg:hidden space-y-8">
+              <section className={sectionClasses}>
+                <h2 className="text-2xl font-semibold gradient-text mb-4">
+                  Personality & Style
+                </h2>
+
+                <div className="mb-4">
+                  <label htmlFor="personality-mobile" className={labelClasses}>
+                    Agent Personality
+                  </label>
+                  <textarea
+                    id="personality-mobile"
+                    rows={4}
+                    className={inputClasses}
+                    placeholder="Describe your agent's personality, tone, and character..."
+                    value={agentConfig.personality}
+                    onChange={(e) =>
+                      updateAgentConfigField("personality", e.target.value)
+                    }
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="styleRules-mobile" className={labelClasses}>
+                    Style Rules
+                  </label>
+                  <textarea
+                    id="styleRules-mobile"
+                    rows={3}
+                    className={inputClasses}
+                    placeholder="Define communication style, writing rules, formatting..."
+                    value={agentConfig.styleRules}
+                    onChange={(e) =>
+                      updateAgentConfigField("styleRules", e.target.value)
+                    }
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="contentRestrictions-mobile"
+                    className={labelClasses}
+                  >
+                    Content Restrictions
+                  </label>
+                  <textarea
+                    id="contentRestrictions-mobile"
+                    rows={3}
+                    className={inputClasses}
+                    placeholder="Topics to avoid, prohibited content, ethical guardrails..."
+                    value={agentConfig.contentRestrictions}
+                    onChange={(e) =>
+                      updateAgentConfigField(
+                        "contentRestrictions",
+                        e.target.value
+                      )
+                    }
+                  />
+                </div>
+              </section>
+
+              <section className={sectionClasses}>
+                <h2 className="text-2xl font-semibold gradient-text mb-4">
+                  Knowledge & Examples
+                </h2>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="knowledgeBase-mobile"
+                    className={labelClasses}
+                  >
+                    Knowledge Base
+                  </label>
+                  <textarea
+                    id="knowledgeBase-mobile"
+                    rows={4}
+                    className={inputClasses}
+                    placeholder="Technical information, project details, facts the agent should know..."
+                    value={agentConfig.knowledgeBase}
+                    onChange={(e) =>
+                      updateAgentConfigField("knowledgeBase", e.target.value)
+                    }
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="exampleTweets-mobile"
+                    className={labelClasses}
+                  >
+                    Example Tweets
+                  </label>
+                  {agentConfig.exampleTweets.map((tweet, index) => (
+                    <div key={index} className="flex mb-2 gap-2">
+                      <textarea
+                        rows={2}
+                        className={`${inputClasses} mb-0`}
+                        value={tweet}
+                        onChange={(e) => {
+                          const newTweets = [...agentConfig.exampleTweets];
+                          newTweets[index] = e.target.value;
+                          updateAgentConfigField("exampleTweets", newTweets);
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="bg-red-500/20 text-red-400 p-2 h-12 rounded-lg"
+                        onClick={() => {
+                          const newTweets = agentConfig.exampleTweets.filter(
+                            (_, i) => i !== index
+                          );
+                          updateAgentConfigField("exampleTweets", newTweets);
+                        }}
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    className={`${secondaryButtonClasses} mt-2 w-full`}
+                    onClick={() => {
+                      updateAgentConfigField("exampleTweets", [
+                        ...agentConfig.exampleTweets,
+                        "",
+                      ]);
+                    }}
+                  >
+                    Add Example Tweet
+                  </button>
+                </div>
+              </section>
+
+              <section className={sectionClasses}>
+                <h2 className="text-2xl font-semibold gradient-text mb-4">
+                  Follow Accounts
+                </h2>
+                <FollowAccountsInput
+                  followAccounts={agentConfig.followAccounts}
+                  onUpdateFollowAccounts={(accounts) =>
+                    updateAgentConfigField("followAccounts", accounts)
+                  }
+                />
+              </section>
+
+              {/* Test section at bottom on mobile */}
+              <section className={sectionClasses}>
+                <h2 className="text-2xl font-semibold gradient-text mb-4">
+                  Goals
+                </h2>
+                <p className="text-white/60 text-sm mb-4">
+                  Define 3 goals that will guide your agent's behavior when
+                  replying on X. These goals help shape how your agent thinks
+                  and responds.
+                </p>
+                <QuestionsInput
+                  questions={agentConfig.questions}
+                  onUpdateQuestions={(questions) =>
+                    updateAgentConfigField("questions", questions)
+                  }
+                />
+              </section>
+
+              <section className={sectionClasses}>
+                <h2 className="text-2xl font-semibold gradient-text mb-4">
+                  Test Your Agent
+                </h2>
+
+                <div className="mb-4">
+                  <label htmlFor="testTweet-mobile" className={labelClasses}>
+                    Test Tweet
+                  </label>
+                  <textarea
+                    id="testTweet-mobile"
+                    rows={2}
+                    className={inputClasses}
+                    placeholder="Enter a sample tweet to test your agent's response..."
+                    value={testTweet}
+                    onChange={(e) => setTestTweet(e.target.value)}
+                  />
+                </div>
+
                 <button
                   type="button"
-                  className={`${secondaryButtonClasses} mt-2 w-full`}
-                  onClick={() => {
-                    updateAgentConfigField("exampleTweets", [
-                      ...agentConfig.exampleTweets,
-                      "",
-                    ]);
-                  }}
+                  className={`${secondaryButtonClasses} w-full`}
+                  onClick={handleTestAgentResponse}
+                  disabled={testingResponse}
                 >
-                  Add Example Tweet
+                  {testingResponse ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" /> Testing
+                      Response...
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-5 h-5" /> Test Agent Response
+                    </>
+                  )}
                 </button>
-              </div>
-            </section>
-            <section className={sectionClasses}>
-              <h2 className="text-2xl font-semibold gradient-text mb-4">
-                Follow Accounts
-              </h2>
-              <FollowAccountsInput
-                followAccounts={agentConfig.followAccounts}
-                onUpdateFollowAccounts={(accounts) =>
-                  updateAgentConfigField("followAccounts", accounts)
-                }
-              />
-            </section>
-            <section className={sectionClasses}>
-              <h2 className="text-2xl font-semibold gradient-text mb-4">
-                Test Your Agent
-              </h2>
 
-              <div className="mb-4">
-                <label htmlFor="testTweet" className={labelClasses}>
-                  Test Tweet
-                </label>
-                <textarea
-                  id="testTweet"
-                  rows={2}
-                  className={inputClasses}
-                  placeholder="Enter a sample tweet to test your agent's response..."
-                  value={testTweet}
-                  onChange={(e) => setTestTweet(e.target.value)}
-                />
-              </div>
-
-              <button
-                type="button"
-                className={`${secondaryButtonClasses} w-full`}
-                onClick={handleTestAgentResponse}
-                disabled={testingResponse}
-              >
-                {testingResponse ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" /> Testing
-                    Response...
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-5 h-5" /> Test Agent Response
-                  </>
+                {testResponseText && (
+                  <div className="mt-4 p-4 bg-electric-purple/10 border border-electric-purple/20 rounded-lg">
+                    <h3 className="text-white font-medium mb-2">
+                      Agent Response:
+                    </h3>
+                    <p className="text-white/80">{testResponseText}</p>
+                  </div>
                 )}
-              </button>
-
-              {testResponseText && (
-                <div className="mt-4 p-4 bg-electric-purple/10 border border-electric-purple/20 rounded-lg">
-                  <h3 className="text-white font-medium mb-2">
-                    Agent Response:
-                  </h3>
-                  <p className="text-white/80">{testResponseText}</p>
-                </div>
-              )}
-            </section>
+              </section>
+            </div>
           </>
         ) : (
           <>
@@ -769,6 +1000,18 @@ export default function EditAgentConfig() {
                       <p className="text-white">
                         {user?.twitter?.username || "Not connected"}
                       </p>
+                    </div>
+                    <div>
+                      <p className="text-white/60 text-sm">Posting hours</p>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-3 h-3 text-electric-purple/60" />
+                        <p className="text-white/80 text-sm">
+                          8:00 AM - 8:00 PM UTC
+                        </p>
+                        <span className="px-2 py-0.5 rounded-full text-xs bg-electric-purple/10 text-electric-purple/60 border border-electric-purple/20">
+                          Default
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -867,55 +1110,7 @@ export default function EditAgentConfig() {
               </div>
             </section>
 
-            <section className={sectionClasses}>
-              <h2 className="text-2xl font-semibold gradient-text mb-4">
-                Payment Information
-              </h2>
-              <div className="bg-white/5 rounded-xl p-6 border border-electric-purple/20">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-white text-lg font-medium">
-                      Subscription Status
-                    </h3>
-                    <p className="text-white/60 text-sm">Payment and Billing</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-white/60 text-sm">Payment Amount</p>
-                    <p className="text-white">
-                      {paymentStatus?.data?.payment_amount || 0} USDC
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-sm">Valid until</p>
-                    <p className="text-white">
-                      {paymentStatus?.data?.valid_until
-                        ? daysRemaining(paymentStatus.data.valid_until)
-                        : "No payment recorded"}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-sm">Last Payment</p>
-                    <p className="text-white">
-                      {paymentStatus?.data?.payment_date
-                        ? new Date(
-                            paymentStatus.data.payment_date
-                          ).toLocaleDateString()
-                        : "No payment recorded"}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-sm">Transaction Hash</p>
-                    <p className="text-white break-all">
-                      {paymentStatus?.data?.tx_hash || "N/A"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
+            <SubscriptionStatus />
             <section className={sectionClasses}>
               <h2 className="text-2xl font-semibold gradient-text mb-4">
                 API Keys
@@ -1092,34 +1287,11 @@ export default function EditAgentConfig() {
                 )}
               </button>
             )}
-
-            {/* <button
-              type="button"
-              className={secondaryButtonClasses}
-              onClick={() => setShowPaymentModal(true)}
-              disabled={paymentStatusLoading}
-            >
-              {paymentStatusLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" /> Loading...
-                </>
-              ) : (
-                <>
-                  <CreditCard className="w-5 h-5" /> Payment status
-                </>
-              )}
-            </button> */}
           </div>
 
           {saveError && (
             <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
               <p>Error: {saveError}</p>
-            </div>
-          )}
-
-          {paymentError && (
-            <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-              <p>Payment Error: {paymentError}</p>
             </div>
           )}
         </div>
