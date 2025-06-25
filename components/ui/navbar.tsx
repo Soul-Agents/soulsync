@@ -30,11 +30,7 @@ export function Navbar() {
                   Soul Agents
                 </span>
               </Link>
-              <Link
-                href="https://x.com/soul_agents"
-                target="_blank"
-                className="flex"
-              >
+              <Link href="/" className="flex">
                 <Image
                   src="/soul-agents-transparent.png"
                   alt="Soul AI Agents"
@@ -44,9 +40,21 @@ export function Navbar() {
                 />
               </Link>
             </div>
-
+            <div className="flex-1" />
             {/* Right Side - Wallet/X Connect Placeholder */}
             <div className="flex items-center">
+              <Link
+                href="/how-it-works"
+                className="text-white/80 hover:text-white transition-colors mr-6"
+              >
+                How it Works
+              </Link>
+              <Link
+                href="/pricing"
+                className="text-white/80 hover:text-white transition-colors mr-6"
+              >
+                Pricing
+              </Link>
               {/* Privy Plugin Placeholder */}
               <div className="flex items-center justify-center">
                 <button onClick={handleLogin} className="button-gradient px-4 py-2 rounded-lg text-sm font-bold text-white hover:opacity-90 transition-all">
