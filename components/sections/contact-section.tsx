@@ -4,79 +4,69 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 bg-dark-navy/30 relative overflow-hidden"
+      className="pt-24 pb-24 bg-dark-navy/30 relative overflow-hidden"
     >
-      {/* Enhanced background effects */}
+      {/* Subtle background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-electric-purple/10 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-
-      {/* Animated orbs */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-neon-pink/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-electric-purple/20 rounded-full blur-3xl animate-float-delayed" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-neon-pink/20 rounded-full blur-3xl animate-float pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-electric-purple/20 rounded-full blur-3xl animate-float-delayed pointer-events-none" />
 
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-center mb-12 gradient-text animate-fade-in">
-          Get in Touch
+        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8 gradient-text animate-fade-in">
+          Contact Us
         </h2>
-        <div className="glass-card max-w-xl mx-auto p-8 animate-fade-in-up hover:border-electric-purple/50 transition-all duration-500 hover:shadow-2xl hover:shadow-electric-purple/20">
-          <div className="text-center space-y-8">
-            <p className="text-xl font-bold text-white/90 animate-fade-in-delay">
-              Connect with us directly:
+        <div className="max-w-lg mx-auto text-center space-y-8">
+          <div>
+            <p className="text-lg text-white/80 mb-2 font-medium">
+              Questions? Partnerships? Just want to say gm?
             </p>
-            <div className="flex flex-col items-center space-y-4">
+            <p className="text-2xl font-bold text-white mb-6">
+              Connect with the team:
+            </p>
+            <div className="flex flex-col items-center gap-3">
               <a
                 href="https://x.com/soul_agents"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full max-w-[240px] flex items-center justify-center gap-3 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-transparent via-electric-purple/5 to-transparent
-                         hover:via-electric-purple/10 border border-electric-purple/20 hover:border-electric-purple/40
-                         transition-all duration-300 transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 text-electric-purple hover:text-neon-pink font-semibold text-lg transition-colors"
               >
-                <Twitter className="w-5 h-5 text-electric-purple flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-white/80 group-hover:text-white transition-colors">
-                  @soul_agents
-                </span>
+                <Twitter className="w-5 h-5" />
+                Soul Agents on X
               </a>
               <a
-                href="https://x.com/adag1oeth"
+                href="https://t.me/soul_agents"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full max-w-[240px] flex items-center justify-center gap-3 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-transparent via-electric-purple/5 to-transparent
-                         hover:via-electric-purple/10 border border-electric-purple/20 hover:border-electric-purple/40
-                         transition-all duration-300 transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 text-electric-purple hover:text-neon-pink font-semibold text-lg transition-colors"
               >
-                <Twitter className="w-5 h-5 text-electric-purple flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-white/80 group-hover:text-white transition-colors">
-                  @adag1oeth
-                </span>
-              </a>
-              <a
-                href="https://t.me/adag1oeth"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-full max-w-[240px] flex items-center justify-center gap-3 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-transparent via-electric-purple/5 to-transparent
-                         hover:via-electric-purple/10 border border-electric-purple/20 hover:border-electric-purple/40
-                         transition-all duration-300 transform hover:scale-[1.02]"
-              >
-                <Send className="w-5 h-5 text-electric-purple flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-white/80 group-hover:text-white transition-colors">
-                  @adag1oeth
-                </span>
+                <Send className="w-5 h-5" />
+                Soul Agents on TG
               </a>
             </div>
-
-            <div className="pt-8">
-              <p className="text-white/90 text-xl mb-6 font-medium animate-fade-in-delay">
-                Early adopter discounts available! 🚀
-                <br />
-                <span className="text-lg text-white/70">
-                  Be among the first to deploy AI Agents for your project's X
-                  and Telegram channels!
+          </div>
+          <div className="pt-6">
+            <div className="text-sm text-white/50 font-medium flex flex-col items-center">
+              <a
+                href="https://x.com/soul_agents/status/1865085603043553628"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-electric-purple hover:text-neon-pink underline transition-colors"
+              >
+                <span role="img" aria-label="bronze medal">
+                  🥉
                 </span>
-              </p>
+                3rd Place – Brian AI Hackathon (2024)
+              </a>
+            </div>
+            <div className="mt-6 flex justify-center">
+              <span className="text-white/60 text-sm text-center font-medium">
+                <span role="img" aria-label="heart">
+                  ❤️
+                </span>{" "}
+                Made with love by the Soul Agents team - crypto-native builders
+                designing the future of autonomous identity.
+              </span>
             </div>
           </div>
         </div>
