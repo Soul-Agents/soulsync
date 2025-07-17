@@ -1,4 +1,9 @@
-// ESLint configuration for both JavaScript and TypeScript
+import js from "@eslint/js";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import react from "eslint-plugin-react";
+import globals from "globals";
+
 export default [
   {
     ignores: [
@@ -19,29 +24,15 @@ export default [
       ecmaVersion: 2022,
       sourceType: "module",
       globals: {
-        // Node.js globals
-        module: true,
-        require: true,
-        process: true,
-        console: true,
-        // Browser globals
-        window: true,
-        document: true,
-        navigator: true,
-        localStorage: true,
-        alert: true,
-        fetch: true,
-        // React globals
-        React: true,
-        JSX: true,
-        // Other globals
-        setInterval: true,
-        clearInterval: true,
-        setTimeout: true,
+        ...globals.browser,
+        ...globals.node,
       },
     },
+    plugins: {
+      react,
+    },
     rules: {
-      // Disable rules that are causing issues
+      ...js.configs.recommended.rules,
       "no-unused-vars": "warn",
       "no-undef": "warn",
       "no-empty": "warn",
@@ -64,63 +55,30 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
+      parser: tsParser,
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
+          jsx: true,
+        },
+        project: "./tsconfig.json",
       },
       globals: {
-        // Node.js globals
-        module: true,
-        require: true,
-        process: true,
-        console: true,
-        // Browser globals
-        window: true,
-        document: true,
-        navigator: true,
-        localStorage: true,
-        alert: true,
-        fetch: true,
-        // React globals
-        React: true,
-        JSX: true,
-        // DOM types
-        HTMLElement: true,
-        HTMLDivElement: true,
-        HTMLButtonElement: true,
-        HTMLInputElement: true,
-        HTMLTextAreaElement: true,
-        HTMLParagraphElement: true,
-        HTMLHeadingElement: true,
-        Element: true,
-        Document: true,
-        // Event types
-        KeyboardEvent: true,
-        MouseEvent: true,
-        // Other globals
-        URL: true,
-        setInterval: true,
-        clearInterval: true,
-        setTimeout: true,
+        ...globals.browser,
+        ...globals.node,
       },
     },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+      react,
+    },
     rules: {
-      // Disable rules that are causing issues
-      "no-unused-vars": "warn",
-      "no-undef": "warn",
-      "no-empty": "warn",
-      "no-useless-escape": "off",
-      "no-fallthrough": "off",
-      "getter-return": "warn",
-      "no-sparse-arrays": "off",
-      "no-misleading-character-class": "off",
-      "valid-typeof": "warn",
-      "no-self-assign": "warn",
-      "no-unreachable": "warn",
-      "no-func-assign": "off",
-      "no-redeclare": "off",
-      "no-control-regex": "off",
+      ...js.configs.recommended.rules,
+      ...tsPlugin.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": "warn",
+      "no-unused-vars": "off", // Turn off base rule
+      "no-undef": "off", // TypeScript handles this
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
     },
   },
 ];

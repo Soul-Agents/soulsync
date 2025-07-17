@@ -38,7 +38,7 @@ export default function PricingSection() {
           <li className="flex items-baseline text-white/90">
             <Check className="h-5 w-5 text-electric-purple mr-2 flex-shrink-0" />
             <span>
-              Up to 20 replies/day with a Basic X API key<sup>*</sup>
+              18 replies/day with a Basic X API key<sup>*</sup>
             </span>
           </li>
           <li className="flex items-baseline text-white/90">
