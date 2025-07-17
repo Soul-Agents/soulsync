@@ -67,7 +67,7 @@ export default function HeroSection() {
             {/* Left: Main content */}
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 animate-fade-in">
-                Autonomous X Agent. Human tone. Real signal. 20+ replies/day.
+                Autonomous X Agent. Human tone. Real signal. 18 replies/day.
               </h1>
 
               <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 mb-4 animate-fade-in-delay">

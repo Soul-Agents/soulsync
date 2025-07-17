@@ -22,26 +22,26 @@ export default function ContactSection() {
               Questions? Partnerships? Just want to say gm?
             </p>
             <p className="text-2xl font-bold text-white mb-6">
-              Connect with the team:
+              Contact us!
             </p>
             <div className="flex flex-col items-center gap-3">
               <a
-                href="https://x.com/soul_agents"
+                href="https://x.com/adag1oeth"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-electric-purple hover:text-neon-pink font-semibold text-lg transition-colors"
               >
                 <Twitter className="w-5 h-5" />
-                Soul Agents on X
+                adag1o 💪 on X
               </a>
               <a
-                href="https://t.me/soul_agents"
+                href="https://t.me/adag1oeth"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-electric-purple hover:text-neon-pink font-semibold text-lg transition-colors"
               >
                 <Send className="w-5 h-5" />
-                Soul Agents on TG
+                adag1o 😇 on TG
               </a>
             </div>
           </div>

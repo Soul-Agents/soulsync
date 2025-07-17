@@ -244,9 +244,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                           </Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
-                              className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                       text-white text-sm leading-relaxed shadow-xl"
+                              className="max-w-xs sm:max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
+                                       text-white text-sm leading-relaxed shadow-xl z-50"
                               sideOffset={5}
+                              side="top"
+                              align="end"
+                              alignOffset={-10}
+                              collisionPadding={10}
                             >
                               <pre className="whitespace-pre-wrap font-sans">
                                 {tooltips.personality}
@@ -296,9 +300,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                           </Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
-                              className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                       text-white text-sm leading-relaxed shadow-xl"
+                              className="max-w-xs sm:max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
+                                       text-white text-sm leading-relaxed shadow-xl z-50"
                               sideOffset={5}
+                              side="top"
+                              align="end"
+                              alignOffset={-10}
+                              collisionPadding={10}
                             >
                               <pre className="whitespace-pre-wrap font-sans">
                                 {tooltips.styleRules}
@@ -338,9 +346,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                           </Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
-                              className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                       text-white text-sm leading-relaxed shadow-xl"
+                              className="max-w-xs sm:max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
+                                       text-white text-sm leading-relaxed shadow-xl z-50"
                               sideOffset={5}
+                              side="top"
+                              align="end"
+                              alignOffset={-10}
+                              collisionPadding={10}
                             >
                               <pre className="whitespace-pre-wrap font-sans">
                                 {tooltips.contentRestrictions}
@@ -383,9 +395,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                           </Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
-                              className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                       text-white text-sm leading-relaxed shadow-xl"
+                              className="max-w-xs sm:max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
+                                       text-white text-sm leading-relaxed shadow-xl z-50"
                               sideOffset={5}
+                              side="top"
+                              align="end"
+                              alignOffset={-10}
+                              collisionPadding={10}
                             >
                               <pre className="whitespace-pre-wrap font-sans">
                                 {tooltips.knowledgeBase}
@@ -435,9 +451,13 @@ const ConfigStep: React.FC<ConfigStepProps> = ({
                             </Tooltip.Trigger>
                             <Tooltip.Portal>
                               <Tooltip.Content
-                                className="max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
-                                         text-white text-sm leading-relaxed shadow-xl"
+                                className="max-w-xs sm:max-w-md bg-dark-navy/95 backdrop-blur-xl border border-white/10 rounded-xl p-4 
+                                         text-white text-sm leading-relaxed shadow-xl z-50"
                                 sideOffset={5}
+                                side="top"
+                                align="end"
+                                alignOffset={-10}
+                                collisionPadding={10}
                               >
                                 <pre className="whitespace-pre-wrap font-sans">
                                   {tooltips.exampleTweets}
