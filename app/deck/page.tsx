@@ -1834,7 +1834,7 @@ const slides: Slide[] = [
                     </li>
                     <li className="flex justify-between items-center">
                       <span>• $SOUL Governance</span>
-                      <span className="text-neon-pink font-bold">Q2 2025</span>
+                      <span className="text-neon-pink font-bold">Q1 2026</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -2522,7 +2522,7 @@ const slides: Slide[] = [
           {/* Launch Date */}
           <div className="text-center">
             <h2 className="text-2xl font-bold text-neon-pink">
-              Launch Q1 2025
+              Launch Q1 2026
             </h2>
           </div>
 

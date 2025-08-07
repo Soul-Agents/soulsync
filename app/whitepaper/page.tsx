@@ -625,7 +625,7 @@ export default function WhitepaperPage() {
                   status: "current",
                 },
                 {
-                  phase: "Phase 2: Onboarding First Companies (Q1 2025)",
+                  phase: "Phase 2: Onboarding First Companies (Q3 2025)",
                   items: [
                     "Client Integration: Grow our client base by integrating AI agents into the communities of select Web3 projects.",
                     "Tailored Solutions: Offer customized AI agents that match the unique vibe and requirements of each project.",
